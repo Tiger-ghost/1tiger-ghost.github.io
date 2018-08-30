@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Tiger-ghost</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-08-30T13:17:49.187Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Tiger</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux</title>
+    <link href="http://yoursite.com/2018/08/28/Linux/"/>
+    <id>http://yoursite.com/2018/08/28/Linux/</id>
+    <published>2018-08-28T09:28:03.000Z</published>
+    <updated>2018-08-30T13:17:49.187Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="linux-command"><a href="#linux-command" class="headerlink" title="linux command"></a>linux command</h1><p> <strong><font color="lime">[root@pan ~]#</font> root:登录的用户　@分隔符　  pan主机名　<font color="blue">~</font>当前路径</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;linux-command&quot;&gt;&lt;a href=&quot;#linux-command&quot; class=&quot;headerlink&quot; title=&quot;linux command&quot;&gt;&lt;/a&gt;linux command&lt;/h1&gt;&lt;p&gt; &lt;strong&gt;&lt;font color=&quot;lime
+      
+    
+    </summary>
+    
+      <category term="command" scheme="http://yoursite.com/categories/command/"/>
+    
+    
+      <category term="导航" scheme="http://yoursite.com/tags/%E5%AF%BC%E8%88%AA/"/>
+    
+      <category term="分享" scheme="http://yoursite.com/tags/%E5%88%86%E4%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ls</title>
+    <link href="http://yoursite.com/2018/08/28/ls/"/>
+    <id>http://yoursite.com/2018/08/28/ls/</id>
+    <published>2018-08-28T09:28:03.000Z</published>
+    <updated>2018-08-30T14:31:30.333Z</updated>
+    
+    <content type="html"><![CDATA[<p><font size="0">  </font></p><p><font color="red">-F</font>:在每个输出项后追加文件的类型标识符，具体含义：<br><strong>“*”</strong>表示具有可执行权限的普通文件<br><strong>“/“</strong>表示目录  <strong>“@”</strong>表示符号链接<br><strong>“|”</strong>表示命令管道FIFO<br><strong>“=”</strong>表示sockets套接字<br>当文件为普通文件时，不输出任何标识符</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;font size=&quot;0&quot;&gt;  &lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=&quot;red&quot;&gt;-F&lt;/font&gt;:在每个输出项后追加文件的类型标识符，具体含义：&lt;br&gt;&lt;strong&gt;“*”&lt;/strong&gt;表示具有可执行权限的普通文件&lt;br&gt;&lt;strong&gt;“/“&lt;
+      
+    
+    </summary>
+    
+      <category term="command" scheme="http://yoursite.com/categories/command/"/>
+    
+    
+      <category term="导航" scheme="http://yoursite.com/tags/%E5%AF%BC%E8%88%AA/"/>
+    
+      <category term="分享" scheme="http://yoursite.com/tags/%E5%88%86%E4%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>echo</title>
+    <link href="http://yoursite.com/2018/08/28/echo/"/>
+    <id>http://yoursite.com/2018/08/28/echo/</id>
+    <published>2018-08-28T09:28:03.000Z</published>
+    <updated>2018-08-30T14:25:58.035Z</updated>
+    
+    <content type="html"><![CDATA[<font color="lime">#</font>echo [选项][输出内容] <font color="blue"><br>echo -e “\e[1;31m abcd \e[0m”</font> 输出颜色<br>=30m 黑色，=31m 红色，=32m 绿色，<br>=33m 黄色，=34m 蓝色，=35m 洋红，<br>=36m 青色，=37m 白色。  <font color="blue"><font color="lime"><br>#</font>echo -e ab\bc</font><a id="more"></a><p><font color="red">-e</font>:支持反斜线控制的字符转换</p><table><thead><tr><th>控制字符</th><th style="text-align:center">作用</th></tr></thead><tbody><tr><td>\</td><td style="text-align:center">输出\本身</td></tr><tr><td>\a</td><td style="text-align:center">输出警告音</td></tr><tr><td>\b</td><td style="text-align:center">\退格键，也就是向左删除键</td></tr><tr><td>\c</td><td style="text-align:center">取消输出行末的换行符，和“-n”选项一致</td></tr><tr><td>\e</td><td style="text-align:center">ESCAPE键</td></tr><tr><td>\f</td><td style="text-align:center">换页符</td></tr><tr><td>\n</td><td style="text-align:center">换行符</td></tr><tr><td>\r</td><td style="text-align:center">回车键</td></tr><tr><td>\t</td><td style="text-align:center">制表符，也就是Tab键</td></tr><tr><td>\v</td><td style="text-align:center">垂直制表符</td></tr><tr><td>\0nm</td><td style="text-align:center">按照八进制ASCII码输出字符，其中0为数字零，nnn是三位八进制数</td></tr><tr><td>\xhh</td><td style="text-align:center">按照十六进制ASCII码表输出字符。其中hh是两位十六进制数。</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      &lt;font color=&quot;lime&quot;&gt;#&lt;/font&gt;echo [选项][输出内容] &lt;font color=&quot;blue&quot;&gt;&lt;br&gt;echo -e “\e[1;31m abcd \e[0m”&lt;/font&gt; 输出颜色&lt;br&gt;=30m 黑色，=31m 红色，=32m 绿色，&lt;br&gt;=33m 黄色，=34m 蓝色，=35m 洋红，&lt;br&gt;=36m 青色，=37m 白色。  &lt;font color=&quot;blue&quot;&gt;&lt;font color=&quot;lime&quot;&gt;&lt;br&gt;#&lt;/font&gt;echo -e ab\bc&lt;/font&gt;
+    
+    </summary>
+    
+      <category term="command" scheme="http://yoursite.com/categories/command/"/>
+    
+    
+      <category term="导航" scheme="http://yoursite.com/tags/%E5%AF%BC%E8%88%AA/"/>
+    
+      <category term="分享" scheme="http://yoursite.com/tags/%E5%88%86%E4%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sort</title>
+    <link href="http://yoursite.com/2018/08/28/sort/"/>
+    <id>http://yoursite.com/2018/08/28/sort/</id>
+    <published>2018-08-28T09:28:03.000Z</published>
+    <updated>2018-08-30T14:44:16.076Z</updated>
+    
+    <content type="html"><![CDATA[<p>　　　<br>sort将文件/文本的每一行作为一个单位，相互比较，比较原则是从首字符向后，<strong>不加参数时</strong>依次按ASCII码值进行比较，最后将他们按升序输出  <font color="red"> -n </font>:依照数值的从小到大排序;  <font color="red"><br>-r </font>:以相反的顺序来排序;   <font color="red"><br>-u </font>:忽略相同行使用-u选项或者uniq 文件名  <font color="red"><br>-t &lt;分隔符&gt;</font>：指定排序时所用的栏位分隔字符；  <font color="red"><br>-k </font>是指定需要排序的栏位（字母按ASCII排序，数字按从小到大。先数字后字母）<br><a id="more"></a></p><p><font color="blue"><font color="lime"><br>[root@mail text]#</font> sort -nrk 3 -t: sort.txt　　<br>将CC列数字从大到小顺序排列：<br>eee:40:5.4<br>eee:60:5.1<br>ddd:20:4.2<br>ccc:50:3.3<br>bbb:10:2.5<br>aaa:30:1.6<br>AAA:BB:CC 列         </font><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fsyx9skcucj30y60fywfy.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　　&lt;br&gt;sort将文件/文本的每一行作为一个单位，相互比较，比较原则是从首字符向后，&lt;strong&gt;不加参数时&lt;/strong&gt;依次按ASCII码值进行比较，最后将他们按升序输出  &lt;font color=&quot;red&quot;&gt; -n &lt;/font&gt;:依照数值的从小到大排序;  &lt;font color=&quot;red&quot;&gt;&lt;br&gt;-r &lt;/font&gt;:以相反的顺序来排序;   &lt;font color=&quot;red&quot;&gt;&lt;br&gt;-u &lt;/font&gt;:忽略相同行使用-u选项或者uniq 文件名  &lt;font color=&quot;red&quot;&gt;&lt;br&gt;-t &amp;lt;分隔符&amp;gt;&lt;/font&gt;：指定排序时所用的栏位分隔字符；  &lt;font color=&quot;red&quot;&gt;&lt;br&gt;-k &lt;/font&gt;是指定需要排序的栏位（字母按ASCII排序，数字按从小到大。先数字后字母）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="command" scheme="http://yoursite.com/categories/command/"/>
+    
+    
+      <category term="导航" scheme="http://yoursite.com/tags/%E5%AF%BC%E8%88%AA/"/>
+    
+      <category term="分享" scheme="http://yoursite.com/tags/%E5%88%86%E4%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cat</title>
+    <link href="http://yoursite.com/2018/08/28/cat/"/>
+    <id>http://yoursite.com/2018/08/28/cat/</id>
+    <published>2018-08-28T09:28:03.000Z</published>
+    <updated>2018-08-30T14:53:09.205Z</updated>
+    
+    <content type="html"><![CDATA[<p>cat  由第一行开始显示文件内容<br>tac  从最后一行开始显示，可以看出 tac 是 cat 的倒著写！<br>nl   显示的时候，顺道输出行号！  <font color="red"><br>-A</font>:查询所有的内容包括隐藏字符</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;cat  由第一行开始显示文件内容&lt;br&gt;tac  从最后一行开始显示，可以看出 tac 是 cat 的倒著写！&lt;br&gt;nl   显示的时候，顺道输出行号！  &lt;font color=&quot;red&quot;&gt;&lt;br&gt;-A&lt;/font&gt;:查询所有的内容包括隐藏字符&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="command" scheme="http://yoursite.com/categories/command/"/>
+    
+    
+      <category term="导航" scheme="http://yoursite.com/tags/%E5%AF%BC%E8%88%AA/"/>
+    
+      <category term="分享" scheme="http://yoursite.com/tags/%E5%88%86%E4%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>awk</title>
+    <link href="http://yoursite.com/2018/08/28/awk/"/>
+    <id>http://yoursite.com/2018/08/28/awk/</id>
+    <published>2018-08-28T09:28:03.000Z</published>
+    <updated>2018-08-30T14:59:36.791Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>awk ‘{print $1}’ 文件名　  $1第一列，$2第二列，$NF最后一列.$(NF-1)倒数第二列）。<br>现在是以文件的空格为分隔符这样打印</li><li>awk <font color="red"> -F </font> “:” ‘{print $1}’ /etc/passwd　<br>-F指定分隔符，并打印文件第一列<br>多列打印<font color="lime">[root@pan ~]# </font>awk -F “:” ‘{print $2 $3}’ /etc/passwd<br>这样打印$2 $3之间是没有分隔符　要加分隔符就是 awk -F “:” ‘{print $2”分隔符符号”$3}’ /etc/passwd  $0表示整个文件</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;awk ‘{print $1}’ 文件名　  $1第一列，$2第二列，$NF最后一列.$(NF-1)倒数第二列）。&lt;br&gt;现在是以文件的空格为分隔符这样打印&lt;/li&gt;
+&lt;li&gt;awk &lt;font color=&quot;red&quot;&gt; -F &lt;/font&gt; “:” ‘{pri
+      
+    
+    </summary>
+    
+      <category term="command" scheme="http://yoursite.com/categories/command/"/>
+    
+    
+      <category term="导航" scheme="http://yoursite.com/tags/%E5%AF%BC%E8%88%AA/"/>
+    
+      <category term="分享" scheme="http://yoursite.com/tags/%E5%88%86%E4%BA%AB/"/>
+    
+  </entry>
+  
+</feed>
