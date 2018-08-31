@@ -3,19 +3,7 @@
   <entry>
     <title><![CDATA[awk]]></title>
     <url>%2F2018%2F08%2F28%2Fawk%2F</url>
-    <content type="text"><![CDATA[awk &#39;{print $1}&#39; 文件名 $1第一列，$2第二列，$NF最后一列.$(NF-1)倒数第二列)现在是以文件的空格为分隔符这样打印]]></content>
-      <categories>
-        <category>command</category>
-      </categories>
-      <tags>
-        <tag>导航</tag>
-        <tag>分享</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Linux]]></title>
-    <url>%2F2018%2F08%2F28%2FLinux%2F</url>
-    <content type="text"><![CDATA[linux command [root@pan ~]# root:登录的用户 @分隔符 pan主机名 ~当前路径]]></content>
+    <content type="text"><![CDATA[awk ‘{print $1}’ 文件名 $1第一列，$2第二列，$NF最后一列.$(NF-1)倒数第二列）。现在是以文件的空格为分隔符这样打印 awk -F “:” ‘{print $1}’ /etc/passwd-F &gt;指定分隔符，并打印文件第一列多列打印#awk -F &quot;:&quot; &#39;{print $2 $3}&#39; /etc/passwd 这样打印$2 $3之间是没有分隔符 要加分隔符就是 awk -F &quot;:&quot; &#39;{print $2&quot;分隔符符号&quot;$3}&#39; /etc/passwd $0表示整个文件]]></content>
       <categories>
         <category>command</category>
       </categories>
@@ -28,6 +16,18 @@
     <title><![CDATA[echo]]></title>
     <url>%2F2018%2F08%2F28%2Fecho%2F</url>
     <content type="text"><![CDATA[#echo [选项][输出内容] echo -e “\e[1;31m abcd \e[0m” 输出颜色=30m 黑色，=31m 红色，=32m 绿色，=33m 黄色，=34m 蓝色，=35m 洋红，=36m 青色，=37m 白色。 #echo -e ab\bc -e:支持反斜线控制的字符转换 控制字符 作用 \ 输出\本身 \a 输出警告音 \b \退格键，也就是向左删除键 \c 取消输出行末的换行符，和“-n”选项一致 \e ESCAPE键 \f 换页符 \n 换行符 \r 回车键 \t 制表符，也就是Tab键 \v 垂直制表符 \0nm 按照八进制ASCII码输出字符，其中0为数字零，nnn是三位八进制数 \xhh 按照十六进制ASCII码表输出字符。其中hh是两位十六进制数。]]></content>
+      <categories>
+        <category>command</category>
+      </categories>
+      <tags>
+        <tag>导航</tag>
+        <tag>分享</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux]]></title>
+    <url>%2F2018%2F08%2F28%2FLinux%2F</url>
+    <content type="text"><![CDATA[linux command [root@pan ~]# root:登录的用户 @分隔符 pan主机名 ~当前路径]]></content>
       <categories>
         <category>command</category>
       </categories>
@@ -63,7 +63,7 @@
   <entry>
     <title><![CDATA[df]]></title>
     <url>%2F2018%2F08%2F28%2Fdf%2F</url>
-    <content type="text"><![CDATA[df 文件系统查看命令 -a:显示所有的文件系统信息信息，包括特殊文件系统，如，/proc,/sysfs -h:使用习惯单位显示容量，如KB,MB或GB等。 -T:显示文件系统类型 -m: 以MB为单位显示容量。 -k:以KB为单位显示容量，默认就是以KB为单位显示容量。 du命令和df命令的区别 df命令是从文件系统考虑的，不光要考虑文件占用的空间，还要统计被命令或程序占用的空间(最常见的就是文件已经删除，但是程序并没有释放空间) du命令是面向文件的，只会计算计算机文件或目录占用的空间。]]></content>
+    <content type="text"><![CDATA[文件系统查看命令 -a:显示所有的文件系统信息信息，包括特殊文件系统，如，/proc,/sysfs -h:使用习惯单位显示容量，如KB,MB或GB等。 -T:显示文件系统类型 -m: 以MB为单位显示容量。 -k:以KB为单位显示容量，默认就是以KB为单位显示容量。 du命令和df命令的区别df 命令是从文件系统考虑的，不光要考虑文件占用的空间，还要统计被命令或程序占用的空间(最常见的就是文件已经删除，但是程序并没有释放空间)du 命令是面向文件的，只会计算计算机文件或目录占用的空间。]]></content>
       <categories>
         <category>command - Markdown</category>
       </categories>
