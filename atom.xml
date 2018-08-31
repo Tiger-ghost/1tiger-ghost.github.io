@@ -46,30 +46,6 @@
   </entry>
   
   <entry>
-    <title>echo</title>
-    <link href="http://yoursite.com/2018/08/28/echo/"/>
-    <id>http://yoursite.com/2018/08/28/echo/</id>
-    <published>2018-08-28T09:28:03.000Z</published>
-    <updated>2018-08-30T14:25:58.035Z</updated>
-    
-    <content type="html"><![CDATA[<font color="lime">#</font>echo [选项][输出内容] <font color="blue"><br>echo -e “\e[1;31m abcd \e[0m”</font> 输出颜色<br>=30m 黑色，=31m 红色，=32m 绿色，<br>=33m 黄色，=34m 蓝色，=35m 洋红，<br>=36m 青色，=37m 白色。  <font color="blue"><font color="lime"><br>#</font>echo -e ab\bc</font><a id="more"></a><p><font color="red">-e</font>:支持反斜线控制的字符转换</p><table><thead><tr><th>控制字符</th><th style="text-align:center">作用</th></tr></thead><tbody><tr><td>\</td><td style="text-align:center">输出\本身</td></tr><tr><td>\a</td><td style="text-align:center">输出警告音</td></tr><tr><td>\b</td><td style="text-align:center">\退格键，也就是向左删除键</td></tr><tr><td>\c</td><td style="text-align:center">取消输出行末的换行符，和“-n”选项一致</td></tr><tr><td>\e</td><td style="text-align:center">ESCAPE键</td></tr><tr><td>\f</td><td style="text-align:center">换页符</td></tr><tr><td>\n</td><td style="text-align:center">换行符</td></tr><tr><td>\r</td><td style="text-align:center">回车键</td></tr><tr><td>\t</td><td style="text-align:center">制表符，也就是Tab键</td></tr><tr><td>\v</td><td style="text-align:center">垂直制表符</td></tr><tr><td>\0nm</td><td style="text-align:center">按照八进制ASCII码输出字符，其中0为数字零，nnn是三位八进制数</td></tr><tr><td>\xhh</td><td style="text-align:center">按照十六进制ASCII码表输出字符。其中hh是两位十六进制数。</td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      &lt;font color=&quot;lime&quot;&gt;#&lt;/font&gt;echo [选项][输出内容] &lt;font color=&quot;blue&quot;&gt;&lt;br&gt;echo -e “\e[1;31m abcd \e[0m”&lt;/font&gt; 输出颜色&lt;br&gt;=30m 黑色，=31m 红色，=32m 绿色，&lt;br&gt;=33m 黄色，=34m 蓝色，=35m 洋红，&lt;br&gt;=36m 青色，=37m 白色。  &lt;font color=&quot;blue&quot;&gt;&lt;font color=&quot;lime&quot;&gt;&lt;br&gt;#&lt;/font&gt;echo -e ab\bc&lt;/font&gt;
-    
-    </summary>
-    
-      <category term="command" scheme="http://yoursite.com/categories/command/"/>
-    
-    
-      <category term="导航" scheme="http://yoursite.com/tags/%E5%AF%BC%E8%88%AA/"/>
-    
-      <category term="分享" scheme="http://yoursite.com/tags/%E5%88%86%E4%BA%AB/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Linux</title>
     <link href="http://yoursite.com/2018/08/28/Linux/"/>
     <id>http://yoursite.com/2018/08/28/Linux/</id>
@@ -84,6 +60,82 @@
       
         &lt;h1 id=&quot;linux-command&quot;&gt;&lt;a href=&quot;#linux-command&quot; class=&quot;headerlink&quot; title=&quot;linux command&quot;&gt;&lt;/a&gt;linux command&lt;/h1&gt;&lt;p&gt; &lt;strong&gt;&lt;font color=&quot;lime
       
+    
+    </summary>
+    
+      <category term="command" scheme="http://yoursite.com/categories/command/"/>
+    
+    
+      <category term="导航" scheme="http://yoursite.com/tags/%E5%AF%BC%E8%88%AA/"/>
+    
+      <category term="分享" scheme="http://yoursite.com/tags/%E5%88%86%E4%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cat</title>
+    <link href="http://yoursite.com/2018/08/28/cat/"/>
+    <id>http://yoursite.com/2018/08/28/cat/</id>
+    <published>2018-08-28T09:28:03.000Z</published>
+    <updated>2018-08-31T14:36:05.741Z</updated>
+    
+    <content type="html"><![CDATA[<p>cat  由第一行开始显示文件内容<br>tac  从最后一行开始显示，可以看出 tac 是 cat 的倒著写！<br>nl   显示的时候，顺道输出行号！  <font color="red"><br>-A</font>:查询所有的内容包括隐藏字符</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;cat  由第一行开始显示文件内容&lt;br&gt;tac  从最后一行开始显示，可以看出 tac 是 cat 的倒著写！&lt;br&gt;nl   显示的时候，顺道输出行号！  &lt;font color=&quot;red&quot;&gt;&lt;br&gt;-A&lt;/font&gt;:查询所有的内容包括隐藏字符&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="command" scheme="http://yoursite.com/categories/command/"/>
+    
+    
+      <category term="导航" scheme="http://yoursite.com/tags/%E5%AF%BC%E8%88%AA/"/>
+    
+      <category term="分享" scheme="http://yoursite.com/tags/%E5%88%86%E4%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>df</title>
+    <link href="http://yoursite.com/2018/08/28/df/"/>
+    <id>http://yoursite.com/2018/08/28/df/</id>
+    <published>2018-08-28T09:28:03.000Z</published>
+    <updated>2018-08-31T13:22:32.664Z</updated>
+    
+    <content type="html"><![CDATA[<p>文件系统查看命令  <font color="red"><br>-a</font>:显示所有的文件系统信息信息，包括特殊文件系统，如，<font color="blue">/proc</font>,<font color="blue">/sysfs</font>  <font color="red"><br>-h</font>:使用习惯单位显示容量，如KB,MB或GB等。  <font color="red"><br>-T</font>:显示文件系统类型  <font color="red"><br>-m</font>: 以MB为单位显示容量。  <font color="red"><br>-k</font>:以KB为单位显示容量，默认就是以KB为单位显示容量。<br><a id="more"></a>  </p><table><tr><td bgcolor="#778899"><font color="red">du命令和df命令的区别</font><br><font color="lime">df</font>  命令是从文件系统考虑的，不光要考虑文件占用的空间，还要统计被命令或程序占用的空间(最常见的就是文件已经删除，但是程序并没有释放空间)<br><font color="lime">du</font> 命令是面向文件的，只会计算计算机文件或目录占用的空间。<br></td></tr></table>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;文件系统查看命令  &lt;font color=&quot;red&quot;&gt;&lt;br&gt;-a&lt;/font&gt;:显示所有的文件系统信息信息，包括特殊文件系统，如，&lt;font color=&quot;blue&quot;&gt;/proc&lt;/font&gt;,&lt;font color=&quot;blue&quot;&gt;/sysfs&lt;/font&gt;  &lt;font color=&quot;red&quot;&gt;&lt;br&gt;-h&lt;/font&gt;:使用习惯单位显示容量，如KB,MB或GB等。  &lt;font color=&quot;red&quot;&gt;&lt;br&gt;-T&lt;/font&gt;:显示文件系统类型  &lt;font color=&quot;red&quot;&gt;&lt;br&gt;-m&lt;/font&gt;: 以MB为单位显示容量。  &lt;font color=&quot;red&quot;&gt;&lt;br&gt;-k&lt;/font&gt;:以KB为单位显示容量，默认就是以KB为单位显示容量。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="command - Markdown" scheme="http://yoursite.com/categories/command-Markdown/"/>
+    
+    
+      <category term="导航" scheme="http://yoursite.com/tags/%E5%AF%BC%E8%88%AA/"/>
+    
+      <category term="分享" scheme="http://yoursite.com/tags/%E5%88%86%E4%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>echo</title>
+    <link href="http://yoursite.com/2018/08/28/echo/"/>
+    <id>http://yoursite.com/2018/08/28/echo/</id>
+    <published>2018-08-28T09:28:03.000Z</published>
+    <updated>2018-08-30T14:25:58.035Z</updated>
+    
+    <content type="html"><![CDATA[<font color="lime">#</font>echo [选项][输出内容] <font color="blue"><br>echo -e “\e[1;31m abcd \e[0m”</font> 输出颜色<br>=30m 黑色，=31m 红色，=32m 绿色，<br>=33m 黄色，=34m 蓝色，=35m 洋红，<br>=36m 青色，=37m 白色。  <font color="blue"><font color="lime"><br>#</font>echo -e ab\bc</font><a id="more"></a><p><font color="red">-e</font>:支持反斜线控制的字符转换</p><table><thead><tr><th>控制字符</th><th style="text-align:center">作用</th></tr></thead><tbody><tr><td>\</td><td style="text-align:center">输出\本身</td></tr><tr><td>\a</td><td style="text-align:center">输出警告音</td></tr><tr><td>\b</td><td style="text-align:center">\退格键，也就是向左删除键</td></tr><tr><td>\c</td><td style="text-align:center">取消输出行末的换行符，和“-n”选项一致</td></tr><tr><td>\e</td><td style="text-align:center">ESCAPE键</td></tr><tr><td>\f</td><td style="text-align:center">换页符</td></tr><tr><td>\n</td><td style="text-align:center">换行符</td></tr><tr><td>\r</td><td style="text-align:center">回车键</td></tr><tr><td>\t</td><td style="text-align:center">制表符，也就是Tab键</td></tr><tr><td>\v</td><td style="text-align:center">垂直制表符</td></tr><tr><td>\0nm</td><td style="text-align:center">按照八进制ASCII码输出字符，其中0为数字零，nnn是三位八进制数</td></tr><tr><td>\xhh</td><td style="text-align:center">按照十六进制ASCII码表输出字符。其中hh是两位十六进制数。</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      &lt;font color=&quot;lime&quot;&gt;#&lt;/font&gt;echo [选项][输出内容] &lt;font color=&quot;blue&quot;&gt;&lt;br&gt;echo -e “\e[1;31m abcd \e[0m”&lt;/font&gt; 输出颜色&lt;br&gt;=30m 黑色，=31m 红色，=32m 绿色，&lt;br&gt;=33m 黄色，=34m 蓝色，=35m 洋红，&lt;br&gt;=36m 青色，=37m 白色。  &lt;font color=&quot;blue&quot;&gt;&lt;font color=&quot;lime&quot;&gt;&lt;br&gt;#&lt;/font&gt;echo -e ab\bc&lt;/font&gt;
     
     </summary>
     
@@ -140,30 +192,6 @@
     </summary>
     
       <category term="command" scheme="http://yoursite.com/categories/command/"/>
-    
-    
-      <category term="导航" scheme="http://yoursite.com/tags/%E5%AF%BC%E8%88%AA/"/>
-    
-      <category term="分享" scheme="http://yoursite.com/tags/%E5%88%86%E4%BA%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>df</title>
-    <link href="http://yoursite.com/2018/08/28/df/"/>
-    <id>http://yoursite.com/2018/08/28/df/</id>
-    <published>2018-08-28T09:28:03.000Z</published>
-    <updated>2018-08-31T13:22:32.664Z</updated>
-    
-    <content type="html"><![CDATA[<p>文件系统查看命令  <font color="red"><br>-a</font>:显示所有的文件系统信息信息，包括特殊文件系统，如，<font color="blue">/proc</font>,<font color="blue">/sysfs</font>  <font color="red"><br>-h</font>:使用习惯单位显示容量，如KB,MB或GB等。  <font color="red"><br>-T</font>:显示文件系统类型  <font color="red"><br>-m</font>: 以MB为单位显示容量。  <font color="red"><br>-k</font>:以KB为单位显示容量，默认就是以KB为单位显示容量。<br><a id="more"></a>  </p><table><tr><td bgcolor="#778899"><font color="red">du命令和df命令的区别</font><br><font color="lime">df</font>  命令是从文件系统考虑的，不光要考虑文件占用的空间，还要统计被命令或程序占用的空间(最常见的就是文件已经删除，但是程序并没有释放空间)<br><font color="lime">du</font> 命令是面向文件的，只会计算计算机文件或目录占用的空间。<br></td></tr></table>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;文件系统查看命令  &lt;font color=&quot;red&quot;&gt;&lt;br&gt;-a&lt;/font&gt;:显示所有的文件系统信息信息，包括特殊文件系统，如，&lt;font color=&quot;blue&quot;&gt;/proc&lt;/font&gt;,&lt;font color=&quot;blue&quot;&gt;/sysfs&lt;/font&gt;  &lt;font color=&quot;red&quot;&gt;&lt;br&gt;-h&lt;/font&gt;:使用习惯单位显示容量，如KB,MB或GB等。  &lt;font color=&quot;red&quot;&gt;&lt;br&gt;-T&lt;/font&gt;:显示文件系统类型  &lt;font color=&quot;red&quot;&gt;&lt;br&gt;-m&lt;/font&gt;: 以MB为单位显示容量。  &lt;font color=&quot;red&quot;&gt;&lt;br&gt;-k&lt;/font&gt;:以KB为单位显示容量，默认就是以KB为单位显示容量。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="command - Markdown" scheme="http://yoursite.com/categories/command-Markdown/"/>
     
     
       <category term="导航" scheme="http://yoursite.com/tags/%E5%AF%BC%E8%88%AA/"/>
