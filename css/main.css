@@ -1979,7 +1979,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #366f63;
+  background: #aaa4d4;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3231,9 +3231,17 @@ ul.breadcrumb li+li:last-child {
   }
 }
 body {
-  background: url("");
+  background: url("https://ws1.sinaimg.cn/large/005RRiqRly1fuuisspgp1j31hc0u0thm.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+}
+.content {
+  border-radius: 10px;
+  margin-top: 10px;
+  background: rgba(0,0,0,0) none repeat scroll !important;
+}
+.main-inner {
+  opacity: 0.9;
 }
