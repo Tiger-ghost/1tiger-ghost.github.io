@@ -13,18 +13,6 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>%2F2018%2F08%2F28%2FLinux%2F</url>
-    <content type="text"><![CDATA[Introduction:不同的系统浏览本博客格式会出现不兼容的问题请见谅后续会把更多的文章发表出来，如果错误请与我联系，你可以在下方评论或者点击右下角的蓝色图标与我联系。团结互助，文明友爱]]></content>
-      <categories>
-        <category>command</category>
-      </categories>
-      <tags>
-        <tag>导航</tag>
-        <tag>分享</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[cat]]></title>
     <url>%2F2018%2F08%2F28%2Fcat%2F</url>
     <content type="text"><![CDATA[[root@pan ~]#root:登录的用户 @分隔符 pan主机名 ~当前路径 cat 由第一行开始显示文件内容tac 从最后一行开始显示，可以看出 tac 是 cat 的倒著写！nl 显示的时候，顺道输出行号！ -A:查询所有的内容包括隐藏字符]]></content>
@@ -40,6 +28,18 @@
     <title><![CDATA[df]]></title>
     <url>%2F2018%2F08%2F28%2Fdf%2F</url>
     <content type="text"><![CDATA[文件系统查看命令 -a:显示所有的文件系统信息信息，包括特殊文件系统，如，/proc,/sysfs -h:使用习惯单位显示容量，如KB,MB或GB等。 -T:显示文件系统类型 -m: 以MB为单位显示容量。 -k:以KB为单位显示容量，默认就是以KB为单位显示容量。 du命令和df命令的区别df 命令是从文件系统考虑的，不光要考虑文件占用的空间，还要统计被命令或程序占用的空间(最常见的就是文件已经删除，但是程序并没有释放空间)du 命令是面向文件的，只会计算计算机文件或目录占用的空间。]]></content>
+      <categories>
+        <category>command</category>
+      </categories>
+      <tags>
+        <tag>导航</tag>
+        <tag>分享</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[notice]]></title>
+    <url>%2F2018%2F08%2F28%2Flinux%2F</url>
+    <content type="text"><![CDATA[[root@pan ~]# root:登录的用户 @分隔符 pan主机名 ~当前路径\:newlineecho $PATHctrl+r:在历史命令中搜索。 ctrl+s:暂停屏幕输出。 ctrl+q:恢复屏幕输出。“&amp;”,”||”,”!”。]]></content>
       <categories>
         <category>command</category>
       </categories>
@@ -73,9 +73,30 @@
       </tags>
   </entry>
   <entry>
+    <title></title>
+    <url>%2F2018%2F08%2F28%2F%E5%89%8D%E8%A8%80%2F</url>
+    <content type="text"><![CDATA[Introduction:不同的系统浏览本博客格式会出现不兼容的问题请见谅后续会把更多的文章发表出来，如果错误请与我联系，你可以在下方评论或者点击右下角的蓝色图标与我联系。团结互助，文明友爱]]></content>
+      <tags>
+        <tag>导航</tag>
+        <tag>分享</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[sort]]></title>
     <url>%2F2018%2F08%2F28%2Fsort%2F</url>
     <content type="text"><![CDATA[sort将文件/文本的每一行作为一个单位，相互比较，比较原则是从首字符向后，不加参数时依次按ASCII码值进行比较，最后将他们按升序输出 -n :依照数值的从小到大排序; -r :以相反的顺序来排序; -u :忽略相同行使用-u选项或者uniq 文件名 -t &lt;分隔符&gt;：指定排序时所用的栏位分隔字符； -k 是指定需要排序的栏位（字母按ASCII排序，数字按从小到大。先数字后字母） [root@mail text]# sort -nrk 3 -t: sort.txt 将CC列数字从大到小顺序排列：eee:40:5.4eee:60:5.1ddd:20:4.2ccc:50:3.3bbb:10:2.5aaa:30:1.6AAA:BB:CC 列]]></content>
+      <categories>
+        <category>command</category>
+      </categories>
+      <tags>
+        <tag>导航</tag>
+        <tag>分享</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[I/o redirection]]></title>
+    <url>%2F2018%2F08%2F28%2Fredirection%2F</url>
+    <content type="text"><![CDATA[输出重定向:命令 &gt; 文件 2&gt;&amp;1 :以覆盖的方式，把正确输出和错误输出都保存在一个文件当中。命令 &amp;&gt;文件 :以覆盖的方式，把正确输出和错误输出都保存到同一个文件当中。 &amp; 是一个描述符，如果1或2前不加&amp;，会被当成一个普通文件。1&gt;&amp;2 意思是把标准输出重定向到标准错误.2&gt;&amp;1 意思是把标准错误输出重定向到标准输出。&amp;&gt;filename 意思是把标准输出和标准错误输出都重定向到文件filename中 输入重定向：命令 &lt;文件 #wc [选项] [文件名]选项： -c :统计字节数 -w :统计单词数 -l :统计行数wc &lt; filename12345678wc &lt;&lt; filename wc &lt;&lt; hello 注意hello &gt; dshi &gt; jdiosjfh &gt; diosjfiojd &gt; fdiojsoifj &gt; hello 4 4 36]]></content>
       <categories>
         <category>command</category>
       </categories>
