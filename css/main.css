@@ -1979,7 +1979,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #83ffff;
+  background: #8a5406;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3243,21 +3243,29 @@ body {
   background: rgba(0,0,0,0) none repeat scroll !important;
 }
 code {
-  color: #009acd;
-  background: #fbf7f8;
-  margin: 2px;
+  color: #f0fff0;
+  background: #696969;
+  margin: 3px;
 }
 .highlight,
 pre {
   margin: 5px 0;
-  padding: 5px;
-  border-radius: 3px;
+  padding: 3px;
+  border-radius: 20px;
 }
 .highlight,
 code,
 pre {
-  border: 1px solid #d6d6d6;
+  border: 1px solid #696969;
+  color: #f0fff0;
+  background: url("https://ws1.sinaimg.cn/large/005RRiqRly1fuuidqiwzqj30sg0lc776.jpg");
 }
 .main-inner {
   opacity: 0.9;
+}
+table tr td {
+  border: 1px solid #f1f1f1;
+  border-radius: 1px;
+  margin: 0cm 0cm 0pt;
+  text-align: left;
 }

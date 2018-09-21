@@ -115,6 +115,21 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
 
 
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
 
 
   <script>
@@ -149,7 +164,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/005Kjut6gy1fqp0x0tlsbj31120n0adx.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fue9edvkzjj30rf0hhdk1.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/005Kjut6gy1fqp3q0lqvdj316303c749.jpg">
-<meta property="og:updated_time" content="2018-09-20T06:15:24.997Z">
+<meta property="og:updated_time" content="2018-09-21T17:24:17.864Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux">
 <meta name="twitter:description" content="[root@pan ~]# root:登录的用户　@分隔符　  pan主机名　~当前路径\:newline  echo $PATHctrl+r:在历史命令中搜索。   ctrl+s:暂停屏幕输出。    ctrl+q:恢复屏幕输出。&amp;quot;&amp;amp;&amp;quot; &amp;quot;||&amp;quot; &amp;quot;!&amp;quot;">
@@ -424,7 +439,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-09-20 14:15:24" itemprop="dateModified" datetime="2018-09-20T14:15:24+08:00">2018-09-20</time>
+                <time title="Modified: 2018-09-22 01:24:17" itemprop="dateModified" datetime="2018-09-22T01:24:17+08:00">2018-09-22</time>
               
             
           </span>
@@ -558,7 +573,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 </tbody>
 </table>
 <h1 id="I-o-redirection"><a href="#I-o-redirection" class="headerlink" title="I/o redirection"></a>I/o redirection</h1><h2 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向:"></a>输出重定向:</h2><p>命令 <strong><code>&gt; 文件 2&gt;&amp;1</code></strong> :以覆盖的方式，把正确输出和错误输出都保存在一个文件当中。<br>命令 <strong><code>&amp;&gt;文件</code></strong> :以覆盖的方式，把正确输出和错误输出都保存到同一个文件当中。</p>
-<p><table><tr><td bgcolor="#DCDCDC"><font color="#2F4F4F">&amp; 是一个描述符，如果1或2前不加&amp;，会被当成一个普通文件。<br>1&gt;&amp;2 意思是把标准输出重定向到标准错误.<br>2&gt;&amp;1 意思是把标准错误输出重定向到标准输出。<br>&amp;&gt;filename 意思是把标准输出和标准错误输出都重定向到文件filename中</font></td></tr></table>  </p>
+<p><table><tr><td style="background-image:url(https://ws1.sinaimg.cn/large/005RRiqRly1fuuiohirjbj31hc0xc1gc.jpg)"><font color="#FFD700">&amp; 是一个描述符，如果1或2前不加&amp;，会被当成一个普通文件。<br>1&gt;&amp;2 意思是把标准输出重定向到标准错误.<br>2&gt;&amp;1 意思是把标准错误输出重定向到标<br>&amp;&gt;filename 意思是把标准输出和标准错误输出都重定向到文件filename中</font></td></tr></table>  </p>
 <h2 id="输入重定向：命令-lt-文件"><a href="#输入重定向：命令-lt-文件" class="headerlink" title="输入重定向：命令 &lt;文件"></a>输入重定向：命令 &lt;文件</h2><p>wc [选项] [文件名]<br>选项：  <font color="red"><br>-c</font> :统计字节数  <font color="red"><br>-w</font> :统计单词数  <font color="red"><br>-l</font> :统计行数<br><strong><code>wc &lt; filename</code></strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wc &lt;&lt; filename     </span><br><span class="line">wc &lt;&lt; hello            注意hello </span><br><span class="line">&gt; dshi  </span><br><span class="line">&gt; jdiosjfh        </span><br><span class="line">&gt; diosjfiojd        </span><br><span class="line">&gt; fdiojsoifj        </span><br><span class="line">&gt; hello      </span><br><span class="line">4  4 36</span><br></pre></td></tr></table></figure></p>
 <h1 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h1><p>sort将文件/文本的每一行作为一个单位，相互比较，比较原则是从首字符向后，<strong>不加参数时</strong>依次按ASCII码值进行比较，最后将他们按升序输出  <font color="red"><br>-n </font>:依照数值的从小到大排序;  <font color="red"><br>-r </font>:以相反的顺序来排序;   <font color="red"><br>-u </font>:忽略相同行使用-u选项或者uniq 文件名  <font color="red"><br>-t &lt;分隔符&gt;</font>：指定排序时所用的栏位分隔字符；  <font color="red"><br>-k </font>是指定需要排序的栏位（字母按ASCII排序，数字按从小到大。先数字后字母）  <font color="blue"><font color="lime"><br>[root@mail text]#</font> sort -nrk 3 -t: sort.txt　　<br>将CC列数字从大到小顺序排列：<br>eee:40:5.4<br>eee:60:5.1<br>ddd:20:4.2<br>ccc:50:3.3<br>bbb:10:2.5<br>aaa:30:1.6<br>AAA:BB:CC 列         </font><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fsyx9skcucj30y60fywfy.jpg" alt=""></p>
 <h1 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h1><ol>
@@ -573,12 +588,12 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 </li>
 <li><p>多列打印<font color="lime">#</font><strong><code>awk -F &quot;:&quot; &#39;{print $2 $3}&#39; /etc/passwd</code></strong> 这样打印$2 $3之间是没有分隔符　</p>
 <blockquote>
-<p>要加分隔符就是 <strong><code>awk -F &quot;:&quot; &#39;{print $2&quot;分隔符符号&quot;$3}&#39; /etc/passwd</code></strong> $0表示整个文件</p>
+<p>要加分隔符就是 <code>awk -F &quot;:&quot; &#39;{print $2&quot;分隔符符号&quot;$3}&#39; /etc/passwd</code> $0表示整个文件</p>
 </blockquote>
 </li>
 </ol>
 <h1 id="df"><a href="#df" class="headerlink" title="df"></a>df</h1><p>文件系统查看命令  <font color="red"><br>-a</font>:显示所有的文件系统信息信息，包括特殊文件系统，如，<font color="blue">/proc</font>,<font color="blue">/sysfs</font>  <font color="red"><br>-h</font>:使用习惯单位显示容量，如KB,MB或GB等。  <font color="red"><br>-T</font>:显示文件系统类型  <font color="red"><br>-m</font>: 以MB为单位显示容量。  <font color="red"><br>-k</font>:以KB为单位显示容量，默认就是以KB为单位显示容量。</p>
-<p><table><tr><td bgcolor="black"><font color="red">du命令和df命令的区别</font><font color="lime"><br>df:</font><font color="#778899"><strong>命令是从文件系统考虑的，不光要考虑文件占用的空间，还要统计被命令或程序占用的空间(最常见的就是文件已经删除，但是程序并没有释放空间)</strong>  </font>  <font color="lime"><br>du:</font> <font color="#778899"><strong>命令是面向文件的，只会计算计算机文件或目录占用的空间.</strong> </font></td></tr></table></p>
+<p><table><tr><td style="background-image:url(https://ws1.sinaimg.cn/large/005RRiqRly1fupcqlu5qoj309s0biq3p.jpg)"><font color="red"><strong>du命令和df命令的区别</strong></font><font color="#ff1493"><br>df:</font><font color="black"><font size="4"><strong>命令是从文件系统考虑的，不光要考虑文件占用的空间，还要统计被命令或程序占用的空间(最常见的就是文件已经删除，但是程序并没有释放空间)</strong>  </font>  <font color="#ff1493"><br>du:</font> <font color="black"><font size="4"><strong>命令是面向文件的，只会计算计算机文件或目录占用的空间.</strong> </font></font></font></td></tr></table></p>
 <h1 id="du"><a href="#du" class="headerlink" title="du"></a>du</h1><p>是通过搜索文件来计算每个文件的大小然后累加，du能看到的文件只是一些当前存在<br>的，没有被删除的。他计算的大小就是当前他认为存在的所有文件大小的累加和     <font color="red"><br>-h </font>: 以K，M，G为单位，提高信息的可读性。  <font color="red"><br>-s </font>: 统计总占用量，而不列出子目录和子文件的占用量。<br><strong><em>ls -h是目录下文件名占用大小　　　du -h 是目录下所有文件的大小</em></strong>  <font color="red"><br>-k </font>: 以KB(1024bytes)为单位输出。  <font color="red"><br>-m </font>: 以MB为单位输出。  <font color="red"><br>-a</font>显示每个子文件的磁盘占用量。默认只统计子目录的磁盘占用量。</p>
 <h1 id="dd"><a href="#dd" class="headerlink" title="dd"></a>dd</h1><p>dd(磁盘对拷命令)命令用于复制文件并对原文件的内容进行转换和格式化处理  </p>
 <p><font color="lime">[root@localhost]#</font> dd if=输入文件  of=输出文件 bs=字节数 count=个数<br>选项：<br>if=输入文件 指定源文件或源设备<br>of=输出文件 指定目标文件或目标设备<br>bs=字节数　指定一次输入/输出多少字节，即把这些字节看做一个数据块<br>count=个数 指定输入/输出多少个数据块  <strong><code>date ; dd if=/dev/zero of=/root/testfile bs=1k count=100000(100M) ; data</code></strong>。</p>
@@ -606,10 +621,10 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <p><table><tr><td bgcolor="RED"><font color="black">chkconfig  设置是当前不生效，linux重启后才生效.<br>service 设置是即时生效，linux关机重启后设置失效</font></td></tr></table>.</p>
 <h1 id="mount"><a href="#mount" class="headerlink" title="mount"></a>mount</h1><p>查询与自动挂载(Auto Mount)<br><img src="https://ws1.sinaimg.cn/large/005Kjut6gy1fqp0x0tlsbj31120n0adx.jpg" alt=""> <strong><code>mount [-l]</code></strong> 查询系统中已经挂载的设备，-l会显示卷标名称<br><strong><code>mount -a</code></strong> 依据配置文件/etc/fstab的内容，自动挂载  </p>
 <h2 id="挂载命令格式-mount-t-文件系统-L卷标名-o特殊选项-设备文件名-挂载点"><a href="#挂载命令格式-mount-t-文件系统-L卷标名-o特殊选项-设备文件名-挂载点" class="headerlink" title="挂载命令格式 mount [-t 文件系统] [-L卷标名] [-o特殊选项] 设备文件名 挂载点"></a>挂载命令格式 <code>mount [-t 文件系统] [-L卷标名] [-o特殊选项] 设备文件名 挂载点</code></h2><p><font color="red">-t 文件系统</font>:加入文件系统类型来指定挂载的类型，可以ext3、ext4、iso9660等文件系统  <font color="red"><br>-L 卷标名</font>:挂载指定卷标的分区，而不是安装设备文件名挂载  <font color="red"><br>-o 特殊选项</font>:可以指定挂载的额外选项。<br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fue9edvkzjj30rf0hhdk1.jpg" alt="">  <font color="blue"></font><strong><code>mount -o remount,noexec /home</code></strong><font color="red">这里的/home是df可以查看到的分区</font>重新挂载/home分区，并使用noexec权限  <font color="lime"><br>#</font>cd /home      <font color="lime"><br>#</font>vi hello.sh<table><tr><td bgcolor="black"><font color="lime">#!/bin/bash<br>echo “i love you”</font></td></tr></table><font color="lime">#</font>chmod 755   <font color="lime"><br>#</font>./hello.sh 会显示没有权限执行   <font color="lime"><br>#</font>mount -o remount,exec /home 记得改回来，要不然会影响系统启动的。    </p>
-<h2 id="挂载光盘"><a href="#挂载光盘" class="headerlink" title="挂载光盘"></a>挂载光盘</h2><p><strong><code>mkdir /mnt/cdrom 建立挂载点</code></strong><br><strong><code>mount -t iso9660 /dev/cdrom /mnt/cdrom 挂载光盘</code></strong><br><strong><code>mount /dev/sr0 /mnt/cdrom</code></strong> </p>
-<h2 id="卸载光盘"><a href="#卸载光盘" class="headerlink" title="卸载光盘"></a>卸载光盘</h2><p><font color="lime">#</font>umount设备文件名或挂载点<br><strong><code>umount /mnt/cdrom</code></strong>  </p>
-<h2 id="挂载U盘"><a href="#挂载U盘" class="headerlink" title="挂载U盘"></a>挂载U盘</h2><p><table><tr><td bgcolor="#C0C0C0"><font color="#FF4500">fat32格式:fdisk -l 查看U盘设备文件名<br>mount -t vfat /dev/sdb1 /mnt/usb/<br>注意：fat16分区识别为fat,fat32分区识别为vft。linux默认是不支持NTFS文件系统的</font></td></tr></table>. </p>
-<h2 id="NTFS-u盘支持"><a href="#NTFS-u盘支持" class="headerlink" title="NTFS u盘支持"></a>NTFS u盘支持</h2><p>下载NTFS-3G插件<a href="https://www.tuxera.com/community/open-source-ntfs-3g/" target="_blank" rel="noopener">https://www.tuxera.com/community/open-source-ntfs-3g/</a>   <font color="red"><br>解压</font> <strong><code>tar -zxvf filename</code></strong>  <font color="red"><br>安装</font> <strong><code>./configure &amp;&amp; make &amp;&amp; make install</code></strong><br>fdisk -l查看linux的U盘分区：sdc1<br><strong><code>mount -t ntfs-3g /dev/sdc1 /mnt/usb/</code></strong><br><strong><code>mkfs -t ext4 /dev/sdb1/ 格式化分区,扩展分区不可格式</code></strong><br><strong><code>mkdir /disk1 建立挂载点</code></strong><br><strong><code>mount /dev/sdb1 /disk1 挂载</code></strong></p>
+<h2 id="挂载光盘"><a href="#挂载光盘" class="headerlink" title="挂载光盘"></a>挂载光盘</h2><p><code>mkdir /mnt/cdrom 建立挂载点</code><br><code>mount -t iso9660 /dev/cdrom /mnt/cdrom 挂载光盘</code><br><code>mount /dev/sr0 /mnt/cdrom</code></p>
+<h2 id="卸载光盘"><a href="#卸载光盘" class="headerlink" title="卸载光盘"></a>卸载光盘</h2><p><font color="lime">#</font>umount设备文件名或挂载点<br><code>umount /mnt/cdrom</code> </p>
+<h2 id="挂载U盘"><a href="#挂载U盘" class="headerlink" title="挂载U盘"></a>挂载U盘</h2><p><table><tr><td style="background-image:url(https://ws1.sinaimg.cn/large/005RRiqRly1fttgf25sjxj31hc0xctbq.jpg)"><font color="#FF4500">fat32格式:fdisk -l 查看U盘设备文件名<br>mount -t vfat /dev/sdb1 /mnt/usb/<br>注意：fat16分区识别为fat,fat32分区识别为vft。linux默认是不支持NTFS文件系统的</font></td></tr></table>. </p>
+<h2 id="NTFS-u盘支持"><a href="#NTFS-u盘支持" class="headerlink" title="NTFS u盘支持"></a>NTFS u盘支持</h2><p>下载NTFS-3G插件<a href="https://www.tuxera.com/community/open-source-ntfs-3g/" target="_blank" rel="noopener">https://www.tuxera.com/community/open-source-ntfs-3g/</a>   <font color="red"><br>解压</font> <strong><code>tar -zxvf filename</code></strong>  <font color="red"><br>安装</font> <strong><code>./configure &amp;&amp; make &amp;&amp; make install</code></strong><br>fdisk -l查看linux的U盘分区：sdc1<br><code>mount -t ntfs-3g /dev/sdc1 /mnt/usb/</code><br><code>mkfs -t ext4 /dev/sdb1/ 格式化分区,扩展分区不可格式</code><br><code>mkdir /disk1 建立挂载点</code><br><code>mount /dev/sdb1 /disk1 挂载</code></p>
 <h1 id="swap"><a href="#swap" class="headerlink" title="swap"></a>swap</h1><p>新增swap空间:<font color="red">free</font>查看swap大小<br>新增一个分区，改分区号82，保存退出<br>格式化：<font color="red">mkswap /dev/sdb6 </font><br>加入swap分区：<font color="red">swapon /dev/sdb6</font><br>取消swap分区：<font color="red">swapoff /dev/sdb6 </font><br>但是每次开机都要手动挂载一遍，可以写入fatab开机自动挂载<br><strong><code>vi /etc/fstab</code></strong><br><strong><code>/dev/sdb6 swap swap defaults 0 0</code></strong></p>
 <h1 id="free"><a href="#free" class="headerlink" title="free"></a>free</h1><p>显示当前系统未使用的和已使用的内存数目，还可以显示被内核使用的内存缓冲区。   <font color="red"><br>-b </font>：以Byte为单位显示内存使用情况；  <font color="red"><br>-k </font>：以KB为单位显示内存使用情况；  <font color="red"><br>-m </font>：以MB为单位显示内存使用情况；<br><img src="https://ws1.sinaimg.cn/large/005Kjut6gy1fqp3q0lqvdj316303c749.jpg" alt="">   <font color="red">total</font>:去掉为硬件和操作系统保留的内存后剩余的内存总量。许多人奇怪自己的电脑安装了一共8G的内存，但是显示总共只有七点几G的，现在应该没什么疑惑了把，不管Linux还是Windows都会有部分内存是保留给硬件和操作系统的！  <font color="red"><br>userd</font>：当前已使用的内存总量。  <font color="red"><br>free</font>：空闲的或可以使用的内存总量  <font color="red"><br>shared</font>：共享内存大小，主要用于进程间通信  <font color="red"><br>buff(buffers)</font>:缓冲，主要用于块设备数据缓冲(磁盘缓存大小)，例如记录文件系统的metadata（目录、权限等等信息）。是指在写入数据时，先把分散的写入操作保存到内存当中，当达到一定程度再集中写入硬盘，减小了磁盘碎片和硬盘反复寻道，加速了数据的写入过程。  <font color="red"><br>cache</font>:缓存，主要用于文件内容缓冲,是指把读取出来的数据保存在内存当中，当再次读取时，不用读取硬盘而直接从内存当中读取，加速了数据的读取过程。  <font color="red"><br>available</font>:可以使用的内存总量.</p>
 <h1 id="Compression-压缩-command"><a href="#Compression-压缩-command" class="headerlink" title="Compression 压缩  command"></a>Compression <sub>压缩</sub>  command</h1><h2 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h2><p>gzip <font color="blue">filename</font>压缩　*.gz :”后缀名”<br>gzip <font color="red">-d</font> filename.gz　gunzip <font color="blue">filename</font>.gz 解压缩<br>不解压查看：zcat filename.gz  </p>
