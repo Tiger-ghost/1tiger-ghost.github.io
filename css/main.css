@@ -1979,7 +1979,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #8a5406;
+  background: #2ed0f7;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3231,7 +3231,7 @@ ul.breadcrumb li+li:last-child {
   }
 }
 body {
-  background: url("https://ws1.sinaimg.cn/large/005RRiqRly1fuuisspgp1j31hc0u0thm.jpg");
+  background: url("https://ws1.sinaimg.cn/large/005RRiqRly1fvi73oc9x0j31hc0u07wj.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -3268,4 +3268,80 @@ table tr td {
   border-radius: 1px;
   margin: 0cm 0cm 0pt;
   text-align: left;
+}
+.site-author-name {
+  margin: 48px 0 0;
+  color: #090909;
+  font-family: 'Comic Sans MS', sans-serif;
+}
+.links-of-blogroll {
+  font-size: 14px;
+  margin-bottom: 42px;
+}
+.links-of-author {
+  margin-top: 30px;
+  margin-bottom: 58px;
+}
+.sidebar-inner {
+  color: #dc143c;
+}
+.sidebar {
+  box-shadow: inset 2px 2px 40px #bdb2b2;
+}
+.sidebar a {
+  color: #000;
+  border-bottom-color: #649ab6;
+  border-bottom: none;
+}
+.sidebar a:hover {
+  color: #00bfff;
+}
+.site-state-item {
+  display: inline-block;
+  padding: 8px 28px;
+  border-left: 1px solid #649ab6;
+}
+.sidebar-nav .sidebar-nav-active {
+  color: #00bfff;
+  border-bottom-color: #649ab6;
+}
+.sidebar-nav li:hover {
+  color: #0c0b0b;
+}
+.sidebar-toggle {
+  background: #649ab6;
+}
+.back-to-top {
+  background: #649ab6;
+}
+.post-toc .nav .active>a {
+  color: #dc143c;
+}
+.post-toc ol a:hover {
+  color: #7784ba;
+}
+.sidebar-nav .sidebar-nav-active:hover {
+  color: #dc143c;
+}
+a {
+  border-bottom: none;
+}
+.post-button {
+  margin-top: 30px;
+  text-align: center;
+}
+.post-button .btn {
+  color: #fff;
+  font-size: 15px;
+  background: #686868;
+  border-radius: 16px;
+  line-height: 2;
+  margin: 0 4px 8px 4px;
+  padding: 0 20px;
+}
+.post-button a {
+  border-bottom: 1px solid #666;
+}
+.post-button a:hover {
+  color: #7784ba;
 }
