@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-09-24T07:13:50.673Z</updated>
+  <updated>2018-10-04T03:53:28.535Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,22 +17,24 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Look</title>
+    <title>ghost</title>
     <link href="http://yoursite.com/2018/08/28/%E5%89%8D%E8%A8%80/"/>
     <id>http://yoursite.com/2018/08/28/前言/</id>
     <published>2018-08-28T09:28:03.000Z</published>
-    <updated>2018-09-24T07:13:50.673Z</updated>
+    <updated>2018-10-04T03:53:28.535Z</updated>
     
-    <content type="html"><![CDATA[<p><center><font face="YouYuan">我在这里，你在哪里 ！</font></center><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvi43ltsd7j312x0lwtf4.jpg" alt=""><br><a id="more"></a></p>]]></content>
+    <content type="html"><![CDATA[<p><center><font face="YouYuan">只要开始 就不会结束！</font></center><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvi43ltsd7j312x0lwtf4.jpg" alt=""><br><a id="more"></a></p><p><style type="text/css"><br>body{<br>background-image:url(<a href="https://ws1.sinaimg.cn/large/005RRiqRly1fvw1bz9he2j33dc28w4qu.jpg)">https://ws1.sinaimg.cn/large/005RRiqRly1fvw1bz9he2j33dc28w4qu.jpg)</a>;<br>background-position:center;<br>background-repeat:repeat-y；<br>}<br></style></p><p><center><font face="STXingkai">人为什么要活着，我活着到底是为了什么！！</font></center></p><p><font face="STXingkai">这一切终究是注定的，当你在看到这里的时候，你心里还是在说着愚蠢，到底是为什么你们就是不能明白。但是没关系的我不会在意的，你可以尽情发挥，你只需要记得一件事，就是你还剩下多少时间或者说你还有时间吗！！ 2018/10/4</font></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;center&gt;&lt;font face=&quot;YouYuan&quot;&gt;我在这里，你在哪里 ！&lt;/font&gt;&lt;/center&gt;&lt;br&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/005RRiqRly1fvi43ltsd7j312x0lwtf4.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;center&gt;&lt;font face=&quot;YouYuan&quot;&gt;只要开始 就不会结束！&lt;/font&gt;&lt;/center&gt;&lt;br&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/005RRiqRly1fvi43ltsd7j312x0lwtf4.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
+      <category term="life" scheme="http://yoursite.com/categories/life/"/>
     
-      <category term="look" scheme="http://yoursite.com/tags/look/"/>
+    
+      <category term="life" scheme="http://yoursite.com/tags/life/"/>
     
   </entry>
   
@@ -41,7 +43,7 @@
     <link href="http://yoursite.com/2018/08/28/%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2018/08/28/创建博客/</id>
     <published>2018-08-28T09:28:03.000Z</published>
-    <updated>2018-10-03T16:15:39.163Z</updated>
+    <updated>2018-10-04T03:54:31.354Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Hexo-github搭建博客教程"><a href="#Hexo-github搭建博客教程" class="headerlink" title="Hexo + github搭建博客教程"></a><center>Hexo + github搭建博客教程</center></h1><p><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvuvgwje1rj318g0qcaay.jpg" alt=""><br><a id="more"></a>  </p><p><font face="KaiTi"><font size="4">为什么要搭建一个独立的博客：独立的才是自己的，自己的才是最好的</font><br>Hexo:快速、简洁且高效的博客框架<br>github:大佬都会用的网站戏称,”全球最大同性交友网站”是一个面向开源及私有软件项目的托管平台</font> </p><p><marquee>推荐使用google浏览器</marquee> </p><h1 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h1><p>推荐上 GoDaddy 购买域名，方便快捷，可以使用支付宝。此网站有中文显示，地区选择新加坡即可。<a href="https://sg.godaddy.com/zh/" target="_blank" rel="noopener">https://sg.godaddy.com/zh/</a><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvqjwwbkenj31hc0pi43q.jpg" alt=""><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvqk3mxs3kj31ha0pkjvu.jpg" alt=""><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvqk1mz2y2j31gm0jpgna.jpg" alt=""><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvqosi3s4fj30nw0lf764.jpg" alt=""><br>这里的购买时间,大家随意。域名的价格变动较大，购买需谨慎。结算后，去「我的账户 &gt; 我的产品」，域名已经显示在你的账户了。</p><h1 id="使用-独立域名"><a href="#使用-独立域名" class="headerlink" title="使用 独立域名"></a>使用 独立域名</h1><p>用 DNSpod，快，免费，稳定，可直接使用微信登录注册DNSpod，添加域名，如下图设置。域名买了以后还不能使用，需要做dns解析<br><a href="https://www.dnspod.cn/" target="_blank" rel="noopener">https://www.dnspod.cn/</a><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvqp5pxhv3j30u10isdhj.jpg" alt=""><br>其中 A 的两条记录指向的ip地址是 GitHub Pages 的提供的 ip,如果博客无法登录可能是GIthub的IP进行了更换，到github Pages查看最新IP即可。<br>www 指定的记录是你在 GitHub 注册的仓库名也可以是域名。  </p><h1 id="去-GoDaddy-修改-DNS-地址"><a href="#去-GoDaddy-修改-DNS-地址" class="headerlink" title="去 GoDaddy 修改 DNS 地址"></a>去 GoDaddy 修改 DNS 地址</h1><p><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvqpf8t8s2j3137086gmh.jpg" alt=""><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvqpjhwd1dj30zn0nxwhn.jpg" alt=""><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvqpji42mgj313s0ap3z9.jpg" alt=""><br>如果有不清楚的地方可查看GOdaddy的帮助，DNSpod帮助。到这里域名配置完成。</p><h1 id="安装准备软件"><a href="#安装准备软件" class="headerlink" title="安装准备软件"></a>安装准备软件</h1><p>1.Node.js: <a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a><br>2.Git: <a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a><br>这里的两个软件直接下载安装，直接点下一步安装完成即可。  </p><h1 id="到github新建一个仓库-新建的仓库是用来存放你的博客-：https-github-com"><a href="#到github新建一个仓库-新建的仓库是用来存放你的博客-：https-github-com" class="headerlink" title="到github新建一个仓库(新建的仓库是用来存放你的博客)：https://github.com/"></a>到github新建一个仓库(新建的仓库是用来存放你的博客)：<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a></h1><p><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt1mbac2yj30ol0kpdhl.jpg" alt="">   </p><p><font color="red">这里要注意的是:存储库的名字只能是”你自己的用户名.github.io”这个格式</font>  </p><h2 id="我们需要让本地git项目与远程的GitHub进行绑定多以用SSH-keys"><a href="#我们需要让本地git项目与远程的GitHub进行绑定多以用SSH-keys" class="headerlink" title="我们需要让本地git项目与远程的GitHub进行绑定多以用SSH keys"></a>我们需要让本地git项目与远程的GitHub进行绑定多以用SSH keys</h2><ol><li>在桌面右键选择git bash here打开软件<br>检查ssh keys的设置<br><code>$ cd ~/.ssh 检查本机的ssh密钥</code><br>如果提示：No such file or directory 说明你是第一次使用 git。<br>生成新的ssh key:  </li></ol><p><code>$ ssh-keygen -t rsa -C &quot;邮件地址@youremail.com&quot;</code><br><code>Generating public/private rsa key pair.</code><br><code>Enter file in which to save the key(/Users/your_user_directory/.ssh/id_rsa):&lt;回车就好&gt;</code><br>然后系统会提示你输入密码：<br><code>Enter passphrase (empty for no passphrase):&lt;输入加密串&gt;</code><br><code>Enter same passphrase again:&lt;再次输入加密串&gt;</code> </p><p><font color="red">提示：输入密码的时候屏幕没有显示</font><br>最后看到这样的界面就是成功了。<br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5a3n9vrj30iz0a6aej.jpg" alt=""><br><code>cd ~/.ssh</code><br><code>cat id_rsa.pub</code><br>查看key并复制<br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5fw61l3j31bi0oatgn.jpg" alt=""><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5fwax9yj314c0ln0v0.jpg" alt=""><br>然后粘贴刚刚复制的内容。回到git，输入命令看看是否成功<br><code>$ ssh -T git@GitHub.com</code><br>正确的反馈:<br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5jk3wxxj30lk02sq30.jpg" alt=""><br>输入yes然后显示：<br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5l76v8nj30mq011t8k.jpg" alt=""><br>还有一些信息要设置：<br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5lu680sj30i101xq2v.jpg" alt=""><br>SSH Key 配置成功。 </p><h1 id="生成你的博客"><a href="#生成你的博客" class="headerlink" title="生成你的博客"></a>生成你的博客</h1><p>新建一个文件夹<br>右键打开git bash here<br>安装博客框架:<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">https://hexo.io/zh-cn/</a><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5prfn5ej30o806et8t.jpg" alt=""><br>安装完成以后，文件夹会自动下载博客文件，这时可以  </p><p><code>hexo g 生成静态页面</code><br><code>hexo s 会给你一个地址等同于127.0.0.1:4000 复制到浏览器打开，这时就可以在本地查看看到自己的博客了。</code><br><code>hexo s -i ip地址 还可以指定IP访问给手机访问，在同一个局域网内(此命令可以不操作忽略即可)</code><br><code>hexo clean</code>清楚缓存，每次修改完后，清理下缓存，不然容易报错。<br><code>hexo g -d</code>将本地数据与github同步。<br>最后两个位置：在github中点击自己的项目到设置下方填上自己的域名 并且 在仓库里面新建一个文件写上自己的域名(每次同步以后新建的文件会覆盖，需要新建/每次同步以后必须在github里面修改这两处地方)<br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt633ntb5j30zj0cdwft.jpg" alt=""><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt633jmm5j30y804xjrb.jpg" alt="">  </p><h1 id="你已经完成了可以使用域名访问了。"><a href="#你已经完成了可以使用域名访问了。" class="headerlink" title="你已经完成了可以使用域名访问了。"></a>你已经完成了可以使用域名访问了。</h1>]]></content>
     
@@ -50,6 +52,8 @@
       &lt;h1 id=&quot;Hexo-github搭建博客教程&quot;&gt;&lt;a href=&quot;#Hexo-github搭建博客教程&quot; class=&quot;headerlink&quot; title=&quot;Hexo + github搭建博客教程&quot;&gt;&lt;/a&gt;&lt;center&gt;Hexo + github搭建博客教程&lt;/center&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/large/005RRiqRly1fvuvgwje1rj318g0qcaay.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;/p&gt;
     
     </summary>
+    
+      <category term="blog" scheme="http://yoursite.com/categories/blog/"/>
     
     
       <category term="blog" scheme="http://yoursite.com/tags/blog/"/>

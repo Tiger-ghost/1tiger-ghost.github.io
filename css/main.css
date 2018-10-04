@@ -2013,7 +2013,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff38dd;
+  background: #c3ebff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3265,7 +3265,7 @@ ul.breadcrumb li+li:last-child {
   }
 }
 body {
-  background: url("https://ws1.sinaimg.cn/large/005RRiqRly1fvi73oc9x0j31hc0u07wj.jpg");
+  background: url("https://ws1.sinaimg.cn/large/005RRiqRly1fvw105f1wij31hc0u0jw6.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
