@@ -2013,7 +2013,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #fff;
+  background: #b896d1;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3286,13 +3286,15 @@ pre {
   margin: 5px 0;
   padding: 3px;
   border-radius: 20px;
+  font-size: 15px;
+  font-family: "NSimSun ";
 }
 .highlight,
 code,
 pre {
   border: 1px solid #696969;
-  color: #000;
-  background: url("https://ws1.sinaimg.cn/large/005RRiqRly1fuuidqiwzqj30sg0lc776.jpg");
+  color: #fff;
+  background: url("https://ws1.sinaimg.cn/large/005RRiqRly1fvu5oflo5eg30ho0b44qp.jpg");
 }
 .main-inner {
   opacity: 1.9;

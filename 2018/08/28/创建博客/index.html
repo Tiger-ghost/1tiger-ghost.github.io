@@ -176,9 +176,11 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5l76v8nj30mq011t8k.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5lu680sj30i101xq2v.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5prfn5ej30o806et8t.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvxfg9uhh6j30qn0iv0tu.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvxfgu9dx0j30ro0jj0tw.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvt633ntb5j30zj0cdwft.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvt633jmm5j30y804xjrb.jpg">
-<meta property="og:updated_time" content="2018-10-04T03:54:31.354Z">
+<meta property="og:updated_time" content="2018-10-05T08:30:54.660Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="建立博客">
 <meta name="twitter:description" content="Hexo + github搭建博客教程">
@@ -453,7 +455,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-10-04 11:54:31" itemprop="dateModified" datetime="2018-10-04T11:54:31+08:00">2018-10-04</time>
+                <time title="Modified: 2018-10-05 16:30:54" itemprop="dateModified" datetime="2018-10-05T16:30:54+08:00">2018-10-05</time>
               
             
           </span>
@@ -538,8 +540,10 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 </ol>
 <p><code>$ ssh-keygen -t rsa -C &quot;邮件地址@youremail.com&quot;</code><br><code>Generating public/private rsa key pair.</code><br><code>Enter file in which to save the key(/Users/your_user_directory/.ssh/id_rsa):&lt;回车就好&gt;</code><br>然后系统会提示你输入密码：<br><code>Enter passphrase (empty for no passphrase):&lt;输入加密串&gt;</code><br><code>Enter same passphrase again:&lt;再次输入加密串&gt;</code> </p>
 <p><font color="red">提示：输入密码的时候屏幕没有显示</font><br>最后看到这样的界面就是成功了。<br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5a3n9vrj30iz0a6aej.jpg" alt=""><br><code>cd ~/.ssh</code><br><code>cat id_rsa.pub</code><br>查看key并复制<br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5fw61l3j31bi0oatgn.jpg" alt=""><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5fwax9yj314c0ln0v0.jpg" alt=""><br>然后粘贴刚刚复制的内容。回到git，输入命令看看是否成功<br><code>$ ssh -T git@GitHub.com</code><br>正确的反馈:<br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5jk3wxxj30lk02sq30.jpg" alt=""><br>输入yes然后显示：<br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5l76v8nj30mq011t8k.jpg" alt=""><br>还有一些信息要设置：<br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5lu680sj30i101xq2v.jpg" alt=""><br>SSH Key 配置成功。 </p>
-<h1 id="生成你的博客"><a href="#生成你的博客" class="headerlink" title="生成你的博客"></a>生成你的博客</h1><p>新建一个文件夹<br>右键打开git bash here<br>安装博客框架:<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">https://hexo.io/zh-cn/</a><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5prfn5ej30o806et8t.jpg" alt=""><br>安装完成以后，文件夹会自动下载博客文件，这时可以  </p>
-<p><code>hexo g 生成静态页面</code><br><code>hexo s 会给你一个地址等同于127.0.0.1:4000 复制到浏览器打开，这时就可以在本地查看看到自己的博客了。</code><br><code>hexo s -i ip地址 还可以指定IP访问给手机访问，在同一个局域网内(此命令可以不操作忽略即可)</code><br><code>hexo clean</code>清楚缓存，每次修改完后，清理下缓存，不然容易报错。<br><code>hexo g -d</code>将本地数据与github同步。<br>最后两个位置：在github中点击自己的项目到设置下方填上自己的域名 并且 在仓库里面新建一个文件写上自己的域名(每次同步以后新建的文件会覆盖，需要新建/每次同步以后必须在github里面修改这两处地方)<br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt633ntb5j30zj0cdwft.jpg" alt=""><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt633jmm5j30y804xjrb.jpg" alt="">  </p>
+<h1 id="生成你的博客"><a href="#生成你的博客" class="headerlink" title="生成你的博客"></a>生成你的博客</h1><p>新建一个文件夹<br>右键打开git bash here<br>安装博客框架:<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">https://hexo.io/zh-cn/</a><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt5prfn5ej30o806et8t.jpg" alt=""><br>安装完成以后，文件夹会自动下载博客文件 </p>
+<h1 id="和github建立连接"><a href="#和github建立连接" class="headerlink" title="和github建立连接"></a>和github建立连接</h1><p>回到你创建的文件夹下，使用编辑器打开箭头所指文件，然后按照下图修改。Repo后接的是你自己github创建的库的ssh地址。其他不变然后保存。<br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvxfg9uhh6j30qn0iv0tu.jpg" alt=""><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvxfgu9dx0j30ro0jj0tw.jpg" alt=""></p>
+<p><code>hexo g 生成静态页面</code><br><code>hexo s 会给你一个地址等同于127.0.0.1:4000 复制到浏览器打开，这时就可以在本地查看看到自己的博客了。</code><br><code>hexo s -i ip地址 还可以指定IP访问给手机访问，在同一个局域网内(此命令可以不操作忽略即可)</code><br><code>hexo clean</code>清楚缓存，每次修改完后，清理下缓存，不然容易报错。<br><code>hexo g -d</code>将本地数据与github同步。<br>步骤为: hexo clean; hexo g -d</p>
+<p>使用域名访问：在github中点击自己的项目到设置下方填上自己的域名 并且 在仓库里面新建一个文件写上自己的域名(每次同步以后新建的文件会覆盖，需要新建/每次同步以后必须在github里面修改这两处地方)<br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt633ntb5j30zj0cdwft.jpg" alt=""><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvt633jmm5j30y804xjrb.jpg" alt="">  </p>
 <h1 id="你已经完成了可以使用域名访问了。"><a href="#你已经完成了可以使用域名访问了。" class="headerlink" title="你已经完成了可以使用域名访问了。"></a>你已经完成了可以使用域名访问了。</h1>
       
     </div>
@@ -711,7 +715,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -730,7 +734,9 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -743,7 +749,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-command/">Linux command</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-Document/">linux Document -</a><span class="tag-list-count">1</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -819,7 +825,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-github搭建博客教程"><span class="nav-number">1.</span> <span class="nav-text">Hexo + github搭建博客教程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#购买域名"><span class="nav-number">2.</span> <span class="nav-text">购买域名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-独立域名"><span class="nav-number">3.</span> <span class="nav-text">使用 独立域名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#去-GoDaddy-修改-DNS-地址"><span class="nav-number">4.</span> <span class="nav-text">去 GoDaddy 修改 DNS 地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装准备软件"><span class="nav-number">5.</span> <span class="nav-text">安装准备软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#到github新建一个仓库-新建的仓库是用来存放你的博客-：https-github-com"><span class="nav-number">6.</span> <span class="nav-text">到github新建一个仓库(新建的仓库是用来存放你的博客)：https://github.com/</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#我们需要让本地git项目与远程的GitHub进行绑定多以用SSH-keys"><span class="nav-number">6.1.</span> <span class="nav-text">我们需要让本地git项目与远程的GitHub进行绑定多以用SSH keys</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成你的博客"><span class="nav-number">7.</span> <span class="nav-text">生成你的博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#你已经完成了可以使用域名访问了。"><span class="nav-number">8.</span> <span class="nav-text">你已经完成了可以使用域名访问了。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-github搭建博客教程"><span class="nav-number">1.</span> <span class="nav-text">Hexo + github搭建博客教程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#购买域名"><span class="nav-number">2.</span> <span class="nav-text">购买域名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-独立域名"><span class="nav-number">3.</span> <span class="nav-text">使用 独立域名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#去-GoDaddy-修改-DNS-地址"><span class="nav-number">4.</span> <span class="nav-text">去 GoDaddy 修改 DNS 地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装准备软件"><span class="nav-number">5.</span> <span class="nav-text">安装准备软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#到github新建一个仓库-新建的仓库是用来存放你的博客-：https-github-com"><span class="nav-number">6.</span> <span class="nav-text">到github新建一个仓库(新建的仓库是用来存放你的博客)：https://github.com/</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#我们需要让本地git项目与远程的GitHub进行绑定多以用SSH-keys"><span class="nav-number">6.1.</span> <span class="nav-text">我们需要让本地git项目与远程的GitHub进行绑定多以用SSH keys</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成你的博客"><span class="nav-number">7.</span> <span class="nav-text">生成你的博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#和github建立连接"><span class="nav-number">8.</span> <span class="nav-text">和github建立连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#你已经完成了可以使用域名访问了。"><span class="nav-number">9.</span> <span class="nav-text">你已经完成了可以使用域名访问了。</span></a></li></ol></div>
             
 
           </div>
@@ -868,7 +874,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共16.9k字</span>
+  <span class="post-count">博客全站共19.8k字</span>
 </div>
 
 <div id="days"></div>

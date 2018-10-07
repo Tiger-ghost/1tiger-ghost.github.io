@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom
+Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "ddf2b567"
+    });
+  daovoice('update');
+  </script>
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+  <meta name="description" content="Linux 文档">
+<meta name="keywords" content="linux Document -">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Document">
+<meta property="og:url" content="http://yoursite.com/2018/08/28/linux document/index.html">
+<meta property="og:site_name" content="Tiger-ghost">
+<meta property="og:description" content="Linux 文档">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvyy9p2c1vj31hc0u0406.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fu69jv3zkqj30mm0d8tac.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fu6b4yptk4j30mv0dn0uq.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvpljquenhj30fh0gz3zp.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1ftyzym1ewvj30wt0adgpe.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvw5je76t1j30te0h9acq.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvw6gy4zbrj30tf0gun1h.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvbgd4xikrj30r70h0ahi.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvxo7rs5icj311x0oc40z.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvxpnbni1hj310f02z3yd.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvxpjnlcopj30ne027we9.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvxq4io3wqj30z807711c.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvxq8rrhzzj30so03ot8t.jpg">
+<meta property="og:updated_time" content="2018-10-07T13:01:59.751Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Document">
+<meta name="twitter:description" content="Linux 文档">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvyy9p2c1vj31hc0u0406.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Tiger-ghost" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/28/linux document/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Document | Tiger-ghost</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/Tiger-ghost" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tiger-ghost</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/28/linux document/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tiger">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fuqjz5z6kcj309q0b40tb.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiger-ghost">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Document
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-28 17:28:03" itemprop="dateCreated datePublished" datetime="2018-08-28T17:28:03+08:00">2018-08-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-07 21:01:59" itemprop="dateModified" datetime="2018-10-07T21:01:59+08:00">2018-10-07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux-Document/" itemprop="url" rel="index"><span itemprop="name">linux Document</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/28/linux document/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2018/08/28/linux document/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+  
+
+      
+      
+
+      
+        <p><center><font face="FZShuTi">Linux 文档</font></center><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvyy9p2c1vj31hc0u0406.jpg" alt=""><br><a id="more"></a></p>
+<h1 id="用户和用户组管理"><a href="#用户和用户组管理" class="headerlink" title="用户和用户组管理"></a>用户和用户组管理</h1><h2 id="etc-passwd-用户信息文件"><a href="#etc-passwd-用户信息文件" class="headerlink" title="/etc/passwd:用户信息文件"></a>/etc/passwd:用户信息文件</h2><p><strong><code>user1:x:500:500::/home/user1:/bin/bash</code></strong><br>第一字段:用户名称；<br>第二字段:密码标志；<br>第三字段:UID(用户ID)；<br>　0：超级用户；<br>　1-499：系统用户(伪用户)；<br>　500-65535:普通用户；<br>第4字段：GID(用户初始组ID)<br>第5字段：用户说明<br>第6字段：家目录<br>　普通用户：/home/用户名/<br>　超级用户：/root/<br>第7字段：登录之后的Shell  </p>
+<h2 id="影子文件-etc-shadow"><a href="#影子文件-etc-shadow" class="headerlink" title="影子文件:/etc/shadow"></a>影子文件:<font color="blue">/etc/shadow</font></h2><p>第1字段：用户名<br>第2字符：加密密码<br>　加密算法升级为SHA512散列加密算法<br>　如果密码位是“ ！”或“ * ”代表没有密码，不能登录。<br>第3字段：密码最后一次修改日期：使用1970年1月1号作为标准时间，每过一天时间戳加1。<br>第4字段：两次密码的修改间隔时间(和第3字段相比)间隔多少时间后才可以修改密码。<br>第5字段：密码有效期(和第3字段相比)<br>第6字段：密码修改到期前的警告天数(和第5字段相比)<br>第7字段：密码过期后的宽限天数(和第5字段相比)<br>　0：代表密码过期后立即失效。<br>　-1：则代表密码永远不会失效。<br>第8字段：账号失效时间，要用时间戳表示<br>第9字段：保留<br>把时间戳换算为日期：<br><code>date -d &quot;1970-01-01 17740 days&quot;</code><br>把日期换算为时间戳：<br><code>echo $(($(date --date=&quot;2018/07/28&quot; +%s)/86400+1))</code></p>
+<h2 id="组信息文件-etc-group"><a href="#组信息文件-etc-group" class="headerlink" title="组信息文件/etc/group"></a>组信息文件/etc/group</h2><p>第一字段：组名<br>第二字段：组密码标志<br>第三字段：GID<br>第四字段：组中附加用户  </p>
+<h2 id="组密码文件-etc-gshadow"><a href="#组密码文件-etc-gshadow" class="headerlink" title="组密码文件/etc/gshadow"></a>组密码文件/etc/gshadow</h2><p>第一字段：组名<br>第二字段：组密码<br>第三字段：组管理员用户名<br>第四字段：组中附加用户  </p>
+<h2 id="用户的家目录"><a href="#用户的家目录" class="headerlink" title="用户的家目录"></a>用户的家目录</h2><ol>
+<li>普通用户：/home/用户名/,所有者和所属者都是此用户，权限是700  </li>
+<li>超级用户：/root/,所有者和所属者都是root用户，权限是550。  </li>
+<li>用户的邮箱：/var/spool/mail/用户名/  </li>
+<li>用户模板目录：/etc/skel:创建用户时，用户的家目录会自动创建一些隐藏文件，这些文件是从<font color="blue">/etc/skel/</font> 过去的。想要每个新添加用户时家目录自动出现共享文件可在此目录添加。</li>
+</ol>
+<h1 id="linux的特殊权限"><a href="#linux的特殊权限" class="headerlink" title="linux的特殊权限"></a>linux的特殊权限</h1><p>特殊权限：<font color="red"> SUID,SGID,STICKY </font><br>1.进程以某用户的身份运行；进程是发起此进程用户的代理，因此以此用户的身份和权限完成所有操作；<br>2.权限匹配模型：<br>(1)判断进程的属主，是否为被访问的文件属<font color="red"> 主 </font>；如果是，则应用属主的权限；否则进入第2步；<br>(2)判断进程的属主，是否属于被访问的文件属<font color="red"> 组 </font>；如果是，则应用属组的权限；否则进入第3步;<br>(3)应用other的权限；</p>
+<h2 id="SUID"><a href="#SUID" class="headerlink" title="SUID"></a>SUID</h2><p>SetUID的功能:<table><tr><td style="background-image:url(https://ws1.sinaimg.cn/large/005Kjut6gy1frtsfwbtjdg30p00cinpd.jpg)"><font color="red"><br><strong>1、只有可以执行的二进制程序才能设定SUID权限。<br>2、命令执行者要对该程序拥有X(执行)权限<br>3、命令执行者在执行该程序时获得该程序文件属主的身份<br>4、SetUID权限只在该程序执行过程中有效，也就是说身份改变只在程序执行过程中有效。</strong></font></td></tr></table>  <font color="red"><br>SUID </font>:默认情况下:用户发起的进程，进程的属主是其发起者；因此，其以发起者的身份运行；  <font color="red"><br>SUID </font>的功用：用户运行某程序时，如果此程序拥有SUID的权限，那么程序运行为进程时，进程的属主不是发起者，而程序文件自己的属主;<br>管理文件的SUID权限：   <font color="red"><br>chmod u+|-s FILe </font><br>展示位置：属主的执行权限位。  <font color="blue"><font color="lime"><br>#</font>chomod <strong><font color="red">4</font></strong></font>644 filename<br>取消suid权限：<font color="lime">#</font>chmod 644 filename<font color="red"> 大写S为报错,检查是否有x权限</font>.</p>
+<h2 id="SGID"><a href="#SGID" class="headerlink" title="SGID"></a>SGID</h2><p><table><tr><td bgcolor="#778899"><font color="red">用户在执行程序时候，组身份变为该程序文件的属组与SUID类似。</font><br></td></tr></table> 管理文件的<font color="#FF1493"> SGID </font> 的权限：    <font color="red"><br>chmod g+|-s FILE </font> <font color="#FF1493"><br>SGID </font>:  功用：当目录属组有写的权限，且SGID权限时，当你给一个目录添加了sgid之后，后面不管谁来这个目录下创建文件，文件的所属组都会继承目录的所属组<br>展示位置：属组的执行权限位<br>如果属组原本有执行权限，则显示为小写s;否则，显示为大写S;    <font size="5">  <font color="blue"><font color="lime"><br>#</font>ll /usr/bin/locate  <font color="lime"><br>#</font>ll /var/lib/mlocate/mlocate.db</font><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fu69jv3zkqj30mm0d8tac.jpg" alt=""></font></p>
+<h2 id="STICKY"><a href="#STICKY" class="headerlink" title="STICKY"></a>STICKY</h2><p><table><tr><td style="background-image:url(https://ws1.sinaimg.cn/large/005Kjut6gy1frtsfwbtjdg30p00cinpd.jpg)"><br> <img src="https://ws1.sinaimg.cn/large/005RRiqRly1fu6b4yptk4j30mv0dn0uq.jpg" alt=""><br> <font color="red"> <strong>sticky</strong> </font><font color="white">:t权限只能给目录添加，当你给一个目录添加了t权限之后，后面所有人在这个目录下不能删除其他人的文件,只能删除自己的文件；<br> 管理文件的Sticky权限：<font color="red"> chmod o+|-t FILE</font><br> 展示位置：其他用户的执行权限位<br> 如果其他用户原本有执行权限，显示为小写t;否则为大写T。<br> 系统上的/tmp和/var/tmp目录下默认均有Sticky权限<br> <img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvpljquenhj30fh0gz3zp.jpg" alt="">基于八进制方式赋权时，可于默认的三位八进制数字左侧再加一位八进制数字；  <font color="blue"><br><code>chmod 1777 中的 1 表示特殊权限</code> </font></font><br> </td></tr></table>.</p>
+<h1 id="facl"><a href="#facl" class="headerlink" title="facl"></a>facl</h1><p>facl:file access control lists 文件访问控制列表<br>文件的额外赋权机制：在原有的u,g,o之外，另一层让普通用户控制赋权给另外的用户或组的赋权机制；<br>查看分区ACL权限是否开启<br><code>dumpe2fs -h /dev/sda3</code><br>dumpe2fs命令是查询指定分区详细文件系统信息的命令.选项：  <font color="red"><br>-h</font> 仅显示超级块中的信息，而不显示磁盘块组的详细信息  <font color="#FF6347"><br>临时开启分区ACL权限：</font>  <code>mount -o remount,acl /</code> 重新挂载根分区，并挂载加入acl权限。  <font color="#FF6347"><br>永久开启分区ACL权限</font><font color="lime">#</font>vi /etc/fstab<br><strong><pre>  UUID=c2ca6f57-b15c-43ea-bca0-f239083d8bd2 / ext4 dufaults,acl 1 1  　      加入ACL</pre></strong><br><code>mount -o remount /</code>:重新挂载文件系统或重启动系统，使修改生效。<br><code>getfacl filename</code>:查看文件额外的权限<br>setfacl命令：<font color="blue"> setfacl -m u:username:rw filename </font><br>赋权给用户：<font color="red"> setfacl -m u:USERNAME:MODE file </font><br>赋权给组：<font color="red"> serfacl -m g:GROUPNAME:MODE file </font>   <font color="#FF1493"><br>    撤销赋权:serfacl -x u:USERNAME file<br>　　　　serfacl -x g:USERNAME file  </font><br>递归ACL权限：<font color="lime">#</font>setfacl -m u:用户名:权限 -R 目录名  <table><tr><td bgcolor="#20B2AA"><font color="black">默认ACL权限:默认acl权限的作用是如果给父目录设定了默认的ACL权限，那么父目录中所有新建的子文件都会继承父目录ACL的权限。<font color="red"><font color="lime">#</font>setfacl -m d:u:用户名:权限 文件名</font></font></td></tr></table><img src="https://ws1.sinaimg.cn/large/005RRiqRly1ftyzym1ewvj30wt0adgpe.jpg" alt="">  setfacl 选项 文件名<br>选项：   <font color="red"><br>-m</font> :设定ACL权限  <font color="red"><br>-x</font> :删除指定的ACL权限  <font color="red"><br>-b</font> :删除文件<font color="red">所有</font>的ACL权限  <font color="red"><br>-d</font> :设定默认ACL权限  <font color="red"><br>-k</font> :删除默认ACL权限  <font color="red"><br>-R</font> :递归设定ACL权限  <font color="#FF6347">最大有效权限mask</font><br>mask是用来指定最大有效权限的。如果我给用户赋予了ACL权限，是需要和mask的权限”相与”才能得到用户的真正权限。  </p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th style="text-align:center">B</th>
+<th>and</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>r</strong></td>
+<td style="text-align:center"><strong>r</strong></td>
+<td><strong>r</strong></td>
+</tr>
+<tr>
+<td><strong>r</strong></td>
+<td style="text-align:center"><strong>-</strong></td>
+<td><strong>-</strong></td>
+</tr>
+<tr>
+<td><strong>-</strong></td>
+<td style="text-align:center"><strong>r</strong></td>
+<td><strong>-</strong></td>
+</tr>
+<tr>
+<td><strong>-</strong></td>
+<td style="text-align:center"><strong>-</strong></td>
+<td><strong>-</strong></td>
+</tr>
+</tbody>
+</table>
+<p>修改最大有效权限：<font color="lime">#</font>setfacl -m m:rx filename 设定mask权限为r-x。使用“m:权限”格式。</p>
+<p><table><tr><td bgcolor="RED"><font color="black">  mask值只能添加ACL权限之后后期更改，当更改mask值以后再添加ACL权限，mask值就会变为777</font></td></tr></table>.  </p>
+<h1 id="文件系统属性chattr权限"><a href="#文件系统属性chattr权限" class="headerlink" title="文件系统属性chattr权限"></a>文件系统属性chattr权限</h1><p><font color="lime">#</font>chattr [+-=] [选项] 文件或目录名<br>+：增加权限<br>-：删除权限<br>=：等于权限<br> 选项：<table><tr><td style="background-image:url(https://ws1.sinaimg.cn/large/005RRiqRly1fvklq1wjadj30go0aft8l.jpg)"><font color="red">-i:</font><font color="#008B8B">如果对文件设置i属性，那么不允许对文件进行删除、改名，也不能添加和修改数据；如果对目录设置i属性，那么只能修改目录下文件的数据还可以cp，但不允许建立和删除文件  <font color="red"><br> -a:</font>如果对文件设置a属性，那么只能在文件中增加数据(只能用echo增加数据，不能用vim)，但是不能删除也不能修改数据；如果对目录设置a属性，那么只允许在目录中建立和修改文件，但是不允许删除。</font></td></tr></table><code>chattr +i a.txt</code><br><code>lsattr -a a.txt</code><br><code>----i--------e- a.txt</code>　　 e:代表此文件在ext4文件系统下建立的。<br>查看文件系统属性：<br>lsattr 选项 文件名  <font color="red"><br>-a</font>显示所有文件和目录  <font color="red"><br>-d</font>若目标是目录，仅列出目录本身的属性，而不是子文件。</p>
+<h1 id="sudo权限"><a href="#sudo权限" class="headerlink" title="sudo权限"></a>sudo权限</h1><p>root把本来只能超级用户执行的命令赋予普通用户执行。<br>sudo的操作对象是系统命令  <font color=""><br>whereis 命令 查看命令的绝对路径<br><code>visudo</code>  实际修改的是/etc/sudoers文件<br>root 　ALL=(ALL)　　　ALL<br>用户名　 被管理主机的地址=(可使用的身份)　 授权命令(绝对路径)  <font color="red"><br>被管理的主机地址可写成主机ip和ALL</font><br>%wheel　 ALL=(ALL) 　ALL<br>组名　 　被管理的主机地址=(可使用的身份) 　授权命令(绝对路径)   <font color="blue"><br>root　 ALL=(ALL) 　　ALL<br>st　　192.168.81.137=/sbin/shutdown -r now  添加内容  <font color="red"><strike><br>st　　 ALL=/usr/bin/vim 危险操作</strike></font><br><code>su - st</code>:切换用户<br><code>sudo -l</code>:查看可用的sudo命令<br><code>sudo /sbin/shutdown -r now</code> 普通用户执行sudo赋予的命令</font></font></p>
+<h1 id="linux下查看帮助命令"><a href="#linux下查看帮助命令" class="headerlink" title="linux下查看帮助命令"></a>linux下查看帮助命令</h1><p><font color="red"> whatis </font> :用于查询一个命令执行什么功能，并将查询结果打印到终端上<br><code>whatis ls</code>  <font color="red"><br>man</font> :Linux提供了丰富的帮助手册，当你需要查看某个命令的参数时不必到处上网查找，只要man一下即可 man command</p>
+<h1 id="linux根目录结构和文件系统"><a href="#linux根目录结构和文件系统" class="headerlink" title="linux根目录结构和文件系统"></a>linux根目录结构和文件系统</h1><p>进程的类型：<br>　　终端:硬件设备，关联一个用户接口。<br>　　与终端相关:通过终端启动。<br>　　与终端无关:操作引导启动过程中自动启动<br>操作系统的组成:<br>　　静态:kernel,application<br>　　文件系统:层级结构<br>FHS:　　Filesystem Hierarchy Standard  <font color="blue"><br>　/bin</font>:所有用户可用的基本命令程序文件；  <font color="blue"><br>　/sbin</font>:供系统管理使用的工具程序；  <font color="blue"><br>　/boot</font>:引导加载器必须用到的各种静态文件：Kernel,initramfs(initrd),grub等；  <font color="blue"><br>　/dev</font>:存储特殊文件或设备文件；<br>　　　设备有两种类型：字符设备(线性设备)、块设备(随机设备)；  <font color="blue"><br>　/etc</font>:系统程序的配置文件，只能为静态：  <font color="blue"><br>　/home</font>：普通的家目录的集中位置：一般每个普通用户的家目录默认为此目录下与用户名同名的子目录，/home/USERNAME；  <font color="blue"><br>　/lib</font>:为系统启动或根文件系统上的应用程序（/bin,/sbin）等提供共享库，以及为内核提供内核模块  <font color="red"><br>　　<strong>libc.so.*</strong></font>:动态链接的C库；  <font color="red"><br>　　<strong>ld*</strong></font>:运行时链接器/加载器；<br>　　　modules:用于存储内核模块的目录；  <font color="blue"><br>　/lib64</font>:64位系统特有的存放64位共享的路径；  <font color="blue"><br>　/media</font>:便携式设备挂载点，cdrom,floppy等；  <font color="blue"><br>　/mnt</font>:其他文件系统的临时挂载点；  <font color="blue"><br>　/opt</font>：附加应用程序的安装位置：可选路径；  <font color="blue"><br>　/srv</font>:当前主机为服务提供的数据；  <font color="blue"><br>　/tmp</font>:为那些会产生临时文件的程序提供的用于临时文件的目录：可供所用户执行写入操作：有特殊权限；  <font color="blue"><br>　/usr</font>:usr Hierarchy,全局共享的只读数据路径：<br>　　　bin,lib64<br>　　　include:C程序头文件；<br>　　　share:命令手册页和自带文档等架构特有的文件的存储位置<br>　　　local:另一个层级目录；<br>　　　X11R6:X-widow程序的安装位置<br>　　　src:程序源代码文件的存储位置</p>
+<h1 id="多命令顺序执行"><a href="#多命令顺序执行" class="headerlink" title="多命令顺序执行"></a>多命令顺序执行</h1><p><table><tr><th>多命令执行符</th><th>格式</th><th>作用</th></tr><tr><td><strong>&amp;&amp;</strong></td><td>命令1 &amp;&amp; 命令2</td><td>逻辑与,当命令1正确执行,则命令2才会执行。当命令1执行不正确,则命令2不会执行</td></tr><tr><td><strong>||</strong></td><td>命令1 || 命令2</td><td>逻辑或,当命令1执行不正确,则命令才会执行。当命令1正确执行,则命令2不会执行</td></tr></table></p>
+<h1 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h1><p><table><tr><th>通配符</th><th>作用</th></tr><tr><td><strong>?</strong></td><td>匹配一个任意字符</td></tr><tr><td><strong>*</strong></td><td>匹配0个或任意多个字符，也就是可以匹配任何内容</td></tr><tr><td>[]</td><td>匹配括号中任意一个字符。例如：[abc]代表一定匹配一个字符，或者a,或者b,或者c。</td></tr><tr><td>[^]</td><td>逻辑非，表示不匹配中括号内的任意一个字符。例如:[^0-9]代表匹配一个不是数字的字符。</td></tr></table></p>
+<h2 id="Bash中其他特殊符号"><a href="#Bash中其他特殊符号" class="headerlink" title="Bash中其他特殊符号"></a>Bash中其他特殊符号</h2><p> <table><tr><th>符号</th><th>作用</th></tr><tr><td><code>&#39;&#39;</code></td><td>单引号。在单引号中所有的特殊符号，如<code>$</code>,<font color="red"><font size="5"><strong>`</strong>(反引号)</font></font>都没有特殊含义。</td></tr><tr><td><code>&quot;&quot;</code></td><td>双引号。在双引号中特殊符号都没有特殊含义，但是<code>$</code>,和<code>\</code>是例外,拥有<code>&quot;调用变量的值&quot;</code> <font color="red"><font size="5">`反引号</font></font>引用命令,和<code>&quot;转义符&quot;的特殊含义&quot;</code></td></tr><tr><td><font color="red"><font size="5">``</font></font></td><td>反引号。反引号括起来的内容是系统命令，在Bash中会先执行它。和$()作用一样，不过推荐使用$()，因为反引号非常容易看错。</td></tr><tr><td><code>$()</code></td><td>和反引号作用一样，用来引用系统命令。</td></tr><tr><td><code>#</code></td><td>在shell脚本中，#开头的行代表注释。</td></tr><tr><td><code>$</code></td><td>用于调用变量的值,如需要调用变量name的值时，需要用$name的方式得到变量的值时，需要用$name的方式得到变量的值。</td></tr><tr><td><code>\</code></td><td>转义符,跟在\之后的特殊符号将失去特殊含义，变为普通字符。如\$将输出<code>$</code>符号，而不当做是变量引用。</td></tr></table>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@Tiger ~]# name=test  </span><br><span class="line">[root@Tiger ~]# echo &apos;$name&apos;  </span><br><span class="line">$name  </span><br><span class="line">[root@Tiger ~]# echo &quot;$name&quot;  </span><br><span class="line">test</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@Tiger ~]# abc=`date`  </span><br><span class="line">[root@Tiger ~]# echo `date`  </span><br><span class="line">2018年 09月 09日 星期日 13:10:57 CST  </span><br><span class="line">[root@Tiger ~]# echo $abc  </span><br><span class="line">2018年 09月 09日 星期日 13:10:49 CST</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@Tiger ~]# abc=$(date)   </span><br><span class="line">[root@Tiger ~]# echo $abc  </span><br><span class="line">2018年 09月 09日 星期日 13:12:44 CST  </span><br><span class="line">[root@Tiger ~]# echo &quot;abc&quot;  </span><br><span class="line">abc</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@Tiger ~]# echo &quot;$abc&quot;  </span><br><span class="line">2018年 09月 09日 星期日 13:12:44 CST  </span><br><span class="line">反引号和$ #echo `ls`   </span><br><span class="line">#echo $(date)</span><br></pre></td></tr></table></figure>
+<h1 id="Bash-变量"><a href="#Bash-变量" class="headerlink" title="Bash 变量"></a>Bash 变量</h1><p><table><tr><td style="background-image:url(https://ws1.sinaimg.cn/large/005RRiqRly1fvv4ilw3yug30dw0dtdo5.jpg)"><font size="3"><font face="FZYaoti">什么是变量：变量是计算机内存单元，其中存放的值可以改变。当Shell脚本需要保存一些信息时，如一个文件名或一个数字,就把它存放在一个变量中，每个变量有一个名字，所以很容易引用它，使用变量可以保存有用信息，使系统获知用户相关设置，变量也可以用于保存暂时信息。</font></font></td></tr></table>变量设置规则：<br>explanation  </p>
+<ol>
+<li>变量名称可以由字母、数字和下划线组成，但是不能以数字开头。如果变量名是”2name”则是错误的。  </li>
+<li>在Bash中，变量的默认类型都是字符串型，如果要进行数值运算，则必修指定变量类型为数值型。  </li>
+<li>变量用等号连接值，等号左右两侧不能有空格。  </li>
+<li>变量的值如果有空格，需要使用单引号或双引号包括。  </li>
+<li>在变量的值中，可以使用”\”转义符。  </li>
+<li>如果需要增加变量的值，那么可以进行变量值的叠加，不过变量需要用双引号包含”$变量名”或用${变量名}包含。  </li>
+<li>如果是把命令的结果作为变量值赋予变量，则需要使用反引号或$()包含命令。  </li>
+<li>环境变量名建议大写，便于区分。<h2 id="变量的分类"><a href="#变量的分类" class="headerlink" title="变量的分类"></a>变量的分类</h2></li>
+<li>用户自定义变量  </li>
+<li>环境变量:这种变量中主要保存的是和系统操作环境相关的数据。 </li>
+<li>位置参数变量:这种变量主要是用来向脚本当中传递参数或数据的，变量名不能自定义，变量作用是固定的。  </li>
+<li>预定义变量:是Bash中已经定义好的变量，变量名不能自定义，变量作用也是固定好的。</li>
+</ol>
+<h2 id="本地变量"><a href="#本地变量" class="headerlink" title="本地变量"></a>本地变量</h2><p>变量定义：<font color="lime">#</font>name=<code>&quot;bianliang&quot;</code><br>变量叠加：  <font color="lime"><br>#</font>aa=123  <font color="lime"><br>#</font>aa=$aa456  <font color="lime"><br>#</font>aa=${aa}789<br>变量调用：<code>echo $name</code><br>变量查看：<code>set</code><br>变量删除：<code>&gt;unset name</code></p>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p><table><tr><td bgcolor="2f4f4f"><font color="ff4d40">环境变量是什么:用户自定义变量只在当前的Shell中生效，而环境变量会在当前Shell和这个Shell的所有子Shell当中生效。如果把环境变量写入相应的配置文件,那么这个环境变量就会在所有Shell中生效。</font></td></tr></table>  <font color="red"> pstree:查看进程数,查看当前shell</font><br>设置环境变量：export 变量名=变量值<br>申明变量:<br><code>env</code> :查询变量,专门查看环境变量。<code>set</code>:查看所有变量<br><code>unset 变量名</code> #删除变量  <font color="blue"><br>name=sc 本地变量<br>export age=18  环境变量<br>sex=man 本地变量。把已经定义好的本地变量变成环境变量，只需要：export sex<br></font></p>
+<h2 id="系统常见环境变量"><a href="#系统常见环境变量" class="headerlink" title="系统常见环境变量"></a>系统常见环境变量</h2><p>PATH:系统查找命令的路径  <font color="lime"><br>#</font>echo $PATH<br>/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin<br><strong>PATH变量叠加：<code>PATH=&quot;$PATH&quot;:/root/sh(脚本保存目录)</code></strong>  </p>
+<h2 id="ps1-定义系统提示符的变量："><a href="#ps1-定义系统提示符的变量：" class="headerlink" title="ps1:定义系统提示符的变量："></a>ps1:定义系统提示符的变量：</h2><p>\d:显示日期，格式为”星期 月 日”<br>\h:显示简写主机名。如默认主机名”localhost”<br>\t:显示24小时制时间，格式为”HH:MM:SS”<br>\T:显示12小时制时间，格式为”HH:MM:SS”<br>\A:显示12小时制时间，格式为”HH:MM”<br>\u:显示当前用户名<br>\w:显示当前所在目录的完整名称<br>\W:显示当前所在目录的最后一个目录<br>#:执行的第几个命令<br>\$:提示符。如果为root用户会显示提示符为”#”,如果普通用户会显示提示符为”$”。<br>\@:时间 上下午 <font color="blue"><br><code>echo $PS1</code> :查看提示符<br>[root@Tiger ~]# <code>PS1=&#39;[\u@\t \w]\$ &#39;</code><font color="red">这里的空格生成以后,提示符后会有一个SPACE的距离。</font><br>[root@16:10:52 ~]#<code>cd /usr/local/src/</code><br>[root@16:11:08 /usr/local/src]#<br>　　　　　　　　　#PS1=<code>&#39;[\u@\@]\$&#39;</code><br>[root@04:13 下午]#PS1=<code>&#39;[\u@\@ \h]\$&#39;</code><br>[root@04:17 下午 Tiger]#PS1=<code>&#39;[\u \@@]\$&#39;</code><br>[root 04:18 下午@]#^<br></font></p>
+<h2 id="位置参数变量"><a href="#位置参数变量" class="headerlink" title="位置参数变量"></a>位置参数变量</h2><p><table><tr><th>位置参数变量</th><th>作用</th></tr><tr><td>$n</td><td>n为数字,$0代表命令本身,$1-$9代表第一到第九个参数,十以上的参数需要用大括号包含,如${10}</td></tr><tr><td>$<em></em></td><td>这个变量代表命令行中所有的参数,$把所有的参数看成一个整体</td></tr><tr><td>$@</td><td>这个变量也代表命令行中所有的参数,不过$@把每个参数区别对待</td></tr><tr><td>$#</td><td>这个变量代表命令行中所有参数的个数</td></tr></table>位置参数变量的名称和作用是固定的，他是为了接受用户向程序传入不同的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">vim ceshi.sh    </span><br><span class="line">#!/bin/bash  </span><br><span class="line">echo $0</span><br><span class="line">echo $1</span><br><span class="line">echo $2</span><br><span class="line">echo $3 :wq</span><br><span class="line">chmod 755 ceshi.sh</span><br><span class="line">./ceshi.sh</span><br><span class="line">./ceshi.sh 输出结果是本身</span><br><span class="line"></span><br><span class="line">./ceshi.sh 11 22 33</span><br><span class="line">./ceshi.sh   输</span><br><span class="line">11   出</span><br><span class="line">22   接</span><br><span class="line">33   果</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">num1=$1</span><br><span class="line">num2=$2</span><br><span class="line">sum=$(($num1 + $num2)) //变量sum的和是num1加num2</span><br><span class="line">echo $sum //打印sum的值</span><br><span class="line">chmod 755 ceshi.sh</span><br><span class="line">./ceshi.sh 11 22</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">echo $#</span><br><span class="line">echo $*</span><br><span class="line">echo $@</span><br><span class="line">chmod 755 ceshi.sh</span><br><span class="line">./ceshi.sh 11 22 33 44 55 66   </span><br><span class="line">6 </span><br><span class="line">11 22 33 44 55 66</span><br><span class="line">11 22 33 44 55 66</span><br></pre></td></tr></table></figure>
+<p><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvw5je76t1j30te0h9acq.jpg" alt=""></p>
+<h2 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h2><p><table><tr><th>预定义变量</th><th>作用</th></tr><tr><td>$?</td><td>最后一次执行的命令的返回状态，如果这个变量的值为0，证明上一个命令正确执行;如果这个变量的值非0(具体是哪个数，由命令自己来决定)，则证明上一个命令执行不正确了。</td></tr><tr><td>$$</td><td>当前进程的进程号(PID)</td></tr><tr><td>$!</td><td>后台运行的最后一个进程的进程号(PID)/td&gt;</td></tr></table><br>在Linux里面输入一条命令正确执行以后，输入<font color="red">echo $?</font> ，默认输出<font color="red"> 0</font><br>当输出一条错误的命令以后，会系统报错，输入<font color="red">echo $?</font> ，默认输出 127</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">echo &quot;$$&quot;</span><br><span class="line"></span><br><span class="line">find /root -name hello.sh $    // $符号的作用是把程序放在后台</span><br><span class="line">echo &quot;$!&quot;</span><br><span class="line">chmod 755 ceshi.sh</span><br><span class="line">./ceshi.sh</span><br><span class="line">27888</span><br><span class="line">27888</span><br></pre></td></tr></table></figure>
+<h2 id="接受键盘输入"><a href="#接受键盘输入" class="headerlink" title="接受键盘输入"></a>接受键盘输入</h2><p><code>read [选项][变量名]</code>  <font color="red"><br>-p”提示信息”</font>:在等待read输入时,输出提示信息  <font color="red"><br>-t 秒数</font>:read命令会一直等待用户输入，使用此选项可以指定等待时间。  <font color="red"><br>-n 字符数</font>:read命令只接受指定的字符数，就会执行  <font color="red"><br>-s</font>:隐藏输入的数据，适用于机密信息输入。 <font color="blue"><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvw6gy4zbrj30tf0gun1h.jpg" alt=""> </font></p>
+<h1 id="数值运算与运算符"><a href="#数值运算与运算符" class="headerlink" title="数值运算与运算符"></a>数值运算与运算符</h1><p>declare声明变量类型<br><code>declare [+/-][选项] 变量名</code>  <font color="red"><br><strong>-</strong></font>:给变量设定类型属性  <font color="red"><br><strong>+</strong></font>取消变量的类型属性  <font color="red"><br><strong>-i</strong></font>:将变量声明为整数型(integer)  <font color="red"><br><strong>-x</strong></font>:将变量声明为环境变量  <font color="red"><br><strong>-p</strong></font>:显示指定变量的被声明的类型<br>数值运算方法1:  <font color="lime"><br>[root@Tiger data]#</font>aa=11  <font color="lime"><br>[root@Tiger data]#</font>bb=22<br>给变量aa和bb赋值  <font color="lime"><br>[root@Tiger data]#</font>declare -i cc=$aa+$bb<br>方法2:expr或let数值运算工具  <font color="lime"><br>[root@Tiger data]#</font>aa=11<font color="lime"><br>[root@Tiger data]#</font>bb=22<br>给变量aa和变量bb赋值  <font color="lime"><br>[root@Tiger data]#</font>dd=$(expr $aa + $bb)<br>$dd的值是aa和bb的和,注意”+”号左右两侧必须有空格<br><strong>方法3:<code>$((运算式))</code>或<code>$[运算式]</code></strong>  <font color="blue"><br>aa=11<br>bb=22<br>gg=$(($aa+$bb))<br>ff=$[$aa+$bb]</font></p>
+<h2 id="运算优先级-优先级从上到下"><a href="#运算优先级-优先级从上到下" class="headerlink" title="运算优先级 优先级从上到下"></a>运算优先级 优先级从上到下</h2><p><table><tr><th>优先级</th><th>运算符</th><th>说明</th></tr><tr><td>13</td><td>-，+</td><td>单目负,单目正</td></tr><tr><td>12</td><td>!，~</td><td>逻辑非，按位取反或补码</td></tr><tr><th>11</th><th>*，/，%</th><th>乘、除、取余</th></tr><tr><th>10</th><th>+，-</th><th>加、减</th></tr><tr><th>9</th><th>&lt;&lt;，&gt;&gt;</th><th>按位左移、按位右移</th></tr><tr><th>8</th><th>&lt;=，&gt;=，&lt;，&gt;</th><th>小于或等于、大于或等于、小于、大于</th></tr><tr><th>7</th><th>==，!==</th><th>等于、不等于</th></tr><tr><td>6</td><td>&amp;</td><td>按位与</td></tr><tr><th>5</th><th>^</th><th>按位异或</th></tr><tr><th>4</th><th>|</th><th>按位或</th></tr><tr><th>3</th><th>&amp;&amp;</th><th>逻辑与</th></tr><tr><th>2</th><th>||</th><th>逻辑或</th></tr><td>1</td><td>=，+=，-=， ，*=，/=，%=，&amp;=，^=，|=，&lt;&lt;=，&gt;&gt;=</td><td>赋值、运算且赋值</td></table>.</p>
+<h2 id="变量测试与内容替换"><a href="#变量测试与内容替换" class="headerlink" title="变量测试与内容替换"></a>变量测试与内容替换</h2><p><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvbgd4xikrj30r70h0ahi.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@Tiger ~]# unset y</span><br><span class="line">[root@Tiger ~]# x=$&#123;y-new&#125;</span><br><span class="line">[root@Tiger ~]# echo $y</span><br><span class="line"></span><br><span class="line">[root@Tiger ~]# echo $x</span><br><span class="line">new</span><br><span class="line">[root@Tiger ~]# y=&quot;&quot;</span><br><span class="line">[root@Tiger ~]# x=$&#123;y-new&#125;</span><br><span class="line">[root@Tiger ~]# echo $x</span><br><span class="line"></span><br><span class="line">[root@Tiger ~]# y=old</span><br><span class="line">[root@Tiger ~]# x=$&#123;y-new&#125;</span><br><span class="line">[root@Tiger ~]# echo $x</span><br><span class="line">old</span><br><span class="line">[root@Tiger ~]#</span><br></pre></td></tr></table></figure>
+<h1 id="环境变量配置文件"><a href="#环境变量配置文件" class="headerlink" title="环境变量配置文件"></a>环境变量配置文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source 配置文件</span><br></pre></td></tr></table></figure>
+<p>或　　　　调用文件的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">. 配置文件</span><br></pre></td></tr></table></figure></p>
+<p>环境变量配置文件简介：<table><tr><td bgcolor="black"><font color="white">环境变量配置文件中主要是定义对系统的操作环境生效的系统默认环境变量，比如PATH,HISTSIZE,PS1,HOSTNAME等默认环境变量。</font></td></tr></table>环境变量配置文件:<br>①/etc/profile<br>②/etc/profile.d/*.sh   *是通配符，代表这个目录下所有以.sh结尾的文件。<br>③~/.bash_profile<br>④~/.bashrc<br>⑤/etc/bashrc<br>其中3个在/etc/下面的变量配置文件是对所有登录Linux用户生效。另外两个是用户家目录下的隐藏文件只对当前用户生效。<br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvxo7rs5icj311x0oc40z.jpg" alt=""></p>
+<h2 id="其他的配置文件和登录信息"><a href="#其他的配置文件和登录信息" class="headerlink" title="其他的配置文件和登录信息"></a>其他的配置文件和登录信息</h2><ol>
+<li>注销时生效的环境变量配置文件：<br>~/.bash_logout :这个文件默认是空的，如果想要每次登录比如清空历史命令或者把自己的环境变量清空等，写入后，注销时他会自动执行</li>
+<li>~/bash_history :保存的历史命令，但是有一些他还保存在内存当中，除非是手工写入<code>history -w</code>或者注销登录才会把内存中的命令转移到这个文件中去。</li>
+<li>Shell登录信息 本地终端欢迎信息:<code>/etc/issue</code>只对本地登录有显示效果</li>
+</ol>
+<p><table><tr><th>转义符</th><th>作用</th></tr><tr><td>\d</td><td>显示当前系统日期</td></tr><tr><td>\s</td><td>显示操作系统名称</td></tr><tr><td>\l</td><td>显示登录的终端号,这个比较常用</td></tr><tr><td>\m</td><td>显示硬件体系结构,如i386、i686等</td></tr><tr><td>\n</td><td>显示主机名</td></tr><tr><td>\o</td><td>显示域名</td></tr><tr><td>\r</td><td>显示内核版本</td></tr><tr><td>\t</td><td>显示当前系统时间</td></tr><tr><td>\u</td><td>显示当前登录用户的序列号</td></tr></table><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvxpnbni1hj310f02z3yd.jpg" alt=""> <img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvxpjnlcopj30ne027we9.jpg" alt=""><font color="red">远程终端欢迎信息:</font> /etc/issue.net (上图的转义符本文件不能使用,只能使用纯文本信息)<br>转义符在/etc/issue.net文件中不能使用<br>是否显示此欢迎信息,由ssh的配置文件 /etc/ssh/sshd_config决定，加入<code>&quot;Banner /etc/issue.net&quot;</code>行才能显示(记得重启SSH服务) <img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvxq4io3wqj30z807711c.jpg" alt=""> <img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvxq8rrhzzj30so03ot8t.jpg" alt=""></p>
+<p><table><tr><td bgcolor="red"><strong>登录后显示</strong> 欢迎信息:</td></tr></table> <code>/etc/motd</code> 不管是本地登录,还是远程登录,都可以显示此欢迎信息.直接写入此文件即可</p>
+<h1 id="正则表达式与通配符"><a href="#正则表达式与通配符" class="headerlink" title="正则表达式与通配符"></a>正则表达式与通配符</h1><p><li img="" src="lower-roman">正则表达式用来在文件中匹配符合条件的字符串,正则是<font color="red">包含匹配</font>。grep、awk、sed等命令可以支持正则表达式。</li></p>
+<p><li img="" src="lower-roman">通配符用来匹配符合条件的文件名，通配符是<font color="red">完全匹配</font>。ls、find、cp这些命令不支持正则表达式，所以只能使用shell自己的通配符来进行匹配。</li></p>
+<p><table><tr><th>元字符　　　</th><th>作用</th></tr><tr><td>*</td><td>前一个字符匹配0次或任意多次</td></tr><tr><td>.</td><td>匹配除了换行字符外任意一个字符</td></tr><tr><td>^</td><td>匹配行首。例如：^hello 会匹配以hello开头的行。</td></tr><tr><td>$</td><td>匹配行尾。例如：hello$ 会匹配以hello结尾的行</td></tr><tr><td>[]</td><td>匹配中括号中指定的任意一个字符，只匹配一个字符。例如：[aeiou]匹配任意一个元音字母，[0-9]匹配任意一位数字，[a-z][0-9]匹配小写字母和一位数字构成的两位字符</td></tr><tr><td>[^]</td><td>匹配除中括号的字符以外的任意一个字符。例如：[^0-9]匹配任意一位非数字字符，[^a-z]表示任意一位非小写字母。</td></tr><tr><td>\</td><td>转义符。用于取消将特殊符号的含义取消。</td></tr><tr><td>\{n\}</td><td>表示其前面的字符恰好出现n次。例如：[0-9]\{4\}匹配4为数字，[1][3-8][0-9]\{9\}匹配手机号码</td></tr><tr><td>\{n,\}</td><td>表示其前面的字符出现不小于n次。例如：[0-9]\{2,\}表示两位及以上的数字</td></tr><tr><td>\{n,m\}</td><td>表示其前面的字符至少出现n次，最多出现m次。例如：[a-z]\{6,8\}匹配6到8位的小写字母</td></tr></table></p>
+<p><table><tr><td bgcolor="#003153"><font color="36bf36"><code>*</code>前一个字符匹配0次，或任意多次<br><code>grep &quot;a*&quot; ceshi.txt</code> 匹配所有内容，包括空白行<br><code>grep &quot;aa*&quot; ceshi.txt</code> 匹配至少包含有一个a的行<br><code>grep &quot;aaa*&quot; ceshi.txt</code> 匹配最少包含两个连续a的字符串<br><code>grep &quot;aaaaa&quot; a.txt</code> 则会匹配最少包含四个连续的a的字符串</font><font color="00a15c"><br><code>.</code> 匹配除了换行符外任意一个字符<br><code>grep &quot;s..d&quot; a.txt</code> <code>s..d</code>会匹配s和d这两个字符之间一定有两个字符的单词<br><code>grep &quot;s.*d&quot; a.txt</code> 匹配在s和d字母之间有<strong>任意字符</strong><br><code>grep &quot;.*&quot; a.txt</code> <font color="red"><strong>匹配所有内容</strong></font></font><font color="8ce600"><br><code>^</code> 匹配行首，<code>$</code>匹配行尾<br><code>grep &quot;^M&quot; a.txt</code> 匹配以大写M开头的行<br><code>grep &quot;n$&quot; a.txt</code> 匹配以小写n结尾的行<br><code>grep -n &quot;^$&quot; a.txt</code> 会匹配空白行,-n 显示行号</font><font color="66ff59"><br><code>[]</code> 匹配中括号中指定的任意一个字符，只匹配一个字符<br><code>grep &quot;s[ao]id&quot; a.txt</code> 匹配s和i字母中，要么是a要么是o<br><code>gep &quot;[0-9]&quot; a.txt</code> 匹配任意一个数字<br><code>grep &quot;^[a-z] a.txt</code> 匹配用小写字母开头的行<br><code>grep &quot;^[a-z]&quot; a.txt</code> 匹配用小写字母开头的行 </font><font color="4de680"><br><code>^</code> 匹配除中括号的字符以外的任意一个字符<br><code>grep &quot;^[^a-z]&quot; a.txt</code> 匹配不用小写字母开头的行<br><code>grep &quot;^[^a-zA-Z]&quot; a.txt</code> 匹配不多字母开头的行</font><font color="de3163"><br><code>\</code> 转义符<br><code>grep &quot;\.$&quot; a.txt</code> 匹配使用<code>.</code>结尾的行</font><font color="ff8033"><br><code>\{n\}</code> 表示其前面的字符恰好出现n次<br><code>grep &quot;a\{3\}&quot; a.txt</code> 匹配a字母连续出现三次的字符串<br><code>grep &quot;[0-9]\{3\}&quot; a.txt</code> 匹配包含连续的三个数字的字符串</font><font color="dc143c"><br><code>{n,\}</code> 表示其前面的字符出现不小于n次<br><code>grep &quot;^[0-9]\{3,\}&quot; a.txt</code> 匹配最少用连续三个数字开头的行</font><font color="dda0dd"><br><code>\{n,m}</code> 匹配其前面的字符至少出现n次，最多出现m次<br><code>grep &quot;sa\{1,3\}i&quot; a.txt</code> 匹配在字母s和字母i之前有最少一个a,最多三个a</font><br></td></tr></table></p>
+<h1 id="字符截取命令"><a href="#字符截取命令" class="headerlink" title="字符截取命令"></a>字符截取命令</h1><p>cut 字段提取命令<br>printf 命令 (严格意义上讲他不属于字符截取命令，因为awk要用到，在这里提出)<br>awk 命令<br>sed 命令<br><code>cut [选项][文件名]</code> <font color="red"><br>-f 列号:</font> 提取第几列 <font color="red"><br>-d 分隔符:</font> 按照指定分隔符分割列.他的默认分隔符是Tab<br><code>cut -f &quot;:&quot; -f 1,3 /etc/passwd</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@Tiger data]# vim b.txt　　　　这里的空格是Tab键</span><br><span class="line">  1 ID      NAME    gender  mark</span><br><span class="line">  2 1       liming  M       86</span><br><span class="line">  3 2       sc      M       90</span><br><span class="line">  4 3       cao     M       83</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@Tiger data]# cut -f 2 b.txt</span><br><span class="line">NAME</span><br><span class="line">liming</span><br><span class="line">sc</span><br><span class="line">cao</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@Tiger data]# cut -f 2,4 b.txt </span><br><span class="line">NAME    mark</span><br><span class="line">liming  86</span><br><span class="line">sc      90</span><br><span class="line">cao     83</span><br></pre></td></tr></table></figure>
+<p><code>cat /etc/passwd | grep /bin/bash | grep -v root | cut -d &quot;:&quot; -f 1</code> 常和grep结合使用，查看用户文件，查找普通用户，过滤root，提取用户名称</p>
+<h2 id="cut命令的局限"><a href="#cut命令的局限" class="headerlink" title="cut命令的局限"></a>cut命令的局限</h2><p><code>df -h | grep /dev/sda3 | cut -d &quot; &quot; -f 5</code> df命令使用的是空格分隔符，这条命令不能使用，cut对空格使用不友好</p>
+<h2 id="printf-39-输出类型输出格式-39-输出内容"><a href="#printf-39-输出类型输出格式-39-输出内容" class="headerlink" title="printf &#39;输出类型输出格式&#39; 输出内容"></a>printf <code>&#39;输出类型输出格式&#39;</code> 输出内容</h2><p>输出类型:<br>%ns：输出字符串。n是数字指代输出几个字符<br>%ni：输出整数。n是数字指代输出几个数字<br>%m.nf：输出浮点数。m和n是数字，指代输出的整数位数和小数位数。如%8.2f代表共输出8位数，其中2是小数，6位是整数。</p>
+<p><table><tr><th>输出格式</th><th>作用</th></tr><tr><td>\a</td><td>输出警告音</td></tr><tr><td>\b</td><td>输出退格键，也就是Backspace键</td></tr><tr><td>\f</td><td>清除屏幕</td></tr><tr><td>\n</td><td>换行</td></tr><tr><td>\r</td><td>回车，也就是Enter键</td></tr><tr><td>\t</td><td>水平输出退格键，也就是Tab键</td></tr><tr><td>\v</td><td>垂直输出退格键，也就是Tab键</td></tr></table><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@Tiger data]# printf %s 1 2 3 4 5 6</span><br><span class="line">123456[root@Tiger data]# </span><br><span class="line">[root@Tiger data]# printf %s %s %s  1 2 3 4 5 6</span><br><span class="line">%s%s123456[root@Tiger data]# </span><br><span class="line">[root@Tiger data]# printf &apos;%s %s %s&apos; 1 2 3 4 5 6</span><br><span class="line">1 2 34 5 6[root@Tiger data]# </span><br><span class="line">[root@Tiger data]# printf &apos;%s %s %s\n&apos; 1 2 3 4 5 6</span><br><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">[root@Tiger data]#</span><br></pre></td></tr></table></figure></p>
+<p>printf输出文件内容格式：<code>printf &#39;%s\n&#39; $(cat a.txt)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@Tiger data]# printf &apos;%s\t %s\t %s\t %s\n&apos; $(cat b.txt) 调整格式输出</span><br><span class="line">ID       NAME    gender  mark</span><br><span class="line">1        liming  M       86</span><br><span class="line">2        sc      M       90</span><br><span class="line">3        cao     M       83</span><br><span class="line">[root@Tiger data]#</span><br></pre></td></tr></table></figure></p>
+<p><table><tr><td bgcolor="2f4f4f"><font color="#ffffff">在awk命令的输出中支持print和printf命令<br>print：print会在每个输出之后自动加入一个换行符(linux 默认没有print命令)<br>printf：printf是标准格式输出命令，并不会自动加入换行符，如果需要换行，需要手工换行符。</font></td></tr></table></p>
+<h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><p>awk ‘条件1{动作1} 条件2{动作2}…’ 文件名<br>条件：一般使用关系表达式作为条件<br>x &gt; 10 判断变量x是否大于10<br>x &gt;= 10 大于等于<br>x &lt;= 10 小于等于<br>动作：格式化输出<br>流程控制语句<br><code>df -h | awk &#39;{print $1 &quot;\t&quot; $5 &quot;\t&quot; $6}&#39;</code> print 自动加入换行符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@Tiger data]# df -h | grep sda3 | awk &apos;&#123;print $5&#125;&apos; | awk -F &apos;%&apos; &apos;&#123;print $1&#125;&apos;</span><br><span class="line">62</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@Tiger data]# df -h | grep sda3 | awk &apos;&#123;print $5&#125;&apos; | cut -d &quot;%&quot; -f 1</span><br><span class="line">62</span><br></pre></td></tr></table></figure>
+<p>BEGIN END<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">awk &apos;BEGIN &#123;printf &quot;打印这里的文字\n&quot;&#125;&#123;printf $2 &quot;\t&quot; $6 &quot;\n&quot;&#125;&apos; a.txt</span><br><span class="line">打印这里的文字</span><br><span class="line">NAME    gender</span><br><span class="line">liming  M</span><br><span class="line">sc      M</span><br><span class="line">cao     M</span><br></pre></td></tr></table></figure></p>
+<p><code>awk &#39;{FS=&quot;:&quot;}{print $1 &quot;\t&quot; $3}&#39; /etc/passwd</code> 这样执行的话第一条会无法分割，所以可以在<code>awk &#39;BEGIN{FS=&quot;:&quot;}{print $1 &quot;\t&quot; $3}&#39; /etc/passwd</code>, awk是先读取一行在再执行命令，这样文件的第一行会来不及执行默认空格换行打印出。But但是可以直接用<code>awk -F &quot;:&quot; &#39;{print $2 &quot;\t&quot; $3}&#39; /etc/passwd</code><br><code>awk -F &quot;:&quot; &#39;END{print &quot;所有的命令执行完以后再执行&quot;&quot;}{print $2 &quot;\t&quot; $3}&#39; /etc/passwd</code><br>关系运算符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@Tiger data]# cat b.txt</span><br><span class="line">ID      NAME    gender  mark</span><br><span class="line">1       liming  M       86</span><br><span class="line">2       sc      M       90</span><br><span class="line">3       cao     M       83</span><br><span class="line">[root@Tiger data]# cat b.txt | grep -v NAME | awk &apos;$3 &gt;= 87 &#123;print $2&#125;&apos; </span><br><span class="line">liming</span><br><span class="line">sc</span><br><span class="line">cao</span><br><span class="line">[root@Tiger data]#</span><br></pre></td></tr></table></figure></p>
+<h1 id="shell就是linux的命令解释器。"><a href="#shell就是linux的命令解释器。" class="headerlink" title="shell就是linux的命令解释器。"></a>shell就是linux的命令解释器。</h1><p>在/etc/passwd当中，除了标准Shell是<font color="red">/bin/bash</font>之外，还可以写如<font color="red">/sbin/nologin</font>。  <font color="FF6347"><br>脚本执行</font>：  </p>
+<ol>
+<li>赋予脚本权限，直接运行  <font color="blue"><br>chmod 755 hello.sh<br>./hello.sh </font>   </li>
+<li>通过bash调用执行脚本  <font color="blue"><br>bash hello.sh</font>.</li>
+</ol>
+<style type="text/css"> 
+body{
+background-image:url(https://ws1.sinaimg.cn/large/005RRiqRly1fvyygdfzt6j31hc0u0138.jpg);
+background-position:center;           
+background-repeat:repeat-y；
+}
+</style>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://ws1.sinaimg.cn/large/005RRiqRly1fuqy8icvm0j30u715f0vw.jpg" alt="Tiger WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://ws1.sinaimg.cn/large/005RRiqRly1fuqy8j266dj30q913t444.jpg" alt="Tiger Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Tiger</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="http://yoursite.com/2018/08/28/linux document/" title="Document">http://yoursite.com/2018/08/28/linux document/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux-Document/" rel="tag"><i class="fa fa-tag"></i> linux Document -</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/28/linux command/" rel="next" title="linux">
+                <i class="fa fa-chevron-left"></i> linux
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/28/前言/" rel="prev" title="ghost">
+                ghost <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://ws1.sinaimg.cn/large/005RRiqRly1fuqjz5z6kcj309q0b40tb.jpg"
+                alt="Tiger" />
+            
+              <p class="site-author-name" itemprop="name">Tiger</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+<div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div id="myCanvasContainer" class="widget tagcloud">
+        <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-command/">Linux command</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-Document/">linux Document -</a><span class="tag-list-count">1</span></li></ul>
+        </canvas>
+    </div>
+</div>
+
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:panxiaotiger@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://youtube.com/" target="_blank" title="YouTube"><i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://instagram.com/panxiaotiger" target="_blank" title="Instagram"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://music.163.com/#/user/home?id=113656157" title="music" target="_blank">music</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用户和用户组管理"><span class="nav-number">1.</span> <span class="nav-text">用户和用户组管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#etc-passwd-用户信息文件"><span class="nav-number">1.1.</span> <span class="nav-text">/etc/passwd:用户信息文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#影子文件-etc-shadow"><span class="nav-number">1.2.</span> <span class="nav-text">影子文件:/etc/shadow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组信息文件-etc-group"><span class="nav-number">1.3.</span> <span class="nav-text">组信息文件/etc/group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组密码文件-etc-gshadow"><span class="nav-number">1.4.</span> <span class="nav-text">组密码文件/etc/gshadow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户的家目录"><span class="nav-number">1.5.</span> <span class="nav-text">用户的家目录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux的特殊权限"><span class="nav-number">2.</span> <span class="nav-text">linux的特殊权限</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SUID"><span class="nav-number">2.1.</span> <span class="nav-text">SUID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SGID"><span class="nav-number">2.2.</span> <span class="nav-text">SGID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#STICKY"><span class="nav-number">2.3.</span> <span class="nav-text">STICKY</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#facl"><span class="nav-number">3.</span> <span class="nav-text">facl</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件系统属性chattr权限"><span class="nav-number">4.</span> <span class="nav-text">文件系统属性chattr权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sudo权限"><span class="nav-number">5.</span> <span class="nav-text">sudo权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux下查看帮助命令"><span class="nav-number">6.</span> <span class="nav-text">linux下查看帮助命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux根目录结构和文件系统"><span class="nav-number">7.</span> <span class="nav-text">linux根目录结构和文件系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多命令顺序执行"><span class="nav-number">8.</span> <span class="nav-text">多命令顺序执行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通配符"><span class="nav-number">9.</span> <span class="nav-text">通配符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash中其他特殊符号"><span class="nav-number">9.1.</span> <span class="nav-text">Bash中其他特殊符号</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bash-变量"><span class="nav-number">10.</span> <span class="nav-text">Bash 变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的分类"><span class="nav-number">10.1.</span> <span class="nav-text">变量的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地变量"><span class="nav-number">10.2.</span> <span class="nav-text">本地变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量"><span class="nav-number">10.3.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统常见环境变量"><span class="nav-number">10.4.</span> <span class="nav-text">系统常见环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ps1-定义系统提示符的变量："><span class="nav-number">10.5.</span> <span class="nav-text">ps1:定义系统提示符的变量：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置参数变量"><span class="nav-number">10.6.</span> <span class="nav-text">位置参数变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预定义变量"><span class="nav-number">10.7.</span> <span class="nav-text">预定义变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接受键盘输入"><span class="nav-number">10.8.</span> <span class="nav-text">接受键盘输入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数值运算与运算符"><span class="nav-number">11.</span> <span class="nav-text">数值运算与运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运算优先级-优先级从上到下"><span class="nav-number">11.1.</span> <span class="nav-text">运算优先级 优先级从上到下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量测试与内容替换"><span class="nav-number">11.2.</span> <span class="nav-text">变量测试与内容替换</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境变量配置文件"><span class="nav-number">12.</span> <span class="nav-text">环境变量配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#其他的配置文件和登录信息"><span class="nav-number">12.1.</span> <span class="nav-text">其他的配置文件和登录信息</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正则表达式与通配符"><span class="nav-number">13.</span> <span class="nav-text">正则表达式与通配符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符截取命令"><span class="nav-number">14.</span> <span class="nav-text">字符截取命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cut命令的局限"><span class="nav-number">14.1.</span> <span class="nav-text">cut命令的局限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#printf-39-输出类型输出格式-39-输出内容"><span class="nav-number">14.2.</span> <span class="nav-text">printf &#39;输出类型输出格式&#39; 输出内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk"><span class="nav-number">14.3.</span> <span class="nav-text">awk</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shell就是linux的命令解释器。"><span class="nav-number">15.</span> <span class="nav-text">shell就是linux的命令解释器。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tiger</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.4.0</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共19.8k字</span>
+</div>
+
+<div id="days"></div>
+</script>
+<script language="javascript">
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("09/02/2018 02:11:00");//月，日，年，小时，分钟，秒
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+// span_dt_dt.innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="Total Visitors">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="Total Views">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'OSdVe8DIEP8hGQHk01ktuvca-gzGzoHsz',
+        appKey: 'KqV97J1jQqvbF0Y6rh8SU3uo',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+
+</body>
+</html>
