@@ -170,7 +170,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/005Kjut6ly1fsvuo87p5yj30tp0a8wgg.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1ftrx28ccnej30zu0kt785.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1ftrv247yg5j30yi0me41d.jpg">
-<meta property="og:updated_time" content="2018-10-14T03:10:36.887Z">
+<meta property="og:updated_time" content="2018-10-20T08:10:23.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux">
 <meta name="twitter:description" content="linux 常用命令集合:">
@@ -445,7 +445,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-10-14 11:10:36" itemprop="dateModified" datetime="2018-10-14T11:10:36+08:00">2018-10-14</time>
+                <time title="Modified: 2018-10-20 16:10:23" itemprop="dateModified" datetime="2018-10-20T16:10:23+08:00">2018-10-20</time>
               
             
           </span>
@@ -619,7 +619,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <li>把定义好的功能选项和检测系统环境的信息都写入Makefile文件，用于后续的编辑。<br><strong>./configure –prefix=/usr/local/apache2</strong>安装路径<br>详情参考<font color="blue">INSTALL</font>  <h2 id="源码包的卸载："><a href="#源码包的卸载：" class="headerlink" title="源码包的卸载："></a>源码包的卸载：</h2>不需要卸载命令，直接删除安装目录即可，不会遗留任何垃圾文件。  <h3 id="脚本安装包："><a href="#脚本安装包：" class="headerlink" title="脚本安装包："></a>脚本安装包：</h3>脚本安装包并不是独立的软件包类型，常见安装的是源码包。<br>是人们把安装过程写成了自动安装的脚本，只要执行脚本，定义简单的参数，就可以完成安装。<br>非常类似于Windows下软件的安装方式。</li>
 </ol>
 <h1 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h1><p>能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软体包，无须繁琐地一次次下载、安装。<font color="red"><br>remove </font>:删除指定的rpm软件包；  yum -y remove 软件包名<br>yum update +包名 :<font color="red">升级。</font><font color="red">       <strong>禁用</strong></font><br>yum grouplist:列出所有可用的软件组列表；<br>yum groupinstall 软件组名:安装指定的软件组，组名可以由goruplist查询出来；<br>yum groupremove:卸载指定软件组；  </p>
-<p><pre><font size="4">配置yum仓库:<br>  [base]<br>  name=centos<br>  baseurl=file:///mnt/<br>  enabled=1<br>  gpgcheck=0 </font></pre>. </p>
+<p><pre><font size="4">配置yum仓库:<br>  [base]<br>  name=centos<br>  baseurl=file:///mnt/<br>  enabled=1<br>  gpgcheck=0 </font></pre><br><code>yum clean all</code> 清除缓存，使最新的yum配置生效。<br><code>yum list</code> 列出所有可安装的软件包列表，包含已安装和未安装的</p>
 <h1 id="head"><a href="#head" class="headerlink" title="head"></a>head</h1><p>head 用来显示档案的开头至标准输出中,默认head命令打印其相应文件的开头10行 <font color="red"><br>-n</font>:显示文件的前n行 <code>head -n 5 a.txt 显示文件的前5行</code>  <font color="red"><br>-c</font>显示文件前n个字节 <code>&gt;head -c 20 a.txt</code> <font color="blue"><br>head -c <font color="red">-32</font> log2014.log文件的除了最后n个字节以外的内容<br>head -n <font color="red">-6</font> log2014.log 输出文件除了最后n行的全部内容 </font>.</p>
 <h1 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h1><p>主要用来从指定点开始将文件写到标准输出。很多人喜欢使用tail -f 来监控日志文件。  <font color="red"><br>-f</font>该参数用于监视文件的增长  <code>tail -f filename</code><br>监视filename文件的尾部内容（默认10行，相当于增加参数 -n 10），刷新显示在屏幕上。退出，按下CTRL+C。  <font color="red"><br>-n</font>从指定行位置读取指定文件。 <code>tail -n 20 filename 显示filename最后20行</code>  <font color="red"><br>-c</font>显示文件最后n个字节 <code>tail -c 20 a.txt</code></p>
 <h1 id="chmod"><a href="#chmod" class="headerlink" title="chmod 　　"></a>chmod 　　</h1><p>chmod命令用来变更文件或目录的权限，文件或目录权限的控制分别以读取、写入、执行3种一般权限来区分，另有3种特殊权限可供运用，设置方式采用文字或数字代号皆可。符号连接的权限无法变更，如果用户对符号连接修改权限，其改变会作用在被连接的原始文件  <font color="red"><br>-f </font>:若该文件权限无法被更改也不要显示错误讯息  <font color="red"><br>-R </font>:对目前目录下的所有文件与子目录进行相同的权限变更(即以递回的方式逐个变更)<br>r=读取属性 值＝4　　w=写入属性 值＝2　　x=执行属性 值＝1 </p>
@@ -642,7 +642,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <h1 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h1><p><font color="red">-c</font>: 建立压缩档案　  <font color="red"><br>-x</font>：解压  <font color="red"><br>-t</font>：查看内容  <font color="red"><br>-r</font>：向压缩归档文件末尾追加文件  <font color="red"><br>-u</font>：更新原压缩包中的文件  </p>
 <p><pre>这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的</pre>  <font color="blue">tar <font color="red">cf</font> file.tar files 将一个或多个文件、目录打包到tar包。<br>tar <font color="red">rf</font> file.tar file 将文件file添加到tar包中。<br>tar <font color="red">uf</font> file.tar file 将文件file更新tar包中相应的文件。<br>tar <font color="red">tf</font> file.tar 查看tar内容。<br>tar <font color="red">xf</font> file.tar 解压tar包。  </font>   <font color="red"><br>-z</font>:有gzip属性,即需要用 gzip 压缩  <font color="red"><br>-j</font>:有bz2属性,即需要用 bzip2 压缩   <font color="red"><br>-v</font>:显示处理过程   <font color="red"><br>-C</font>:指定解压输出目录 <font color="blue">tar zxvf test.tar.gz -C test</font><br><strong><font color="red">-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名</font></strong>  <font color="red"><br>-Z</font>：有compress属性的  <font color="red"><br>-O</font>：将文件解开到标准输出   <font color="blue"><br>格式：tar Zcf file.tar.Z files  将一个或多个文件、目录压缩到file.tar.Z中。需要安装了ncompress软件包才行。<br>解压.tar.Z文件。格式：tar Zxf file.tar.Z　  </font><br>归档并压缩：使用时间格式打包数据：<br><code>tar zcf etc-$(date +%F).tar.gz /etc</code>  　　tar zcf etc-`date +%F`.tar.gz /etc </p>
 <h2 id="tar-gz"><a href="#tar-gz" class="headerlink" title="*.tar.gz"></a>*.tar.gz</h2><p>归档并调用gzip压缩　tar <font color="red">-zcf</font> 新文件名.tar.gz /etc/passwd /var/log/messagages<br>调用gzip解压缩并展开归档　tar <font color="red">-zxvf</font> filename.tar.gz </p>
-<h2 id="tar-bz2"><a href="#tar-bz2" class="headerlink" title="*.tar.bz2"></a>*.tar.bz2</h2><p>归档并调用bzip2压缩　tar <font color="red">-jcf</font> 新文件名.tar.bz2 /etc/passwd /var/log/messages<br>调用bzip解压缩并展开归档　tar <font color="red">-jxf</font> filename.tar.bz2</p>
+<h2 id="tar-bz2"><a href="#tar-bz2" class="headerlink" title="*.tar.bz2"></a>*.tar.bz2</h2><p>归档并调用bzip2压缩　tar <font color="red">-jcf</font> 新文件名.tar.bz2 /etc/passwd /var/log/messages<br>调用bzip解压缩并展开归档　tar <font color="red">-jxf</font> filename.tar.bz2<br>不解压缩查看：<code>tar -tvf home_2018-10-14.tar.gz</code>  </p>
 <h1 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h1><p>其方法是先建立一个包括系统内所有档案名称及路径的数据库，之后当寻找时就只需查询这个数据库，而不必实际深入档案系统之中了。 所以你要知道：  <font color="#00BFFF"><br>locate的速度比find快，因为它并不是真的查找文件，而是查数据库<br>locate的查找并不是实时的，而是以数据库的更新为准，一般是系统自己维护<br>升级数据库命令：<code>locate -- u</code> </font><br>CentOS系统找不到locate命令，原因是系统中没有安装<font color="red"> mlocate </font>这个包，然后更新数据库:<font color="red"> updatedb </font>   <font color="red"><br>-c </font>:只显示找到条目的号码  <font color="red"><br>-b </font>:匹配唯一的路径名称的基本文件名  <font color="red"><br>-r </font>:基于基本正则表达式进行匹配操作</p>
 <h1 id="find"><a href="#find" class="headerlink" title="find"></a>find</h1><p><pre>实时查找工具，通过遍历指定起始路径下文件系统层级结构完成文件查找：</pre></p>
 <h2 id="根据文件名查找："><a href="#根据文件名查找：" class="headerlink" title="根据文件名查找："></a>根据文件名查找：</h2><p><font color="red"> -name </font> “pattern”  <font color="red"><br>-iname </font> “pattern” 支持glob风格的通配符: <code>\*,?,[],[^]</code> i忽略大小写  <font color="red"><br>-regex pattern </font>:基于正则表达式查找文件，匹配整个路径而非其名；  </p>
@@ -820,14 +820,18 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/08/28/document/" rel="next" title="linux">
+                <i class="fa fa-chevron-left"></i> linux
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/28/document/" rel="prev" title="linux">
-                linux <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/28/创建博客/" rel="prev" title="建立博客">
+                建立博客 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1064,7 +1068,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共21.8k字</span>
+  <span class="post-count">博客全站共23.0k字</span>
 </div>
 
 <div id="days"></div>
