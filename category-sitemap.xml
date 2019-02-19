@@ -14,13 +14,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/life/</loc>
-        <lastmod>2018-10-20T08:03:54.596Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/Linux-command/</loc>
         <lastmod>2018-10-20T08:10:23.535Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -30,6 +23,13 @@
     <url>
         <loc>http://yoursite.com/categories/linux-Document/</loc>
         <lastmod>2018-12-02T06:22:32.026Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/life/</loc>
+        <lastmod>2019-01-02T14:13:18.489Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
