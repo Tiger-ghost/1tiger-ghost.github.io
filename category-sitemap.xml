@@ -8,28 +8,21 @@
 
     <url>
         <loc>http://yoursite.com/categories/blog/</loc>
-        <lastmod>2018-10-07T13:27:37.766Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Linux-command/</loc>
-        <lastmod>2018-10-20T08:10:23.535Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/linux-Document/</loc>
-        <lastmod>2018-12-02T06:22:32.026Z</lastmod>
+        <lastmod>2019-04-29T03:14:10.809Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/categories/life/</loc>
-        <lastmod>2019-01-02T14:13:18.489Z</lastmod>
+        <lastmod>2019-04-30T09:30:08.048Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/linux/</loc>
+        <lastmod>2019-04-30T09:37:20.042Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
