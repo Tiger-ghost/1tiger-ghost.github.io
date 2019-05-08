@@ -154,12 +154,11 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
   <meta name="description" content="Linux 文档">
 <meta name="keywords" content="Document">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux">
+<meta property="og:title" content="document">
 <meta property="og:url" content="http://yoursite.com/2018/08/28/document/index.html">
 <meta property="og:site_name" content="Tiger-ghost">
 <meta property="og:description" content="Linux 文档">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvyy9p2c1vj31hc0u0406.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fu69jv3zkqj30mm0d8tac.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fu6b4yptk4j30mv0dn0uq.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvpljquenhj30fh0gz3zp.jpg">
@@ -174,11 +173,11 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvxq8rrhzzj30so03ot8t.jpg">
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/07/iT5eJA.png">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fxklfj6e6wj31fk0k6q86.jpg">
-<meta property="og:updated_time" content="2019-04-29T03:18:44.995Z">
+<meta property="og:updated_time" content="2019-05-06T06:09:07.983Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux">
+<meta name="twitter:title" content="document">
 <meta name="twitter:description" content="Linux 文档">
-<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fvyy9p2c1vj31hc0u0406.jpg">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/005RRiqRly1fu69jv3zkqj30mm0d8tac.jpg">
 
 
 
@@ -197,7 +196,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
   };
 </script>
 
-  <title>linux | Tiger-ghost</title>
+  <title>document | Tiger-ghost</title>
   
 
 
@@ -260,6 +259,10 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
+      
+        <p class="site-subtitle">This is a memory</p>
+      
     
   </div>
 
@@ -393,8 +396,8 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/28/document/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tiger">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="panxiaohu">
+      <meta itemprop="description" content="I love you">
       <meta itemprop="image" content="/../images/head-portrait.jpg">
     </span>
 
@@ -407,7 +410,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
         
         
-          <h1 class="post-title" itemprop="name headline">linux
+          <h1 class="post-title" itemprop="name headline">document
               
             
           </h1>
@@ -449,7 +452,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-29 11:18:44" itemprop="dateModified" datetime="2019-04-29T11:18:44+08:00">2019-04-29</time>
+                <time title="Modified: 2019-05-06 14:09:07" itemprop="dateModified" datetime="2019-05-06T14:09:07+08:00">2019-05-06</time>
               
             
           </span>
@@ -520,7 +523,9 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
       
 
       
-        <p><center><font face="FZShuTi">Linux 文档</font></center><br><img src="https://ws1.sinaimg.cn/large/005RRiqRly1fvyy9p2c1vj31hc0u0406.jpg" alt=""><br><a id="more"></a></p>
+        <center><font face="FZShuTi">Linux 文档</font></center>
+
+<a id="more"></a>
 <h1 id="用户和用户组管理"><a href="#用户和用户组管理" class="headerlink" title="用户和用户组管理"></a>用户和用户组管理</h1><h2 id="etc-passwd-用户信息文件"><a href="#etc-passwd-用户信息文件" class="headerlink" title="/etc/passwd:用户信息文件"></a>/etc/passwd:用户信息文件</h2><p><strong><code>user1:x:500:500::/home/user1:/bin/bash</code></strong><br>第一字段:用户名称；<br>第二字段:密码标志；<br>第三字段:UID(用户ID)；<br>　0：超级用户；<br>　1-499：系统用户(伪用户)；<br>　500-65535:普通用户；<br>第4字段：GID(用户初始组ID)<br>第5字段：用户说明<br>第6字段：家目录<br>　普通用户：/home/用户名/<br>　超级用户：/root/<br>第7字段：登录之后的Shell  </p>
 <h2 id="影子文件-etc-shadow"><a href="#影子文件-etc-shadow" class="headerlink" title="影子文件:/etc/shadow"></a>影子文件:<font color="blue">/etc/shadow</font></h2><p>第1字段：用户名<br>第2字符：加密密码<br>　加密算法升级为SHA512散列加密算法<br>　如果密码位是“ ！”或“ * ”代表没有密码，不能登录。<br>第3字段：密码最后一次修改日期：使用1970年1月1号作为标准时间，每过一天时间戳加1。<br>第4字段：两次密码的修改间隔时间(和第3字段相比)间隔多少时间后才可以修改密码。<br>第5字段：密码有效期(和第3字段相比)<br>第6字段：密码修改到期前的警告天数(和第5字段相比)<br>第7字段：密码过期后的宽限天数(和第5字段相比)<br>　0：代表密码过期后立即失效。<br>　-1：则代表密码永远不会失效。<br>第8字段：账号失效时间，要用时间戳表示<br>第9字段：保留<br>把时间戳换算为日期：<br><code>date -d &quot;1970-01-01 17740 days&quot;</code><br>把日期换算为时间戳：<br><code>echo $(($(date --date=&quot;2018/07/28&quot; +%s)/86400+1))</code></p>
 <h2 id="组信息文件-etc-group"><a href="#组信息文件-etc-group" class="headerlink" title="组信息文件/etc/group"></a>组信息文件/etc/group</h2><p>第一字段：组名<br>第二字段：组密码标志<br>第三字段：GID<br>第四字段：组中附加用户  </p>
@@ -738,14 +743,14 @@ background-repeat:repeat-y；
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="https://s2.ax1x.com/2019/04/29/E1FABt.jpg" alt="Tiger WeChat Pay"/>
+        <img id="wechat_qr" src="https://s2.ax1x.com/2019/04/29/E1FABt.jpg" alt="panxiaohu WeChat Pay"/>
         <p>WeChat Pay</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="https://s2.ax1x.com/2019/04/29/E1FZAf.jpg" alt="Tiger Alipay"/>
+        <img id="alipay_qr" src="https://s2.ax1x.com/2019/04/29/E1FZAf.jpg" alt="panxiaohu Alipay"/>
         <p>Alipay</p>
       </div>
     
@@ -762,10 +767,10 @@ background-repeat:repeat-y；
       <div>
         <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>Post author:  </strong>Tiger</li>
+    <strong>Post author:  </strong>panxiaohu</li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="http://yoursite.com/2018/08/28/document/" title="linux">http://yoursite.com/2018/08/28/document/</a>
+    <a href="http://yoursite.com/2018/08/28/document/" title="document">http://yoursite.com/2018/08/28/document/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
@@ -791,14 +796,18 @@ background-repeat:repeat-y；
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/08/28/linux command/" rel="next" title="command">
+                <i class="fa fa-chevron-left"></i> command
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/28/linux command/" rel="prev" title="command">
-                command <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/28/马哥笔记/" rel="prev" title="mage">
+                mage <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -863,10 +872,10 @@ background-repeat:repeat-y；
             
               <img class="site-author-image" itemprop="image"
                 src="/../images/head-portrait.jpg"
-                alt="Tiger" />
+                alt="panxiaohu" />
             
-              <p class="site-author-name" itemprop="name">Tiger</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-author-name" itemprop="name">panxiaohu</p>
+              <p class="site-description motion-element" itemprop="description">I love you</p>
           </div>
 
           
@@ -876,7 +885,7 @@ background-repeat:repeat-y；
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -908,7 +917,7 @@ background-repeat:repeat-y；
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -1017,7 +1026,7 @@ background-repeat:repeat-y；
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Tiger</span>
+  <span class="author" itemprop="copyrightHolder">panxiaohu</span>
 
   
 
@@ -1042,7 +1051,7 @@ background-repeat:repeat-y；
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共29.3k字</span>
+  <span class="post-count">博客全站共33.2k字</span>
 </div>
 
 <div id="days"></div>
