@@ -2,13 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>http://yoursite.com/tags/Document/</loc>
-        <lastmod>2019-05-07T06:21:52.334Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/life/</loc>
         <lastmod>2019-05-07T07:20:10.083Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -24,7 +17,14 @@
 
     <url>
         <loc>http://yoursite.com/tags/command/</loc>
-        <lastmod>2019-05-08T14:55:14.021Z</lastmod>
+        <lastmod>2019-05-10T03:04:53.458Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Document/</loc>
+        <lastmod>2019-05-10T07:41:49.211Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
