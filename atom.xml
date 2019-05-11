@@ -61,28 +61,6 @@
   </entry>
   
   <entry>
-    <title>test</title>
-    <link href="http://yoursite.com/2018/08/28/%E7%BB%83%E4%B9%A0%E9%A2%98/"/>
-    <id>http://yoursite.com/2018/08/28/练习题/</id>
-    <published>2018-08-28T09:28:03.000Z</published>
-    <updated>2019-05-10T17:40:44.396Z</updated>
-    
-    <content type="html"><![CDATA[<p><center><font face="FZShuTi">题目归档</font></center><br><a id="more"></a></p><h1 id="第二周"><a href="#第二周" class="headerlink" title="第二周"></a>第二周</h1><ol><li><p>描述linux目录结构以及目录结构命名规定<br>所有的目录都是按照一定的类别有规律的组织和命名的.FHS（目录层次结构）是Linux的目录规范标准.不要使用特殊字符来命令目录名。和glob字符或许会有冲突<br>FHS（目录层次结构）: <a href="http://www.pathname.com/fhs/" target="_blank" rel="noopener">http://www.pathname.com/fhs/</a><br>总结流程图:<a href="http://naotu.baidu.com/file/90bbd454b261551260c4e75ca6564f0d" target="_blank" rel="noopener">http://naotu.baidu.com/file/90bbd454b261551260c4e75ca6564f0d</a></p></li><li><p>显示/etc目录下，所有以.d结尾的文件或目录<br><code>ls -d /etc/*.d</code> <font color="red">-d</font> 只显示当前文件夹</p></li><li><p>显示/etc目录下，所有.conf结尾，且以m,n,r,p开头的文件或目录<br><code>ls /etc/[mnrp]*.conf</code></p></li><li><p>创建/app/rootdir目录，并复制/root下所有文件到该目录内， 要求保留原有权限</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 /]# mkdir -p /app/rootdir</span><br><span class="line">[root@centos7 /]# cp -a /root/ !$</span><br><span class="line">cp -a /root/ /app/rootdir</span><br><span class="line">[root@centos7 /]# ls /app/rootdir/</span><br><span class="line">root</span><br></pre></td></tr></table></figure></li><li><p>使用命令行展开功能，创建/tmp/a1, /tmp/a2, /tmp/a1/a, /tmp/a1/b，在/tmp目录下创建目录：x_y, x_z, q_y, q_z<br><code>mkdir {x,q}_{y,z}</code></p></li><li><p>总结用户、用户组管理命令并演示命令以及常见用法<br>useradd 创建用户 <font color="red"> <a href="http://holyghost.me/2018/08/28/linux%20command/" target="_blank" rel="noopener">http://holyghost.me/2018/08/28/linux%20command/</a><br>-u</font> 指定UID <font color="red"><br>-g</font> 指定所属组或gid <font color="red"><br>-c</font> “文字” 用户的注释信息 <font color="red"><br>-d</font> 指定家目录 <font color="red"><br>-s</font> 指定用户的默认登录的shell,可用列表在/etc/shells文件中 <font color="red"><br>-G</font> 指定用户的附加组，要先创建<br><code>useradd -u 678 -g pan -c &quot;测试&quot; -d /data -s /bin/sh aaa</code><br>userdel -r username 删除用户及所属的家目录和邮件<br>groups username 显示linux用户所属的组<br>groupadd groupname 创建组<br><code>usermod -g root username</code>将用户username的组修改为root组<br><code>usermod -a -G</code>-a -G 无限增加到附加组，可拥有多个附加组.将a1添加附加组user3 usermod -a -G user3 a1</p><pre>某一用户拥有多个附加组之后，使用usemod -G会修改附加组，则多个组消失掉变成唯一当前修改的附加组</pre></li><li><p>文件权限，属主属组管理命令有哪些，并演示命令以及用法<br>chmod 更改文件权限：<code>chmod 777 a</code>  <a href="http://holyghost.me/2018/08/28/linux%20command/" target="_blank" rel="noopener">http://holyghost.me/2018/08/28/linux%20command/</a><br>chown 更改文件拥有者和所属组：<code>chown USER:GROUP 对象</code>  <code>chown USER 对象</code>　<code>chown :group 对象</code><br>chgrp 改变文件或目录所属的组: chgrp - R book /opt/local /book 改变/opt/local /book/及其子目录下的所有文件的属组为book</p></li><li>创建用户gentoo，附加组为bin和root，默认shell为/bin/csh，注释信息为 “Gentoo Distribution”<br><code>useradd  -G bin,root -s /bin/sh -c &quot;Gentoo Distribution&quot;  gentoo</code></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;center&gt;&lt;font face=&quot;FZShuTi&quot;&gt;题目归档&lt;/font&gt;&lt;/center&gt;&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="write" scheme="http://yoursite.com/categories/write/"/>
-    
-    
-      <category term="note" scheme="http://yoursite.com/tags/note/"/>
-    
-  </entry>
-  
-  <entry>
     <title>style</title>
     <link href="http://yoursite.com/2018/08/28/%E6%A0%B7%E5%BC%8F/"/>
     <id>http://yoursite.com/2018/08/28/样式/</id>
@@ -94,6 +72,28 @@
     <summary type="html">
     
       &lt;p&gt;&lt;center&gt;&lt;font face=&quot;FZShuTi&quot;&gt;本文章写作样式 &lt;/font&gt;&lt;/center&gt;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="write" scheme="http://yoursite.com/categories/write/"/>
+    
+    
+      <category term="note" scheme="http://yoursite.com/tags/note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test</title>
+    <link href="http://yoursite.com/2018/08/28/%E7%BB%83%E4%B9%A0%E9%A2%98/"/>
+    <id>http://yoursite.com/2018/08/28/练习题/</id>
+    <published>2018-08-28T09:28:03.000Z</published>
+    <updated>2019-05-10T17:40:44.396Z</updated>
+    
+    <content type="html"><![CDATA[<p><center><font face="FZShuTi">题目归档</font></center><br><a id="more"></a></p><h1 id="第二周"><a href="#第二周" class="headerlink" title="第二周"></a>第二周</h1><ol><li><p>描述linux目录结构以及目录结构命名规定<br>所有的目录都是按照一定的类别有规律的组织和命名的.FHS（目录层次结构）是Linux的目录规范标准.不要使用特殊字符来命令目录名。和glob字符或许会有冲突<br>FHS（目录层次结构）: <a href="http://www.pathname.com/fhs/" target="_blank" rel="noopener">http://www.pathname.com/fhs/</a><br>总结流程图:<a href="http://naotu.baidu.com/file/90bbd454b261551260c4e75ca6564f0d" target="_blank" rel="noopener">http://naotu.baidu.com/file/90bbd454b261551260c4e75ca6564f0d</a></p></li><li><p>显示/etc目录下，所有以.d结尾的文件或目录<br><code>ls -d /etc/*.d</code> <font color="red">-d</font> 只显示当前文件夹</p></li><li><p>显示/etc目录下，所有.conf结尾，且以m,n,r,p开头的文件或目录<br><code>ls /etc/[mnrp]*.conf</code></p></li><li><p>创建/app/rootdir目录，并复制/root下所有文件到该目录内， 要求保留原有权限</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 /]# mkdir -p /app/rootdir</span><br><span class="line">[root@centos7 /]# cp -a /root/ !$</span><br><span class="line">cp -a /root/ /app/rootdir</span><br><span class="line">[root@centos7 /]# ls /app/rootdir/</span><br><span class="line">root</span><br></pre></td></tr></table></figure></li><li><p>使用命令行展开功能，创建/tmp/a1, /tmp/a2, /tmp/a1/a, /tmp/a1/b，在/tmp目录下创建目录：x_y, x_z, q_y, q_z<br><code>mkdir {x,q}_{y,z}</code></p></li><li><p>总结用户、用户组管理命令并演示命令以及常见用法<br>useradd 创建用户 <font color="red"> <a href="http://holyghost.me/2018/08/28/linux%20command/" target="_blank" rel="noopener">http://holyghost.me/2018/08/28/linux%20command/</a><br>-u</font> 指定UID <font color="red"><br>-g</font> 指定所属组或gid <font color="red"><br>-c</font> “文字” 用户的注释信息 <font color="red"><br>-d</font> 指定家目录 <font color="red"><br>-s</font> 指定用户的默认登录的shell,可用列表在/etc/shells文件中 <font color="red"><br>-G</font> 指定用户的附加组，要先创建<br><code>useradd -u 678 -g pan -c &quot;测试&quot; -d /data -s /bin/sh aaa</code><br>userdel -r username 删除用户及所属的家目录和邮件<br>groups username 显示linux用户所属的组<br>groupadd groupname 创建组<br><code>usermod -g root username</code>将用户username的组修改为root组<br><code>usermod -a -G</code>-a -G 无限增加到附加组，可拥有多个附加组.将a1添加附加组user3 usermod -a -G user3 a1</p><pre>某一用户拥有多个附加组之后，使用usemod -G会修改附加组，则多个组消失掉变成唯一当前修改的附加组</pre></li><li><p>文件权限，属主属组管理命令有哪些，并演示命令以及用法<br>chmod 更改文件权限：<code>chmod 777 a</code>  <a href="http://holyghost.me/2018/08/28/linux%20command/" target="_blank" rel="noopener">http://holyghost.me/2018/08/28/linux%20command/</a><br>chown 更改文件拥有者和所属组：<code>chown USER:GROUP 对象</code>  <code>chown USER 对象</code>　<code>chown :group 对象</code><br>chgrp 改变文件或目录所属的组: chgrp - R book /opt/local /book 改变/opt/local /book/及其子目录下的所有文件的属组为book</p></li><li>创建用户gentoo，附加组为bin和root，默认shell为/bin/csh，注释信息为 “Gentoo Distribution”<br><code>useradd  -G bin,root -s /bin/sh -c &quot;Gentoo Distribution&quot;  gentoo</code></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;center&gt;&lt;font face=&quot;FZShuTi&quot;&gt;题目归档&lt;/font&gt;&lt;/center&gt;&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
