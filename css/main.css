@@ -2000,7 +2000,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #73f987;
+  background: #75810a;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3312,10 +3312,10 @@ code {
 }
 .highlight,
 pre {
-  margin: 5px 0;
+  margin: 3px 0;
   padding: 3px;
   border-radius: 20px;
-  font-size: 20px;
+  font-size: 15px;
   font-family: "NSimSun ";
 }
 .highlight,
