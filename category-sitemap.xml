@@ -14,15 +14,15 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/write/</loc>
-        <lastmod>2019-05-29T15:31:15.766Z</lastmod>
+        <loc>http://yoursite.com/categories/linux/</loc>
+        <lastmod>2019-05-30T06:00:44.399Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/linux/</loc>
-        <lastmod>2019-05-30T04:52:41.779Z</lastmod>
+        <loc>http://yoursite.com/categories/write/</loc>
+        <lastmod>2019-05-30T06:00:48.498Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
