@@ -8,7 +8,15 @@
 
     <url>
         <loc>http://yoursite.com/2018/08/28/%E9%A9%AC%E5%93%A5%E6%96%87%E6%A1%A3/</loc>
-        <lastmod>2019-05-20T12:04:20.331Z</lastmod>
+        <lastmod>2019-05-30T04:52:41.779Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/08/28/%E9%A9%AC%E5%93%A5%E7%AC%94%E8%AE%B0/</loc>
+        <lastmod>2019-05-30T04:52:20.579Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -16,7 +24,7 @@
 
     <url>
         <loc>http://yoursite.com/2018/08/28/%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
-        <lastmod>2019-05-20T12:04:17.882Z</lastmod>
+        <lastmod>2019-05-29T15:31:15.766Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -25,14 +33,6 @@
     <url>
         <loc>http://yoursite.com/2018/08/28/linux%20command/</loc>
         <lastmod>2019-05-20T11:27:50.895Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/08/28/%E9%A9%AC%E5%93%A5%E7%AC%94%E8%AE%B0/</loc>
-        <lastmod>2019-05-20T08:01:00.439Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

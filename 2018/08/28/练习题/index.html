@@ -159,10 +159,12 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:site_name" content="Tiger-ghost">
 <meta property="og:description" content="题目归档">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-20T12:04:17.882Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EauSmR.png">
+<meta property="og:updated_time" content="2019-05-29T15:31:15.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test">
 <meta name="twitter:description" content="题目归档">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/05/04/EauSmR.png">
 
 
 
@@ -445,7 +447,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-20 20:04:17" itemprop="dateModified" datetime="2019-05-20T20:04:17+08:00">2019-05-20</time>
+                <time title="Modified: 2019-05-29 23:31:15" itemprop="dateModified" datetime="2019-05-29T23:31:15+08:00">2019-05-29</time>
               
             
           </span>
@@ -549,8 +551,16 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">允许普通用户登录系统</span><br><span class="line">#!/bin/bash</span><br><span class="line">read -p &quot;请输入允许登录的用户： user</span><br><span class="line">uid=$( id $user | sed -r -n &apos;s/.*=([0-9]&#123;3,&#125;).*$/\1/p&apos; )</span><br><span class="line">[ $uid -ge 500 ] &amp;&amp; usermod -s /bin/bash $user || echo &apos;该用户为系统用户&apos;</span><br><span class="line">echo &apos;该用户已允许登陆&apos;</span><br></pre></td></tr></table></figure>
 <h1 id="5、编写脚本-root-bin-disk-sh-显示当前硬盘分区中空间利用率最大的值"><a href="#5、编写脚本-root-bin-disk-sh-显示当前硬盘分区中空间利用率最大的值" class="headerlink" title="5、编写脚本/root/bin/disk.sh,显示当前硬盘分区中空间利用率最大的值"></a>5、编写脚本/root/bin/disk.sh,显示当前硬盘分区中空间利用率最大的值</h1><p><code>df | grep /dev/sd | grep -o  &#39;[0-9]\+%&#39; | sort -nr | head -1</code></p>
 <h1 id="1-查找-var-目录下不属于root、lp、gdm的所有文件"><a href="#1-查找-var-目录下不属于root、lp、gdm的所有文件" class="headerlink" title="1.查找/var/目录下不属于root、lp、gdm的所有文件"></a>1.查找/var/目录下不属于root、lp、gdm的所有文件</h1><p><code>find /var/ -not -user root -a -not -user lp -a -not -user gdm;</code></p>
-<h1 id="2-统计-etc-init-d-functions文件中每个单词的出现次数，并排序-用grep和sed两种方法分别实现"><a href="#2-统计-etc-init-d-functions文件中每个单词的出现次数，并排序-用grep和sed两种方法分别实现" class="headerlink" title="2.统计/etc/init.d/functions文件中每个单词的出现次数，并排序(用grep和sed两种方法分别实现)"></a>2.统计/etc/init.d/functions文件中每个单词的出现次数，并排序(用grep和sed两种方法分别实现)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/init.d/functions|tr -c &apos;[:alpha:]&apos; &apos;\n&apos;|tr -s &apos;\n&apos;|sort|uniq -c|sort -nr;</span><br><span class="line">$ sed -nre &apos;s/[^[:alnum:]]+/\n/g&apos; -e &apos;s/[0-9]/\n/gp&apos; /etc/init.d/functions|sort|uniq -c|sort -n;</span><br><span class="line">$ grep -Eo &quot;\&lt;[[:alpha:]_]+[[:alnum:]]+\&gt;&quot; /etc/init.d/functions|sort|uniq -c|sort -n;</span><br></pre></td></tr></table></figure>
-<h1 id="3-利用sed取出ifconfig命令本机的IPV4地址"><a href="#3-利用sed取出ifconfig命令本机的IPV4地址" class="headerlink" title="3.利用sed取出ifconfig命令本机的IPV4地址"></a>3.利用sed取出ifconfig命令本机的IPV4地址</h1><h1 id="4-总结yum的配置和使用，包括yum仓库的创建"><a href="#4-总结yum的配置和使用，包括yum仓库的创建" class="headerlink" title="4.总结yum的配置和使用，包括yum仓库的创建"></a>4.总结yum的配置和使用，包括yum仓库的创建</h1><h1 id="5-编写系统初始化脚本reset-sh-包括别名，提示符颜色，yum仓库配置文件"><a href="#5-编写系统初始化脚本reset-sh-包括别名，提示符颜色，yum仓库配置文件" class="headerlink" title="5.编写系统初始化脚本reset.sh,包括别名，提示符颜色，yum仓库配置文件"></a>5.编写系统初始化脚本reset.sh,包括别名，提示符颜色，yum仓库配置文件</h1><h1 id="6-安装tree-lftp-telnet等包"><a href="#6-安装tree-lftp-telnet等包" class="headerlink" title="6.安装tree,lftp,telnet等包"></a>6.安装tree,lftp,telnet等包</h1><h1 id="7-在centos7上编译安装apache2-4源码包，并启动此服务"><a href="#7-在centos7上编译安装apache2-4源码包，并启动此服务" class="headerlink" title="7.在centos7上编译安装apache2.4源码包，并启动此服务"></a>7.在centos7上编译安装apache2.4源码包，并启动此服务</h1>
+<h1 id="2-统计-etc-init-d-functions文件中每个单词的出现次数，并排序-用grep和sed两种方法分别实现"><a href="#2-统计-etc-init-d-functions文件中每个单词的出现次数，并排序-用grep和sed两种方法分别实现" class="headerlink" title="2.统计/etc/init.d/functions文件中每个单词的出现次数，并排序(用grep和sed两种方法分别实现)"></a>2.统计/etc/init.d/functions文件中每个单词的出现次数，并排序(用grep和sed两种方法分别实现)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/init.d/functions|tr -c &apos;[:alpha:]&apos; &apos;\n&apos;|tr -s &apos;\n&apos; | sort | uniq -c | sort -nr</span><br><span class="line">$ sed -nre &apos;s/[^[:alnum:]]+/\n/g&apos; -e &apos;s/[0-9]/\n/gp&apos; /etc/init.d/functions|sort|uniq -c|sort -n</span><br><span class="line">$ grep -Eo &quot;\&lt;[[:alpha:]]+[[:alnum:]]+\&gt;&quot; /etc/init.d/functions | sort | uniq -c | sort -n</span><br></pre></td></tr></table></figure>
+<div class="alert alert-success"><br>[:alpha:] 表示任何大小写字母<br>tr　-c, 用集合1中的字符串替换，要求字符集为ASCII<br>　　-s, 即将重复出现字符串压缩为一个字符串<br>[:alnum:] 任意字符<br>sort 将文本文件内容加以排序<br>　　-n 依照数值的从小到大排序。<br>　　-r 以相反的顺序来排序。<br>uniq -c或–count 在每列旁边显示该行重复出现的次数<br>[:alnum:] 表示字母和数字<br>\&lt; #锚定单词的开始，如:<br><code>&#39;\&lt;\grep&#39;匹配包含以grep开头的单词的行&#39;</code>  </div>
+
+<h1 id="3-利用sed取出ifconfig命令本机的IPV4地址"><a href="#3-利用sed取出ifconfig命令本机的IPV4地址" class="headerlink" title="3.利用sed取出ifconfig命令本机的IPV4地址"></a>3.利用sed取出ifconfig命令本机的IPV4地址</h1><p><code>ifconfig | sed -nr &#39;2s/.*t (.*) net.*/\1/p&#39;</code></p>
+<h1 id="4-总结yum的配置和使用，包括yum仓库的创建"><a href="#4-总结yum的配置和使用，包括yum仓库的创建" class="headerlink" title="4.总结yum的配置和使用，包括yum仓库的创建"></a>4.总结yum的配置和使用，包括yum仓库的创建</h1><p><code>yum repolist</code> 查看仓库信息<br>仓库的元数据<br><code>yum history</code> 查看yum安装历史<br><code>yum history info 2</code> 查看历史中的第二项<br><img src="https://s2.ax1x.com/2019/05/04/EauSmR.png" alt="">yum客户端配置文件：<br><code>/etc/yum.conf</code>：为所有仓库提供公共配置<code>/etc/yum.repos.d/*.repo</code>：为仓库的指向提供配置仓库指向的定义：<pre>[repositoryID]<br>name=Some name for this repository<br>baseurl=url://path/to/repository/<br>enabled={1|0}<br>gpgcheck={1|0}<br>gpgkey=URL<br>enablegroups={1|0}</pre></p>
+<h1 id="5-编写系统初始化脚本reset-sh-包括别名，提示符颜色，yum仓库配置文件"><a href="#5-编写系统初始化脚本reset-sh-包括别名，提示符颜色，yum仓库配置文件" class="headerlink" title="5.编写系统初始化脚本reset.sh,包括别名，提示符颜色，yum仓库配置文件"></a>5.编写系统初始化脚本reset.sh,包括别名，提示符颜色，yum仓库配置文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">c=&quot;alias cdnet=&apos;cd /etc/sysconfig/network-scripts&apos;&quot;</span><br><span class="line">a=&quot;alias ednet=&apos;vim /etc/sysconfig/network-scripts/ifcfg-ens33&apos;&quot;</span><br><span class="line">echo $c &gt;&gt; /root/.bashrc</span><br><span class="line">echo $a &gt;&gt; /root/.bashrc</span><br><span class="line">source /root/.bashrc</span><br><span class="line">echo -e &quot;PS1=\&quot;\e[33m[\u@\h \W]\$\e[m\&quot;&quot; &gt; /etc/profile.d/env.sh</span><br><span class="line">source /etc/profile.d/env.sh</span><br><span class="line">echo &apos;PATH=/data/bin:$PATH&apos; &gt; /etc/profile.d/input.sh</span><br><span class="line">source /etc/profile.d/input.sh</span><br><span class="line">chmod +x /etc/profile.d/*</span><br><span class="line">mkdir /data/base</span><br><span class="line">mount /dev/sr0 /data/base</span><br><span class="line">[ -d /etc/yum.repos.d/bak ] &amp;&amp; echo &quot;yes&quot; exit || mkdir /etc/yum.repos.d/bak</span><br><span class="line">mv /etc/yum.repos.d/*.repo  /etc/yum.repos.d/bak</span><br><span class="line">touch /etc/yum.repos.d/base.repo</span><br><span class="line">echo -e &quot;[base]\nname=cdrom\nbaseurl=file:///data/base\ngpgcheck=0&quot;</span><br><span class="line">&gt;&gt;/etc/yum.repos.d/base/repo</span><br></pre></td></tr></table></figure>
+<h1 id="6-安装tree-lftp-telnet等包"><a href="#6-安装tree-lftp-telnet等包" class="headerlink" title="6.安装tree,lftp,telnet等包"></a>6.安装tree,lftp,telnet等包</h1><p><code>yum install tree ftp lftp telnet</code></p>
+<h1 id="7-在centos7上编译安装apache2-4源码包，并启动此服务"><a href="#7-在centos7上编译安装apache2-4源码包，并启动此服务" class="headerlink" title="7.在centos7上编译安装apache2.4源码包，并启动此服务"></a>7.在centos7上编译安装apache2.4源码包，并启动此服务</h1><p>yum groupinstall “development tools” 使用组包安装<br>tar -xf httpd-2.4.39.tar.gz<br>cd httpd-2.4.39/<br>通过./configure –指定软件总目录，二进制目录和其他功能<br>make 使用make命令创建make文档文档中存放着各种文件路径<br>make install 讲各文件复制到所对应的目录<br>systemctl start apache 启动服务 </p>
+<p>1、磁盘lvm管理，完成下面要求，并写出详细过程：<br>  1) 创建一个至少有两个PV组成的大小为20G的名为testvg的VG;要求PE大小 为16MB, 而后在卷组中创建大小为5G的逻辑卷testlv;挂载至/users目录<br>  2) 扩展testlv至7G，要求archlinux用户的文件不能丢失<br>  3) 收缩testlv至3G，要求archlinux用户的文件不能丢失<br>  4) 对testlv创建快照，并尝试基于快照备份数据，验证快照的功能<br>2、创建一个可用空间为1G的RAID1设备，文件系统为ext4，有一个空闲盘，开机可自动挂载至/backup目录<br>3、简述TCP链接建立和断开过程<br>4、简述TCP和UDP的区别</p>
+
       
     </div>
 
@@ -636,8 +646,8 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/28/马哥文档/" rel="next" title="mage">
-                <i class="fa fa-chevron-left"></i> mage
+              <a href="/2018/08/28/马哥文档/" rel="next" title="two">
+                <i class="fa fa-chevron-left"></i> two
               </a>
             
           </div>
@@ -646,8 +656,8 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/28/前言/" rel="prev" title="ghost">
-                ghost <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/28/样式/" rel="prev" title="style">
+                style <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -891,7 +901,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共40.3k字</span>
+  <span class="post-count">博客全站共49.0k字</span>
 </div>
 
 <div id="days"></div>
