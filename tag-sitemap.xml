@@ -16,22 +16,22 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/document/</loc>
-        <lastmod>2019-05-30T04:52:41.779Z</lastmod>
+        <loc>http://yoursite.com/tags/command/</loc>
+        <lastmod>2019-06-02T06:27:49.643Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/note/</loc>
-        <lastmod>2019-05-30T06:00:48.498Z</lastmod>
+        <lastmod>2019-06-03T12:28:29.569Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/command/</loc>
-        <lastmod>2019-05-30T06:11:34.053Z</lastmod>
+        <loc>http://yoursite.com/tags/document/</loc>
+        <lastmod>2019-06-05T15:16:10.942Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
