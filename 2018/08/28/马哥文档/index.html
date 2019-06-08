@@ -165,7 +165,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/04/Vtz37T.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/05/VU70JI.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/05/VNsoct.png">
-<meta property="og:updated_time" content="2019-06-05T15:16:10.942Z">
+<meta property="og:updated_time" content="2019-06-07T05:57:13.706Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="two">
 <meta name="twitter:description" content="linux 培训文档">
@@ -452,7 +452,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-05 23:16:10" itemprop="dateModified" datetime="2019-06-05T23:16:10+08:00">2019-06-05</time>
+                <time title="Modified: 2019-06-07 13:57:13" itemprop="dateModified" datetime="2019-06-07T13:57:13+08:00">2019-06-07</time>
               
             
           </span>
@@ -580,11 +580,14 @@ Reserved block count:     13107
 <p>利用随机的数据填充硬盘，在某些必要的场合可以用来销毁数据，执行此操作以后，/dev/sda1将无法挂载，创建和拷贝操作无法执行</p>
 <p>破坏分区<br>dd if=/dev/zero of=/dev/sdc bs=1 count=512</p>
 <p><code>lsblk</code>同步<br><code>partx -d --nr 1-2 /dev/sdb</code> 删除/dev/sdb 1和2分区  </p>
-<h1 id="raid"><a href="#raid" class="headerlink" title="raid"></a>raid</h1><p>比如四个硬盘做raid5每个1G容量，可用的最后只有2G 2/3的利用率就是2G<br>怎样做一个软raid</p>
+<h1 id="raid"><a href="#raid" class="headerlink" title="raid"></a>raid</h1><p>比如四个硬盘做raid5每个1G容量，可用的最后只有2G 2/3的利用率就是2G<br>怎样做一个软raid<br><code>mdadm -C -a yes /dev/md0 -l 0 -n 2 /dev/sd{b,c}1</code><br>分区要进行更改类型为fd<br>-C –create　创建阵列；<br>-a –auto　　同意创建设备，如不加此参数时必须先使用mknod 命令来创建一个RAID设备，不过推荐使用-a yes参数一次性创建；<br>-l 阵列模式,raid级别<br>-n 阵列中活动磁盘的数目，该数目加上备用磁盘的数目应该等于阵列中总的磁盘数目；<br>查看raid0 状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/mdstat</span><br><span class="line">mdadm -D /dev/md0</span><br></pre></td></tr></table></figure></p>
+<p>创建文件系统<code>mkfs.ext4 /dev/md0</code>挂载使用<br><code>mdadm -C -a yes /dev/md1 -l 5 -n 3 -x 1 -c=/dev/sd{b2,c2,d1,e1}</code><br>-x 备用,指定阵列中热备盘个数，写在最后一个为备用盘<br>-c:指定条带大小。单位KB，默认值512KB<br>清除raid信息<br>umount /dev/md0<br>mdadm –zero-superblock /dev/sdc1<br>mdadm –zero-superblock /dev/sdb1<br>blkid 查看<br>破坏分区<code>dd if=/dev/zero of=/dev/sdc bs=1 count=512</code><br>使其同步<code>partx -d --nr 1-2 /dev/sdc</code></p>
 <h1 id="lvm"><a href="#lvm" class="headerlink" title="lvm"></a>lvm</h1><div class="alert alert-success">LVM基本介绍<br>LVM：Logical Volume Manager,逻辑卷管理，是Linux下对磁盘分区进行管理的一种机制<br><span id="inline-toc">传统硬盘管理机制</span>：1.  文件系统是基于分区的<br>　　　　　　　　　2. 不同分区之间相对独立无法互联<font color="blue"><br>　　　　　　　　　3. 空间难以平衡利用，且当一个分区/文件系统已满时无法扩充，只能重分区/重建文件系统，若涉及到数据，则只能备份——&gt; 重分区/重建文件系统——&gt; 恢复数据</font><br><span id="inline-toc">LVM(逻辑卷管理)</span>　1. 硬盘的多个分区由LVM统一管理<br>　　　　　　　　　2. 可以方便的扩大和减小（ Attention ），充分利用磁盘空间<font color="blue"><br>　　　　　　　　　3. 文件系统建立在逻辑卷上，而逻辑卷可以根据需求随时改变大小这是LVM最值钱/最帅的功能</font><br>　　　　　　　　　4. 在大型企业中，使用LVM可以在不停止服务的情况下，实现把用户数据从个旧硬盘转移到新硬盘中<br>: 实际生产环境中，减小磁盘容量的操作十分危险，很容易危及已存在的数据，比起数据的价值，磁盘的价值简直如同草芥,所以几乎不会执行减小操作<br></div>
 
 <h2 id="PV、VG、LV关系详解"><a href="#PV、VG、LV关系详解" class="headerlink" title="PV、VG、LV关系详解"></a>PV、VG、LV关系详解</h2><p><span id="inline-blue">PV(Physical Volume)</span>: 物理卷设备，基于Block Device（磁盘块设备）创建<br><span id="inline-blue">VG(Volume Group)</span>：卷组，基于已存在的PV（物理卷设备）创建<br><span id="inline-blue">LV（Logical Volume)</span>:逻辑卷，基于已存在的VG（卷组）创建<br><span id="inline-blue">PE(Physical Extent)</span>：物理区域，是物理卷中可用于分配的最小存储单元，可自定义，但确定之后不能更改</p>
 <p><span id="inline-toc">1.</span> PV ：LVM系统中最底层的设备<br>　　　　　　　　　　　　　　<code>基本管理命令：pvscan / pvs / pvdisplay / pvcreate / pvremove</code><br><code>pvscan</code> :在系统中搜索已存在的物理卷<br><code>pvdisplay</code> :物理卷全路径民称(pvdisplay /dev/sdc)，用于显示指定物理卷的属性信息（命令后面不加指定物理卷，默认显示所有物理卷）<br><code>pvcreate</code> :创建物理卷设备（参数位可以跟多个块设备路径，可同时创建多个PV<code>pvcreate /dev/sd{b,a6}</code>)<br><code>pvremvoe</code>:删除物理卷  若此物理卷存在于卷组（PV）和逻辑卷（LV）中，需要先移除LV,再移除VG，最后移除PV<code>pvremove /dev/sdb</code></p>
+<font color="red">创建分区作为逻辑卷时需要将他的ID改为8e</font>
+
 <p><span id="inline-toc">2.</span> VG :卷组<br>　　　　　　　　　　　　<code>基本管理命令：vgscan / vgs / vgdisplay / vgcreate / vgpremove / vgrename/</code><br><code>vgscan,vgs</code>:都是查看当前已存在的卷组<br><code>vgdisplay</code>:查看卷组信息（默认所有卷组信息）<br><code>vgcreate</code>:创建卷组<code>vgcreate -s 8M vg0 /dev/sdb</code> <font color="red"><br>-s</font>: 指定PE大小(只能是4或者4的倍数)<br>vg0: 指定卷组名称。 后面是指定物理设备<br><code>vgremove</code> : 删除卷组  若此卷组存在于逻辑卷（LV）中，则需要先移除LV，再移除Vg<code>vgremove vg0</code><br><code>vgrename</code>: 更改卷组名称 <code>vgrname vg0 vgvv</code></p>
 <p><span id="inline-toc">3.</span>LV :逻辑卷<br>　　　　　　　　　　　　<code>基本管理命令: lvscan / lvs / lvdisplay / lvcreate / lvrename / lvremove</code><br><code>lvscan,lvs</code>:显示基本的逻辑卷信息<br><code>lvdisplay</code>:显示逻辑卷详细信息（默认所有逻辑卷，也可指定逻辑卷)<br><code>lvcreate</code>:创建逻辑卷（需指定大小<code>-L</code>，名称<code>-n</code>.  <em>若不指定逻辑卷名称，则系统默认定义名称<code>lvo10</code></em><br><code>lvcreate -L 5G -n lv0 vg0</code><br><code>lvrename</code>:修改逻辑卷名称（需要提供完整路径，不能像VG修改一样只提供旧卷组名称和新卷组名称即可）<code>lvrename /dev/testvg/testlv /dev/testvg/ttt</code> 前面旧卷组路径 后面是新路径以及新名称<br><code>lvremove</code>:移除逻辑卷<code>lvremove /dev/vg0/lv0 -y</code> <font color="red">-y 代表默认yes，不加此选项则会提示”是否真的想要移除逻辑卷”</font></p>
 <p><span id="inline-toc">4.</span>在逻辑卷上创建文件系统 <div class="alert alert-warning">当PV/VG/LV都创建完成之后，就可以在LV上创建文件系统，就可以挂载使用了，当然，这个创建的过程再赘述一下：这个过程可以理解为有三块豆腐，你想把这三块豆腐分成2块，传统的办法就是把一块切成两半，然后每一半分给余下的两块，LVM则是把三块豆拼成一大块豆腐，然后切成两半，比起之前的两块豆腐，显然更完整。格式化磁盘创建文件系统、挂载使用</div>创建文件系统（格式化LVM）以ext4为例子:<code>mkfs.ext4 /dev/vg0/lv0</code><br>挂载文件系统: <code>mount /dev/vg0/</code></p>
@@ -987,7 +990,7 @@ Reserved block count:     13107
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共51.4k字</span>
+  <span class="post-count">博客全站共52.1k字</span>
 </div>
 
 <div id="days"></div>
