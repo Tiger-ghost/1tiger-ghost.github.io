@@ -154,7 +154,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
   <meta name="description" content="I love you">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Tiger-ghost">
-<meta property="og:url" content="http://yoursite.com/tags/Document/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/document/index.html">
 <meta property="og:site_name" content="Tiger-ghost">
 <meta property="og:description" content="I love you">
 <meta property="og:locale" content="en">
@@ -169,7 +169,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Document/"/>
+  <link rel="canonical" href="http://yoursite.com/tags/document/"/>
 
 
 
@@ -179,7 +179,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
   };
 </script>
 
-  <title>Tag: Document | Tiger-ghost</title>
+  <title>Tag: document | Tiger-ghost</title>
   
 
 
@@ -397,7 +397,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>Document<small>Tag</small>
+        <h1>document<small>Tag</small>
         </h1>
       </div>
 
@@ -409,37 +409,9 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2019/04/29/小技巧/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/28/马哥文档/" itemprop="url">
               
-                <span itemprop="name">技巧集合</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-04-29T11:16:03+08:00"
-              content="2019-04-29" >
-          04-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/28/document/" itemprop="url">
-              
-                <span itemprop="name">document</span>
+                <span itemprop="name">two</span>
               
             </a>
         
@@ -660,7 +632,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共55.6k字</span>
+  <span class="post-count">博客全站共55.1k字</span>
 </div>
 
 <div id="days"></div>
@@ -1166,6 +1138,54 @@ show_date_time();
         searchFunc(path, 'local-search-input', 'local-search-result');
       } else {
         proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+
+</body>
+</html>       proceedsearch();
       };
     });
 
