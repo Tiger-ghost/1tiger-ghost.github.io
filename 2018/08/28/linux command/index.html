@@ -169,7 +169,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/09/Eg0lJH.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/09/Eg0GQI.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/09/Eg0aTS.png">
-<meta property="og:updated_time" content="2019-05-20T11:27:50.895Z">
+<meta property="og:updated_time" content="2019-06-17T09:15:39.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="command">
 <meta name="twitter:description" content="linux 常用命令集合:">
@@ -456,7 +456,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-20 19:27:50" itemprop="dateModified" datetime="2019-05-20T19:27:50+08:00">2019-05-20</time>
+                <time title="Modified: 2019-06-17 17:15:39" itemprop="dateModified" datetime="2019-06-17T17:15:39+08:00">2019-06-17</time>
               
             
           </span>
@@ -648,7 +648,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <h1 id="free"><a href="#free" class="headerlink" title="free"></a>free</h1><p>显示当前系统未使用的和已使用的内存数目，还可以显示被内核使用的内存缓冲区。   <font color="red"><br>-b </font>：以Byte为单位显示内存使用情况；  <font color="red"><br>-k </font>：以KB为单位显示内存使用情况；  <font color="red"><br>-m </font>：以MB为单位显示内存使用情况；<br><img src="https://s2.ax1x.com/2019/05/09/Eg0yyq.png" alt="">   <font color="red"><code>total</code></font>:去掉为硬件和操作系统保留的内存后剩余的内存总量。许多人奇怪自己的电脑安装了一共8G的内存，但是显示总共只有七点几G的，现在应该没什么疑惑了把，不管Linux还是Windows都会有部分内存是保留给硬件和操作系统的！  <font color="red"><br><code>userd</code></font>：当前已使用的内存总量。  <font color="red"><br><code>free</code></font>：空闲的或可以使用的内存总量  <font color="red"><br><code>shared</code></font>：共享内存大小，主要用于进程间通信  <font color="red"><br><code>buff</code>(buffers)</font>:缓冲，主要用于块设备数据缓冲(磁盘缓存大小)，例如记录文件系统的metadata（目录、权限等等信息）。是指在写入数据时，先把分散的写入操作保存到内存当中，当达到一定程度再集中写入硬盘，减小了磁盘碎片和硬盘反复寻道，加速了数据的写入过程。  <font color="red"><br><code>cache</code></font>:缓存，主要用于文件内容缓冲,是指把读取出来的数据保存在内存当中，当再次读取时，不用读取硬盘而直接从内存当中读取，加速了数据的读取过程。  <font color="red"><br><code>available</code></font>:可以使用的内存总量.</p>
 <h1 id="Compression-压缩-command"><a href="#Compression-压缩-command" class="headerlink" title="Compression 压缩  command"></a>Compression <sub>压缩</sub>  command</h1><h2 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h2><p>gzip <font color="blue">filename</font>压缩　*.gz :”后缀名”<br>gzip <font color="red">-d</font> filename.gz　gunzip <font color="blue">filename</font>.gz 解压缩<br>不解压查看：zcat filename.gz  </p>
 <h2 id="bz2"><a href="#bz2" class="headerlink" title="bz2"></a>bz2</h2><p>bzip2 <font color="blue">filename</font>压缩　*.bzip2:”后缀名”<br>bzip2 <font color="red">-k</font> <font color="blue">filename</font> 保存源文件<font color="red">压缩</font><br>bzip2 <font color="red">-d</font> <font color="blue">filename.bz2</font>　bunzip2 <font color="blue">filename.bz2</font>解压缩<br>不解压查看：bcat <font color="blue">filename.bz2</font>  </p>
-<h2 id="xz"><a href="#xz" class="headerlink" title="xz"></a>xz</h2><p>xz <font color="blue">filename</font>压缩　.xz:”后缀名”<br>xz <font color="red">-d</font> <font color="blue">filename.xz</font> 解压缩<br>unxz <font color="red">-k</font><font color="blue"> filename.xz</font> 保存源文件<font color="red">解压</font></p>
+<h2 id="xz"><a href="#xz" class="headerlink" title="xz"></a>xz</h2><p>xz <font color="blue">filename</font>压缩　.xz:”后缀名”<br>xz <font color="red">-d</font> <font color="blue">filename.xz</font> 解压缩<br>unxz <font color="red">-k</font><font color="blue"> filename.xz</font> 保存源文件<font color="red">解压</font><br>-J：使用xz归档压缩</p>
 <h2 id="zip"><a href="#zip" class="headerlink" title="zip"></a>zip</h2><p>zip默认保存源文件，可以压缩目录<br>解压：unzip FileName.zip<br>压缩：zip FileName.zip DirName  <font color="red"><br>-r </font>：递归处理，将指定目录下的所有文件和子目录一并处理；</p>
 <h1 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h1><p><font color="red">-c</font>: 建立压缩档案　  <font color="red"><br>-x</font>：解压  <font color="red"><br>-t</font>：查看内容  <font color="red"><br>-r</font>：向压缩归档文件末尾追加文件  <font color="red"><br>-u</font>：更新原压缩包中的文件  </p>
 <p><pre>这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的</pre>  <font color="blue">tar <font color="red">cf</font> file.tar files 将一个或多个文件、目录打包到tar包。<br>tar <font color="red">rf</font> file.tar file 将文件file添加到tar包中。<br>tar <font color="red">uf</font> file.tar file 将文件file更新tar包中相应的文件。<br>tar <font color="red">tf</font> file.tar 查看tar内容。<br>tar <font color="red">xf</font> file.tar 解压tar包。  </font>   <font color="red"><br>-z</font>:有gzip属性,即需要用 gzip 压缩  <font color="red"><br>-j</font>:有bz2属性,即需要用 bzip2 压缩   <font color="red"><br>-v</font>:显示处理过程   <font color="red"><br>-C</font>:指定解压输出目录 <font color="blue">tar zxvf test.tar.gz -C test</font><br><strong><font color="red">-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名</font></strong>  <font color="red"><br>-Z</font>：有compress属性的  <font color="red"><br>-O</font>：将文件解开到标准输出   <font color="blue"><br>格式：tar Zcf file.tar.Z files  将一个或多个文件、目录压缩到file.tar.Z中。需要安装了ncompress软件包才行。<br>解压.tar.Z文件。格式：tar Zxf file.tar.Z　  </font><br>归档并压缩：使用时间格式打包数据：<br><code>tar zcf etc-$(date +%F).tar.gz /etc</code>  　　tar zcf etc-`date +%F`.tar.gz /etc </p>
@@ -831,8 +831,8 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/28/马哥笔记/" rel="next" title="one">
-                <i class="fa fa-chevron-left"></i> one
+              <a href="/2018/08/28/document/" rel="next" title="document">
+                <i class="fa fa-chevron-left"></i> document
               </a>
             
           </div>
@@ -841,8 +841,8 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/28/document/" rel="prev" title="document">
-                document <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/28/马哥文档/" rel="prev" title="two">
+                two <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1086,7 +1086,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共52.1k字</span>
+  <span class="post-count">博客全站共55.6k字</span>
 </div>
 
 <div id="days"></div>

@@ -10,28 +10,28 @@
 
     <url>
         <loc>http://yoursite.com/tags/Document/</loc>
-        <lastmod>2019-05-16T04:54:12.226Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/command/</loc>
-        <lastmod>2019-06-02T06:27:49.643Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/document/</loc>
-        <lastmod>2019-06-07T05:57:13.706Z</lastmod>
+        <lastmod>2019-06-16T15:10:26.050Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/note/</loc>
-        <lastmod>2019-06-08T11:08:49.576Z</lastmod>
+        <lastmod>2019-06-17T12:41:01.498Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/command/</loc>
+        <lastmod>2019-06-17T12:45:18.516Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/document/</loc>
+        <lastmod>2019-06-17T13:20:51.529Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
