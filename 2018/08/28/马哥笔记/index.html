@@ -166,7 +166,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/03/ENOeun.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/03/ENOnH0.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EauSmR.png">
-<meta property="og:updated_time" content="2019-06-24T11:02:58.541Z">
+<meta property="og:updated_time" content="2019-06-24T11:09:23.467Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="one">
 <meta name="twitter:description" content="linux 培训的笔记">
@@ -453,7 +453,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-24 19:02:58" itemprop="dateModified" datetime="2019-06-24T19:02:58+08:00">2019-06-24</time>
+                <time title="Modified: 2019-06-24 19:09:23" itemprop="dateModified" datetime="2019-06-24T19:09:23+08:00">2019-06-24</time>
               
             
           </span>
@@ -641,7 +641,7 @@ i am root
 <h1 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h1><p><code>cp -r</code>递归<br><code>cp /etc/passwd ./a --backup</code>将文件cp到a文件夹并备份<br>-d:保留链接属性<br>-a:归档，相当于-d,-p,-r<br>-v:显示复制过程<br>-p:此时cp除复制源文件的内容外，还将把其修改时间和访问权限也复制到新文件中<br>-u:两个同样的文件覆盖时，只复制新的到旧的上去。<br>-f:复制已经存在的目标文时件不提示<br>-i:询问，如果目标文件已经存在，则会询问是否覆盖<br>-l:把目标文件建立为源文件的硬链接文件，而不是复制源文件；<br>-b:覆盖前，目标存在先备份<br><code>cp /etc/passwd ./a1 --backup=numbered</code><br>例：cp -av /etc/ app/back <code>date +%F</code>    :/etc/目录下所有文件，备份到/app独立的子目录下，要求子目录格式为backYYY-mm-dd,备份过程可见。</p>
 <h1 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h1><p><fon color="red">-b</fon>: 如果有相同的文件，覆盖前先备份。 <font color="red"><br>-t</font>移动文件路径和目标路径颠倒  <code>alias rm=&#39;mv -t /data&#39;</code></p>
 <h1 id="rename"><a href="#rename" class="headerlink" title="rename"></a>rename</h1><p>rename 原字符串  目标字符串  文件(列表)<br>原字符串：将文件名需要替换的字符串；<br>目标字符串：将文件名中含有的原字符替换成目标字符串；<br>文件：指定要改变文件名的文件列表。<br>将main1.c重命名为main.c  <code>rename main1.c main.c main1.c</code><br>rename支持通配符<br><code>?</code>  可替代单个字符<br><code>*</code>  可替代多个字符<br><code>[charset]</code> 可替代charset集中的任意单个字符<br>举例：文件夹中有这些文件foo1, …, foo9, foo10, …, foo278<br><code>rename foo foo0 foo?</code><br>该命令会把foo1到foo9的文件重命名为foo01到foo09，重命名的文件只是有4个字符长度名称的文件，文件名中的foo被替换为foo0。<div class="alert alert-success"><br>rename支持正则表达式<br>现在以一个具体的例子讲解该命令中正则表达式的使用：<br>今天下午我手中的数据（图片）命名是(1).jpg、(2).jpg……到(16720).jpg。<br>现在我想要把文件名改为00001.png、00002.png、…….16720.png<br>第一步：将后缀名.jpg改成.png <code>rename &#39;s/\.jpg$/\.png/&#39; *.jpg</code><br>第二步：讲左括号”(“去掉：<code>rename &#39;s/^\(//&#39; *.png</code><br>第三步，将右括号“）”去掉：<code>rename &#39;s/\)//&#39; *.png</code><br>第四步：将文件名字改成五位数，不足五位数的前面补0即可。创建脚本a.sh完成，脚本内容如下：</div></p>
-<pre><code>#！/bin/bash
+<pre><code>#！/bin/bash　　　上面三部后的结果：1.png
 for i in {1..9}
 do 
    mv $i.png  0000$i.png
@@ -1011,8 +1011,8 @@ echo &#39;PATH=/app/httpd/bin:$PATH&#39; &gt; /etc/profile.d/httpd.sh
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/28/document/" rel="prev" title="document">
-                document <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/28/linux command/" rel="prev" title="command">
+                command <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
