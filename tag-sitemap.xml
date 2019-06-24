@@ -3,35 +3,35 @@
 
     <url>
         <loc>http://yoursite.com/tags/life/</loc>
-        <lastmod>2019-05-10T17:41:32.217Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/Document/</loc>
-        <lastmod>2019-06-16T15:10:26.050Z</lastmod>
+        <lastmod>2019-06-20T11:25:18.394Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/note/</loc>
-        <lastmod>2019-06-17T12:41:01.498Z</lastmod>
+        <lastmod>2019-06-20T19:08:56.201Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Document/</loc>
+        <lastmod>2019-06-23T10:13:44.809Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/document/</loc>
-        <lastmod>2019-06-17T13:20:51.529Z</lastmod>
+        <lastmod>2019-06-24T10:28:00.553Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/command/</loc>
-        <lastmod>2019-06-17T13:37:15.984Z</lastmod>
+        <lastmod>2019-06-24T11:02:58.541Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

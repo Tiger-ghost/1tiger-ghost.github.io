@@ -166,7 +166,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/05/VU70JI.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/05/VNsoct.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/17/V7Dy79.png">
-<meta property="og:updated_time" content="2019-06-17T13:20:51.529Z">
+<meta property="og:updated_time" content="2019-06-20T12:26:06.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="two">
 <meta name="twitter:description" content="linux 培训文档">
@@ -453,7 +453,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-17 21:20:51" itemprop="dateModified" datetime="2019-06-17T21:20:51+08:00">2019-06-17</time>
+                <time title="Modified: 2019-06-20 20:26:06" itemprop="dateModified" datetime="2019-06-20T20:26:06+08:00">2019-06-20</time>
               
             
           </span>
@@ -530,8 +530,10 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <h1 id="管理分区"><a href="#管理分区" class="headerlink" title="管理分区"></a>管理分区</h1><p>列出块设备<br>•    lsblk<br>创建分区使用：<br>•    fdisk 创建MBR分区<br>•    gdisk 创建GPT分区<br>•    parted 高级分区操作<br>重新设置内存中的内核分区表版本也就是同步分区表<br>•    partprobe<br>或者：<code>ls /dev/sdb*</code> , <code>cat /proc/partitions</code><br><code>blkid /dev/sdb1</code> 查看分区的文件格式和UUID,也可以不跟分区</p>
 <h1 id="同步分区表"><a href="#同步分区表" class="headerlink" title="同步分区表"></a>同步分区表</h1><p>查看内核是否已经识别新的分区<br>cat /proc/partations<br>centos6通知内核重新读取硬盘分区表新增分区用<br>partx -a /dev/DEVICE kpartx -a /dev/DEVICE -f: force<br>删除分区用<br>partx -d –nr M-N /dev/DEVICE<br>CentOS 5，7: 使用partprobe partprobe [/dev/DEVICE]</p>
 <p>centos6: partx -a /dev/sda   -a增加<br>partx -d –nr 6 /dev/sda -d删除第6个分区</p>
-<h1 id="Linux不重启识别硬盘"><a href="#Linux不重启识别硬盘" class="headerlink" title="Linux不重启识别硬盘"></a>Linux不重启识别硬盘</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@centos6 ~]# echo &quot;- - -&quot; &gt; /sys/class/scsi_host/host0/scan </span><br><span class="line">[root@centos6 ~]# echo &quot;- - -&quot; &gt; /sys/class/scsi_host/host1/scan  </span><br><span class="line">[root@centos6 ~]# echo &quot;- - -&quot; &gt; /sys/class/scsi_host/host2/scan</span><br></pre></td></tr></table></figure>
-<h1 id="parted分区命令"><a href="#parted分区命令" class="headerlink" title="parted分区命令"></a>parted分区命令</h1><p>parted的操作都是实时生效的，小心使用<br>用法：parted [选项]… [设备 [命令 [参数]…]…]<br>　parted /dev/sdb mklabel gpt|msdos<br>　parted /dev/sdb print<br>　parted /dev/sdb mkpart primary 1 200 （默认M）<br>　parted /dev/sdb rm 1<br>　parted –l  列出分区信息</p>
+<h1 id="Linux不重启识别硬盘"><a href="#Linux不重启识别硬盘" class="headerlink" title="Linux不重启识别硬盘"></a>Linux不重启识别硬盘</h1><pre><code>[root@centos6 ~]# echo &quot;- - -&quot; &gt; /sys/class/scsi_host/host0/scan 
+[root@centos6 ~]# echo &quot;- - -&quot; &gt; /sys/class/scsi_host/host1/scan  
+[root@centos6 ~]# echo &quot;- - -&quot; &gt; /sys/class/scsi_host/host2/scan
+</code></pre><h1 id="parted分区命令"><a href="#parted分区命令" class="headerlink" title="parted分区命令"></a>parted分区命令</h1><p>parted的操作都是实时生效的，小心使用<br>用法：parted [选项]… [设备 [命令 [参数]…]…]<br>　parted /dev/sdb mklabel gpt|msdos<br>　parted /dev/sdb print<br>　parted /dev/sdb mkpart primary 1 200 （默认M）<br>　parted /dev/sdb rm 1<br>　parted –l  列出分区信息</p>
 <h1 id="创建文件系统"><a href="#创建文件系统" class="headerlink" title="创建文件系统"></a>创建文件系统</h1><p>mkfs命令：<br>(1) mkfs.FS_TYPE /dev/DEVICE ext4<br>xfs btrfs vfat<br>(2) mkfs -t FS_TYPE /dev/DEVICE<br>-L ‘LABEL’ 设定卷标<br>　　创建ext文件系统<br>mke2fs：ext系列文件系统专用管理工具<br>-t {ext2|ext3|ext4} 指定文件系统类型<br>-b {1024|2048|4096} 指定块大小<br>-L ‘LABEL’ 设置卷标<br>-j 相当于 -t ext3<br><code>mkfs.ext3 = mkfs -t ext3 = mke2fs -j = mke2fs -t ext3</code><br>-i # 为数据空间中每多少个字节创建一个inode；不应该小于block大小<br>-N # 指定分区中创建多少个inode<br>-I 一个inode记录占用的磁盘空间大小，128—4096<br>-m # 默认5%,为管理人员预留空间占总空间的百分比<br>-O FEATURE[,…]    启用指定特性<br>-O ^FEATURE    关闭指定特性</p>
 <h1 id="文件系统标签"><a href="#文件系统标签" class="headerlink" title="文件系统标签"></a>文件系统标签</h1><p>指向设备的另一种方法<br>与设备无关<br>blkid：块设备属性信息查看 blkid [OPTION]… [DEVICE]<br>-U UUID 根据指定的UUID来查找对应的设备<br>-L LABEL 根据指定的LABEL来查找对应的设备<br>e2label：管理ext系列文件系统的LABEL e2label DEVICE [LABEL]<br>findfs ：查找分区<br>findfs [options] LABEL=<label></label></p>
 <h1 id="tune2fs"><a href="#tune2fs" class="headerlink" title="tune2fs"></a>tune2fs</h1><p>tune2fs：重新设定ext系列文件系统可调整参数的值<br>　　-l 查看指定文件系统超级块信息；super block<br>　　-L ‘LABEL‘ 修改卷标<br>　　-m #  修预留给管理员的空间百分比<br>　　-j    将ext2升级为ext3<br>　　-O    文件系统属性启用或禁用, –O ^has_journal<br>　　-o    调整文件系统的默认挂载选项，–o ^acl<br>　　-U UUID    修改UUID号<br>dumpe2fs：<br>　　块分组管理，32768块<br>　　-h：查看超级块信息，不显示分组信息<br><code>tune2fs -l /dev/sdb1</code> 查看ext文件系统的工具不支持xfs格式<br><code>Filesystem features:      ext_attr resize_inode dir_index filetype sparse_super large_file</code> 这里没有日志功能，如果有会有journal表示日志<br><code>Reserved block count:     13107 保留块，默认5%</code></p>
@@ -540,8 +542,8 @@ Reserved block count:     13107
 就用13107/262144 大约5%
 </code></pre><p><code>tune2fs -o has_journal /dev/sdb1</code> 加入日志功能<br><code>tune2fs -o ^acl /dev/sdb1 取消acl权限</code><br><code>tune2fs -o +acl /dev/sdb1 加入acl权限</code></p>
 <p>只查询UUID是哪一个分区</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 ~]# blkid -U `sed -r-n  &apos;s#^UUID=(.*) / .*#\1#p&apos; /etc/fstab` /dev/sda2</span><br></pre></td></tr></table></figure>
-<p><code>e2label -L /mnt/sdb1 /dev/sdb1</code> 加入卷标:/mnt/sdb1,<br>查看卷标：blkid,e2label</p>
+<pre><code>[root@centos7 ~]# blkid -U `sed -r-n  &#39;s#^UUID=(.*) / .*#\1#p&#39; /etc/fstab` /dev/sda2
+</code></pre><p><code>e2label -L /mnt/sdb1 /dev/sdb1</code> 加入卷标:/mnt/sdb1,<br>查看卷标：blkid,e2label</p>
 <p><img src="https://s2.ax1x.com/2019/05/12/EhDzU1.png" alt=""></p>
 <h1 id="用mount命令挂载文件系统"><a href="#用mount命令挂载文件系统" class="headerlink" title="用mount命令挂载文件系统 "></a>用mount命令挂载文件系统 <font size="5"></font></h1><p>挂载方法：mount DEVICE MOUNT_POINT<br>mount：通过查看/etc/mtab文件显示当前已挂载的所有设备<br>mount [-fnrsvw] [-t vfstype] [-o options] device dir device：指明要挂载的设备；  </p>
 <p>(1)    设备文件：例如/dev/sda5  </p>
@@ -564,9 +566,27 @@ Reserved block count:     13107
   　</p>
 <h1 id="工具dd"><a href="#工具dd" class="headerlink" title="工具dd "></a>工具dd <font size="5"></font></h1><p>dd命令：convert and copy a file<br>用法：<br>dd if=/PATH/FROM/SRC of=/PATH/TO/DEST<br>bs=#：block size, 复制单元大小<br>count=#：复制多少个bs<br>of=file    写到所命名的文件而不是到标准输出<br>if=file    从所命名文件读取而不是从标准输入<br>bs=size    指定块大小（既是是ibs也是obs)<br>ibs=size    一次读size个byte<br>obs=size    一次写size个byte<br>cbs=size    一次转化size个byte<br>skip=blocks 从开头忽略blocks个ibs大小的块 seek=blocks 从开头忽略blocks个obs大小的块<br>count=n    只拷贝n个记录  </p>
 <h2 id="工具dd-1"><a href="#工具dd-1" class="headerlink" title="工具dd"></a>工具dd</h2><p>conv=conversion[,conversion…] 用指定的参数转换文件<br>转换参数:<br>ascii 转换 EBCDIC 为 ASCII<br>ebcdic 转换 ASCII 为 EBCDIC<br>lcase 把大写字符转换为小写字符<br>ucase 把小写字符转换为大写字符<code>dd if=/etc/fstab conv=ucase</code><br>nocreat 不创建输出文件<br>noerror 出错时不停止<br>notrunc 不截短输出文件<br>sync 把每个输入块填充到ibs个字节，不足部分用空(NUL)字符补齐<br>Fdatasync 写完成前，物理写入输出文件  </p>
-<p>skip=3 跳过原文件的前三个<br>读2个<br>seek=跳过f1四个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 text]# cat f1;cat f2</span><br><span class="line">abcefghi</span><br><span class="line">123456</span><br><span class="line">[root@centos7 text]# dd if=f2 of=f1 bs=1 count=2 skip=3 seek=4</span><br><span class="line">2+0 records in</span><br><span class="line">2+0 records out</span><br><span class="line">2 bytes (2 B) copied, 0.000231085 s, 8.7 kB/s</span><br><span class="line">[root@centos7 text]# cat f1</span><br><span class="line">abce45[root@centos7 text]#</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 text]# cat f1;cat f2</span><br><span class="line">abcefghi</span><br><span class="line">123456</span><br><span class="line">[root@centos7 text]# dd if=f2 of=f1 bs=1 count=2 skip=3 seek=4 conv=notrunc</span><br><span class="line">2+0 records in</span><br><span class="line">2+0 records out</span><br><span class="line">2 bytes (2 B) copied, 0.000266614 s, 7.5 kB/s</span><br><span class="line">[root@centos7 text]# cat f1</span><br><span class="line">abce45hi</span><br><span class="line">[root@centos7 text]#</span><br></pre></td></tr></table></figure>
-<h2 id="工具dd-2"><a href="#工具dd-2" class="headerlink" title="工具dd"></a>工具dd</h2><p>备份MBR<br><code>dd    if=/dev/sda of=/tmp/mbr.bak bs=512 count=1</code><br>破坏MBR中的bootloader<br><code>dd    if=/dev/zero of=/dev/sda bs=64 count=1 seek=446</code><br>有一个大与2K的二进制文件fileA。现在想从第64个字节位置开始读取，需要读取的大小是128Byts。又有fileB, 想把上面读取到的128Bytes写到第32个字节开始的位置，替换128Bytes，实现如下<br><code>dd    if=fileA of=fileB bs=1 count=128 skip=63 seek=31 conv=notrunc</code>  </p>
+<p>skip=3 跳过原文件的前三个<br>读2个<br>seek=跳过f1四个</p>
+<pre><code>[root@centos7 text]# cat f1;cat f2
+abcefghi
+123456
+[root@centos7 text]# dd if=f2 of=f1 bs=1 count=2 skip=3 seek=4
+2+0 records in
+2+0 records out
+2 bytes (2 B) copied, 0.000231085 s, 8.7 kB/s
+[root@centos7 text]# cat f1
+abce45[root@centos7 text]#
+</code></pre><pre><code>[root@centos7 text]# cat f1;cat f2
+abcefghi
+123456
+[root@centos7 text]# dd if=f2 of=f1 bs=1 count=2 skip=3 seek=4 conv=notrunc
+2+0 records in
+2+0 records out
+2 bytes (2 B) copied, 0.000266614 s, 7.5 kB/s
+[root@centos7 text]# cat f1
+abce45hi
+[root@centos7 text]# 
+</code></pre><h2 id="工具dd-2"><a href="#工具dd-2" class="headerlink" title="工具dd"></a>工具dd</h2><p>备份MBR<br><code>dd    if=/dev/sda of=/tmp/mbr.bak bs=512 count=1</code><br>破坏MBR中的bootloader<br><code>dd    if=/dev/zero of=/dev/sda bs=64 count=1 seek=446</code><br>有一个大与2K的二进制文件fileA。现在想从第64个字节位置开始读取，需要读取的大小是128Byts。又有fileB, 想把上面读取到的128Bytes写到第32个字节开始的位置，替换128Bytes，实现如下<br><code>dd    if=fileA of=fileB bs=1 count=128 skip=63 seek=31 conv=notrunc</code>  </p>
 <h2 id="备份："><a href="#备份：" class="headerlink" title="备份："></a>备份：<font size="5"></font></h2><p>dd    if=/dev/sdx of=/dev/sdy<br>将本地的/dev/sdx整盘备份到/dev/sdy<br>dd    if=/dev/sdx of=/path/to/image<br>将/dev/sdx全盘数据备份到指定路径的image文件<br>dd    if=/dev/sdx | gzip &gt;/path/to/image.gz</p>
 <p>备份/dev/sdx全盘数据，并利用gzip压缩，保存到指定路径</p>
 <p>恢复：<br>dd    if=/path/to/image of=/dev/sdx<br>将备份文件恢复到指定盘<br>gzip -dc /path/to/image.gz | dd of=/dev/sdx<br>将压缩的备份文件恢复到指定盘</p>
@@ -581,8 +601,10 @@ Reserved block count:     13107
 <p>利用随机的数据填充硬盘，在某些必要的场合可以用来销毁数据，执行此操作以后，/dev/sda1将无法挂载，创建和拷贝操作无法执行</p>
 <p>破坏分区<br>dd if=/dev/zero of=/dev/sdc bs=1 count=512</p>
 <p><code>lsblk</code>同步<br><code>partx -d --nr 1-2 /dev/sdb</code> 删除/dev/sdb 1和2分区  </p>
-<h1 id="raid"><a href="#raid" class="headerlink" title="raid"></a>raid</h1><p>比如四个硬盘做raid5每个1G容量，可用的最后只有2G 2/3的利用率就是2G<br>怎样做一个软raid<br><code>mdadm -C -a yes /dev/md0 -l 0 -n 2 /dev/sd{b,c}1</code><br>分区要进行更改类型为fd<br>-C –create　创建阵列；<br>-a –auto　　同意创建设备，如不加此参数时必须先使用mknod 命令来创建一个RAID设备，不过推荐使用-a yes参数一次性创建；<br>-l 阵列模式,raid级别<br>-n 阵列中活动磁盘的数目，该数目加上备用磁盘的数目应该等于阵列中总的磁盘数目；<br>查看raid0 状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/mdstat</span><br><span class="line">mdadm -D /dev/md0</span><br></pre></td></tr></table></figure></p>
-<p>创建文件系统<code>mkfs.ext4 /dev/md0</code>挂载使用<br><code>mdadm -C -a yes /dev/md1 -l 5 -n 3 -x 1 -c=/dev/sd{b2,c2,d1,e1}</code><br>-x 备用,指定阵列中热备盘个数，写在最后一个为备用盘<br>-c:指定条带大小。单位KB，默认值512KB<br>清除raid信息<br>umount /dev/md0<br>mdadm –zero-superblock /dev/sdc1<br>mdadm –zero-superblock /dev/sdb1<br>blkid 查看<br>破坏分区<code>dd if=/dev/zero of=/dev/sdc bs=1 count=512</code><br>使其同步<code>partx -d --nr 1-2 /dev/sdc</code></p>
+<h1 id="raid"><a href="#raid" class="headerlink" title="raid"></a>raid</h1><p>比如四个硬盘做raid5每个1G容量，可用的最后只有2G 2/3的利用率就是2G<br>怎样做一个软raid<br><code>mdadm -C -a yes /dev/md0 -l 0 -n 2 /dev/sd{b,c}1</code><br>分区要进行更改类型为fd<br>-C –create　创建阵列；<br>-a –auto　　同意创建设备，如不加此参数时必须先使用mknod 命令来创建一个RAID设备，不过推荐使用-a yes参数一次性创建；<br>-l 阵列模式,raid级别<br>-n 阵列中活动磁盘的数目，该数目加上备用磁盘的数目应该等于阵列中总的磁盘数目；<br>查看raid0 状态</p>
+<pre><code>cat /proc/mdstat
+mdadm -D /dev/md0
+</code></pre><p>创建文件系统<code>mkfs.ext4 /dev/md0</code>挂载使用<br><code>mdadm -C -a yes /dev/md1 -l 5 -n 3 -x 1 -c=/dev/sd{b2,c2,d1,e1}</code><br>-x 备用,指定阵列中热备盘个数，写在最后一个为备用盘<br>-c:指定条带大小。单位KB，默认值512KB<br>清除raid信息<br>umount /dev/md0<br>mdadm –zero-superblock /dev/sdc1<br>mdadm –zero-superblock /dev/sdb1<br>blkid 查看<br>破坏分区<code>dd if=/dev/zero of=/dev/sdc bs=1 count=512</code><br>使其同步<code>partx -d --nr 1-2 /dev/sdc</code></p>
 <h1 id="lvm"><a href="#lvm" class="headerlink" title="lvm"></a>lvm</h1><div class="alert alert-success">LVM基本介绍<br>LVM：Logical Volume Manager,逻辑卷管理，是Linux下对磁盘分区进行管理的一种机制<br><span id="inline-toc">传统硬盘管理机制</span>：1.  文件系统是基于分区的<br>　　　　　　　　　2. 不同分区之间相对独立无法互联<font color="blue"><br>　　　　　　　　　3. 空间难以平衡利用，且当一个分区/文件系统已满时无法扩充，只能重分区/重建文件系统，若涉及到数据，则只能备份——&gt; 重分区/重建文件系统——&gt; 恢复数据</font><br><span id="inline-toc">LVM(逻辑卷管理)</span>　1. 硬盘的多个分区由LVM统一管理<br>　　　　　　　　　2. 可以方便的扩大和减小（ Attention ），充分利用磁盘空间<font color="blue"><br>　　　　　　　　　3. 文件系统建立在逻辑卷上，而逻辑卷可以根据需求随时改变大小这是LVM最值钱/最帅的功能</font><br>　　　　　　　　　4. 在大型企业中，使用LVM可以在不停止服务的情况下，实现把用户数据从个旧硬盘转移到新硬盘中<br>: 实际生产环境中，减小磁盘容量的操作十分危险，很容易危及已存在的数据，比起数据的价值，磁盘的价值简直如同草芥,所以几乎不会执行减小操作<br></div>
 
 <h2 id="PV、VG、LV关系详解"><a href="#PV、VG、LV关系详解" class="headerlink" title="PV、VG、LV关系详解"></a>PV、VG、LV关系详解</h2><p><span id="inline-blue">PV(Physical Volume)</span>: 物理卷设备，基于Block Device（磁盘块设备）创建<br><span id="inline-blue">VG(Volume Group)</span>：卷组，基于已存在的PV（物理卷设备）创建<br><span id="inline-blue">LV（Logical Volume)</span>:逻辑卷，基于已存在的VG（卷组）创建<br><span id="inline-blue">PE(Physical Extent)</span>：物理区域，是物理卷中可用于分配的最小存储单元，可自定义，但确定之后不能更改</p>
@@ -609,10 +631,18 @@ Reserved block count:     13107
 <font color="red">网络ID相同就是在同一个网络,    网络ID就是IP地址和本地的子网掩码进行与计算得到的值，是与本机的子网掩码进行的与运算，因为查看与本机的网络是否相同。重点记住与本机的掩码进行的与运算。有坑</font>
 
 
-<p>CIDR表示法: IP/网络ID位数 10.0.0.100/19 255.255.224.0 有19个1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">题目：</span><br><span class="line">203.110.200.199/22  </span><br><span class="line">1 主机数?1022    2^(32-22)-2</span><br><span class="line">2 netmask?255.255.252.0</span><br><span class="line">3 网络ID值?</span><br></pre></td></tr></table></figure></p>
-<p>11111111 11111111 11111100 00000000 /22二进制表示<br>255.255.252.0</p>
-<p>网络ID值<br>203.110.200.199:二进制。网络ID为前22位，主机ID位后10位<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">11001011 01101110 110010 00 11000111 203.110.200.199</span><br><span class="line">11111111 11111111 111111 00 00000000 255.255.252.0</span><br><span class="line">11001011 01101110 110010 00 00000000 203.110.200.0/22</span><br></pre></td></tr></table></figure></p>
-<div class="note primary"><br>网络ID具体值=IP 与运算 子网掩码<br>192.168.34.6<br>255.255.255.0<br>192.168.34.0/24 </div><br><div class="alert alert-warning">题目：求 100.123.199.124/20<br>主机数：<br>01100100 01010011 1100 0111 01111100 ip二进制<br>11111111 11111111 1111 0000 00000000 /20<br>2^12-2=4096-2=4064<br><br>子网掩码：<br>255.255.240.0<br><br>网络ID：100.123.192.0/20<br>                  1100 0111<br>                  1111 0000<br>01100100 10000100 1100 0000 00000000<br>100.123.192.0/20<br><br>最小和最大IP：100.123.192.1 ➜ 100.123.207.254<br>通过网络ID 100.123.192.0/20,又前20位为网络位，所以只能是后面的从小到大<br>100.123.1100 0000.00000001 ➜ 100.123.192.1<br>100.123.1100 1111.11111110 ➜ 100.123.207.254<br></div>
+<p>CIDR表示法: IP/网络ID位数 10.0.0.100/19 255.255.224.0 有19个1</p>
+<pre><code>题目：
+203.110.200.199/22  
+1 主机数?1022    2^(32-22)-2
+2 netmask?255.255.252.0
+3 网络ID值?
+</code></pre><p>11111111 11111111 11111100 00000000 /22二进制表示<br>255.255.252.0</p>
+<p>网络ID值<br>203.110.200.199:二进制。网络ID为前22位，主机ID位后10位</p>
+<pre><code>11001011 01101110 110010 00 11000111 203.110.200.199
+11111111 11111111 111111 00 00000000 255.255.252.0
+11001011 01101110 110010 00 00000000 203.110.200.0/22
+</code></pre><div class="note primary"><br>网络ID具体值=IP 与运算 子网掩码<br>192.168.34.6<br>255.255.255.0<br>192.168.34.0/24 </div><br><div class="alert alert-warning">题目：求 100.123.199.124/20<br>主机数：<br>01100100 01010011 1100 0111 01111100 ip二进制<br>11111111 11111111 1111 0000 00000000 /20<br>2^12-2=4096-2=4064<br><br>子网掩码：<br>255.255.240.0<br><br>网络ID：100.123.192.0/20<br>                  1100 0111<br>                  1111 0000<br>01100100 10000100 1100 0000 00000000<br>100.123.192.0/20<br><br>最小和最大IP：100.123.192.1 ➜ 100.123.207.254<br>通过网络ID 100.123.192.0/20,又前20位为网络位，所以只能是后面的从小到大<br>100.123.1100 0000.00000001 ➜ 100.123.192.1<br>100.123.1100 1111.11111110 ➜ 100.123.207.254<br></div>
 
 <h2 id="划分子网"><a href="#划分子网" class="headerlink" title="划分子网"></a>划分子网</h2><p>一个子网划分成多少个小网。网络ID位变多，主机ID位才变少，网络ID向主机ID借位。分成2^N个小子网<br>10.0.0.1–10.255.255.254<br>划分两个子网<br>10.00 000000.0.0 </p>
 <p>10.00 000000.0.0 10.0.0.0/10<br>10.01 000000.0.0 10.64.0.0/10<br>10.10 000000.0.0 10.128.0.0/10<br>10.11 000000.0.0 10.192.0.0/10</p>
@@ -659,11 +689,26 @@ Reserved block count:     13107
 
 <h1 id="linux-作业控制"><a href="#linux-作业控制" class="headerlink" title="linux 作业控制"></a>linux 作业控制</h1><p>ping 127.0.0.1<br>ctrl z 调到后台停止<br>jobs 查看当前终端所有作业<br>bg 1 将指定进程号的程序放到后端执行<br>fg 1 调到前台来运行<br>后端运行到后端停止 killall -19 ping<br>后端停止到后端运行 killall -18 ping<br>ping 127.0.0.1 &amp; 直接调到后台运行</p>
 <p>后台作业虽然被送往后台运行，但其依然与终端相关；退出终端，将关闭后台作业。如果希望送往后台后，剥离与终端的关系<br>nohup COMMAND &amp;&gt;/dev/null 因为nohup会默认有一个命令输出记录，所以不想看就指定路径为垃圾箱<br>screen；COMMAND 相当于在screen这个容器里面运行，即使终端断开也不会停止。screen -ls 查看</p>
-<h2 id="同时运行"><a href="#同时运行" class="headerlink" title="同时运行"></a>同时运行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 ~]# cat a.sh</span><br><span class="line">ping 127.0.0.1 &amp;</span><br><span class="line">ping 127.0.0.2 &amp;</span><br><span class="line">ping 127.0.0.3 &amp;</span><br></pre></td></tr></table></figure>
-<p><code>{ ping 127.0.0.1 &amp; ping 127.0.0.2 &amp; ping 127.0.0.3 &amp;}</code><br><code>(ping 127.1&amp;);(ping 127.2&amp;);(ping 127.3&amp;)</code></p>
-<h3 id="两组命令同时执行"><a href="#两组命令同时执行" class="headerlink" title="两组命令同时执行"></a>两组命令同时执行</h3><p><code>{ { ping -c3 127.1;ping 127.2; }&amp; { ping -c3 127.3;ping 127.4; }&amp; };</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">ping -c2 127.0.0.1</span><br><span class="line">ping 127.0.0.2</span><br><span class="line">&#125;&amp;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">ping -c2 127.0.0.3</span><br><span class="line">ping 127.0.0.4</span><br><span class="line">&#125;&amp;</span><br></pre></td></tr></table></figure></p>
-<h1 id="任务计划"><a href="#任务计划" class="headerlink" title="任务计划"></a>任务计划</h1><h2 id="at"><a href="#at" class="headerlink" title="at"></a>at</h2><p>指定时间点，执行一次性任务<br>at命令:at [option] TIME <font color="red"><br>-V </font>显示版本信息 <font color="red"><br>-t </font>time 时间格式 [[CC]YY]MMDDhhmm[.ss] <font color="red"><br>-l </font>列出指定队列中等待运行的作业；相当于atq <font color="red"><br>-d </font>删除指定的作业；相当于atrm <font color="red"><br>-c </font>查看具体作业任务 at -c 加作业序号<font color="red"><br>-f </font>/path/file 指定的文件中读取任务 <font color="red"><br>-m </font>当任务被完成之后，将给用户发送邮件，即使没有标准输出 <font color="red"><br>注意：作业执行命令的结果中的标准输出和错误以邮件通知给相关用户 </font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@centos7 \~]# at 18:00 2018-10-31</span><br><span class="line">at&gt; poweroff</span><br><span class="line">ctrl d 结束</span><br></pre></td></tr></table></figure></p>
-<p>任务存放的路径: cat /var/spool/at/</p>
+<h2 id="同时运行"><a href="#同时运行" class="headerlink" title="同时运行"></a>同时运行</h2><pre><code>[root@centos7 ~]# cat a.sh
+ping 127.0.0.1 &amp;
+ping 127.0.0.2 &amp;
+ping 127.0.0.3 &amp;
+</code></pre><p><code>{ ping 127.0.0.1 &amp; ping 127.0.0.2 &amp; ping 127.0.0.3 &amp;}</code><br><code>(ping 127.1&amp;);(ping 127.2&amp;);(ping 127.3&amp;)</code></p>
+<h3 id="两组命令同时执行"><a href="#两组命令同时执行" class="headerlink" title="两组命令同时执行"></a>两组命令同时执行</h3><p><code>{ { ping -c3 127.1;ping 127.2; }&amp; { ping -c3 127.3;ping 127.4; }&amp; };</code> </p>
+<pre><code>{
+ping -c2 127.0.0.1
+ping 127.0.0.2
+}&amp;
+
+{
+ping -c2 127.0.0.3
+ping 127.0.0.4
+}&amp;
+</code></pre><h1 id="任务计划"><a href="#任务计划" class="headerlink" title="任务计划"></a>任务计划</h1><h2 id="at"><a href="#at" class="headerlink" title="at"></a>at</h2><p>指定时间点，执行一次性任务<br>at命令:at [option] TIME <font color="red"><br>-V </font>显示版本信息 <font color="red"><br>-t </font>time 时间格式 [[CC]YY]MMDDhhmm[.ss] <font color="red"><br>-l </font>列出指定队列中等待运行的作业；相当于atq <font color="red"><br>-d </font>删除指定的作业；相当于atrm <font color="red"><br>-c </font>查看具体作业任务 at -c 加作业序号<font color="red"><br>-f </font>/path/file 指定的文件中读取任务 <font color="red"><br>-m </font>当任务被完成之后，将给用户发送邮件，即使没有标准输出 <font color="red"><br>注意：作业执行命令的结果中的标准输出和错误以邮件通知给相关用户 </font> </p>
+<pre><code>[root@centos7 \~]# at 18:00 2018-10-31
+at&gt; poweroff
+ctrl d 结束
+</code></pre><p>任务存放的路径: cat /var/spool/at/</p>
 <p><font color="red">计划任务不要有标准输出，因为他不会在屏幕显示</font><br><code>echo -e &#39;poweroff\ntouch /data/at.log&#39; | at 18:00</code> 也支持这种格式<br><code>echo &#39;poweroff;ntouch /data/at.log&#39; | at 18:00</code></p>
 <div class="alert alert-warning"><i class="fa fa-clock-o"></i> at 定义时间格式<br><code>at now+10minutes</code> 表示现在的10分钟以后执行<br><code>touch /test</code><br><code>ctrl d 结束</code><br><font size="3"><br>HH:MM 02:00 <font color="2f4f4f"><br>在今日的 HH:MM 进行，若该时刻已过，则明天此时执行任务</font><br>HH:MM YYYY-MM-DD  02:00 2016-09-20 <font color="2f4f4f"><br>规定在某年某月的某一天的特殊时刻进行该项任务</font><br>HH:MM[am|pm] [Month] [Date]<br>04pm March 17<br>17:20 tomorrow<br>HH:MM[am|pm] + number [minutes|hours|days|weeks]<br>在某个时间点再加几个时间后才进行该项任务 now + 5 min<br>02pm + 3 days </font></div>
 
@@ -757,8 +802,8 @@ Reserved block count:     13107
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/28/document/" rel="next" title="document">
-                <i class="fa fa-chevron-left"></i> document
+              <a href="/2018/08/28/linux command/" rel="next" title="command">
+                <i class="fa fa-chevron-left"></i> command
               </a>
             
           </div>
@@ -846,7 +891,7 @@ Reserved block count:     13107
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -878,7 +923,7 @@ Reserved block count:     13107
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/document/">document</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/document/">document</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -1012,7 +1057,7 @@ Reserved block count:     13107
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共55.1k字</span>
+  <span class="post-count">博客全站共56.2k字</span>
 </div>
 
 <div id="days"></div>

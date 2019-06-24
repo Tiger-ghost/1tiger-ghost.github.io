@@ -160,7 +160,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:description" content="linux 小技巧">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/16/V7UGwt.png">
-<meta property="og:updated_time" content="2019-06-16T15:10:26.050Z">
+<meta property="og:updated_time" content="2019-06-23T10:13:44.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技巧集合">
 <meta name="twitter:description" content="linux 小技巧">
@@ -447,7 +447,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-16 23:10:26" itemprop="dateModified" datetime="2019-06-16T23:10:26+08:00">2019-06-16</time>
+                <time title="Modified: 2019-06-23 18:13:44" itemprop="dateModified" datetime="2019-06-23T18:13:44+08:00">2019-06-23</time>
               
             
           </span>
@@ -519,12 +519,35 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
       
         <p><center><font face="FZShuTi">linux 小技巧 </font></center><br><a id="more"></a></p>
-<h1 id="simple-command"><a href="#simple-command" class="headerlink" title="simple command"></a>simple command</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">uname -a              # 查看Linux内核版本信息</span><br><span class="line">cat /proc/version     # 查看内核版本</span><br><span class="line">cat /etc/issue        # 查看系统版本</span><br><span class="line">lsb_release -a        # 查看系统版本  需安装 centos-release</span><br><span class="line">locale -a             # 列出所有语系</span><br><span class="line">locale                # 当前环境变量中所有编码</span><br><span class="line">hwclock               # 查看时间</span><br><span class="line">who                   # 当前在线用户</span><br><span class="line">w                     # 当前在线用户</span><br><span class="line">whoami                # 查看当前用户名</span><br><span class="line">logname               # 查看初始登陆用户名</span><br><span class="line">uptime                # 查看服务器启动时间</span><br><span class="line">sar -n DEV 1 10       # 查看网卡网速流量</span><br><span class="line">dmesg                 # 显示开机信息</span><br><span class="line">lsmod                 # 查看内核模块</span><br></pre></td></tr></table></figure>
-<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><div class="alert alert-info"><i class=""></i><font color="black"><center>sed 执行系统命令。查找当前目录以及子目录中以 “.sh”,并改为以”.shell”结尾。</center></font><code>find ./a -type f  -regex &quot;.*/.sh$&quot; | sed -r -n &#39;s#(.*\.)sh$#mv &amp; \1shell#e&#39;</code> <font color="red"><br>-regex</font>: 使用正则表达式<br><code>&quot;.*/.sh$&quot;</code> <font size="4">给出的正则表达式必须要匹配完整的文件路径,比如：<code>find / -regex &quot;find&quot;</code> 这样子是找不到/usr/bin/find的，要像这样<code>find / -regex &quot;.*find&quot;</code>或者更精确一点<code>find / -regex &quot;.*/find&quot;</code></font> <font color="red"><br>&amp;</font>: 匹配前面找到的内容 <font color="red"><br>e</font>: 末尾的e表示<font color="red"># #这里允许执行命令然后得到结果#</font>,也就是<code>mv 前面匹配到的.sh文件 任意内容.shell</code><br></div>
+<h1 id="simple-command"><a href="#simple-command" class="headerlink" title="simple command"></a>simple command</h1><pre><code>uname -a              # 查看Linux内核版本信息
+cat /proc/version     # 查看内核版本
+cat /etc/issue        # 查看系统版本
+lsb_release -a        # 查看系统版本  需安装 centos-release
+locale -a             # 列出所有语系
+locale                # 当前环境变量中所有编码
+hwclock               # 查看时间
+who                   # 当前在线用户
+w                     # 当前在线用户
+whoami                # 查看当前用户名
+logname               # 查看初始登陆用户名
+uptime                # 查看服务器启动时间
+sar -n DEV 1 10       # 查看网卡网速流量
+dmesg                 # 显示开机信息
+lsmod                 # 查看内核模块
+</code></pre><h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><div class="alert alert-info"><i class=""></i><font color="black"><center>sed 执行系统命令。查找当前目录以及子目录中以 “.sh”,并改为以”.shell”结尾。</center></font><code>find ./a -type f  -regex &quot;.*/.sh$&quot; | sed -r -n &#39;s#(.*\.)sh$#mv &amp; \1shell#e&#39;</code> <font color="red"><br>-regex</font>: 使用正则表达式<br><code>&quot;.*/.sh$&quot;</code> <font size="4">给出的正则表达式必须要匹配完整的文件路径,比如：<code>find / -regex &quot;find&quot;</code> 这样子是找不到/usr/bin/find的，要像这样<code>find / -regex &quot;.*find&quot;</code>或者更精确一点<code>find / -regex &quot;.*/find&quot;</code></font> <font color="red"><br>&amp;</font>: 匹配前面找到的内容 <font color="red"><br>e</font>: 末尾的e表示<font color="red"># #这里允许执行命令然后得到结果#</font>,也就是<code>mv 前面匹配到的.sh文件 任意内容.shell</code><br></div>
 
-<h2 id="Bash中-的用法和变量的间接引用"><a href="#Bash中-的用法和变量的间接引用" class="headerlink" title="Bash中${}的用法和变量的间接引用"></a>Bash中${}的用法和变量的间接引用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$&#123;STR^^&#125;, 把STR中的所有小写字母转换为大写输出(不改变值)</span><br><span class="line">[root@junun ~]# str=abcde</span><br><span class="line">[root@junun ~]# echo $&#123;str^^&#125;</span><br><span class="line">ABCDE</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$&#123;STR,,&#125;, 把STR中的所有大写字母转换为小写输出(不改变值)</span><br><span class="line">[root@junun ~]# str1=ABCDE</span><br><span class="line">[root@junun ~]# echo $&#123;str1,,&#125;</span><br><span class="line">abcde</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.ax1x.com/2019/06/16/V7UGwt.png" alt=""></p>
+<h2 id="Bash中-的用法和变量的间接引用"><a href="#Bash中-的用法和变量的间接引用" class="headerlink" title="Bash中${}的用法和变量的间接引用"></a>Bash中${}的用法和变量的间接引用</h2><pre><code>${STR^^}, 把STR中的所有小写字母转换为大写输出(不改变值)
+[root@junun ~]# str=abcde
+[root@junun ~]# echo ${str^^}
+ABCDE
+</code></pre><pre><code>${STR,,}, 把STR中的所有大写字母转换为小写输出(不改变值)
+[root@junun ~]# str1=ABCDE
+[root@junun ~]# echo ${str1,,}
+abcde
+</code></pre><p><img src="https://s2.ax1x.com/2019/06/16/V7UGwt.png" alt=""></p>
+<p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
+<p><script>hljs.initHighlightingOnLoad();</script></p>
+<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css"><br><code class="Bash" style="font-size: 18px; border:0px solid #000 ;"></code></p>
 
       
     </div>
@@ -621,6 +644,10 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/06/20/脚本/" rel="prev" title="Three">
+                Three <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -696,7 +723,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -728,7 +755,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/document/">document</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/document/">document</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -862,7 +889,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共55.1k字</span>
+  <span class="post-count">博客全站共56.2k字</span>
 </div>
 
 <div id="days"></div>
