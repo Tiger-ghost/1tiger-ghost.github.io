@@ -166,7 +166,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/03/ENOeun.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/03/ENOnH0.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EauSmR.png">
-<meta property="og:updated_time" content="2019-06-24T11:09:23.467Z">
+<meta property="og:updated_time" content="2019-06-25T09:42:46.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="one">
 <meta name="twitter:description" content="linux 培训的笔记">
@@ -453,7 +453,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-24 19:09:23" itemprop="dateModified" datetime="2019-06-24T19:09:23+08:00">2019-06-24</time>
+                <time title="Modified: 2019-06-25 17:42:46" itemprop="dateModified" datetime="2019-06-25T17:42:46+08:00">2019-06-25</time>
               
             
           </span>
@@ -590,7 +590,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <h1 id="终端"><a href="#终端" class="headerlink" title="终端"></a>终端</h1><p><code>tty</code>显示终端号<br>chvt 2:表示ctrl+Alt+F2切换到的界面 </p>
 <h1 id="centos7启动网络"><a href="#centos7启动网络" class="headerlink" title="centos7启动网络"></a>centos7启动网络</h1><p>启动网络：<code>nmcli connection modify ens33 connection.autoconnect yes</code><br>id -u:当前用户的UID，root为0，非0为普通用户。</p>
 <h1 id="查看版本号"><a href="#查看版本号" class="headerlink" title="查看版本号"></a>查看版本号</h1><p><code>cat /etc/centos-release</code>  <code>lsb_release -a</code></p>
-<h1 id="命令提示符"><a href="#命令提示符" class="headerlink" title="命令提示符"></a>命令提示符</h1><p>查看：<code>echo $PS1</code><br>更改：<code>PS1=&quot;\[\e[1;33m\][\u@\h \w \!]\\$\[\e[0m\]&quot;</code><br>命令提示符:prompt <font color="red"><br>#</font> :管理员 <font color="red"><br>$</font> :普通用户<br>显示提示符格式：<code>echo $PS1</code><br>修改提示符格式：<code>PS1=&quot;\e[1;33m\[[\u@\h \W]\\$\\e[0m&quot;</code><br><code>PS1=&#39;\e[1;33m[\u@\h \w]\$ &#39;</code> <font color="red"><br>\e \033</font>　<font color="red"> \u</font> 当前用户  <font color="red"><br>\h </font>主机名称　<font color="red"> \H</font> 主机名   　　<font color="red"><br>\w</font> 当前工作目录　<font color="red">\W</font> 当前工作目录最后目录名     <font color="red"><br>\t</font> 24小时时间格式　<font color="red">\T</font> 12小时时间格式  <font color="red"><br>\！</font>命令历史数　 　　<font color="red">\#</font> 开机后命令历史数<br><code>cat ~/.bashrc</code> 命令提示符当前用户修改路径</p>
+<h1 id="命令提示符"><a href="#命令提示符" class="headerlink" title="命令提示符"></a>命令提示符</h1><p>查看：<code>echo $PS1</code><br>更改：<code>PS1=&quot;\[\e[1;33m\][\u@\h \w \!]\\$\[\e[0m\]&quot;</code><br>命令提示符:prompt <font color="red"><br>#</font> :管理员 <font color="red"><br>$</font> :普通用户<br>显示提示符格式：<code>echo $PS1</code><br>修改提示符格式：<code>PS1=&quot;\e[1;33m\[[\u@\h \W]\\$\\e[0m&quot;</code><br><code>PS1=&#39;\e[1;33m[\u@\h \w]\$ &#39;</code> <font color="red"><br>\e \033</font>　<font color="red"> \u</font> 当前用户  <font color="red"><br>\h </font>主机名称　<font color="red"> \H</font> 主机名   　　<font color="red"><br>\w</font> 当前工作目录　<font color="red">\W</font> 当前工作目录最后目录名     <font color="red"><br>\t</font> 24小时时间格式　<font color="red">\T</font> 12小时时间格式  <font color="red"><br>\！</font>命令历史数　 　　<font color="red">\#</font> 开机后命令历史数<br><code>cat ~/.bashrc</code> 命令提示符当前用户修改路径<br><code>echo -e &quot;\033[5;41;33m文字文字\033[0m&quot;</code> 闪烁+颜色</p>
 <h1 id="虚拟机取消密码进入"><a href="#虚拟机取消密码进入" class="headerlink" title="虚拟机取消密码进入"></a>虚拟机取消密码进入</h1><pre><code>vim /etc/gdm/custom.conf    
 AutomaticLoginEnable=true  
 AutomaticLogin=root  
@@ -1011,8 +1011,8 @@ echo &#39;PATH=/app/httpd/bin:$PATH&#39; &gt; /etc/profile.d/httpd.sh
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/28/linux command/" rel="prev" title="command">
-                command <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/28/document/" rel="prev" title="document">
+                document <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1256,7 +1256,7 @@ echo &#39;PATH=/app/httpd/bin:$PATH&#39; &gt; /etc/profile.d/httpd.sh
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共56.2k字</span>
+  <span class="post-count">博客全站共56.3k字</span>
 </div>
 
 <div id="days"></div>

@@ -164,9 +164,12 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/09/Eg0hY4.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/09/Eg0fkF.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/09/Eg0yyq.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/09/Egwxs0.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/09/Eg0Zsx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/09/Eg0lJH.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/09/Eg0GQI.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/09/Eg0aTS.png">
-<meta property="og:updated_time" content="2019-06-17T09:15:39.827Z">
+<meta property="og:updated_time" content="2019-06-25T14:31:41.686Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="command">
 <meta name="twitter:description" content="linux 常用命令集合:">
@@ -453,7 +456,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-17 17:15:39" itemprop="dateModified" datetime="2019-06-17T17:15:39+08:00">2019-06-17</time>
+                <time title="Modified: 2019-06-25 22:31:41" itemprop="dateModified" datetime="2019-06-25T22:31:41+08:00">2019-06-25</time>
               
             
           </span>
@@ -670,331 +673,109 @@ wc &lt;&lt; a.txt            注意a.txt
  -gid  GID:查找属组指定的GID的所有文件；  
  -nouser :查找没有属主的文件；  
  -nogroup :查找没有属组的文件；
-</code></pre><h2 id="根据文件的类型查找："><a href="#根据文件的类型查找：" class="headerlink" title="根据文件的类型查找："></a>根据文件的类型查找：</h2><p><code>-type TYPE</code> :按type查找<br><strong>f:普通文件</strong>　<font color="blue"> <strong>d:目录</strong> </font>　<font color="skyblue"> <strong>l:符号链接文件</strong> </font> 　<font color="yellow"> <strong>b:块设备文件</strong> </font> 　　c:字符设备文件<br>p:管道文件　s：套接字文件  　　【<font color="red"> <strong>./可执行文件</strong> </font>】<br>组合测试：<code>`</code><br>与：-a,默认组合逻辑而且的意思; 　　-o 是或者的意思； 　　-not,!：非(相反)<br>find ./ -size -1M -a -type f</p>
-<p>#寻找当前目录下文件大于1M的文件或者是目录。<br>find ./ -size +1M -o -type d</p>
-<p>#寻找当前目录下文件小于1M并且文件类型是一般文件的文件。</p>
-<pre><code>&lt;font color=red&gt; **!A -a !B =!(A -o B) 　　　!A -o !B =!(A -a B)**&lt;/font&gt;   　 
-`查找tmp目录下不包含“fstab”的字符文件 find /tmp -not -iname &quot;*fstab\*&quot; `
-## 根据文件的大小查找：
-&lt;font color=red&gt; -size &lt;/font&gt; [+|-]#UNIT 常用单位：K,M,G
-</code></pre><p>size 10K filename,大小表示 (#-1,#] 　　9K&lt;filename&lt;10K;<br> size -10K filename,大小表示[0-UNIT-1];　<br> size +10K filename,大小表示(#,∞);</p>
-<pre><code>## 根据时间戳查找   
-以“天”为单位：   
-&lt;div class=&quot;note primary&quot;&gt;&lt;p&gt;\# [#,#-1]距现在为止过去几天**前**访问过文件。  
-\-#:(0,#) 几天**内**访问过文件。  
-\+#(oo, #-1] 几天前至-oo访问过的所有文件 &lt;/p&gt;&lt;/div&gt;&lt;/p&gt;&lt;/dir&gt; 
-&lt;div class=&quot;note warning&quot;&gt;&lt;p&gt;-atime:显示的是文件中的数据最后被访问的时间，比如系统的进程直接使用或通过一些命令和脚本间接使用。&lt;/p&gt;&lt;/div&gt;
-&lt;div class=&quot;note warning&quot;&gt;&lt;p&gt;-mtime:显示的是文件内容被修改的最后时间，比如用vi编辑就会发生改变。&lt;/p&gt;&lt;/div&gt;
-&lt;div class=&quot;note warning&quot;&gt;&lt;p&gt;-ctime:显示的是文件的权限、拥有者、所属的组、链接数发生改变时的时间。当然当内容改变时也会随之改变。&lt;/p&gt;&lt;/div&gt; 
-以“分钟”为单位:  
-&lt;font color=red&gt; -amin　　-mmin　　-cmin  &lt;/font&gt; 同上
+</code></pre><h2 id="根据文件的类型查找："><a href="#根据文件的类型查找：" class="headerlink" title="根据文件的类型查找："></a>根据文件的类型查找：</h2><p><code>-type TYPE</code> :按type查找<br><strong>f:普通文件</strong>　<font color="blue"> <strong>d:目录</strong> </font>　<font color="skyblue"> <strong>l:符号链接文件</strong> </font> 　<font color="yellow"> <strong>b:块设备文件</strong> </font> 　　c:字符设备文件<br>p:管道文件　s：套接字文件  　　【<font color="red"> <strong>./可执行文件</strong> </font>】<br>组合测试：</p>
+<pre><code>与：-a,默认组合逻辑而且的意思; 　　-o 是或者的意思； 　　-not,!：非(相反)
+find ./ -size -1M -a -type f
+#寻找当前目录下文件大于1M的文件或者是目录。
+find ./ -size +1M -o -type d
+#寻找当前目录下文件小于1M并且文件类型是一般文件的文件。
+</code></pre><p><font color="red"> <strong>!A -a !B =!(A -o B) 　　　!A -o !B =!(A -a B)</strong></font>   　<br><code>查找tmp目录下不包含“fstab”的字符文件 find /tmp -not -iname &quot;*fstab\*&quot;</code></p>
+<h2 id="根据文件的大小查找："><a href="#根据文件的大小查找：" class="headerlink" title="根据文件的大小查找："></a>根据文件的大小查找：</h2><p><font color="red"> -size </font> [+|-]#UNIT 常用单位：K,M,G</p>
+<pre><code>size 10K filename,大小表示 (#-1,#] 　　9K&lt;filename&lt;10K;   
+ size -10K filename,大小表示[0-UNIT-1];　  
+ size +10K filename,大小表示(#,∞);
+</code></pre><h2 id="根据时间戳查找"><a href="#根据时间戳查找" class="headerlink" title="根据时间戳查找"></a>根据时间戳查找</h2><p>以“天”为单位：   </p>
+<p><div class="note primary"><p># [#,#-1]距现在为止过去几天<strong>前</strong>访问过文件。<br>-#:(0,#) 几天<strong>内</strong>访问过文件。<br>+#(oo, #-1] 几天前至-oo访问过的所有文件 </p></div></p> <p></p>
+<p><div class="note warning"><p>-atime:显示的是文件中的数据最后被访问的时间，比如系统的进程直接使用或通过一些命令和脚本间接使用。</p></div></p>
+<p><div class="note warning"><p>-mtime:显示的是文件内容被修改的最后时间，比如用vi编辑就会发生改变。</p></div></p>
+<p><div class="note warning"><p>-ctime:显示的是文件的权限、拥有者、所属的组、链接数发生改变时的时间。当然当内容改变时也会随之改变。</p></div><br>以“分钟”为单位:  </p>
+<p><font color="red"> -amin　　-mmin　　-cmin  </font> 同上</p>
+<h2 id="根据权限来查找"><a href="#根据权限来查找" class="headerlink" title="根据权限来查找"></a>根据权限来查找</h2><p><font color="red"> -perm [/|-]mode </font> <code>find ./ -perm 644</code><br>mode:精确权限匹配； <font color="red"><br>/mode </font> :任何一类用户(u,g,o)的权限中的任何一位(r,w,x)符合条件即满足   9位权限之间存在“或”关系；  <font color="red"><br>-mode </font> :每一类用户(u,g,o)的权限中的每一位(r,w,x)同时符合条件即满足  9位权限之间存在”与”关系；<br><code>440属于/666有读的权限 find./ -perm /666  符合这一查找</code></p>
+<h2 id="处理动作："><a href="#处理动作：" class="headerlink" title="处理动作："></a>处理动作：</h2><p><pre><br>-print:输出至标准输出:默认的动作;<br>-ls:类似于对查找到的文件执行“ls -l”命令，输出文件的详细信息<br>-delete:删除找到的文件<br>-fls:/PATH/TO/SOMEFILE:把查找到的所有文件的长格式信息保存至指定文件中；<br>-ok COMMAND {} \; :对查找到的每个文件执行由COMMAND表示的命令；每次操作都由用户进行确认；<br>-exec COMMAND {} \; :对查找到的每个文件执行由COMMAND表示的命令；<br></pre></p>
+<ol>
+<li><p>查找/var目录下属主为root，且属组为mail的所有文件或目录；<br><code>find /var -user root -a -group mail -ls</code></p>
+</li>
+<li><p>查找/usr目录下不属于root,bin或hadoop的所有文件或目录；用两种方法<br><code>find /usr -not -user root -a -not -user bin -a -not -user hadoop</code><br><code>find /usr -not \( -user root -o -user bin -o -user hadoop \) -ls</code>  </p>
+</li>
+<li>查找/etc目录下最近一周内其内容修改过，且属主不是root也不是hadoop用户的文件或目录；<br><code>find /etc -mtime -7 -a -not -user root -a -not -user hadoop</code><br><code>find /etc -mtime -7 -a -not \(-user root -o -user hadoop\) -ls</code></li>
+<li>查找当前系统上没有属主或属组，且最近一周内曾今被访问过的文件或目录；<br><code>find ./ -nouser -o -nogroup -ls</code> 如果有文件属于可查找项，但是加ls选项最后会无法输出显示　加了-o（或条件）和ls后只会对后一半生效。 需要<br><code>find ./ \( -nouser -o -nogroup\) -atime -7 -ls</code></li>
+<li>查找/etc目录下大于1M且类型为普通文件的所有文件；<br><code>find /etc -size +1M -ls</code><br><code>find /etc -size +1M -type f -exec ls -lh {} \;</code>   </li>
+<li>查找/etc目录下所有用户都没有写权限的文件；<br><code>find /etc -not -perm /222 -type f -ls　至少有一个用户 有</code></li>
+<li>查找/etc目录至少有一类用户没有执行权限的文件；<br><code>find /etc -not -perm -type f -111</code>  </li>
+<li>查找/etc/init.d目录下，所有用户都有执行权限，且其他用户有写权限的所有文件；<br><code>find /etc -perm -111 -a -perm -002 -ls</code><br><code>find /etc -perm -113 -ls -type f</code></li>
+</ol>
+<h1 id="history"><a href="#history" class="headerlink" title="history"></a>history</h1><p>history [选项][历史命令保存文件]<font color="red"><br>-c</font>:清空历史命令  <font color="red"><br>-w</font>:把缓存中的历史命令写入历史命令保存文件 ~/.bash_history <table><tr><td bgcolor="#778899"><font color="black">历史命令默认保存1000条，可以在环境变量配置文件/etc/profile中修改</font></td></tr></table>历史命令的调用： </p>
+<ol>
+<li>使用上、下箭头调用以前的历史命令  </li>
+<li>使用”!n”重复执行第n条历史命令  </li>
+<li>使用”!!”重复执行上一条命令  </li>
+<li>使用”!字符串”重复执行最后一条以该字符串开头的命令。</li>
+<li>使用ctrl+r 搜索历史命令</li>
+</ol>
+<h1 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h1><p>命令别名<font color="lime">#</font><font color="red">alias</font> 别名=<code>&#39;原命令&#39;</code> </p>
+<p><font color="red">alias</font>:查询命令别名。</p>
+<p><div class="note warning"><p></p>
+<p><center>命令执行时顺序：</center></p>
+<ol>
+<li>第一顺位执行时用绝对路径或相对路径执行的命令。  </li>
+<li>第二顺位执行别名。  </li>
+<li>第三顺位执行Bash的内部命令。  </li>
+<li>第四顺位执行按照$PATH环境变量定义的目录查找顺序找到的第一个命令。<br>让别名永久生效：<code>vim /root/.bashrc</code><br>删除别名：<code>unalias 别名</code><br></li></ol></div></p>.
 
-## 根据权限来查找
-&lt;font color=red&gt; -perm [/|-]mode &lt;/font&gt; `find ./ -perm 644`  
-mode:精确权限匹配； &lt;font color=red&gt; 
-/mode &lt;/font&gt; :任何一类用户(u,g,o)的权限中的任何一位(r,w,x)符合条件即满足   9位权限之间存在“或”关系；  &lt;font color=red&gt; 
--mode &lt;/font&gt; :每一类用户(u,g,o)的权限中的每一位(r,w,x)同时符合条件即满足  9位权限之间存在&quot;与&quot;关系；   
-`440属于/666有读的权限 find./ -perm /666  符合这一查找`
-
-## 处理动作：
-&lt;pre&gt;
--print:输出至标准输出:默认的动作;   
--ls:类似于对查找到的文件执行“ls -l”命令，输出文件的详细信息  
--delete:删除找到的文件  
--fls:/PATH/TO/SOMEFILE:把查找到的所有文件的长格式信息保存至指定文件中；    
--ok COMMAND {} \; :对查找到的每个文件执行由COMMAND表示的命令；每次操作都由用户进行确认；    
--exec COMMAND {} \; :对查找到的每个文件执行由COMMAND表示的命令；
-&lt;/pre&gt;
-1. 查找/var目录下属主为root，且属组为mail的所有文件或目录；  
-`find /var -user root -a -group mail -ls`
-
-2. 查找/usr目录下不属于root,bin或hadoop的所有文件或目录；用两种方法
-`find /usr -not -user root -a -not -user bin -a -not -user hadoop`  
-`find /usr -not \( -user root -o -user bin -o -user hadoop \) -ls`  
-3. 查找/etc目录下最近一周内其内容修改过，且属主不是root也不是hadoop用户的文件或目录；  
-`find /etc -mtime -7 -a -not -user root -a -not -user hadoop`  
-`find /etc -mtime -7 -a -not \(-user root -o -user hadoop\) -ls`
-4. 查找当前系统上没有属主或属组，且最近一周内曾今被访问过的文件或目录；   
-`find ./ -nouser -o -nogroup -ls` 如果有文件属于可查找项，但是加ls选项最后会无法输出显示　加了-o（或条件）和ls后只会对后一半生效。 需要
-`find ./ \( -nouser -o -nogroup\) -atime -7 -ls `
-5. 查找/etc目录下大于1M且类型为普通文件的所有文件；  
-`find /etc -size +1M -ls`  
-`find /etc -size +1M -type f -exec ls -lh {} \; `   
-6. 查找/etc目录下所有用户都没有写权限的文件；    
-`find /etc -not -perm /222 -type f -ls　至少有一个用户 有`
-7. 查找/etc目录至少有一类用户没有执行权限的文件；  
-`find /etc -not -perm -type f -111`  
-8. 查找/etc/init.d目录下，所有用户都有执行权限，且其他用户有写权限的所有文件； 
-`find /etc -perm -111 -a -perm -002 -ls`  
-`find /etc -perm -113 -ls -type f `
-
-# history  
-history [选项][历史命令保存文件]&lt;font color=red&gt;
--c&lt;/font&gt;:清空历史命令  &lt;font color=red&gt;
--w&lt;/font&gt;:把缓存中的历史命令写入历史命令保存文件 ~/.bash_history &lt;table&gt;&lt;tr&gt;&lt;td bgcolor=#778899&gt;&lt;font color=black&gt;历史命令默认保存1000条，可以在环境变量配置文件/etc/profile中修改&lt;/font&gt;&lt;/td&gt;&lt;/td&gt;&lt;/table&gt;历史命令的调用： 
-1. 使用上、下箭头调用以前的历史命令  
-2. 使用&quot;!n&quot;重复执行第n条历史命令  
-3. 使用&quot;!!&quot;重复执行上一条命令  
-4. 使用&quot;!字符串&quot;重复执行最后一条以该字符串开头的命令。
-5. 使用ctrl+r 搜索历史命令
-
-# alias
-命令别名&lt;font color=lime&gt;#&lt;/font&gt;&lt;font color=red&gt;alias&lt;/font&gt; 别名=`&#39;原命令&#39;` 
-&lt;font color=red&gt;alias&lt;/font&gt;:查询命令别名。
-
-&lt;div class=&quot;note warning&quot;&gt;&lt;p&gt;
-&lt;center&gt;命令执行时顺序：&lt;/center&gt;
-1. 第一顺位执行时用绝对路径或相对路径执行的命令。  
-2. 第二顺位执行别名。  
-3. 第三顺位执行Bash的内部命令。  
-4. 第四顺位执行按照$PATH环境变量定义的目录查找顺序找到的第一个命令。
-让别名永久生效：`vim /root/.bashrc` 
-删除别名：`unalias 别名`
-&lt;/p&gt;&lt;/div&gt;.
-
-# vim  
-**`:.,$y`**复制当前行到末尾行  
-**`:!`** 调用系统命令，可临时执行 &lt;table&gt;&lt;tr&gt;&lt;td&gt; 使vim设置永久生效:vim /etc/vimrc   把设置写到这个文件的最后，对所有账户生效  
-set nu 显示行号 　　set nonu 取消行号  
-set ic 不区分大小写　set noic 取消不区分大小写  
-set ts=4    设置tab键长度  
-set sw=4    设置自动缩进的tab键长度 &lt;/table&gt;&lt;/tr&gt;&lt;/td&gt;   `vim  /root/.vimrc    也可以把设置写到此文件，只对root生效` 
-
-## vim字符替换
-&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=#FFF0F5&gt;&lt;font size=4&gt;:%s/this/that 每一行的第一个this被替换成that    
-:%s/this/that/g 将文本中所有的this替换成that %从每一行的开头到结尾   s表示替换      
-:1,5 s/old/new/g  #替换第一行到第5行中所有匹配的内容&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;.
-
-## 字符操作
-u撤销上一步    
-i当前插入，I行首插入。  
-a当前字符插入(光标后一位插入)，A行尾插入。   
-o表示：本行回车到下一行插入，O上一行插入。  
-x删除光标所在字符，X向前删除一个字符。  
-dd删除光标所在的行，dG删除光标所在开始行到文件尾的所有字符。   
-J合并两行。&lt;font color=#FF6437&gt;
-行操作：&lt;/font&gt;home 键或^键行首，$或end行尾  
-dd删除一行Ndd(删除本行与下一行)。  
-yy复制一行，Nyy复制n行，p将复制行粘贴，p向光标下一行粘。(N表示数字) &lt;font color=#FF6437&gt;
-词操作&lt;/font&gt;:dw删除一个词，y+$复制至行尾。y+^复制至行首。yw复制一个词。**&lt;font color=red&gt;:.,$y** &lt;/font&gt; 复制当前行到末尾  &lt;table&gt;&lt;tr&gt;&lt;td bgcolor=#778899&gt;v模式:编程的时候需要进行多行注释：         （删除是要将光标移到这个词的行首，如果光标不在行首则删除光标之后的字母。）
-块操作：D或d+$删除至行尾  d+^删除至行首  
-1、注释：ctrl+v进入列编辑模式    
-2、向下或向上移动光标 （ctrl L 向下全部选中）  
-3、把需要注释的行开头的开头标记起来  
-4、然后按大写的I  
-5、再插入注释符，比如“#”  
-6、再按Esc，就会全部注释了  
-删除多行注释：按ctrl+v进入列编辑模式;向下或向上移动光标；选中注释部  分然后按d,就会删除注释符号。&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;  
-&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=#FFF0F5&gt;vim编辑器： :wq 可以保存外 :w +路径+文件名直接保存在某个位置和重命名&lt;font color=blue&gt;:w 路径/文件名&lt;/font&gt;  
-ZZ 保存退出　　:x 保存退出　　:!命令&lt;font color=blue&gt;:!ifconfig&lt;/font&gt;   
-vi的行定位功能:  
-ctrl+f 向前卷动一个屏幕  
-ctrl+b 向后卷动一个屏幕  
-G     到文件最后一行行首  
-:$    到文件最后一行行尾  
-mG    到指定行，m为目标行数 或者mgg    
-set nu  显示行号    
-/内容   查找指定内容    
-n   查找下一个  
-N   回到前一个  
-？  寻找上一个 &lt;/table&gt;&lt;/tr&gt;&lt;/td&gt; &lt;table&gt;&lt;tr&gt;&lt;td bgcolor=#4682B4&gt;&lt;font color=#FFF8DC&gt;&lt;font size=4&gt;/^字符串  查找以字符串开始的行  
-/字符串$  查找以字符串结尾的行    
-/a.b      查找字符串a任意字符b   vim替换    
-r              替换当前光标字符    
-:r 文件名      在光标当前位置载入另一个文件&lt;/font&gt;&lt;/font&gt;&lt;/tr&gt;&lt;/td&gt;&lt;/table&gt;. 
-
-# useradd 
-useradd命令用来建立用户帐号和创建用户的起始目录，使用权限是终极用户.  &lt;font color=red&gt;
--u&lt;/font&gt; :uid指定用户ID  &lt;font color=red&gt;
--d&lt;/font&gt;:指定用户登入时的启始目录。  &lt;font color=red&gt;
--g&lt;/font&gt;:指定用户所属的群组     &lt;font color=red&gt;
--G&lt;/font&gt;:指定用户所属的附加群组。    
-`tom 用户的登陆 shell 为非交互式 shell useradd –s /sbin/nologin tom`  
-&lt;font color=red&gt; -e &lt;/font&gt;:指定账号的有效期限，缺省表示永久有效  
-&lt;font color=blue&gt; useradd user1——创建用户user1;   
-useradd –e 12/30/2009 user2——创建user2,指定有效期2009-12-30到期&lt;/font&gt;  
-&lt;font color=red&gt;-c&lt;/font&gt;:用户说明，手工指定用户的说明，添加说明有Spacebar时要加&lt;font color=red&gt;**&quot; &quot;**&lt;/font&gt;。
-&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=#778899&gt;用户默认值文件：&lt;font color=blue&gt;/etc/defalut/useradd&lt;/font&gt;  
-1.GROUP=100 :用户默认组ID (公有模式)  
-2.HOME=/home :用户家目录  
-3.INACTIVE=-1 :密码过期宽限天数(shadow文件7字段)  
-4.EXPIRE=&lt;font color=red&gt;no value&lt;/font&gt; :密码失效时间(8字段)  
-5.SHELL=/bin/bash :默认的shell  
-6.SKEL=/etc/skel :模板目录  
-7.CREATE\_MAIL\_SPOOL=yes :是否建立邮箱 &lt;font color=blue&gt;
-/etc/login.defs&lt;/font&gt;  
-PASS\_MAX\_DAYS 999 :密码有效期(5字段)  
-PASS\_MIN\_DAYS 0 :密码修改间隔(4字段)  
-PASS\_MIN\_LEN 5 :密码最小5位(PAM)  
-PASS\_WARN\_AGE 7 :密码到期警告(6)  
-UID\_MIN 500 :最小和最大UID范围  
-GID\_MIX 60000  
-ENCRYPT_METHOD SHA512 :加密模式&lt;/table&gt;&lt;/tr&gt;&lt;/td&gt;.  
-
-# userdel
-删除用户userdel [-r] 用户名  &lt;font color=red&gt;
--r&lt;/font&gt;:删除用户的同时删除用户家目录
-
-## id  
-查看用户id：&lt;font color=lime&gt;#&lt;/font&gt;id 用户名  
-查询用户的UID,初始组ID,附加群组ID 
-
-# usermod
-usermod命令用于修改用户的基本信息。usermod命令不允许你改变正在线上的使用者帐号名称。当usermod命令用来改变user id，必须确认这名user没在电脑上执行任何程序.  &lt;font color=red&gt; 
--g &lt;群组&gt; &lt;/font&gt; 修改用户所属的&lt;font color=red&gt;原始群组&lt;/font&gt;。  
-`usermod -g root username`  &lt;font color=#FF1493&gt; 
--G &lt;群组&gt;&lt;/font&gt; 修改户所属的***附加群***组  &lt;font color=red&gt;
--a -G &lt;/font&gt; 无限增加到附加组，可拥有多个附加组. 
-`将a1添加附加组user3 usermod -a -G user3 a1 `&lt;font color=red&gt;
--c&lt;/font&gt;:修改用户的说明`usermod -c &quot;test user&quot; username`    
-&lt;pre&gt;&lt;font size=4&gt;当某一用户拥有多个附加组之后，使用usemod -G会修改附加组，则多个组消失掉变成唯一当前修改的附加组&lt;/font&gt;&lt;/pre&gt;
-1.将 newuser2 添加到附加组 staff `usermod -G staff newuser2`   &lt;font color=red&gt; 
--l &lt;帐号名称&gt; &lt;/font&gt; 修改用户帐号名称。   
-2.修改 newuser 的用户名为 newuser1 `usermod -l newuser1 newuser`&lt;font color=red&gt; 
--L 锁定用户密码，使密码无效。&lt;/font&gt;  &lt;font color=red&gt; 
--U 解除密码锁定。&lt;/font&gt;  
-3.锁定账号 newuser1 `usermod -L newuser1`
-4.解除对 newuser1 的锁定 `usermod -U newuser1` &lt;font color=red&gt; 
--d &lt;/font&gt;改变用户家目录,常与&lt;font color=red&gt;-m&lt;/font&gt;结合使用       &lt;font color=red&gt;
--m &lt;/font&gt;将主目录的内容移动到新目录    
-`usermod -m -d /home/user2 -uid username`若使用报错使用以下命令：    
-`cat /dev/null &gt; /var/run/utmp`   
-&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=#778899&gt;&lt;font size=3&gt;清空此文件。utmp是一个文件，除了utmp程序你不能编辑这个文件，删掉他的话，当前登陆信息都会丢失。它就好比系统开启后它会把系统成员的信息迅速的记录下来，过一段时间它就不再记录，确认系统的用户配置就是这样了，这个文件在每次机器reboot起来后都会重新创建。&lt;/font&gt;&lt;/table&gt;&lt;/tr&gt;.
-
-# groupadd
-&lt;font color=red&gt;-g&lt;/font&gt; GID: 修改组ID  &lt;font color=red&gt;
--n&lt;/font&gt; 新组名: 修改组名  
-
-# su
-su: [选项] 用户名  
-&lt;font color=red&gt;**-**&lt;/font&gt;:选项只使用&quot;-&quot;代表连带用户的环境变量一起切换。&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=red&gt;可使用**env**命令查看&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;font color=red&gt;-c&lt;/font&gt;:仅执行一次命令，而不切换用户身份  
-`su - root -c &quot;useradd user3&quot;`不切换成root,但是执行useradd命令添加user1用户。   
-
-# chage  
-修改用户密码状态chage
-chage [选项] 用户名   &lt;font color=red&gt;
--l&lt;/font&gt;:列出用户的详细密码状态  **&lt;font color=red&gt;
--d 日期:修改密码最后一次更改日期(shadow3字段)&lt;/font&gt;**  &lt;font color=red&gt;
--m 天数&lt;/font&gt;:两次密码修改间隔(4字段)  &lt;font color=red&gt;
--M 天数&lt;/font&gt;:密码有效期(5字段)  &lt;font color=red&gt;
--W 天数&lt;/font&gt;:密码过期前警告天数(7字段)  &lt;font color=red&gt;
--I 天数&lt;/font&gt;:密码过后宽限天数(7字段)  &lt;font color=red&gt;
--E 日期&lt;/font&gt;:账号失效时间(8字段)  
-`chage -d 0 username`&lt;center&gt;&lt;font size=2&gt;这个命令其实是把密码修改日期归0了(shadow第3字段)，这样用户只要一登录就要修改密码。第三字段是指密码最后一次修改时间的日期。1970年1月1号到现在修改密码的时间戳。如果第3字段改为0，系统会认为用户没有修改过操作密码，那么当此用户一旦登录系统就会提示要修改密码，才可正常使用。&lt;/font&gt;&lt;/center&gt;.
-
-# passwd
-&lt;font color=red&gt;-S&lt;/font&gt;:查询用户密码的密码状态，仅root用户可用。  &lt;font color=red&gt;
--l&lt;/font&gt;:暂时锁定用户。仅root用户可用。  &lt;font color=red&gt;
--u&lt;/font&gt;:解锁用户。仅root用户可用。  &lt;font color=red&gt;
---stdin&lt;/font&gt;:可以通过管道符输出的数据作为用户的密码。`echo &quot;123&quot; | passwd --stdin user`
-
-# gpasswd
-&lt;font color=red&gt; -d &lt;/font&gt;:从组删除用户 `gpasswd -d username groupadd` &lt;font color=red&gt; 
--a &lt;/font&gt;:添加用户到组(附加组),同时保留以前的组  
-&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=#FF8DC&gt;&lt;font size=3&gt;添加用户到某一个组可以使用  usermod -G groupB userA 这个命令可以添加一个用户到指定的组，但是以前添加的组就会清空掉.
-所以想要添加一个用户到一个组，同时保留以前添加的组时，请使用gpasswd这个命令来添加操作用户 &lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;font color=red&gt; -A &lt;/font&gt;:指定组内管理员 `gpasswd -A username groupname`
-
-# groups 
-&lt;font color=red&gt; groups username &lt;/font&gt;显示linux用户所属的组
-
-# date  
-date 根据给定格式显示日期或设置系统日期时间。&lt;font face=&quot;Monotype Corsiva&quot;&gt;print or set the system date and time&lt;/font&gt;　
-指令所在路径：/bin/date  `date &quot;+%Y-%m-%d %H:%M:%S&quot;` &lt;font color=red&gt;
--d&lt;/font&gt;:显示字符串所指的日期与时间。字符串前后必须加上双引号
-</code></pre><p>date -d now<br>date -d ‘next monday’　<br>date -d yesterday +%Y-%m-%d  </p>
-<pre><code>
-&lt;font color=red&gt;-r&lt;/font&gt;:显示文件最后修改时间  &lt;font color=red&gt;
--s&lt;/font&gt;:设置系统时间 `date -s &quot;2018-11-11 00 00 00&quot;` 
-&lt;table&gt;&lt;tr&gt;&lt;td border=&quot;100%&quot; width=&quot;100%&quot; bgcolor=#E0FFFF&gt;在使用date -s这个命令修改时间后，系统重启后就失效了，因此为了将这个时间永久生效，需要将修改的时间写入CMOS，查看CMOS的时间:`clock –r`
-将当前系统时间写入CMOS中去`clock –w ` &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; 在生产环境中常使用时间格式打包数据：&lt;pre&gt;tar zcvf etc-$(date +%F).tar.gz /etc 
-tar zcvf etc-\`date +%F\`.tar.gz /etc&lt;/pre&gt;
-&lt;pre&gt;  
-![](https://s2.ax1x.com/2019/05/09/Egwxs0.png) date:2018/9/23&lt;pre&gt;
-
-# hwclock
-&lt;table&gt;&lt;tr&gt;&lt;td style=&quot;background-image:url(https://s2.ax1x.com/2019/05/09/Eg0FJJ.png)&quot;&gt;&lt;font color=FFFFFF&gt;查看硬件时间  
-设置硬件时间`hwclock --set --date=&quot;07/07/06 10:19&quot; （月/日/年 时:分:秒）`  
-硬件时间和系统时间的同步：重新启动系统，硬件时间会读取系统时间，实现同步，但是在不重新启动的时候，需要用hwclock命令实现同步。  
-硬件时钟与系统时钟同步：`hwclock --hctosys`（hc代表硬件时间，sys代表系统时间）  
-系统时钟和硬件时钟同步:（让系统的时间同步到硬件时钟)`hwclock –-systohc`&lt;/table&gt;&lt;/tr&gt;&lt;/td&gt;.
-
-# ln
-ln：链接命令  
-硬链接：复制并同步    ln /etc/passwd /tmp/password  &lt;font color=red&gt;
-软链接：类似windows下的快捷方式　ln -s  /etc/passwd /tmp password&lt;/font&gt;  
-软链接和硬链接的区别:  
-1.创建命令不同:&lt;font color=red&gt;
-ln -s /root/ruan.txt /root/桌面/&lt;/font&gt;　ln /root/ying.txt /root/桌面/  
-2.&lt;font color=red&gt;软链接创建时必须使用绝对路径(链接和源文件在同一目录下,可以相对路径)&lt;/font&gt;硬链接创建时可以绝对路径也可相对路径  
-3.&lt;font color=red&gt;软链接的源文件不可以剪切,重命名,删除 &lt;/font&gt;硬链接的源文件可以剪切,重命名,删除  
-4.&lt;font color=red&gt;软链接的链接文件权限永远是777，即使将链接文件的权限进行了修改，也不会发生变化，变得是源文件的权限 &lt;/font&gt; 
-硬链接的链接文件权限永远和源文件相同  
-5.&lt;font color=red&gt;软链接的链接文件的inode号和源文件不同&lt;/font&gt;
-硬链接的链接文件的inode号和源文件相同  
-6.&lt;font color=red&gt;软链接可以对目录操作&lt;/font&gt;
-硬链接不支持对目录操作，是针对于上层来说，底层是可以针对于目录做硬链接的，通过代码就可以实现  
-7.&lt;font color=red&gt;软链接可以跨文件系统&lt;/font&gt;
-硬链接不可以跨文件系统，因为硬链接是存放在源文件的同一个block上面的
-
-# SElinux 
-安全增强型 Linux（Security-Enhanced Linux）简称 SELinux，它是一个 Linux 内核模块，也是 Linux 的一个安全子系统。SELinux 主要作用就是最大限度地减小系统中服务进程可访问的资源（最小权限原则）  
-&lt;font color=red&gt;DAC&lt;/font&gt;[http://blog.51cto.com/zhaotianyu/1795178](http://blog.51cto.com/zhaotianyu/1795178)：在没有使用 SELinux 的操作系统中，决定一个资源是否能被访问的因素是：某个资源是否拥有对应用户的权限（读、写、执行）。
-只要访问这个资源的进程符合以上的条件就可以被访问。
-而最致命问题是，root 用户不受任何管制，系统上任何资源都可以无限制地访问。这种权限管理机制的主体是用户，也称为&lt;font color=red&gt;自主访问控制（DAC）。&lt;/font&gt;  
-&lt;font color=red&gt;MAC&lt;/font&gt;[http://baijiahao.baidu.com/s?id=1590170088632157084&amp;wfr=spider&amp;for=pc](http://baijiahao.baidu.com/s?id=1590170088632157084&amp;wfr=spider&amp;for=pc)：在使用了 SELinux 的操作系统中，决定一个资源是否能被访问的因素除了上述因素之外，还需要判断每一类进程是否拥有对某一类资源的访问权限。
-这样一来，即使进程是以 root 身份运行的，也需要判断这个进程的类型以及允许访问的资源类型才能决定是否允许访问某个资源。进程的活动空间也可以被压缩到最小。
-即使是以 root 身份运行的服务进程，一般也只能访问到它所需要的资源。即使程序出了漏洞，影响范围也只有在其允许访问的资源范围内。安全性大大增加。
-这种权限管理机制的主体是进程，也称为&lt;font color=red&gt;强制访问控制（MAC）。&lt;/font&gt;  
-`getenforce`命令是单词get（获取）和enforce(执行)连写，可查看selinux状态  
-`setenforce` 命令则是单词set（设置）和enforce(执行)连写，用于设置selinux防火墙状态，如： setenforce 0用于关闭selinux防火墙，但重启后失效。
-![](https://s2.ax1x.com/2019/05/09/Eg0Zsx.png) SELinux status：selinux防火墙的状态，enabled表示启用selinux防火墙
-关闭SElinux:  
-临时关闭 :`setenforce 0 `用于关闭selinux防火墙，但重启后失效   
-永久关闭：修改selinux的配置文件：`vim /etc/selinux/config` 
-将SELINUX=enforcing改为SELINUX=disabled，保存后退出，此时获取当前selinux防火墙的安全策略仍为Enforcing，配置文件并未生效。重启后验证。  
-SELinux 有三种工作模式，分别是：
-1.enforcing：强制模式。违反 SELinux 规则的行为将被阻止并记录到日志中。  
-2.permissive：宽容模式。违反 SELinux 规则的行为只会记录到日志中。一般为调试用。  
-3.disabled：关闭 SELinux 
-
-# crontab
-1.Crontab是一个用于设置周期性执行任务的工具；  
-2.周期性执行的任务我们称为Cron Job；  
-3.周期性执行的任务列表我们称为Cron Table  
-crontab文件的含义：用户所建立的crontab文件中，每一行都代表一项任务，每行的每个字段代表一项设置，它的格式共分为六个字段，前五段是时间设定段，第六段是要执行的命令段，格式如下:    
-&lt;table&gt;&lt;tr&gt;&lt;td style=&quot;background-image:url(https://s2.ax1x.com/2019/05/09/Eg0neK.md.png)&quot;&gt;&lt;pre&gt;\* \* \* \* \* command　minute　hour　day　month　week　command 顺序:分 时 日 月 周&lt;/pre&gt;&lt;font color=#000BFFF&gt;** minute： 表示分钟，可以是从0到59之间的任何整数。  
-hour：表示小时，可以是从0到23之间的任何整数。  
-day：表示日期，可以是从1到31之间的任何整数。  
-month：表示月份，可以是从1到12之间的任何整数。  
-week：表示星期几，可以是从0到7之间的任何整数，这里的0或7代表星期日。　
-command：要执行的命令，可以是系统命令，也可以是自己编写的脚本文件**&lt;/font&gt;&lt;/table&gt;&lt;/tr&gt;&lt;/td&gt; &lt;font color=red&gt;-u&lt;/font&gt;:编辑某个用户的cron，只用root可以使用此参数为别的用户设置cron服务。也可用于给用户指定crontab文件。  &lt;font color=red&gt;
--l&lt;/font&gt;: 列出当前用户的crontab。  &lt;font color=red&gt;
--r&lt;/font&gt;: 删除当前用户的crontab。  &lt;font color=red&gt;
--e&lt;/font&gt;: 编辑当前用户的crontab，默认使用vi，或者是由 VISUAL或EDITOR环境变量指定的编辑器。  &lt;font color=red&gt;
--i与-r&lt;/font&gt; 一起使用，用来询问用户是否直接删除crontab   
-安装cron&lt;div class=&quot;note primary&quot;&gt;&lt;p&gt;&lt;/p&gt;yum install vixie-cron   
-yum install crontabs 
-检查crontab工具是否安装：crontab -l   
-检查crond服务是否启动：service crond status  
-检查crontab服务状态：service crond status&lt;/div&gt; ![](https://s2.ax1x.com/2019/05/09/Eg0lJH.png)
-
-1. 每晚的21:30重启apache  
-`30 21 * * * service httpd restart`  
-2. 每月1,10,22日的4:45重启apache    
-`45 4 1,10,22 * * service httpd restart`
-3. 每月1-10日的4:45重启apache  
-`45 4 1-10 * * service httpd restart` 
-4. 每天18:00-23:00之间每隔30分钟重启apache 
-`0,30 18-23 * * * service httpd restart`  
-`0-59/30 18-23 * * * service httpd restart`
-5. &lt;/font&gt;每晚11-早上7点之间，每隔一个小时重启apache  
-`* 23-7/1 * * * service httpd restart`
-6. 每隔两分钟重启apache 
-</code></pre><p><em>/2 </em> <em> </em> <em> service httpd restart<br>1-59/2 </em> <em> </em> <em> service httpd restart(奇数分钟重启)<br>0-58/2 </em> <em> </em> <em> service httpd restart(偶数分钟重启)<br><code>`</code><br><table>小结：<br>\</table></em>表示任何时候都匹配；<br>可以用”A,B,C”表示A或者B或者C时执行命令<br>可以用”A-B”表示A到B之间时执行命令<br>可以用”*/A”表示每A分钟(小时等)执行一次命令  </p>
-<p><pre>*/1 * * * * /usr/sbin/ntpdate us.pool.ntp.org | logger -t NTP</pre><br>时间同步:<br><img src="https://s2.ax1x.com/2019/05/09/Eg0GQI.png" alt=""></p>
+<h1 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h1><p><strong><code>:.,$y</code></strong>复制当前行到末尾行<br><strong><code>:!</code></strong> 调用系统命令，可临时执行 <table><tr><td> 使vim设置永久生效:vim /etc/vimrc   把设置写到这个文件的最后，对所有账户生效<br>set nu 显示行号 　　set nonu 取消行号<br>set ic 不区分大小写　set noic 取消不区分大小写<br>set ts=4    设置tab键长度<br>set sw=4    设置自动缩进的tab键长度 </td></tr></table>   <code>vim  /root/.vimrc    也可以把设置写到此文件，只对root生效</code> </p>
+<h2 id="vim字符替换"><a href="#vim字符替换" class="headerlink" title="vim字符替换"></a>vim字符替换</h2><p><table><tr><td bgcolor="#FFF0F5"><font size="4">:%s/this/that 每一行的第一个this被替换成that<br>:%s/this/that/g 将文本中所有的this替换成that %从每一行的开头到结尾   s表示替换<br>:1,5 s/old/new/g  #替换第一行到第5行中所有匹配的内容</font></td></tr></table>.</p>
+<h2 id="字符操作"><a href="#字符操作" class="headerlink" title="字符操作"></a>字符操作</h2><p>u撤销上一步<br>i当前插入，I行首插入。<br>a当前字符插入(光标后一位插入)，A行尾插入。<br>o表示：本行回车到下一行插入，O上一行插入。<br>x删除光标所在字符，X向前删除一个字符。<br>dd删除光标所在的行，dG删除光标所在开始行到文件尾的所有字符。<br>J合并两行。<font color="#FF6437"><br>行操作：</font>home 键或^键行首，$或end行尾<br>dd删除一行Ndd(删除本行与下一行)。<br>yy复制一行，Nyy复制n行，p将复制行粘贴，p向光标下一行粘。(N表示数字) <font color="#FF6437"><br>词操作</font>:dw删除一个词，y+$复制至行尾。y+^复制至行首。yw复制一个词。<strong><font color="red">:.,$y</font></strong>  复制当前行到末尾  <table><tr><td bgcolor="#778899">v模式:编程的时候需要进行多行注释：         （删除是要将光标移到这个词的行首，如果光标不在行首则删除光标之后的字母。）<br>块操作：D或d+$删除至行尾  d+^删除至行首<br>1、注释：ctrl+v进入列编辑模式<br>2、向下或向上移动光标 （ctrl L 向下全部选中）<br>3、把需要注释的行开头的开头标记起来<br>4、然后按大写的I<br>5、再插入注释符，比如“#”<br>6、再按Esc，就会全部注释了<br>删除多行注释：按ctrl+v进入列编辑模式;向下或向上移动光标；选中注释部  分然后按d,就会删除注释符号。</td></tr></table>  </p>
+<p><table><tr><td bgcolor="#FFF0F5">vim编辑器： :wq 可以保存外 :w +路径+文件名直接保存在某个位置和重命名<font color="blue">:w 路径/文件名</font><br>ZZ 保存退出　　:x 保存退出　　:!命令<font color="blue">:!ifconfig</font><br>vi的行定位功能:<br>ctrl+f 向前卷动一个屏幕<br>ctrl+b 向后卷动一个屏幕<br>G     到文件最后一行行首<br>:$    到文件最后一行行尾<br>mG    到指定行，m为目标行数 或者mgg<br>set nu  显示行号<br>/内容   查找指定内容<br>n   查找下一个<br>N   回到前一个<br>？  寻找上一个 </td></tr></table> <table><tr><td bgcolor="#4682B4"><font color="#FFF8DC"><font size="4">/^字符串  查找以字符串开始的行<br>/字符串$  查找以字符串结尾的行<br>/a.b      查找字符串a任意字符b   vim替换<br>r              替换当前光标字符<br>:r 文件名      在光标当前位置载入另一个文件</font></font></td></tr></table>. </p>
+<h1 id="useradd"><a href="#useradd" class="headerlink" title="useradd"></a>useradd</h1><p>useradd命令用来建立用户帐号和创建用户的起始目录，使用权限是终极用户.  <font color="red"><br>-u</font> :uid指定用户ID  <font color="red"><br>-d</font>:指定用户登入时的启始目录。  <font color="red"><br>-g</font>:指定用户所属的群组     <font color="red"><br>-G</font>:指定用户所属的附加群组。<br><code>tom 用户的登陆 shell 为非交互式 shell useradd –s /sbin/nologin tom</code>  </p>
+<p><font color="red"> -e </font>:指定账号的有效期限，缺省表示永久有效  </p>
+<p><font color="blue"> useradd user1——创建用户user1;<br>useradd –e 12/30/2009 user2——创建user2,指定有效期2009-12-30到期</font>  </p>
+<p><font color="red">-c</font>:用户说明，手工指定用户的说明，添加说明有Spacebar时要加<font color="red"><strong>“ “</strong></font>。</p>
+<p><table><tr><td bgcolor="#778899">用户默认值文件：<font color="blue">/etc/defalut/useradd</font><br>1.GROUP=100 :用户默认组ID (公有模式)<br>2.HOME=/home :用户家目录<br>3.INACTIVE=-1 :密码过期宽限天数(shadow文件7字段)<br>4.EXPIRE=<font color="red">no value</font> :密码失效时间(8字段)<br>5.SHELL=/bin/bash :默认的shell<br>6.SKEL=/etc/skel :模板目录<br>7.CREATE_MAIL_SPOOL=yes :是否建立邮箱 <font color="blue"><br>/etc/login.defs</font><br>PASS_MAX_DAYS 999 :密码有效期(5字段)<br>PASS_MIN_DAYS 0 :密码修改间隔(4字段)<br>PASS_MIN_LEN 5 :密码最小5位(PAM)<br>PASS_WARN_AGE 7 :密码到期警告(6)<br>UID_MIN 500 :最小和最大UID范围<br>GID_MIX 60000<br>ENCRYPT_METHOD SHA512 :加密模式</td></tr></table>.  </p>
+<h1 id="userdel"><a href="#userdel" class="headerlink" title="userdel"></a>userdel</h1><p>删除用户userdel [-r] 用户名  <font color="red"><br>-r</font>:删除用户的同时删除用户家目录</p>
+<h2 id="id"><a href="#id" class="headerlink" title="id"></a>id</h2><p>查看用户id：<font color="lime">#</font>id 用户名<br>查询用户的UID,初始组ID,附加群组ID </p>
+<h1 id="usermod"><a href="#usermod" class="headerlink" title="usermod"></a>usermod</h1><p>usermod命令用于修改用户的基本信息。usermod命令不允许你改变正在线上的使用者帐号名称。当usermod命令用来改变user id，必须确认这名user没在电脑上执行任何程序.  <font color="red"><br>-g &lt;群组&gt; </font> 修改用户所属的<font color="red">原始群组</font>。<br><code>usermod -g root username</code>  <font color="#FF1493"><br>-G &lt;群组&gt;</font> 修改户所属的<strong><em>附加群</em></strong>组  <font color="red"><br>-a -G </font> 无限增加到附加组，可拥有多个附加组.<br><code>将a1添加附加组user3 usermod -a -G user3 a1</code><font color="red"><br>-c</font>:修改用户的说明<code>usermod -c &quot;test user&quot; username</code>    </p>
+<p><pre><font size="4">当某一用户拥有多个附加组之后，使用usemod -G会修改附加组，则多个组消失掉变成唯一当前修改的附加组</font></pre><br>1.将 newuser2 添加到附加组 staff <code>usermod -G staff newuser2</code>   <font color="red"><br>-l &lt;帐号名称&gt; </font> 修改用户帐号名称。<br>2.修改 newuser 的用户名为 newuser1 <code>usermod -l newuser1 newuser</code><font color="red"><br>-L 锁定用户密码，使密码无效。</font>  <font color="red"><br>-U 解除密码锁定。</font><br>3.锁定账号 newuser1 <code>usermod -L newuser1</code><br>4.解除对 newuser1 的锁定 <code>usermod -U newuser1</code> <font color="red"><br>-d </font>改变用户家目录,常与<font color="red">-m</font>结合使用       <font color="red"><br>-m </font>将主目录的内容移动到新目录<br><code>usermod -m -d /home/user2 -uid username</code>若使用报错使用以下命令：<br><code>cat /dev/null &gt; /var/run/utmp</code>   </p>
+<p><table><tr><td bgcolor="#778899"><font size="3">清空此文件。utmp是一个文件，除了utmp程序你不能编辑这个文件，删掉他的话，当前登陆信息都会丢失。它就好比系统开启后它会把系统成员的信息迅速的记录下来，过一段时间它就不再记录，确认系统的用户配置就是这样了，这个文件在每次机器reboot起来后都会重新创建。</font></td></tr></table>.</p>
+<h1 id="groupadd"><a href="#groupadd" class="headerlink" title="groupadd"></a>groupadd</h1><p><font color="red">-g</font> GID: 修改组ID  <font color="red"><br>-n</font> 新组名: 修改组名  </p>
+<h1 id="su"><a href="#su" class="headerlink" title="su"></a>su</h1><p>su: [选项] 用户名  </p>
+<p><font color="red"><strong>-</strong></font>:选项只使用”-“代表连带用户的环境变量一起切换。<table><tr><td bgcolor="red">可使用<strong>env</strong>命令查看</td></tr></table><font color="red">-c</font>:仅执行一次命令，而不切换用户身份<br><code>su - root -c &quot;useradd user3&quot;</code>不切换成root,但是执行useradd命令添加user1用户。   </p>
+<h1 id="chage"><a href="#chage" class="headerlink" title="chage"></a>chage</h1><p>修改用户密码状态chage<br>chage [选项] 用户名   <font color="red"><br>-l</font>:列出用户的详细密码状态  <strong><font color="red"><br>-d 日期:修改密码最后一次更改日期(shadow3字段)</font></strong>  <font color="red"><br>-m 天数</font>:两次密码修改间隔(4字段)  <font color="red"><br>-M 天数</font>:密码有效期(5字段)  <font color="red"><br>-W 天数</font>:密码过期前警告天数(7字段)  <font color="red"><br>-I 天数</font>:密码过后宽限天数(7字段)  <font color="red"><br>-E 日期</font>:账号失效时间(8字段)<br><code>chage -d 0 username</code><center><font size="2">这个命令其实是把密码修改日期归0了(shadow第3字段)，这样用户只要一登录就要修改密码。第三字段是指密码最后一次修改时间的日期。1970年1月1号到现在修改密码的时间戳。如果第3字段改为0，系统会认为用户没有修改过操作密码，那么当此用户一旦登录系统就会提示要修改密码，才可正常使用。</font></center>.</p>
+<h1 id="passwd"><a href="#passwd" class="headerlink" title="passwd"></a>passwd</h1><p><font color="red">-S</font>:查询用户密码的密码状态，仅root用户可用。  <font color="red"><br>-l</font>:暂时锁定用户。仅root用户可用。  <font color="red"><br>-u</font>:解锁用户。仅root用户可用。  <font color="red"><br>–stdin</font>:可以通过管道符输出的数据作为用户的密码。<code>echo &quot;123&quot; | passwd --stdin user</code></p>
+<h1 id="gpasswd"><a href="#gpasswd" class="headerlink" title="gpasswd"></a>gpasswd</h1><p><font color="red"> -d </font>:从组删除用户 <code>gpasswd -d username groupadd</code> <font color="red"><br>-a </font>:添加用户到组(附加组),同时保留以前的组  </p>
+<p><table><tr><td bgcolor="#FF8DC"><font size="3">添加用户到某一个组可以使用  usermod -G groupB userA 这个命令可以添加一个用户到指定的组，但是以前添加的组就会清空掉.<br>所以想要添加一个用户到一个组，同时保留以前添加的组时，请使用gpasswd这个命令来添加操作用户 </font></td></tr></table><font color="red"> -A </font>:指定组内管理员 <code>gpasswd -A username groupname</code></p>
+<h1 id="groups"><a href="#groups" class="headerlink" title="groups"></a>groups</h1><p><font color="red"> groups username </font>显示linux用户所属的组</p>
+<h1 id="date"><a href="#date" class="headerlink" title="date"></a>date</h1><p>date 根据给定格式显示日期或设置系统日期时间。<font face="Monotype Corsiva">print or set the system date and time</font>　<br>指令所在路径：/bin/date  <code>date &quot;+%Y-%m-%d %H:%M:%S&quot;</code> <font color="red"><br>-d</font>:显示字符串所指的日期与时间。字符串前后必须加上双引号</p>
+<pre><code>date -d now  
+date -d &#39;next monday&#39;　   
+date -d yesterday +%Y-%m-%d  
+</code></pre><p><font color="red">-r</font>:显示文件最后修改时间  <font color="red"><br>-s</font>:设置系统时间 <code>date -s &quot;2018-11-11 00 00 00&quot;</code> </p>
+<p><table><tr><td border="100%" width="100%" bgcolor="#E0FFFF">在使用date -s这个命令修改时间后，系统重启后就失效了，因此为了将这个时间永久生效，需要将修改的时间写入CMOS，查看CMOS的时间:<code>clock –r</code><br>将当前系统时间写入CMOS中去<code>clock –w</code> </td></tr></table> 在生产环境中常使用时间格式打包数据：<pre>tar zcvf etc-$(date +%F).tar.gz /etc<br>tar zcvf etc-`date +%F`.tar.gz /etc</pre></p>
+<p><pre><br><img src="https://s2.ax1x.com/2019/05/09/Egwxs0.png" alt=""> date:2018/9/23<pre></pre></pre></p>
+<h1 id="hwclock"><a href="#hwclock" class="headerlink" title="hwclock"></a>hwclock</h1><p><table><tr><td style="background-image:url(https://s2.ax1x.com/2019/05/09/Eg0FJJ.png)"><font color="FFFFFF">查看硬件时间<br>设置硬件时间<code>hwclock --set --date=&quot;07/07/06 10:19&quot; （月/日/年 时:分:秒）</code><br>硬件时间和系统时间的同步：重新启动系统，硬件时间会读取系统时间，实现同步，但是在不重新启动的时候，需要用hwclock命令实现同步。<br>硬件时钟与系统时钟同步：<code>hwclock --hctosys</code>（hc代表硬件时间，sys代表系统时间）<br>系统时钟和硬件时钟同步:（让系统的时间同步到硬件时钟)<code>hwclock –-systohc</code></font></td></tr></table>.</p>
+<h1 id="ln"><a href="#ln" class="headerlink" title="ln"></a>ln</h1><p>ln：链接命令<br>硬链接：复制并同步    ln /etc/passwd /tmp/password  <font color="red"><br>软链接：类似windows下的快捷方式　ln -s  /etc/passwd /tmp password</font><br>软链接和硬链接的区别:<br>1.创建命令不同:<font color="red"><br>ln -s /root/ruan.txt /root/桌面/</font>　ln /root/ying.txt /root/桌面/<br>2.<font color="red">软链接创建时必须使用绝对路径(链接和源文件在同一目录下,可以相对路径)</font>硬链接创建时可以绝对路径也可相对路径<br>3.<font color="red">软链接的源文件不可以剪切,重命名,删除 </font>硬链接的源文件可以剪切,重命名,删除<br>4.<font color="red">软链接的链接文件权限永远是777，即使将链接文件的权限进行了修改，也不会发生变化，变得是源文件的权限 </font><br>硬链接的链接文件权限永远和源文件相同<br>5.<font color="red">软链接的链接文件的inode号和源文件不同</font><br>硬链接的链接文件的inode号和源文件相同<br>6.<font color="red">软链接可以对目录操作</font><br>硬链接不支持对目录操作，是针对于上层来说，底层是可以针对于目录做硬链接的，通过代码就可以实现<br>7.<font color="red">软链接可以跨文件系统</font><br>硬链接不可以跨文件系统，因为硬链接是存放在源文件的同一个block上面的</p>
+<h1 id="SElinux"><a href="#SElinux" class="headerlink" title="SElinux"></a>SElinux</h1><p>安全增强型 Linux（Security-Enhanced Linux）简称 SELinux，它是一个 Linux 内核模块，也是 Linux 的一个安全子系统。SELinux 主要作用就是最大限度地减小系统中服务进程可访问的资源（最小权限原则）  </p>
+<p><font color="red">DAC</font><a href="http://blog.51cto.com/zhaotianyu/1795178" target="_blank" rel="noopener">http://blog.51cto.com/zhaotianyu/1795178</a>：在没有使用 SELinux 的操作系统中，决定一个资源是否能被访问的因素是：某个资源是否拥有对应用户的权限（读、写、执行）。<br>只要访问这个资源的进程符合以上的条件就可以被访问。<br>而最致命问题是，root 用户不受任何管制，系统上任何资源都可以无限制地访问。这种权限管理机制的主体是用户，也称为<font color="red">自主访问控制（DAC）。</font>  </p>
+<p><font color="red">MAC</font><a href="http://baijiahao.baidu.com/s?id=1590170088632157084&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">http://baijiahao.baidu.com/s?id=1590170088632157084&amp;wfr=spider&amp;for=pc</a>：在使用了 SELinux 的操作系统中，决定一个资源是否能被访问的因素除了上述因素之外，还需要判断每一类进程是否拥有对某一类资源的访问权限。<br>这样一来，即使进程是以 root 身份运行的，也需要判断这个进程的类型以及允许访问的资源类型才能决定是否允许访问某个资源。进程的活动空间也可以被压缩到最小。<br>即使是以 root 身份运行的服务进程，一般也只能访问到它所需要的资源。即使程序出了漏洞，影响范围也只有在其允许访问的资源范围内。安全性大大增加。<br>这种权限管理机制的主体是进程，也称为<font color="red">强制访问控制（MAC）。</font><br><code>getenforce</code>命令是单词get（获取）和enforce(执行)连写，可查看selinux状态<br><code>setenforce</code> 命令则是单词set（设置）和enforce(执行)连写，用于设置selinux防火墙状态，如： setenforce 0用于关闭selinux防火墙，但重启后失效。<br><img src="https://s2.ax1x.com/2019/05/09/Eg0Zsx.png" alt=""> SELinux status：selinux防火墙的状态，enabled表示启用selinux防火墙<br>关闭SElinux:<br>临时关闭 :<code>setenforce 0</code>用于关闭selinux防火墙，但重启后失效<br>永久关闭：修改selinux的配置文件：<code>vim /etc/selinux/config</code><br>将SELINUX=enforcing改为SELINUX=disabled，保存后退出，此时获取当前selinux防火墙的安全策略仍为Enforcing，配置文件并未生效。重启后验证。<br>SELinux 有三种工作模式，分别是：<br>1.enforcing：强制模式。违反 SELinux 规则的行为将被阻止并记录到日志中。<br>2.permissive：宽容模式。违反 SELinux 规则的行为只会记录到日志中。一般为调试用。<br>3.disabled：关闭 SELinux </p>
+<h1 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a>crontab</h1><p>1.Crontab是一个用于设置周期性执行任务的工具；<br>2.周期性执行的任务我们称为Cron Job；<br>3.周期性执行的任务列表我们称为Cron Table<br>crontab文件的含义：用户所建立的crontab文件中，每一行都代表一项任务，每行的每个字段代表一项设置，它的格式共分为六个字段，前五段是时间设定段，第六段是要执行的命令段，格式如下:    </p>
+<p><table><tr><td style="background-image:url(https://s2.ax1x.com/2019/05/09/Eg0neK.md.png)"><pre>* * * * * command　minute　hour　day　month　week　command 顺序:分 时 日 月 周</pre><font color="#000BFFF"><strong> minute： 表示分钟，可以是从0到59之间的任何整数。<br>hour：表示小时，可以是从0到23之间的任何整数。<br>day：表示日期，可以是从1到31之间的任何整数。<br>month：表示月份，可以是从1到12之间的任何整数。<br>week：表示星期几，可以是从0到7之间的任何整数，这里的0或7代表星期日。　<br>command：要执行的命令，可以是系统命令，也可以是自己编写的脚本文件</strong></font></td></tr></table> <font color="red">-u</font>:编辑某个用户的cron，只用root可以使用此参数为别的用户设置cron服务。也可用于给用户指定crontab文件。  <font color="red"><br>-l</font>: 列出当前用户的crontab。  <font color="red"><br>-r</font>: 删除当前用户的crontab。  <font color="red"><br>-e</font>: 编辑当前用户的crontab，默认使用vi，或者是由 VISUAL或EDITOR环境变量指定的编辑器。  <font color="red"><br>-i与-r</font> 一起使用，用来询问用户是否直接删除crontab<br>安装cron<div class="note primary"><p></p>yum install vixie-cron<br>yum install crontabs<br>检查crontab工具是否安装：crontab -l<br>检查crond服务是否启动：service crond status<br>检查crontab服务状态：service crond status</div> <img src="https://s2.ax1x.com/2019/05/09/Eg0lJH.png" alt=""></p>
+<ol>
+<li>每晚的21:30重启apache<br><code>30 21 * * * service httpd restart</code>  </li>
+<li>每月1,10,22日的4:45重启apache<br><code>45 4 1,10,22 * * service httpd restart</code></li>
+<li>每月1-10日的4:45重启apache<br><code>45 4 1-10 * * service httpd restart</code> </li>
+<li>每天18:00-23:00之间每隔30分钟重启apache<br><code>0,30 18-23 * * * service httpd restart</code><br><code>0-59/30 18-23 * * * service httpd restart</code></li>
+<li>每晚11-早上7点之间，每隔一个小时重启apache<br><code>* 23-7/1 * * * service httpd restart</code></li>
+<li>每隔两分钟重启apache <pre><code>*/2 * * * * service httpd restart  
+1-59/2 * * * * service httpd restart(奇数分钟重启)  
+0-58/2 * * * * service httpd restart(偶数分钟重启)
+</code></pre><table>小结：<br>*表示任何时候都匹配；<br>可以用”A,B,C”表示A或者B或者C时执行命令<br>可以用”A-B”表示A到B之间时执行命令<br>可以用”*/A”表示每A分钟(小时等)执行一次命令<br><pre>*/1 * * * * /usr/sbin/ntpdate us.pool.ntp.org | logger -t NTP</pre><br>时间同步:<br><img src="https://s2.ax1x.com/2019/05/09/Eg0GQI.png" alt=""></table></li>
+</ol>
 <h1 id="fdisk"><a href="#fdisk" class="headerlink" title="fdisk"></a>fdisk</h1><p>fdisk命令操作磁盘详解–添加、删除、转换分区等<br>主分区和扩展分区(扩展分区不能直接使用)(1-4),扩展分区下面再分逻辑分区(5开始)。 <code>fdisk /dev/sda</code><br><img src="https://s2.ax1x.com/2019/05/09/Eg0aTS.png" alt="">  分区保存报错需要重启时，强制读取分区表信息<br><code>#partprobe</code><br>yum install -y parted </p>
 <h1 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h1><p>grep [选项] “搜索内容” 文件名  <font color="red"><br>-i</font> 忽略大小写  <font color="red"><br>-n</font> 输出行号  <font color="red"><br>-v</font> 反向查找  <font color="red"><br>--color=auto</font>把搜索出的关键字用颜色显示</p>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>>
 
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
       
     </div>
 
@@ -1080,8 +861,8 @@ yum install crontabs
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/28/马哥笔记/" rel="next" title="one">
-                <i class="fa fa-chevron-left"></i> one
+              <a href="/2018/08/28/document/" rel="next" title="document">
+                <i class="fa fa-chevron-left"></i> document
               </a>
             
           </div>
@@ -1090,8 +871,8 @@ yum install crontabs
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/28/document/" rel="prev" title="document">
-                document <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/28/马哥文档/" rel="prev" title="two">
+                two <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1286,7 +1067,7 @@ yum install crontabs
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cat"><span class="nav-number">2.</span> <span class="nav-text">cat</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ls"><span class="nav-number">3.</span> <span class="nav-text">ls</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#echo"><span class="nav-number">4.</span> <span class="nav-text">echo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#I-o-redirection"><span class="nav-number">5.</span> <span class="nav-text">I/o redirection</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#输出重定向"><span class="nav-number">5.1.</span> <span class="nav-text">输出重定向:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入重定向：命令-lt-文件"><span class="nav-number">5.2.</span> <span class="nav-text">输入重定向：命令 &lt;文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sort"><span class="nav-number">6.</span> <span class="nav-text">sort</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#awk"><span class="nav-number">7.</span> <span class="nav-text">awk</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#df"><span class="nav-number">8.</span> <span class="nav-text">df</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#du"><span class="nav-number">9.</span> <span class="nav-text">du</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dd"><span class="nav-number">10.</span> <span class="nav-text">dd</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fsck"><span class="nav-number">11.</span> <span class="nav-text">fsck</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dumpe2fs"><span class="nav-number">12.</span> <span class="nav-text">dumpe2fs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rpm"><span class="nav-number">13.</span> <span class="nav-text">rpm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RPM校验"><span class="nav-number">13.1.</span> <span class="nav-text">RPM校验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RPM包中文件提取"><span class="nav-number">13.2.</span> <span class="nav-text">RPM包中文件提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码包与RPM包的区别"><span class="nav-number">13.3.</span> <span class="nav-text">源码包与RPM包的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码包配置"><span class="nav-number">13.4.</span> <span class="nav-text">源码包配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码包的卸载："><span class="nav-number">13.5.</span> <span class="nav-text">源码包的卸载：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#脚本安装包："><span class="nav-number">13.5.1.</span> <span class="nav-text">脚本安装包：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#yum"><span class="nav-number">14.</span> <span class="nav-text">yum</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#head"><span class="nav-number">15.</span> <span class="nav-text">head</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tail"><span class="nav-number">16.</span> <span class="nav-text">tail</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chmod"><span class="nav-number">17.</span> <span class="nav-text">chmod 　　</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chown"><span class="nav-number">18.</span> <span class="nav-text">chown</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#systemctl"><span class="nav-number">19.</span> <span class="nav-text">systemctl</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chkconfig"><span class="nav-number">20.</span> <span class="nav-text">chkconfig</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mount"><span class="nav-number">21.</span> <span class="nav-text">mount</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#挂载命令格式-mount-t-文件系统-L卷标名-o特殊选项-设备文件名-挂载点"><span class="nav-number">21.1.</span> <span class="nav-text">挂载命令格式 mount [-t 文件系统] [-L卷标名] [-o特殊选项] 设备文件名 挂载点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挂载光盘"><span class="nav-number">21.2.</span> <span class="nav-text">挂载光盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载光盘"><span class="nav-number">21.3.</span> <span class="nav-text">卸载光盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挂载U盘"><span class="nav-number">21.4.</span> <span class="nav-text">挂载U盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NTFS-u盘支持"><span class="nav-number">21.5.</span> <span class="nav-text">NTFS u盘支持</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#swap"><span class="nav-number">22.</span> <span class="nav-text">swap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#free"><span class="nav-number">23.</span> <span class="nav-text">free</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Compression-压缩-command"><span class="nav-number">24.</span> <span class="nav-text">Compression 压缩  command</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gzip"><span class="nav-number">24.1.</span> <span class="nav-text">gzip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bz2"><span class="nav-number">24.2.</span> <span class="nav-text">bz2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xz"><span class="nav-number">24.3.</span> <span class="nav-text">xz</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zip"><span class="nav-number">24.4.</span> <span class="nav-text">zip</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tar"><span class="nav-number">25.</span> <span class="nav-text">tar</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tar-gz"><span class="nav-number">25.1.</span> <span class="nav-text">*.tar.gz</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tar-bz2"><span class="nav-number">25.2.</span> <span class="nav-text">*.tar.bz2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#locate"><span class="nav-number">26.</span> <span class="nav-text">locate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#find"><span class="nav-number">27.</span> <span class="nav-text">find</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#根据文件名查找："><span class="nav-number">27.1.</span> <span class="nav-text">根据文件名查找：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根据文件从属关系查找："><span class="nav-number">27.2.</span> <span class="nav-text">根据文件从属关系查找：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根据文件的类型查找："><span class="nav-number">27.3.</span> <span class="nav-text">根据文件的类型查找：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fdisk"><span class="nav-number">28.</span> <span class="nav-text">fdisk</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#grep"><span class="nav-number">29.</span> <span class="nav-text">grep</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cat"><span class="nav-number">2.</span> <span class="nav-text">cat</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ls"><span class="nav-number">3.</span> <span class="nav-text">ls</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#echo"><span class="nav-number">4.</span> <span class="nav-text">echo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#I-o-redirection"><span class="nav-number">5.</span> <span class="nav-text">I/o redirection</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#输出重定向"><span class="nav-number">5.1.</span> <span class="nav-text">输出重定向:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入重定向：命令-lt-文件"><span class="nav-number">5.2.</span> <span class="nav-text">输入重定向：命令 &lt;文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sort"><span class="nav-number">6.</span> <span class="nav-text">sort</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#awk"><span class="nav-number">7.</span> <span class="nav-text">awk</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#df"><span class="nav-number">8.</span> <span class="nav-text">df</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#du"><span class="nav-number">9.</span> <span class="nav-text">du</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dd"><span class="nav-number">10.</span> <span class="nav-text">dd</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fsck"><span class="nav-number">11.</span> <span class="nav-text">fsck</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dumpe2fs"><span class="nav-number">12.</span> <span class="nav-text">dumpe2fs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rpm"><span class="nav-number">13.</span> <span class="nav-text">rpm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RPM校验"><span class="nav-number">13.1.</span> <span class="nav-text">RPM校验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RPM包中文件提取"><span class="nav-number">13.2.</span> <span class="nav-text">RPM包中文件提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码包与RPM包的区别"><span class="nav-number">13.3.</span> <span class="nav-text">源码包与RPM包的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码包配置"><span class="nav-number">13.4.</span> <span class="nav-text">源码包配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码包的卸载："><span class="nav-number">13.5.</span> <span class="nav-text">源码包的卸载：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#脚本安装包："><span class="nav-number">13.5.1.</span> <span class="nav-text">脚本安装包：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#yum"><span class="nav-number">14.</span> <span class="nav-text">yum</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#head"><span class="nav-number">15.</span> <span class="nav-text">head</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tail"><span class="nav-number">16.</span> <span class="nav-text">tail</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chmod"><span class="nav-number">17.</span> <span class="nav-text">chmod 　　</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chown"><span class="nav-number">18.</span> <span class="nav-text">chown</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#systemctl"><span class="nav-number">19.</span> <span class="nav-text">systemctl</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chkconfig"><span class="nav-number">20.</span> <span class="nav-text">chkconfig</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mount"><span class="nav-number">21.</span> <span class="nav-text">mount</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#挂载命令格式-mount-t-文件系统-L卷标名-o特殊选项-设备文件名-挂载点"><span class="nav-number">21.1.</span> <span class="nav-text">挂载命令格式 mount [-t 文件系统] [-L卷标名] [-o特殊选项] 设备文件名 挂载点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挂载光盘"><span class="nav-number">21.2.</span> <span class="nav-text">挂载光盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载光盘"><span class="nav-number">21.3.</span> <span class="nav-text">卸载光盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挂载U盘"><span class="nav-number">21.4.</span> <span class="nav-text">挂载U盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NTFS-u盘支持"><span class="nav-number">21.5.</span> <span class="nav-text">NTFS u盘支持</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#swap"><span class="nav-number">22.</span> <span class="nav-text">swap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#free"><span class="nav-number">23.</span> <span class="nav-text">free</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Compression-压缩-command"><span class="nav-number">24.</span> <span class="nav-text">Compression 压缩  command</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gzip"><span class="nav-number">24.1.</span> <span class="nav-text">gzip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bz2"><span class="nav-number">24.2.</span> <span class="nav-text">bz2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xz"><span class="nav-number">24.3.</span> <span class="nav-text">xz</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zip"><span class="nav-number">24.4.</span> <span class="nav-text">zip</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tar"><span class="nav-number">25.</span> <span class="nav-text">tar</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tar-gz"><span class="nav-number">25.1.</span> <span class="nav-text">*.tar.gz</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tar-bz2"><span class="nav-number">25.2.</span> <span class="nav-text">*.tar.bz2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#locate"><span class="nav-number">26.</span> <span class="nav-text">locate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#find"><span class="nav-number">27.</span> <span class="nav-text">find</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#根据文件名查找："><span class="nav-number">27.1.</span> <span class="nav-text">根据文件名查找：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根据文件从属关系查找："><span class="nav-number">27.2.</span> <span class="nav-text">根据文件从属关系查找：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根据文件的类型查找："><span class="nav-number">27.3.</span> <span class="nav-text">根据文件的类型查找：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根据文件的大小查找："><span class="nav-number">27.4.</span> <span class="nav-text">根据文件的大小查找：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根据时间戳查找"><span class="nav-number">27.5.</span> <span class="nav-text">根据时间戳查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根据权限来查找"><span class="nav-number">27.6.</span> <span class="nav-text">根据权限来查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理动作："><span class="nav-number">27.7.</span> <span class="nav-text">处理动作：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#history"><span class="nav-number">28.</span> <span class="nav-text">history</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#alias"><span class="nav-number">29.</span> <span class="nav-text">alias</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vim"><span class="nav-number">30.</span> <span class="nav-text">vim</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vim字符替换"><span class="nav-number">30.1.</span> <span class="nav-text">vim字符替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符操作"><span class="nav-number">30.2.</span> <span class="nav-text">字符操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useradd"><span class="nav-number">31.</span> <span class="nav-text">useradd</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#userdel"><span class="nav-number">32.</span> <span class="nav-text">userdel</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#id"><span class="nav-number">32.1.</span> <span class="nav-text">id</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#usermod"><span class="nav-number">33.</span> <span class="nav-text">usermod</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#groupadd"><span class="nav-number">34.</span> <span class="nav-text">groupadd</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#su"><span class="nav-number">35.</span> <span class="nav-text">su</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chage"><span class="nav-number">36.</span> <span class="nav-text">chage</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#passwd"><span class="nav-number">37.</span> <span class="nav-text">passwd</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gpasswd"><span class="nav-number">38.</span> <span class="nav-text">gpasswd</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#groups"><span class="nav-number">39.</span> <span class="nav-text">groups</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#date"><span class="nav-number">40.</span> <span class="nav-text">date</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hwclock"><span class="nav-number">41.</span> <span class="nav-text">hwclock</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ln"><span class="nav-number">42.</span> <span class="nav-text">ln</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SElinux"><span class="nav-number">43.</span> <span class="nav-text">SElinux</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crontab"><span class="nav-number">44.</span> <span class="nav-text">crontab</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fdisk"><span class="nav-number">45.</span> <span class="nav-text">fdisk</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#grep"><span class="nav-number">46.</span> <span class="nav-text">grep</span></a></li></ol></div>
             
 
           </div>
@@ -1335,7 +1116,7 @@ yum install crontabs
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共56.2k字</span>
+  <span class="post-count">博客全站共56.3k字</span>
 </div>
 
 <div id="days"></div>

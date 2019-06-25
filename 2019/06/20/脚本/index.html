@@ -163,7 +163,8 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/20/VvvtYV.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/20/VxiRL8.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/21/VzbTYT.png">
-<meta property="og:updated_time" content="2019-06-24T10:28:00.553Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/25/ZZFJwF.png">
+<meta property="og:updated_time" content="2019-06-25T12:47:13.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Three">
 <meta name="twitter:description" content="脚本..">
@@ -450,7 +451,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-24 18:28:00" itemprop="dateModified" datetime="2019-06-24T18:28:00+08:00">2019-06-24</time>
+                <time title="Modified: 2019-06-25 20:47:13" itemprop="dateModified" datetime="2019-06-25T20:47:13+08:00">2019-06-25</time>
               
             
           </span>
@@ -562,16 +563,88 @@ for i in `seq $day`
                 let sum=(sum+1)*2
         done
 echo &quot;桃子的个数是 $sum&quot;
-</code></pre><p>将/data文件夹下，所有的文件后缀改为.log结尾的文件。</p>
-<pre><code>#!/bin/bash
+</code></pre><h2 id="将-data文件夹下，所有的文件后缀改为-log结尾的文件。"><a href="#将-data文件夹下，所有的文件后缀改为-log结尾的文件。" class="headerlink" title="将/data文件夹下，所有的文件后缀改为.log结尾的文件。"></a>将/data文件夹下，所有的文件后缀改为.log结尾的文件。</h2><pre><code>#!/bin/bash
 for i in /data/*;do  　　　.*表示贪婪模式，找到最后一个. 然后后面的字符让.*去匹配
 file=`echo $i | sed -nr &#39;s/(.*)\..*/\1/p&#39;`
 mv $i $file.sh
 done
+</code></pre><h2 id="将该目录下的后缀名都修改为sh结尾的文件"><a href="#将该目录下的后缀名都修改为sh结尾的文件" class="headerlink" title="将该目录下的后缀名都修改为sh结尾的文件"></a>将该目录下的后缀名都修改为sh结尾的文件</h2><pre><code>for ceshi in `ls | sed -nr &#39;s/.*\.(.*)/\1/p&#39; | sort -u`;do rename $ceshi sh *;done
+</code></pre><h2 id="判断网段中主机在线状态"><a href="#判断网段中主机在线状态" class="headerlink" title="判断网段中主机在线状态"></a>判断网段中主机在线状态</h2><pre><code>#!/bin/bash
+ip=192.168.100
+for id in {1..254};do
+        { #这里表示同时运行 一次ping 1-254个地址
+        if ping -c1 -w1 $ip.$id &amp;&gt;/dev/null;then
+#-c1是指ping的次数，-w是指执行的最后期限，也就是执行的时间，单位为秒
+                echo $ip.$id is up
+        else
+                echo $ip.$id is down
+        fi
+        }&amp;
+done
+wait
+#wait等待后台执行的命令，执行完后退出。如果不写后台命令不敲操作他不会退出。
+</code></pre><pre><code>#!/bin/bash　　　交互式
+read -p &quot;please input ip address: &quot; ip
+ip=`echo $ip | sed -rn &#39;s/(.*)\..*/\1/p&#39;`
+for id in {1..254};do
+        { #这里表示同时运行 一次ping 1-254个地址
+        if ping -c1 -w1 $ip.$id &amp;&gt;/dev/null;then
+#-c1是指ping的次数，-w是指执行的最后期限，也就是执行的时间，单位为秒
+                echo $ip.$id is up &gt;&gt; a.txt
+        else
+                echo $ip.$id is down
+        fi
+        }&amp;
+done
+wait
+#wait等待后台执行的命令，执行完后退出。如果不写后台命令不敲操作他不会退出。
+</code></pre><h2 id="根据IP地址和子网掩码得出"><a href="#根据IP地址和子网掩码得出" class="headerlink" title="根据IP地址和子网掩码得出"></a>根据IP地址和子网掩码得出</h2><h2 id="交互式打印等腰三角形"><a href="#交互式打印等腰三角形" class="headerlink" title="交互式打印等腰三角形"></a>交互式打印等腰三角形</h2><pre><code>#!/bin/bash
+read -p &quot;please input line: &quot; line  #用户输入的总行数
+for i in `seq $line`;do
+        let star=$i*2-1  #&quot;*&quot;的个数
+        let space=$line-$i  #空格的个数=总行数-行号
+        for j in `seq $space`;do
+                echo -n &quot; &quot;
+        done
+        for k in `seq $star`;do #循环&quot;*&quot;的个数
+                echo -n &quot;*&quot; #-n 不换行输出
+        done
+        echo #换行，让接下来的&quot;*&quot;换行输出
+done
+</code></pre><h2 id="99乘法表"><a href="#99乘法表" class="headerlink" title="99乘法表"></a>99乘法表</h2><pre><code>#!/bin/bash
+for i in `seq 9`;do
+        for j in `seq $i`;do
+        let sum=j*i
+        echo -e &quot;$j*$i=$sum\t\c&quot;    \t表示:插入Tab字符
+        done
+        echo
+done
+</code></pre><h1 id="for循环的特殊格式"><a href="#for循环的特殊格式" class="headerlink" title="for循环的特殊格式"></a>for循环的特殊格式</h1><p><img src="https://s2.ax1x.com/2019/06/25/ZZFJwF.png" alt=""><br>99乘法表</p>
+<pre><code>#!/bin/bash
+for((i=1;i&lt;=9;i++));do
+        for((j=1;j&lt;=$i;j++));do
+                echo -en &quot;${i}*${j}=$[$i*$j]\t\c&quot;
+        done
+        echo
+done
+</code></pre><p>乱码文件，tr -c:字符串1中字符集的补集替换此字符集，要求字符集为ASCI。 head -c:取前8个字符，-n是前n行。</p>
+<pre><code> cat /dev/urandom | tr -dc &#39;[[:alnum:]]&#39; | head -c 8
+</code></pre><h1 id="while"><a href="#while" class="headerlink" title="while"></a>while</h1><p>while循环<br>while CONDITION; do<br>循环体<br>done<br>CONDITION：循环控制条件；进入循环之前，先做一次判断；每一次循环之后会再次做判断；条件为“true”，则执行一次循环；直到条件测试状态为“false”终止循环<br>因此：CONDTION一般应该有循环控制变量；而此变量的值会在循环体不断地被修正<br>进入条件：CONDITION为true<br>退出条件：CONDITION为false</p>
+<pre><code>i=1;while [ $i -le 100 ];do let sum+=i;let i++;done;echo sum=$sum
+</code></pre><h1 id="bc"><a href="#bc" class="headerlink" title="bc"></a>bc</h1><pre><code>bc 1.06.95
+Copyright 1991-1994, 1997, 1998, 2000, 2004, 2006 Free Software Foundation, Inc.
+This is free software with ABSOLUTELY NO WARRANTY.
+For details type `warranty&#39;. 
+obase=2 输出二进制
+222 输入原始数字回车
+11011110 计算机输出二进制
+^C
+(interrupt) Exiting bc.
 </code></pre><p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
 <p><script>hljs.initHighlightingOnLoad();</script></p>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
 
+<hr>
 
       
     </div>
@@ -860,7 +933,7 @@ done
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#if语句"><span class="nav-number">1.</span> <span class="nav-text">if语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#双分支"><span class="nav-number">1.1.</span> <span class="nav-text">双分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多分支"><span class="nav-number">1.2.</span> <span class="nav-text">多分支</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#条件判断：case语句"><span class="nav-number">2.</span> <span class="nav-text">条件判断：case语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#循环"><span class="nav-number">2.1.</span> <span class="nav-text">循环</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#if语句"><span class="nav-number">1.</span> <span class="nav-text">if语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#双分支"><span class="nav-number">1.1.</span> <span class="nav-text">双分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多分支"><span class="nav-number">1.2.</span> <span class="nav-text">多分支</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#条件判断：case语句"><span class="nav-number">2.</span> <span class="nav-text">条件判断：case语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#循环"><span class="nav-number">2.1.</span> <span class="nav-text">循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将-data文件夹下，所有的文件后缀改为-log结尾的文件。"><span class="nav-number">2.2.</span> <span class="nav-text">将/data文件夹下，所有的文件后缀改为.log结尾的文件。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将该目录下的后缀名都修改为sh结尾的文件"><span class="nav-number">2.3.</span> <span class="nav-text">将该目录下的后缀名都修改为sh结尾的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断网段中主机在线状态"><span class="nav-number">2.4.</span> <span class="nav-text">判断网段中主机在线状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根据IP地址和子网掩码得出"><span class="nav-number">2.5.</span> <span class="nav-text">根据IP地址和子网掩码得出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交互式打印等腰三角形"><span class="nav-number">2.6.</span> <span class="nav-text">交互式打印等腰三角形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#99乘法表"><span class="nav-number">2.7.</span> <span class="nav-text">99乘法表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for循环的特殊格式"><span class="nav-number">3.</span> <span class="nav-text">for循环的特殊格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#while"><span class="nav-number">4.</span> <span class="nav-text">while</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bc"><span class="nav-number">5.</span> <span class="nav-text">bc</span></a></li></ol></div>
             
 
           </div>
@@ -909,7 +982,7 @@ done
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共56.2k字</span>
+  <span class="post-count">博客全站共56.3k字</span>
 </div>
 
 <div id="days"></div>
