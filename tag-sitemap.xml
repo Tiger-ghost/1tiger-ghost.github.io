@@ -9,29 +9,29 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/note/</loc>
-        <lastmod>2019-06-20T19:08:56.201Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/Document/</loc>
-        <lastmod>2019-06-24T11:04:30.324Z</lastmod>
+        <loc>http://yoursite.com/tags/command/</loc>
+        <lastmod>2019-06-25T14:36:08.359Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/document/</loc>
-        <lastmod>2019-06-25T12:47:13.732Z</lastmod>
+        <lastmod>2019-07-09T07:54:27.618Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/command/</loc>
-        <lastmod>2019-06-25T14:31:41.686Z</lastmod>
+        <loc>http://yoursite.com/tags/Document/</loc>
+        <lastmod>2019-07-12T05:58:17.230Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/note/</loc>
+        <lastmod>2019-07-12T06:03:54.967Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

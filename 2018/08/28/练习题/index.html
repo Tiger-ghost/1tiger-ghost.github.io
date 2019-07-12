@@ -160,7 +160,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:description" content="题目归档">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EauSmR.png">
-<meta property="og:updated_time" content="2019-06-18T02:44:57.503Z">
+<meta property="og:updated_time" content="2019-07-12T06:03:54.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test">
 <meta name="twitter:description" content="题目归档">
@@ -447,7 +447,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-18 10:44:57" itemprop="dateModified" datetime="2019-06-18T10:44:57+08:00">2019-06-18</time>
+                <time title="Modified: 2019-07-12 14:03:54" itemprop="dateModified" datetime="2019-07-12T14:03:54+08:00">2019-07-12</time>
               
             
           </span>
@@ -661,7 +661,45 @@ mount -a
 <h1 id="5、top-iostat-vmstat命令总结"><a href="#5、top-iostat-vmstat命令总结" class="headerlink" title="5、top,iostat,vmstat命令总结"></a>5、top,iostat,vmstat命令总结</h1><p>top 动态查看进程状况<br>P：以占据的CPU百分比,%CPU<br>M：占据内存百分比,%MEM<br>T：累积占据CPU时长,TIME+<br>iostat 工具将对系统的磁盘操作活动进行监视。它的特点是汇报磁盘活动统计情况，同时也会汇报出CPU使用情况<br>vmstat用来显示Linux系统虚拟内存状态，也可以报告关于进程、内存、I/O等系统整体运行状态</p>
 <h1 id="6、找出CPU占用最多的前10个进程"><a href="#6、找出CPU占用最多的前10个进程" class="headerlink" title="6、找出CPU占用最多的前10个进程"></a>6、找出CPU占用最多的前10个进程</h1><p><code>ps aux | sort -nrk 3 | more</code><br>sort -n: 按照数值大小从小到大排列<br>-r:执行反方向（由上至下）整理<br>-k:使用第3列来排序</p>
 <h1 id="7、crontab实现，在12-月内-每天的早上-6-点到-12-点，每隔-3-个小时-0-分钟执行一次-usr-bin-backup"><a href="#7、crontab实现，在12-月内-每天的早上-6-点到-12-点，每隔-3-个小时-0-分钟执行一次-usr-bin-backup" class="headerlink" title="7、crontab实现，在12 月内, 每天的早上 6 点到 12 点，每隔 3 个小时 0 分钟执行一次 /usr/bin/backup"></a>7、crontab实现，在12 月内, 每天的早上 6 点到 12 点，每隔 3 个小时 0 分钟执行一次 /usr/bin/backup</h1><p><code>0 6-12/3 * 12 * /usr/bin/backup</code></p>
-<h1 id="7-1-编写脚本实现传入进程pid-查看对应进程-proc下CPU、内存指标"><a href="#7-1-编写脚本实现传入进程pid-查看对应进程-proc下CPU、内存指标" class="headerlink" title="7 1.编写脚本实现传入进程pid,查看对应进程/proc下CPU、内存指标"></a>7 1.编写脚本实现传入进程pid,查看对应进程/proc下CPU、内存指标</h1><h1 id="2-编写脚本实现每分钟检查一个主机端口是否存活-提示使用nmap-如果检查端口不在线，sleep-10s-如果三次都不存在，记录到日志"><a href="#2-编写脚本实现每分钟检查一个主机端口是否存活-提示使用nmap-如果检查端口不在线，sleep-10s-如果三次都不存在，记录到日志" class="headerlink" title="2.编写脚本实现每分钟检查一个主机端口是否存活(提示使用nmap),如果检查端口不在线，sleep 10s,如果三次都不存在，记录到日志"></a>2.编写脚本实现每分钟检查一个主机端口是否存活(提示使用nmap),如果检查端口不在线，sleep 10s,如果三次都不存在，记录到日志</h1><h1 id="3-编写脚本-root-bin-excute-sh，判断参数文件是否为sh后缀的普通文件，如果是，添加所有人可执行权限，否则提示用户非脚本文件"><a href="#3-编写脚本-root-bin-excute-sh，判断参数文件是否为sh后缀的普通文件，如果是，添加所有人可执行权限，否则提示用户非脚本文件" class="headerlink" title="3.编写脚本/root/bin/excute.sh，判断参数文件是否为sh后缀的普通文件，如果是，添加所有人可执行权限，否则提示用户非脚本文件"></a>3.编写脚本/root/bin/excute.sh，判断参数文件是否为sh后缀的普通文件，如果是，添加所有人可执行权限，否则提示用户非脚本文件</h1><h1 id="4-编写脚本-root-bin-nologin-sh和login-sh实现禁止和允许普通用户登录系统"><a href="#4-编写脚本-root-bin-nologin-sh和login-sh实现禁止和允许普通用户登录系统" class="headerlink" title="4.编写脚本/root/bin/nologin.sh和login.sh实现禁止和允许普通用户登录系统"></a>4.编写脚本/root/bin/nologin.sh和login.sh实现禁止和允许普通用户登录系统</h1><h1 id="5-编写脚本-root-bin-sumid-sh-计算-etc-passwd文件中的第10个用户和第20用户的ID之和。"><a href="#5-编写脚本-root-bin-sumid-sh-计算-etc-passwd文件中的第10个用户和第20用户的ID之和。" class="headerlink" title="5.编写脚本/root/bin/sumid.sh,计算/etc/passwd文件中的第10个用户和第20用户的ID之和。"></a>5.编写脚本/root/bin/sumid.sh,计算/etc/passwd文件中的第10个用户和第20用户的ID之和。</h1>
+<h1 id="7-1-编写脚本实现传入进程pid-查看对应进程-proc下CPU、内存指标"><a href="#7-1-编写脚本实现传入进程pid-查看对应进程-proc下CPU、内存指标" class="headerlink" title="7 1.编写脚本实现传入进程pid,查看对应进程/proc下CPU、内存指标"></a>7 1.编写脚本实现传入进程pid,查看对应进程/proc下CPU、内存指标</h1><pre><code>#!/bin/bash
+read -p &quot;please input PID to Mematy&amp;CPU infos: &quot; pid
+checkpid=`ps aux | sed -nr &quot;1! p&quot; | tr -s &quot; &quot; | cut -d &quot; &quot; -f 2 | grep $pid`
+if [ ! $checkpid ];then
+        echo &quot;NO error &quot;
+else 
+        echo &quot;Memory info: &quot;
+        echo &quot;`cat /proc/$pid/status | grep ^Vm`&quot;
+        echo &quot;Cpu info: &quot;
+        echo &quot;`cat /proc/$pid/status | grep ^Cpu`&quot;
+        echo &quot;%cpu is `ps -p $pid -o pcpu | sed -nr &quot;2p&quot;`&quot;
+fi
+</code></pre><h1 id="2-编写脚本实现每分钟检查一个主机端口是否存活-提示使用nmap-如果检查端口不在线，sleep-10s-如果三次都不存在，记录到日志"><a href="#2-编写脚本实现每分钟检查一个主机端口是否存活-提示使用nmap-如果检查端口不在线，sleep-10s-如果三次都不存在，记录到日志" class="headerlink" title="2.编写脚本实现每分钟检查一个主机端口是否存活(提示使用nmap),如果检查端口不在线，sleep 10s,如果三次都不存在，记录到日志"></a>2.编写脚本实现每分钟检查一个主机端口是否存活(提示使用nmap),如果检查端口不在线，sleep 10s,如果三次都不存在，记录到日志</h1><h1 id="3-编写脚本-root-bin-excute-sh，判断参数文件是否为sh后缀的普通文件，如果是，添加所有人可执行权限，否则提示用户非脚本文件"><a href="#3-编写脚本-root-bin-excute-sh，判断参数文件是否为sh后缀的普通文件，如果是，添加所有人可执行权限，否则提示用户非脚本文件" class="headerlink" title="3.编写脚本/root/bin/excute.sh，判断参数文件是否为sh后缀的普通文件，如果是，添加所有人可执行权限，否则提示用户非脚本文件"></a>3.编写脚本/root/bin/excute.sh，判断参数文件是否为sh后缀的普通文件，如果是，添加所有人可执行权限，否则提示用户非脚本文件</h1><pre><code>#!/bin/bash
+read -p &quot;please input filename: &quot; file
+if [[ $file =~ .*sh$ ]];then
+        if [ -f $file ];then
+                chmod a+x $file
+        fi
+else
+                echo &quot;非脚本文件&quot;
+fi
+</code></pre><h1 id="4-编写脚本-root-bin-nologin-sh和login-sh实现禁止和允许普通用户登录系统"><a href="#4-编写脚本-root-bin-nologin-sh和login-sh实现禁止和允许普通用户登录系统" class="headerlink" title="4.编写脚本/root/bin/nologin.sh和login.sh实现禁止和允许普通用户登录系统"></a>4.编写脚本/root/bin/nologin.sh和login.sh实现禁止和允许普通用户登录系统</h1><pre><code>#!/bin/bash
+read -p &quot;please input user: &quot; user
+uid=`id $user | sed -nr &quot;s/.*=([[:digit:]]+)\(.*$/\1/p&quot;`
+if [[ $uid -ge 500 ]];then
+        usermod -s /bin/nologin $user 
+        echo &quot;该用户已禁止登陆&quot;
+else
+        echo &quot;该用户为系统用户无法禁止&quot;
+fi
+</code></pre><h1 id="5-编写脚本-root-bin-sumid-sh-计算-etc-passwd文件中的第10个用户和第20用户的ID之和。"><a href="#5-编写脚本-root-bin-sumid-sh-计算-etc-passwd文件中的第10个用户和第20用户的ID之和。" class="headerlink" title="5.编写脚本/root/bin/sumid.sh,计算/etc/passwd文件中的第10个用户和第20用户的ID之和。"></a>5.编写脚本/root/bin/sumid.sh,计算/etc/passwd文件中的第10个用户和第20用户的ID之和。</h1><pre><code>#!/bin/bash
+a=`cat /etc/passwd | head -10 | tail -1  | cut -d &quot;:&quot; -f 3`
+b=`cat /etc/passwd | head -20 | tail -1  | cut -d &quot;:&quot; -f 3`
+let c=a+b
+echo &quot;$c&quot;
+unset a b
+</code></pre><p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
+<p><script>hljs.initHighlightingOnLoad();</script></p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
       
     </div>
 
@@ -757,8 +795,8 @@ mount -a
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/28/样式/" rel="prev" title="style">
-                style <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/28/前言/" rel="prev" title="ghost">
+                ghost <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1002,7 +1040,7 @@ mount -a
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共56.3k字</span>
+  <span class="post-count">博客全站共58.7k字</span>
 </div>
 
 <div id="days"></div>
