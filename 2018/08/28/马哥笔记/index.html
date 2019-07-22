@@ -166,7 +166,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/03/ENOeun.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/03/ENOnH0.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EauSmR.png">
-<meta property="og:updated_time" content="2019-06-25T09:42:46.080Z">
+<meta property="og:updated_time" content="2019-07-21T13:58:28.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="one">
 <meta name="twitter:description" content="linux 培训的笔记">
@@ -453,7 +453,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-25 17:42:46" itemprop="dateModified" datetime="2019-06-25T17:42:46+08:00">2019-06-25</time>
+                <time title="Modified: 2019-07-21 21:58:28" itemprop="dateModified" datetime="2019-07-21T21:58:28+08:00">2019-07-21</time>
               
             
           </span>
@@ -816,7 +816,7 @@ other::---
 <p><code>spilt -b 2M -d /root/data.tar.xz databak</code> -d会以数字结尾</p>
 <h1 id="cpio"><a href="#cpio" class="headerlink" title="cpio"></a>cpio</h1><p>功能：cpio用于创建、解压归档文件，也可以对归档文件执行拷入拷出的动作，即向归档文件中追加文件，或从归档文件中提取文件。它也支持tar格式的归档文件，但是对压缩后的tar(如.tar.gz格式)就没法支持了，cpio毕竟不会调用对应的(解)压缩工具。<div class="alert alert-warning"><i class="fa fa-cog"></i>cpio命令是通过重定向的方式将文件进行打包备份，还原恢复的工具，它可以解压以<code>.cpio</code>或者<code>.tar</code>结尾的文件</div> cpio [选项] &gt; 文件名或者设备名<br>cpio [选项] &lt; 文件名或者设备名 <font color="red"><br>-o</font>    将文件拷贝打包成文件或者将文件输出到设备上 <font color="red"><br>-O</font> filename    输出到指定的归档文件名 <font color="red"><br>-A</font>    向已存在的归档文件中追加文件 <font color="red"><br>-i</font>    解包，将打包文件解压或将设备上的备份还原到系统 <font color="red"><br>-I</font> filename    对指定的归档文件名解压 <font color="red"><br>-t</font>    预览，查看文件内容或者输出到设备上的文件内容 <font color="red"><br>-F</font> filename    使用指定的文件名替代标准输入或输出 <font color="red"><br>-d</font>    解包生成目录，在cpio还原时，自动的建立目录 <font color="red"><br>-v</font>    显示打包过程中的文件名称</p>
 <p><table><tr><td bgcolor="#00808c"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i><font color="red"> 将etc目录备份</font>：<code>find ./etc -print |cpio -ov &gt;bak.cpio</code><br><i class="fa fa-pencil-square-o" aria-hidden="true"></i><font color="red">  将/data内容追加bak.cpio</font> <code>find /data | cpio -oA -F bak.cpio</code><br><i class="fa fa-pencil-square-o" aria-hidden="true"></i><font color="red">  内容预览</font><br><code>cpio –tv &lt; etc.cpio</code><br><i class="fa fa-pencil-square-o" aria-hidden="true"></i><font color="red">  解包文件</font> <code>cpio –idv &lt; etc.cpio</code> </td></tr></table>.</p>
-<h1 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h1><p><font color="red">-n </font> 不输出模式空间内容到屏幕，即不自动打印 <font color="red"><br>-e</font> 多点编辑 <font color="red"><br>-f</font> /PATH/SCRIPT_FILE    从指定文件中读取编辑脚本 <font color="red"><br>-r</font> 支持使用扩展正则表达  <font color="red"><br>-i.bak</font>     备份文件并原处编辑<br>script:<br>　　<code>&#39;地址命令&#39;</code><br>地址定界：　<table><tr><td bgcolor="003153"><font size="3"><font color="36bf36"><font face="Microsoft YaHei">(1)    不给地址：对全文进行处理<br>(2)    单地址：<br>　　<code>#</code>: 指定的行，<code>$</code>：最后一行  <code>/pattern/</code>：被此处模式所能够匹配到的每一行<br>(3)    地址范围：<br>　　<code>#,#</code>  <code>#,+#</code>  <code>pat1/,/pat2/</code><br>　　<code>#,/pat1/</code><br>(4)    <code>~</code>：步进  1~2 奇数行,  2~2 偶数行<br><code>sed -i.back &#39;/^root/aadmin line passwd&#39;</code> 插入并备份原文件</font></font></font></td></tr></table></p>
+<h1 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h1><p><font color="red">-n </font> 不输出模式空间内容到屏幕，即不自动打印 <font color="red"><br>-e</font> 多点编辑 <font color="red"><br>-f</font> /PATH/SCRIPT_FILE    从指定文件中读取编辑脚本 <font color="red"><br>-r</font> 支持使用扩展正则表达  <font color="red"><br>-i.bak</font>     备份文件并原处编辑<br>-i 直接修改<br>script:<br>　　<code>&#39;地址命令&#39;</code><br>地址定界：　<table><tr><td bgcolor="003153"><font size="3"><font color="36bf36"><font face="Microsoft YaHei">(1)    不给地址：对全文进行处理<br>(2)    单地址：<br>　　<code>#</code>: 指定的行，<code>$</code>：最后一行  <code>/pattern/</code>：被此处模式所能够匹配到的每一行<br>(3)    地址范围：<br>　　<code>#,#</code>  <code>#,+#</code>  <code>pat1/,/pat2/</code><br>　　<code>#,/pat1/</code><br>(4)    <code>~</code>：步进  1~2 奇数行,  2~2 偶数行<br><code>sed -i.back &#39;/^root/aadmin line passwd&#39;</code> 插入并备份原文件</font></font></font></td></tr></table></p>
 <p>使用sed将/etc/httpd/conf/httpd.conf中#NameVirtualHost *:80去掉#号,同时将最后7行的#都去掉<br>解:<code>sed -e &#39;s/#Name/Name/&#39; -e &#39;/#&lt;VirtualHost/,/#&lt;\/Virtual/s/#//&#39; /etc/httpd/conf/httpd.conf</code><br>.</p>
 <h2 id="编辑命令"><a href="#编辑命令" class="headerlink" title="编辑命令"></a>编辑命令</h2><p><table><tr><td bgcolor="003366"><font size="3"><font face="Microsoft YaHei"><font color="2aae2a"><code>d</code> 删除模式空间匹配的行，并立即启用下一轮循环<br><code>p</code> 打印当前模式空间内容，追加到默认输出之后<br><code>a</code> []text在指定行后面追加文本，支持使用\n实现多行追加<br><code>i</code> []text在行前面插入文本<br><code>c</code> []text    替换行为单行或多行文本<br><code>w</code> /path/file 保存模式匹配的行至指定文件<br><code>r</code> /path/file读取指定文件的文本至模式空间中匹配到的行后<br><code>=</code> 为模式空间中的行打印行号<br><code>!</code> 模式空间中匹配行取反处理<br></font></font></font></td></tr></table> <code>sed  &#39;/^UUID/r /etc/issue&#39; /etc/fstab</code> 读取/etc/issue中的内容到/etc/fstab UUID开头的行后 </p>
 <pre><code>     seq 10 | sed  &#39;1~2d&#39; 输出双数的行  
@@ -866,7 +866,7 @@ sed -n &#39;1!G;h;$p&#39; FILE
 <h2 id="秘钥"><a href="#秘钥" class="headerlink" title="秘钥"></a>秘钥</h2><p>包来源合法性验正及完整性验证完整性验证：SHA256<br>来源合法性验证：RSA<br>公钥加密<br>对称加密：加密、解密使用同一密钥非对称加密：密钥是成对儿的<br>public key: 公钥，公开所有人<br>secret key: 私钥, 不能公开<br>导入所需要公钥<br><code>rpm -K|checksig rpmfile</code> 检查包的完整性和签名<br><code>rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</code> CentOS 7发行版光盘提供：RPM-GPG-KEY-CentOS-7<br><code>rpm -qa &quot;gpg-pubkey*&quot;</code></p>
 <p>检查系统公钥 <code>rpm -qa &quot;gpg-pubkey*&quot;</code><br><code>[root@centos7 Packages]# rpm --import /mnt/RPM-GPG-KEY-CentOS-7</code><br><code>[root@centos7 Packages]# rpm -K tree-1.6.0-10.el7.x86_64.rpm</code></p>
 <h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>数据库重建：/var/lib/rpm<br>rpm {–initdb|–rebuilddb} initdb: 初始化<br>如果事先不存在数据库，则新建之否则，不执行任何操作<br>rebuilddb：重建已安装的包头的数据库索引目录</p>
-<h1 id="centos6-内核救援"><a href="#centos6-内核救援" class="headerlink" title="centos6 内核救援"></a>centos6 内核救援</h1><p><img src="https://s2.ax1x.com/2019/05/03/ENOeun.png" alt=""><br><img src="https://s2.ax1x.com/2019/05/03/ENOnH0.png" alt=""></p>
+<h1 id="centos6-内核救援"><a href="#centos6-内核救援" class="headerlink" title="centos6 内核救援"></a>centos6 内核救援</h1><p>rpm -e kernel –nodeps 忽略依赖卸载内核<br>修复:进入centos6光盘救援模式<br>df<br>mkdir /mnt/cdrom<br>mount /dev/sr0 /mnt/cdrom<br>df -h<br>rpm -ivh /mnt/cdrom/Pack…… –root=/mnt/sysimage/ 告诉系统真根在/mnt/sysimage这个目录里面<br><img src="https://s2.ax1x.com/2019/05/03/ENOeun.png" alt=""><br>命令执行后，会没有启动菜单，进单用户编辑一个<br>两行命令输完后，<br>boot 回车<br><img src="https://s2.ax1x.com/2019/05/03/ENOnH0.png" alt=""></p>
 <h1 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h1><p><code>yum repolist</code> 查看仓库信息<br>仓库的元数据<br>[root@centos7 ~]# cd /var/cache/yum/x86_64/7/<br><code>yum history</code> 查看yum安装历史<br><code>yum history info 2</code> 查看历史中的第二项</p>
 <pre><code>[epel]
 name=EPEL
@@ -919,7 +919,9 @@ echo &#39;PATH=/app/httpd/bin:$PATH&#39; &gt; /etc/profile.d/httpd.sh
 <p><div class="alert alert-warning"><i class="fa fa-bell"></i><br>建立仓库元数据：createrepo /data/repodb<br>yum仓库必须要仓库元数据才能使用</div>.</p>
 <h1 id="centos-防火墙"><a href="#centos-防火墙" class="headerlink" title="centos 防火墙"></a>centos 防火墙</h1><p>cnetos7:<br>下次开机不启用 <code>systemctl disable firewalld</code><br>现在马上关掉：<code>systemctl stop firewalld</code></p>
 <p>centos6:<br><code>chkconfig iptables off</code><br><code>service iptables stop</code></p>
-
+<p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
+<p><script>hljs.initHighlightingOnLoad();</script></p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
       
     </div>
 
@@ -1256,7 +1258,7 @@ echo &#39;PATH=/app/httpd/bin:$PATH&#39; &gt; /etc/profile.d/httpd.sh
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共58.7k字</span>
+  <span class="post-count">博客全站共62.8k字</span>
 </div>
 
 <div id="days"></div>

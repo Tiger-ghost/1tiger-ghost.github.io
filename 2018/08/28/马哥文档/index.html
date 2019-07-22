@@ -166,7 +166,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/05/VU70JI.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/05/VNsoct.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/17/V7Dy79.png">
-<meta property="og:updated_time" content="2019-06-20T12:26:06.536Z">
+<meta property="og:updated_time" content="2019-07-22T01:45:42.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="two">
 <meta name="twitter:description" content="linux 培训文档">
@@ -453,7 +453,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-20 20:26:06" itemprop="dateModified" datetime="2019-06-20T20:26:06+08:00">2019-06-20</time>
+                <time title="Modified: 2019-07-22 09:45:42" itemprop="dateModified" datetime="2019-07-22T09:45:42+08:00">2019-07-22</time>
               
             
           </span>
@@ -716,6 +716,16 @@ ctrl d 结束
 <table><tr><td bgcolor="#FFF0F5"><font size="4">at队列存放在/var/spool/at目录中<br>/etc/at.{allow,deny}控制用户是否能执行at任务 <font color="ff00"><br><i class="fa fa-bookmark-o"></i></font> 白名单：/etc/at.allow 默认不存在，只有该文件中的用户才能执行at命令 <font color="ff00"><br><i class="fa fa-bookmark-o"></i></font> 黑名单：/etc/at.deny 默认存在，拒绝该文件中用户执行at命令，而没有在 at.deny 文件中的使用者则可执行 <font color="009AFF"><br>当一个用户去指定计划任务，系统会先看有没有白名单文件，如果白名单文件中有这个用户就可以执行。如果有白名单文件但是里面没有这个用户，那么这个用户也不能创建查看计划任务。如果没有这个白名单文件就继续看黑名单文件，有用户就会被拒绝,没有则允许创建。</font><br>如果两个文件都不存在，则只有root可以执行at命令<br></font></td></tr></table>
 
 <h2 id="cron周期性任务计划"><a href="#cron周期性任务计划" class="headerlink" title="cron周期性任务计划"></a>cron周期性任务计划</h2><p>相关的程序包：<font color="ff00"><br><i class="fa fa-bookmark-o"></i></font> cronie：主程序包，提供crond守护进程及相关辅助工具 <font color="ff00"><br><i class="fa fa-bookmark-o"></i></font> cronie-anacron：cronie的补充程序，用于监控cronie任务执行状况，如cronie中的任务在过去该运行的时间点未能正常运行，则anacron会随后启动一次此任务 <font color="ff00"><br><i class="fa fa-bookmark-o"></i></font> crontabs：包含CentOS提供系统维护任务<br>确保crond守护处于运行状态：<br>CentOS 7:<br>　　<code>systemctl status crond</code><br>CentOS 6:<br>　　<code>service crond status</code><br>计划周期性执行的任务提交给crond，到指定时间会自动运行<br>　系统cron任务：系统维护作业<br>　　/etc/crontab<br>用户cron任务：<br>　　crontab命令<br>日志：/var/log/cron<br><img src="https://s2.ax1x.com/2019/06/17/V7Dy79.png" alt=""> </p><p id="div-border-left-red">@yearly   <code>0 0 1 1 * 每年</code>  　　特定的字符<br>@annually <code>0 0 1 1 * 每年</code><br>@monthly  <code>0 0 1 * * 每月</code><br>@weekly   <code>0 0 * * 0 每周</code><br>@daily    <code>0 0 * * * 每日</code><br>@hourly   <code>0 * * * * 每小时</code><br>@reboot   <code>重启后</code></p> <font color="dc143c">*表示任何时候都匹配；<br>可以用<code>A,B,C</code>表示A或者B或者C时执行命令<br>可以用<code>A-B</code>表示A到B之间时执行命令<br>可以用<code>*/A</code>表示每A分钟(小时等)执行一次命令</font>.<br>vim /etc/crontab 只给root账户使用（上图的路径是另外保存的文件）<br>普通用户用<code>vim crontab</code> 因为他调用的vi所有没有颜色<br><code>export EDITOR=vim</code> 使他调用vim<br>普通用户和root里面的格式一样，只不用写用户名。创建好后文件在/var/spool/cron<br>每个用户都有专用的cron任务文件：/var/spool/cron/USERNAME<br><code>crontab -e -u pan</code> 指定以pan用户的计划身份去更改(谁创建的就指定谁去更改，只有创建者才能看到创建的内容) <font color="red"><br>-l</font> 列出所有任务 <font color="red"><br>-e</font> 编辑任务 <font color="red"><br>-r</font> 移除所有任务 <font color="red"><br>-i同-r</font> 一同使用，以交互式模式移除指定任务,询问<font color="red"><br>-u user</font> 仅root可运行，指定用户管理cron任务<br>控制用户执行计划任务:/etc/cron.{allow,deny}<br>没有被重定向的输出会被邮寄给用户<br>root能够修改其它用户的作业 <div class="alert alert-info">注意：运行结果的标准输出和错误以邮件通知给相关用户<br>(1)    COMMAND &gt; /dev/null<br>(2)    COMMAND &amp;&gt; /dev/null<br>对于cron任务来讲，%有特殊用途；如果在命令中要使用%，则需要转义，将%放置于单引号中，则可不用转义</div><p></p>
+<p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
+<p><script>hljs.initHighlightingOnLoad();</script></p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
+
+
+
+
+
+
+
 
       
     </div>
@@ -1057,7 +1067,7 @@ ctrl d 结束
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共58.7k字</span>
+  <span class="post-count">博客全站共62.8k字</span>
 </div>
 
 <div id="days"></div>

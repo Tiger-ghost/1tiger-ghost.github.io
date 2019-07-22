@@ -160,7 +160,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:description" content="linux 小技巧+总结">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/16/V7UGwt.png">
-<meta property="og:updated_time" content="2019-07-12T05:58:17.230Z">
+<meta property="og:updated_time" content="2019-07-21T10:22:49.963Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技巧集合">
 <meta name="twitter:description" content="linux 小技巧+总结">
@@ -447,7 +447,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 13:58:17" itemprop="dateModified" datetime="2019-07-12T13:58:17+08:00">2019-07-12</time>
+                <time title="Modified: 2019-07-21 18:22:49" itemprop="dateModified" datetime="2019-07-21T18:22:49+08:00">2019-07-21</time>
               
             
           </span>
@@ -546,6 +546,10 @@ ABCDE
 abcde
 </code></pre><h1 id="交互登录式shell的配置文件加载次序"><a href="#交互登录式shell的配置文件加载次序" class="headerlink" title="交互登录式shell的配置文件加载次序"></a>交互登录式shell的配置文件加载次序</h1><p><img src="https://s2.ax1x.com/2019/06/16/V7UGwt.png" alt=""></p>
 <h1 id="linux使用dhclient自动获取IP"><a href="#linux使用dhclient自动获取IP" class="headerlink" title="linux使用dhclient自动获取IP"></a>linux使用dhclient自动获取IP</h1><p>获取IP: <code>dhclient eth1</code><br>查看结果:<br>-方法1: <code>ifconfig eth1</code><br>-方法2,显示更详细: <code>cat /var/lib/dhclient/dhclient.leases</code><br>释放IP: <code>dhclient -r</code><br>dhclient -r并没有真正释放IP，下一次执行dhclient eth1时，没有discover这个步骤，而是直接REQUEST上次IP。<br>在网络拓扑或者配置变化的情况下，获取不到IP，需要删除/var/lib/dhclient/dhclient.leases 文件</p>
+<h1 id="PS1修改"><a href="#PS1修改" class="headerlink" title="PS1修改"></a>PS1修改</h1><pre><code>[root@Tiger data]# cat /etc/profile.d/panxiaohu.sh 
+PS1=&#39;\[\033[1;40;33m\][\u@\h \W]\$ \[\033[0m\]&#39;
+&#39;PATH=/etc/profile.d/:$PATH&#39;
+</code></pre><h1 id="df"><a href="#df" class="headerlink" title="df"></a>df</h1><p><code>df -T</code> 可以查看文件系统类型</p>
 <p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
 <p><script>hljs.initHighlightingOnLoad();</script></p>
 <p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css"><br><code class="Bash" style="font-size: 18px; border:0px solid #000 ;"></code></p>
@@ -841,7 +845,7 @@ abcde
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#simple-command"><span class="nav-number">1.</span> <span class="nav-text">simple command</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">2.</span> <span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sed"><span class="nav-number">2.1.</span> <span class="nav-text">sed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash中-的用法和变量的间接引用"><span class="nav-number">2.2.</span> <span class="nav-text">Bash中${}的用法和变量的间接引用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交互登录式shell的配置文件加载次序"><span class="nav-number">3.</span> <span class="nav-text">交互登录式shell的配置文件加载次序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux使用dhclient自动获取IP"><span class="nav-number">4.</span> <span class="nav-text">linux使用dhclient自动获取IP</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#simple-command"><span class="nav-number">1.</span> <span class="nav-text">simple command</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">2.</span> <span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sed"><span class="nav-number">2.1.</span> <span class="nav-text">sed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash中-的用法和变量的间接引用"><span class="nav-number">2.2.</span> <span class="nav-text">Bash中${}的用法和变量的间接引用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交互登录式shell的配置文件加载次序"><span class="nav-number">3.</span> <span class="nav-text">交互登录式shell的配置文件加载次序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux使用dhclient自动获取IP"><span class="nav-number">4.</span> <span class="nav-text">linux使用dhclient自动获取IP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PS1修改"><span class="nav-number">5.</span> <span class="nav-text">PS1修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#df"><span class="nav-number">6.</span> <span class="nav-text">df</span></a></li></ol></div>
             
 
           </div>
@@ -890,7 +894,7 @@ abcde
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共58.7k字</span>
+  <span class="post-count">博客全站共62.8k字</span>
 </div>
 
 <div id="days"></div>

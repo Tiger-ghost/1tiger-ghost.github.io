@@ -7,16 +7,8 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/08/28/%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
-        <lastmod>2019-07-12T06:03:54.967Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2019/04/29/%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
-        <lastmod>2019-07-12T05:58:17.230Z</lastmod>
+        <loc>http://yoursite.com/2018/08/28/%E9%A9%AC%E5%93%A5%E6%96%87%E6%A1%A3/</loc>
+        <lastmod>2019-07-22T01:45:42.400Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -24,7 +16,39 @@
 
     <url>
         <loc>http://yoursite.com/2019/06/20/%E8%84%9A%E6%9C%AC/</loc>
-        <lastmod>2019-07-09T07:54:27.618Z</lastmod>
+        <lastmod>2019-07-22T01:45:00.319Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/08/28/%E9%A9%AC%E5%93%A5%E7%AC%94%E8%AE%B0/</loc>
+        <lastmod>2019-07-21T13:58:28.055Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2019/04/29/%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
+        <lastmod>2019-07-21T10:22:49.963Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/08/28/%E6%A0%B7%E5%BC%8F/</loc>
+        <lastmod>2019-07-19T01:17:56.819Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/08/28/%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
+        <lastmod>2019-07-13T11:14:44.429Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -33,30 +57,6 @@
     <url>
         <loc>http://yoursite.com/2018/08/28/linux%20command/</loc>
         <lastmod>2019-06-25T14:36:08.359Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/08/28/%E9%A9%AC%E5%93%A5%E7%AC%94%E8%AE%B0/</loc>
-        <lastmod>2019-06-25T09:42:46.080Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/08/28/%E6%A0%B7%E5%BC%8F/</loc>
-        <lastmod>2019-06-20T19:08:56.201Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/08/28/%E9%A9%AC%E5%93%A5%E6%96%87%E6%A1%A3/</loc>
-        <lastmod>2019-06-20T12:26:06.536Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
