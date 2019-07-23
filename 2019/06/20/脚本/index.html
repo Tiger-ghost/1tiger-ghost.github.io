@@ -166,7 +166,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/25/ZZFJwF.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/07/19/ZvwVLF.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/07/15/ZoddHS.png">
-<meta property="og:updated_time" content="2019-07-22T01:45:00.319Z">
+<meta property="og:updated_time" content="2019-07-23T07:41:44.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Three">
 <meta name="twitter:description" content="脚本..">
@@ -453,7 +453,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-22 09:45:00" itemprop="dateModified" datetime="2019-07-22T09:45:00+08:00">2019-07-22</time>
+                <time title="Modified: 2019-07-23 15:41:44" itemprop="dateModified" datetime="2019-07-23T15:41:44+08:00">2019-07-23</time>
               
             
           </span>
@@ -915,21 +915,159 @@ alphe=({a..e})
 <pre><code>[root@centos7 data]# read -a title
 ceo coo cto
 </code></pre><p>显示所有数组：<code>declare -a</code></p>
-<h2 id="引用数组"><a href="#引用数组" class="headerlink" title="引用数组"></a>引用数组</h2><p>引用数组元素<br>${ARRAY_NAME[INDEX]}<br>注意：省略[INDEX]表示引用下标为0的元素<br>引用数组所有元素</p>
+<h2 id="引用数组1"><a href="#引用数组1" class="headerlink" title="引用数组1"></a>引用数组1</h2><p>引用数组元素<br>
+${ARRAY_NAME[INDEX]}
+<br>注意：省略[INDEX]表示引用下标为0的元素<br>引用数组所有元素</p>
 <pre><code>echo ${title[*]}
 echo ${title[@]}
-</code></pre><p>数组的长度(数组中元素的个数)</p>
-<pre><code>echo $
+</code></pre><h2 id="数组的长度-数组中元素的个数"><a href="#数组的长度-数组中元素的个数" class="headerlink" title="数组的长度(数组中元素的个数)"></a>数组的长度(数组中元素的个数)</h2><pre><code>echo ${#title[*]}
+echo ${#title[@]}
+</code></pre><pre><code>for i in `seq 0 $[${#title[@]}-1]`;do echo Title is ${title[$i]};done
+列出数组，标准的数组下标=数组元素个数-1
+for i in `seq 0 ${#title[@]}`;do echo Title is ${title[$[$i-1]};done
+ 假设不知道下标到多少个了，要在最后添加一个下标可以
+ 查看数组的个数 echo ${#title[*]}
+ title[${#title[*]}]=&quot;new title&quot;
+ echo ${title[*]
+</code></pre><p>删除数组中的某元素：导致稀疏格式:意思是中间的元素被删除了会导致稀疏格式<br>unset ARRAY[INDEX],<br><code>unset title[1]</code><br>删除整个数组<br>unset ARRAY<br><code>unset title</code></p>
+<h2 id="数组数据处理"><a href="#数组数据处理" class="headerlink" title="数组数据处理"></a>数组数据处理</h2><p><i class="fa fa-anchor"></i> 引用数组中的元素：<br>数组切片:${title[@]:offset:number}<br><code>echo ${title[*]:1:2}</code> <code>echo ${title[@]:1:2}</code><br>offset:要跳过的元素个数<br>number:要取出的元素个数<br>取偏移量之后的所有元素 <code>echo ${title[@]:offset}</code><br><i class="fa fa-anchor"></i> 向数组中追加元素：</p>
+<pre><code>title[${#title[*]}]=avc 上面有提到不知道下角标
+${#title[*]} 数组长度
+</code></pre><p><i class="fa fa-anchor"></i> 关联数组：<br>declare -A ARRAY_NAME<br>ARRAY_NAME=([idx_name1]=’val1’ [idx_name2]=’val2’…)<br>注意：关联数组必须先声明再调用</p>
+<pre><code>arr[&quot;a&quot;]=&quot;aaa&quot;
+arr[&quot;b&quot;]=&quot;bbb&quot;
+arr[&quot;c&quot;]=&quot;ccc&quot;
+这里的数组赋值后查看
+echo ${arr[b]}
+ccc
+echo ${arr[c]}
+ccc
+显示都一样有问题，要声明 （提前声明）
+declare -A arr &lt;晚了,声明报错，必须提前声明&gt;
+-bash: declare: arr: cannot convert indexed to associative array
+unset arr 先删除他
+declare -A arr  先声明 后赋值
+arr[&quot;a&quot;]=aaa
+arr[&quot;b&quot;]=bbb
+arr[&quot;c&quot;]=ccc
+echo ${arr[&quot;a&quot;]}
+aaa
+echo ${arr[&quot;b&quot;]}
+bbb
+</code></pre><h2 id="生成10个随机数保存于数组中，并找出其最大值和最小值"><a href="#生成10个随机数保存于数组中，并找出其最大值和最小值" class="headerlink" title="生成10个随机数保存于数组中，并找出其最大值和最小值"></a>生成10个随机数保存于数组中，并找出其最大值和最小值</h2><pre><code>#!/bin/bash
+declare -a num
+for ((i=0;i&lt;10;i++));do
+        num[$i]=$RANDOM
+        if [ $i -eq 0 ];then
+                MAX=${num[$i]}
+                MIN=${num[$i]}
+        else 
+                if [ &quot;$MAX&quot; -lt ${num[$i]} ];then
+                        MAX=${num[$i]}
+                elif [ &quot;$MIN&quot; -gt ${num[$i]} ];then
+                        MIN=${num[$i]}
+                else
+                        true
+                fi
+        fi
+done
+echo all random are ${num[*]}
+echo Max random is $MAX
+echo Max random is $MIN
+</code></pre><pre><code>#!/bin/bash
+declare -i min max 
+declare -a nums
+        for ((i=0;i&lt;10;i++));do
+        nums[$i]=$RANDOM
+        [ $i -eq 0 ] &amp;&amp; min=${nums[$i]} &amp;&amp; max=${nums[$i]}&amp;&amp; continue
+        [ ${nums[$i]} -gt $max ] &amp;&amp; max=${nums[$i]}
+        [ ${nums[$i]} -lt $min ] &amp;&amp; min=${nums[$i]}
+        done
+        echo &quot;All numbers are ${nums[*]}&quot; 
+        echo Max is $max
+        echo Min is $min
+</code></pre><h2 id="字符串切片"><a href="#字符串切片" class="headerlink" title="字符串切片"></a>字符串切片</h2>
+${#字符串}:返回字符串变量var的长度
+
+<pre><code>str=`echo {%a..z%} | tr -d`
+echo $str
+abcdefghijklmnopqrstuvwxyz
+echo ${%#str%}
+26
+</code></pre>
+${var:offset}:返回字符串变量var中从第offset个字符后（不包括第offset个字符）的字符开始，到最后的部分，offset的取值在0 到 ${#var}-1 之间(bash4.2后，允许为负值)
+
+<pre><code>echo ${str:5}
+fghijklmnopqrstuvwxyz
+</code></pre>
+${var:offset:number}：返回字符串变量var中从第offset个字符后（不包括第offset个字符）的字符开始，长度为number的部分
+
+<pre><code>[root@centos7 ~]# echo ${str:5:2}
+fg
+</code></pre>
+${var: -length}：取字符串的最右侧几个字符
+注意：冒号后必须有一空白字符
+
+<pre><code>[root@centos7 ~]# echo ${str: -3}
+xyz
+</code></pre>
+${var:offset:-length}：从最左侧跳过offset字符，一直向右取到距离最右侧lengh个字符之前的内容
+
+<pre><code>[root@centos7 ~]# echo ${str:4:-3} 抛头去尾
+efghijklmnopqrstuvw 
+</code></pre>
+${var: -length:-offset}：先从最右侧向左取到length个字符开始，再向右取到距离最右侧offset个字符之间的内容，注意：-length前空格 centos6不支持
+
+<pre><code>[root@centos7 ~]# echo ${str: -4: -3} 取最后的四个，再从右往左除去三个数
+w
+[root@centos7 ~]# echo ${str: -5: -3} 
+vw
+</code></pre><h2 id="字符串处理-自左而右"><a href="#字符串处理-自左而右" class="headerlink" title="字符串处理 自左而右"></a>字符串处理 自左而右</h2><p>基于模式取子串<br>
+${var#*word}：其中word可以是指定的任意字符
+<br>功能：自左而右，查找var变量所存储的字符串中，第一次出现的word, 删除字符串开头至第一次出现word字符串（含）之间的所有字符</p>
+<pre><code>[root@centos7 ~]# rootinfo=`getent passwd root`
+[root@centos7 ~]# echo $rootinfo
+root:x:0:0:root:/root:/bin/bash
+[root@centos7 ~]# echo ${rootinfo#*root}
+:x:0:0:root:/root:/bin/bash
+[root@centos7 ~]# echo ${rootinfo##*root} 贪婪模式
+:/bin/bash
+</code></pre>
+${var##*word}：同上，贪婪模式，不同的是，删除的是字符串开头至最后一次由word指定的字符之间的所有内容
+
+<p>示例：</p>
+<pre><code>file=&quot;var/log/messages&quot;  
+${file#*/}: log/messages  
+${file##*/}: messages  
+</code></pre><h2 id="字符串处理自右而左"><a href="#字符串处理自右而左" class="headerlink" title="字符串处理自右而左"></a>字符串处理自右而左</h2>
+${var%word*}：其中word可以是指定的任意字符
+
+<p>功能：自右而左，查找var变量所存储的字符串中，第一次出现的word, 删除字符串最后一个字符向左至第一次出现word字符串（含）之间的所有字符</p>
+<pre><code>[root@centos7 ~]# echo ${rootinfo%root*}
+root:x:0:0:root:/
+[root@centos7 ~]# echo ${rootinfo%%:*}  贪婪模式 
+root
+
+file=&quot;/var/log/messages&quot;       word例子
+${file%/*}: /var/log
+</code></pre>
+${var%%word*}：同上，只不过删除字符串最右侧的字符向左至最后一次出现word字符之间的所有字符
+
+<p>示例：</p>
+<pre><code>url=http://www.magedu.com:80
+${url##*:}  80
+${url%%:*}  http
+</code></pre><h2 id="字符串处理1"><a href="#字符串处理1" class="headerlink" title="字符串处理1"></a>字符串处理1</h2><p>查找替换${var/pattern/substr}：查找var所表示的字符串中，第一次被pattern所匹配到的字符串，以substr替换之</p>
+<pre><code>[root@centos7 ~]# echo $url
+http://www.magedu.com:80
+[root@centos7 ~]# echo ${url/www/ftp}
+http://ftp.magedu.com:80
+</code></pre><p>查找var所表示的字符串中，所有能被pattern所匹配到的字符串，以substr替换之</p>
+<pre><code>[root@centos7 ~]# echo $url
+http://www.magedu.com:80
+[root@centos7]# echo｛ｕｒｌ／／：／／＃｝
 http#//www.magedu.com#80
-</code></pre><p>${var/#pattern/substr}：查找var所表示的字符串中，行首被pattern所匹配到的字符串，以substr替换之</p>
-<pre><code>[root@centos7 ~]# echo $ab 行首
-a.a.b.b.a.a++
-[root@centos7 ~]# echo ${ab/#a/T}
-T.a.b.b.a.a++
-[root@centos7 ~]# echo ${ab/%+/T} 行尾
-a.a.b.b.a.a+T
-</code></pre><p>${var/%pattern/substr}：查找var所表示的字符串中，行尾被pattern所匹<br>配到的字符串，以substr替换之</p>
-<h2 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h2><p>查找并删除<br>${var/pattern}：删除var表示的字符串中第一次被pattern匹配到的字符串</p>
+</code></pre><h2 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h2><p>查找并删除<br>${var/pattern}：删除var表示的字符串中第一次被pattern匹配到的字符串</p>
 <pre><code>[root@centos7 ~]# echo $url
 http://www.magedu.com:80
 [root@centos7 ~]# echo ${url/:}
@@ -1042,11 +1180,11 @@ expect &quot;]#&quot; { send &quot;echo 123456 |passwd --stdin expect\n&quot; }
 send &quot;exit\n&quot;
 expect eof
 #./ssh4.exp 192.168.152.131 root 123456
-</code></pre><h2 id="shell脚本调用expect"><a href="#shell脚本调用expect" class="headerlink" title="shell脚本调用expect"></a>shell脚本调用expect</h2><pre><code>#!/bin/bash
+</code></pre><h2 id="shell脚本调用expect"><a href="#shell脚本调用expect" class="headerlink" title="shell脚本调用expect"></a>shell脚本调用expect</h2><pre><code>#!/bin/bash #想要shell中调用expect
 ip=$1
 user=$2
 password=$3
-expect &lt;&lt;EOF
+expect &lt;&lt;EOF #expect本身是一个交互式命令，所以想要把命令传入给expect执行，就必须用标准输入输出重定向传入进去。
         set timeout 10
         spawn ssh $user@$ip
         expect {
@@ -1086,6 +1224,10 @@ done &lt; iplist.txt
 <h2 id="ramdisk管理"><a href="#ramdisk管理" class="headerlink" title="ramdisk管理"></a>ramdisk管理</h2><p><code>initramfs-2.6.32-754.el6.x86_64.img</code> 删除后的修复方法<br>ramdisk文件的制作：<br>(1) mkinitrd命令<br>为当前正在使用的内核重新制作ramdisk文件<br>mkinitrd /boot/initramfs-$(uname -r).img $(uname -r)<br>(2) dracut命令<br>为当前正在使用的内核重新制作ramdisk文件<br>dracut /boot/initramfs-$(uname -r).img $(uname -r)</p>
 <p>系统启动流程</p>
 <h2 id="init程序的类型："><a href="#init程序的类型：" class="headerlink" title="init程序的类型："></a>init程序的类型：</h2><p>SysV: init, CentOS 5之前配置文件：/etc/inittab：开机默认启动模式(0-6)。<br>Upstart: init,CentOS 6<br>配置文件：/etc/inittab,/etc/init/*.conf<br>Systemd：systemd, CentOS 7<br>配置文件：/usr/lib/systemd/system<br>/etc/systemd/system</p>
+<h2 id="启动流程-3"><a href="#启动流程-3" class="headerlink" title="启动流程"></a>启动流程</h2><p>/sbin/init CentOS6之前<br>运行级别：为系统运行或维护等目的而设定；0-6：7个级别0：关机<br>1：单用户模式(root自动登录), single, 维护模式<br>2: 多用户模式，启动网络功能，但不会启动NFS；维护模式3：多用户模式，正常模式；文本界面4：预留级别；可同3级别<br>5：多用户模式，正常模式；图形界面<br>6：重启<br>默认级别：<code>3, 5</code><br>切换级别：<code>init #</code><br>查看级别：<code>runlevel</code>; <code>who -r</code></p>
+<h2 id="init初始化"><a href="#init初始化" class="headerlink" title="init初始化"></a>init初始化</h2><p>init读取其初始化文件：/etc/inittab初始运行级别(RUN LEVEL)<br>系统初始化脚本<br>对应运行级别的脚本目录捕获某个关键字顺序<br>定义UPS电源终端/恢复脚本在虚拟控制台生成getty<br>在运行级别5初始化X</p>
+<h2 id="etc-rc-d-rc-sysinit-系统初始化脚本"><a href="#etc-rc-d-rc-sysinit-系统初始化脚本" class="headerlink" title="/etc/rc.d/rc.sysinit: 系统初始化脚本"></a>/etc/rc.d/rc.sysinit: 系统初始化脚本</h2><p>(1) 设置主机名<br>(2) 设置欢迎信息<br>(3) 激活udev和selinux<br>(4) 挂载/etc/fstab文件中定义的文件系统<br>(5) 检测根文件系统，并以读写方式重新挂载根文件系统<br>(6) 设置系统时钟<br>(7) 激活swap设备<br>(8) 根据/etc/sysctl.conf文件设置内核参数<br>(9) 激活lvm及software raid设备<br>(10) 加载额外设备的驱动程序<br>(11) 清理操作</p>
+<h2 id="CentOS-5的inittab文件"><a href="#CentOS-5的inittab文件" class="headerlink" title="CentOS 5的inittab文件"></a>CentOS 5的inittab文件</h2><p>每一行格式： id:runlevel:action:process id：是惟一标识该项的字符序列runlevels： 定义了操作所使用的运行级别action： 指定了要执行的特定操作<br>wait: 切换至此级别运行一次<br>respawn：此process终止，就重新启动之initdefault：设定默认运行级别；process省略sysinit：设定系统初始化方式<br>process：定义了要执行的进程<br>示例：<br>id:3:initdefault:<br>si::sysinit:/etc/rc.d/rc.sysinit<br>l0:0:wait:/etc/rc.d/rc 0<br>l1:1:wait:/etc/rc.d/rc 1…<br>l6:6:wait:/etc/rc.d/rc 6<br>ca::ctrlaltdel:/sbin/shutdown -t3 -r now</p>
 <p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
 <p><script>hljs.initHighlightingOnLoad();</script></p>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
@@ -1379,7 +1521,7 @@ done &lt; iplist.txt
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#if语句"><span class="nav-number">1.</span> <span class="nav-text">if语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#双分支"><span class="nav-number">1.1.</span> <span class="nav-text">双分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多分支"><span class="nav-number">1.2.</span> <span class="nav-text">多分支</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#条件判断：case语句"><span class="nav-number">2.</span> <span class="nav-text">条件判断：case语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#循环"><span class="nav-number">2.1.</span> <span class="nav-text">循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将-data文件夹下，所有的文件后缀改为-log结尾的文件。"><span class="nav-number">2.2.</span> <span class="nav-text">将/data文件夹下，所有的文件后缀改为.log结尾的文件。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将该目录下的后缀名都修改为sh结尾的文件"><span class="nav-number">2.3.</span> <span class="nav-text">将该目录下的后缀名都修改为sh结尾的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断网段中主机在线状态"><span class="nav-number">2.4.</span> <span class="nav-text">判断网段中主机在线状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根据IP地址和子网掩码得出"><span class="nav-number">2.5.</span> <span class="nav-text">根据IP地址和子网掩码得出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交互式打印等腰三角形"><span class="nav-number">2.6.</span> <span class="nav-text">交互式打印等腰三角形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#99乘法表"><span class="nav-number">2.7.</span> <span class="nav-text">99乘法表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for循环的特殊格式"><span class="nav-number">3.</span> <span class="nav-text">for循环的特殊格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#while"><span class="nav-number">4.</span> <span class="nav-text">while</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#until循环"><span class="nav-number">5.</span> <span class="nav-text">until循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#循环控制语句continue"><span class="nav-number">6.</span> <span class="nav-text">循环控制语句continue</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lastb"><span class="nav-number">7.</span> <span class="nav-text">lastb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#grep取IP地址"><span class="nav-number">8.</span> <span class="nav-text">grep取IP地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#批量创建用户用shift"><span class="nav-number">9.</span> <span class="nav-text">批量创建用户用shift</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#while循环的特殊用法-遍历文件的每一行"><span class="nav-number">10.</span> <span class="nav-text">while循环的特殊用法(遍历文件的每一行)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#df磁盘-gt-10输出"><span class="nav-number">10.1.</span> <span class="nav-text">df磁盘%&gt;10输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看ip链接次数大于2记录到文件"><span class="nav-number">10.2.</span> <span class="nav-text">查看ip链接次数大于2记录到文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#select-语句"><span class="nav-number">11.</span> <span class="nav-text">select 语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bc"><span class="nav-number">12.</span> <span class="nav-text">bc</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数介绍"><span class="nav-number">13.</span> <span class="nav-text">函数介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义函数"><span class="nav-number">13.1.</span> <span class="nav-text">定义函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数使用"><span class="nav-number">13.2.</span> <span class="nav-text">函数使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用"><span class="nav-number">13.3.</span> <span class="nav-text">调用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#调用函数——猜数字"><span class="nav-number">13.3.1.</span> <span class="nav-text">调用函数——猜数字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-7取ip地址-ifconfig-sed-nr-quot-2s-0-9-0-9-1-p-quot"><span class="nav-number">14.</span> <span class="nav-text">6,7取ip地址:ifconfig | sed -nr &quot;2s/[^0-9]+([0-9.]+).*/\1/p&quot;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#return"><span class="nav-number">15.</span> <span class="nav-text">return</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除shell函数"><span class="nav-number">16.</span> <span class="nav-text">删除shell函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数参数"><span class="nav-number">17.</span> <span class="nav-text">函数参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数变量"><span class="nav-number">18.</span> <span class="nav-text">函数变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数递归示例"><span class="nav-number">19.</span> <span class="nav-text">函数递归示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fork-炸弹"><span class="nav-number">19.1.</span> <span class="nav-text">fork 炸弹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#斐波那契数列"><span class="nav-number">19.2.</span> <span class="nav-text">斐波那契数列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#trap-信号捕捉"><span class="nav-number">20.</span> <span class="nav-text">trap 信号捕捉</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组"><span class="nav-number">21.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组赋值"><span class="nav-number">21.1.</span> <span class="nav-text">数组赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用数组"><span class="nav-number">21.2.</span> <span class="nav-text">引用数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串处理"><span class="nav-number">21.3.</span> <span class="nav-text">字符串处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级变量用法-有类型变量"><span class="nav-number">21.4.</span> <span class="nav-text">高级变量用法-有类型变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eval命令"><span class="nav-number">21.5.</span> <span class="nav-text">eval命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#间接变量引用"><span class="nav-number">21.6.</span> <span class="nav-text">间接变量引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#间接变量引用-1"><span class="nav-number">21.7.</span> <span class="nav-text">间接变量引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建临时文件"><span class="nav-number">21.8.</span> <span class="nav-text">创建临时文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装复制文件"><span class="nav-number">21.9.</span> <span class="nav-text">安装复制文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expect介绍"><span class="nav-number">21.10.</span> <span class="nav-text">expect介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expect命令"><span class="nav-number">21.11.</span> <span class="nav-text">expect命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expect"><span class="nav-number">21.12.</span> <span class="nav-text">expect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">21.13.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用变量实现"><span class="nav-number">21.14.</span> <span class="nav-text">用变量实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置参数"><span class="nav-number">21.15.</span> <span class="nav-text">位置参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行多个命令"><span class="nav-number">21.16.</span> <span class="nav-text">执行多个命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell脚本调用expect"><span class="nav-number">21.17.</span> <span class="nav-text">shell脚本调用expect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expect循环修改"><span class="nav-number">21.18.</span> <span class="nav-text">expect循环修改</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux组成"><span class="nav-number">22.</span> <span class="nav-text">Linux组成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux内核特点："><span class="nav-number">22.1.</span> <span class="nav-text">Linux内核特点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Centos6启动流程"><span class="nav-number">22.2.</span> <span class="nav-text">Centos6启动流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动流程"><span class="nav-number">22.3.</span> <span class="nav-text">启动流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动流程-1"><span class="nav-number">22.4.</span> <span class="nav-text">启动流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动流程-2"><span class="nav-number">22.5.</span> <span class="nav-text">启动流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ramdisk管理"><span class="nav-number">22.6.</span> <span class="nav-text">ramdisk管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#init程序的类型："><span class="nav-number">22.7.</span> <span class="nav-text">init程序的类型：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#if语句"><span class="nav-number">1.</span> <span class="nav-text">if语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#双分支"><span class="nav-number">1.1.</span> <span class="nav-text">双分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多分支"><span class="nav-number">1.2.</span> <span class="nav-text">多分支</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#条件判断：case语句"><span class="nav-number">2.</span> <span class="nav-text">条件判断：case语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#循环"><span class="nav-number">2.1.</span> <span class="nav-text">循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将-data文件夹下，所有的文件后缀改为-log结尾的文件。"><span class="nav-number">2.2.</span> <span class="nav-text">将/data文件夹下，所有的文件后缀改为.log结尾的文件。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将该目录下的后缀名都修改为sh结尾的文件"><span class="nav-number">2.3.</span> <span class="nav-text">将该目录下的后缀名都修改为sh结尾的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断网段中主机在线状态"><span class="nav-number">2.4.</span> <span class="nav-text">判断网段中主机在线状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#根据IP地址和子网掩码得出"><span class="nav-number">2.5.</span> <span class="nav-text">根据IP地址和子网掩码得出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交互式打印等腰三角形"><span class="nav-number">2.6.</span> <span class="nav-text">交互式打印等腰三角形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#99乘法表"><span class="nav-number">2.7.</span> <span class="nav-text">99乘法表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#for循环的特殊格式"><span class="nav-number">3.</span> <span class="nav-text">for循环的特殊格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#while"><span class="nav-number">4.</span> <span class="nav-text">while</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#until循环"><span class="nav-number">5.</span> <span class="nav-text">until循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#循环控制语句continue"><span class="nav-number">6.</span> <span class="nav-text">循环控制语句continue</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lastb"><span class="nav-number">7.</span> <span class="nav-text">lastb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#grep取IP地址"><span class="nav-number">8.</span> <span class="nav-text">grep取IP地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#批量创建用户用shift"><span class="nav-number">9.</span> <span class="nav-text">批量创建用户用shift</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#while循环的特殊用法-遍历文件的每一行"><span class="nav-number">10.</span> <span class="nav-text">while循环的特殊用法(遍历文件的每一行)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#df磁盘-gt-10输出"><span class="nav-number">10.1.</span> <span class="nav-text">df磁盘%&gt;10输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看ip链接次数大于2记录到文件"><span class="nav-number">10.2.</span> <span class="nav-text">查看ip链接次数大于2记录到文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#select-语句"><span class="nav-number">11.</span> <span class="nav-text">select 语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bc"><span class="nav-number">12.</span> <span class="nav-text">bc</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数介绍"><span class="nav-number">13.</span> <span class="nav-text">函数介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义函数"><span class="nav-number">13.1.</span> <span class="nav-text">定义函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数使用"><span class="nav-number">13.2.</span> <span class="nav-text">函数使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用"><span class="nav-number">13.3.</span> <span class="nav-text">调用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#调用函数——猜数字"><span class="nav-number">13.3.1.</span> <span class="nav-text">调用函数——猜数字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-7取ip地址-ifconfig-sed-nr-quot-2s-0-9-0-9-1-p-quot"><span class="nav-number">14.</span> <span class="nav-text">6,7取ip地址:ifconfig | sed -nr &quot;2s/[^0-9]+([0-9.]+).*/\1/p&quot;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#return"><span class="nav-number">15.</span> <span class="nav-text">return</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除shell函数"><span class="nav-number">16.</span> <span class="nav-text">删除shell函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数参数"><span class="nav-number">17.</span> <span class="nav-text">函数参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数变量"><span class="nav-number">18.</span> <span class="nav-text">函数变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数递归示例"><span class="nav-number">19.</span> <span class="nav-text">函数递归示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fork-炸弹"><span class="nav-number">19.1.</span> <span class="nav-text">fork 炸弹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#斐波那契数列"><span class="nav-number">19.2.</span> <span class="nav-text">斐波那契数列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#trap-信号捕捉"><span class="nav-number">20.</span> <span class="nav-text">trap 信号捕捉</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组"><span class="nav-number">21.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组赋值"><span class="nav-number">21.1.</span> <span class="nav-text">数组赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用数组1"><span class="nav-number">21.2.</span> <span class="nav-text">引用数组1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的长度-数组中元素的个数"><span class="nav-number">21.3.</span> <span class="nav-text">数组的长度(数组中元素的个数)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组数据处理"><span class="nav-number">21.4.</span> <span class="nav-text">数组数据处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成10个随机数保存于数组中，并找出其最大值和最小值"><span class="nav-number">21.5.</span> <span class="nav-text">生成10个随机数保存于数组中，并找出其最大值和最小值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串切片"><span class="nav-number">21.6.</span> <span class="nav-text">字符串切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串处理-自左而右"><span class="nav-number">21.7.</span> <span class="nav-text">字符串处理 自左而右</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串处理自右而左"><span class="nav-number">21.8.</span> <span class="nav-text">字符串处理自右而左</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串处理1"><span class="nav-number">21.9.</span> <span class="nav-text">字符串处理1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串处理"><span class="nav-number">21.10.</span> <span class="nav-text">字符串处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级变量用法-有类型变量"><span class="nav-number">21.11.</span> <span class="nav-text">高级变量用法-有类型变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eval命令"><span class="nav-number">21.12.</span> <span class="nav-text">eval命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#间接变量引用"><span class="nav-number">21.13.</span> <span class="nav-text">间接变量引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#间接变量引用-1"><span class="nav-number">21.14.</span> <span class="nav-text">间接变量引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建临时文件"><span class="nav-number">21.15.</span> <span class="nav-text">创建临时文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装复制文件"><span class="nav-number">21.16.</span> <span class="nav-text">安装复制文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expect介绍"><span class="nav-number">21.17.</span> <span class="nav-text">expect介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expect命令"><span class="nav-number">21.18.</span> <span class="nav-text">expect命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expect"><span class="nav-number">21.19.</span> <span class="nav-text">expect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">21.20.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用变量实现"><span class="nav-number">21.21.</span> <span class="nav-text">用变量实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置参数"><span class="nav-number">21.22.</span> <span class="nav-text">位置参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行多个命令"><span class="nav-number">21.23.</span> <span class="nav-text">执行多个命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell脚本调用expect"><span class="nav-number">21.24.</span> <span class="nav-text">shell脚本调用expect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expect循环修改"><span class="nav-number">21.25.</span> <span class="nav-text">expect循环修改</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux组成"><span class="nav-number">22.</span> <span class="nav-text">Linux组成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux内核特点："><span class="nav-number">22.1.</span> <span class="nav-text">Linux内核特点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Centos6启动流程"><span class="nav-number">22.2.</span> <span class="nav-text">Centos6启动流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动流程"><span class="nav-number">22.3.</span> <span class="nav-text">启动流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动流程-1"><span class="nav-number">22.4.</span> <span class="nav-text">启动流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动流程-2"><span class="nav-number">22.5.</span> <span class="nav-text">启动流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ramdisk管理"><span class="nav-number">22.6.</span> <span class="nav-text">ramdisk管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#init程序的类型："><span class="nav-number">22.7.</span> <span class="nav-text">init程序的类型：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动流程-3"><span class="nav-number">22.8.</span> <span class="nav-text">启动流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#init初始化"><span class="nav-number">22.9.</span> <span class="nav-text">init初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#etc-rc-d-rc-sysinit-系统初始化脚本"><span class="nav-number">22.10.</span> <span class="nav-text">/etc/rc.d/rc.sysinit: 系统初始化脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS-5的inittab文件"><span class="nav-number">22.11.</span> <span class="nav-text">CentOS 5的inittab文件</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1428,7 +1570,7 @@ done &lt; iplist.txt
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共62.8k字</span>
+  <span class="post-count">博客全站共64.7k字</span>
 </div>
 
 <div id="days"></div>
