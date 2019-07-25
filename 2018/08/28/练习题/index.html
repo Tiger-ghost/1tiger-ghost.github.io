@@ -160,7 +160,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:description" content="题目归档">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EauSmR.png">
-<meta property="og:updated_time" content="2019-07-13T11:14:44.429Z">
+<meta property="og:updated_time" content="2019-07-23T13:42:35.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test">
 <meta name="twitter:description" content="题目归档">
@@ -447,7 +447,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-13 19:14:44" itemprop="dateModified" datetime="2019-07-13T19:14:44+08:00">2019-07-13</time>
+                <time title="Modified: 2019-07-23 21:42:35" itemprop="dateModified" datetime="2019-07-23T21:42:35+08:00">2019-07-23</time>
               
             
           </span>
@@ -713,8 +713,51 @@ b=`cat /etc/passwd | head -20 | tail -1  | cut -d &quot;:&quot; -f 3`
 let c=a+b
 echo &quot;$c&quot;
 unset a b
-</code></pre><h1 id="8-1、用shell脚本实现自动登录机器"><a href="#8-1、用shell脚本实现自动登录机器" class="headerlink" title="8 1、用shell脚本实现自动登录机器"></a>8 1、用shell脚本实现自动登录机器</h1><h2 id="2、shell-判断一个值bone是否在数组arrayZ-one-two-three-four-five-five-中"><a href="#2、shell-判断一个值bone是否在数组arrayZ-one-two-three-four-five-five-中" class="headerlink" title="2、shell 判断一个值bone是否在数组arrayZ=( one two three four five five )中"></a>2、shell 判断一个值bone是否在数组arrayZ=( one two three four five five )中</h2><h2 id="3、用命令或者脚本实现-0057AF051EFF-变为-00-57-AF-05-1E-FF-。"><a href="#3、用命令或者脚本实现-0057AF051EFF-变为-00-57-AF-05-1E-FF-。" class="headerlink" title="3、用命令或者脚本实现 0057AF051EFF 变为 00:57:AF:05:1E:FF 。"></a>3、用命令或者脚本实现 0057AF051EFF 变为 00:57:AF:05:1E:FF 。</h2><h2 id="4、a-b-c-d-e-f-g-h-i-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z-A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z-1-2-3-4-5"><a href="#4、a-b-c-d-e-f-g-h-i-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z-A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z-1-2-3-4-5" class="headerlink" title="4、a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 1 2 3 4 5"></a>4、a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 1 2 3 4 5</h2><p>6 7 8 9 0 ! \@ # \$ \% \^ \&amp; * ( ) - _ \= + \ \/ \’ \” \; \: [ ] { } \, . \?<br>用以上字符，结合数组，实现一个随机生成20位密码的脚本</p>
-<h2 id="5、详细叙述centos7开机流程"><a href="#5、详细叙述centos7开机流程" class="headerlink" title="5、详细叙述centos7开机流程"></a>5、详细叙述centos7开机流程</h2><h2 id="6、编写Nginx的systemd配置文件，-实现nginx进程开机启动"><a href="#6、编写Nginx的systemd配置文件，-实现nginx进程开机启动" class="headerlink" title="6、编写Nginx的systemd配置文件， 实现nginx进程开机启动"></a>6、编写Nginx的systemd配置文件， 实现nginx进程开机启动</h2><p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
+</code></pre><h1 id="8-1、用shell脚本实现自动登录机器"><a href="#8-1、用shell脚本实现自动登录机器" class="headerlink" title="8 1、用shell脚本实现自动登录机器"></a>8 1、用shell脚本实现自动登录机器</h1><pre><code>#!/usr/bin/expect
+spawn ssh root@192.168.152.131
+expect {
+        &quot;yes/no&quot; { send &quot;yes\n&quot;;}
+        &quot;password&quot; {send &quot;123456\n&quot;}
+}
+interact #interact：允许用户交互
+</code></pre><h2 id="2、shell-判断一个值bone是否在数组arrayZ-one-two-three-four-five-five-中"><a href="#2、shell-判断一个值bone是否在数组arrayZ-one-two-three-four-five-five-中" class="headerlink" title="2、shell 判断一个值bone是否在数组arrayZ=( one two three four five five )中"></a>2、shell 判断一个值bone是否在数组arrayZ=( one two three four five five )中</h2><pre><code>#!/bin/bash
+arrayz=( &quot;one&quot; &quot;two&quot; &quot;three&quot; &quot;four&quot; &quot;bone&quot; )
+for i in `seq 0 $[${#arrayz[@]}-1]`;do
+j=0
+        if 
+                [ ${arrayz[$i]} == bone ];then
+                echo &quot;arrayz in bone&quot;
+        else
+                let j++
+        fi
+done
+echo $j from arrayz is not bone
+unset arrayz
+</code></pre><h2 id="3、用命令或者脚本实现-0057AF051EFF-变为-00-57-AF-05-1E-FF-。"><a href="#3、用命令或者脚本实现-0057AF051EFF-变为-00-57-AF-05-1E-FF-。" class="headerlink" title="3、用命令或者脚本实现 0057AF051EFF 变为 00:57:AF:05:1E:FF 。"></a>3、用命令或者脚本实现 0057AF051EFF 变为 00:57:AF:05:1E:FF 。</h2><pre><code>a=0057AF051EFF;echo ${a:0:2}:${a:2:2}:${a:4:2}:${a:6:2}:${a:8:2}:${a:10:2} 字符处理
+      或
+#!/bin/bash
+a=0057AF051EFF
+for (( i=2;i&lt;${#a};i=i+2 ));do
+        if [ &quot;$i&quot; -lt &quot;${#a}&quot; ];then #-lt 小于等于
+                echo -n &quot;${a:$((i-2)):2}:&quot;
+        else
+        #       echo &quot;${a:$((i-2)):2}&quot;
+        exit
+        fi
+done
+echo -e &quot;\r&quot;
+</code></pre><h2 id="4、a-b-c-d-e-f-g-h-i-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z-A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z-1-2-3-4-5"><a href="#4、a-b-c-d-e-f-g-h-i-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z-A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z-1-2-3-4-5" class="headerlink" title="4、a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 1 2 3 4 5"></a>4、a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 1 2 3 4 5</h2><p>6 7 8 9 0 ! \@ # \$ \% \^ \&amp; * ( ) - _ \= + \ \/ \’ \” \; \: [ ] { } \, . \?<br>用以上字符，结合数组，实现一个随机生成20位密码的脚本</p>
+<pre><code>#!/bin/bash
+declare -a a
+a=( a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 1 2 3 4 5
+6 7 8 9 0 \! \@ \# \$ \% \^ \&amp; \* \( \) \- \_ \= \+ \\ \/ \&#39; \&quot; \; \: \[ \] \{ \} \, \. \? )
+i=`echo ${#a[*]}`
+for (( j=1;j&lt;=20;j++ ));do
+        k=$[RANDOM%i]
+        echo -n &quot;${a[$k]}&quot;
+done
+echo #换行
+</code></pre><h2 id="5、详细叙述centos7开机流程"><a href="#5、详细叙述centos7开机流程" class="headerlink" title="5、详细叙述centos7开机流程"></a>5、详细叙述centos7开机流程</h2><h2 id="6、编写Nginx的systemd配置文件，-实现nginx进程开机启动"><a href="#6、编写Nginx的systemd配置文件，-实现nginx进程开机启动" class="headerlink" title="6、编写Nginx的systemd配置文件， 实现nginx进程开机启动"></a>6、编写Nginx的systemd配置文件， 实现nginx进程开机启动</h2><p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
 <p><script>hljs.initHighlightingOnLoad();</script></p>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
 
@@ -1059,7 +1102,7 @@ unset a b
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共64.7k字</span>
+  <span class="post-count">博客全站共64.8k字</span>
 </div>
 
 <div id="days"></div>
