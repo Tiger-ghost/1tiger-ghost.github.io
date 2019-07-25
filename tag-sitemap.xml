@@ -16,13 +16,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Document/</loc>
-        <lastmod>2019-07-22T12:19:09.627Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/document/</loc>
         <lastmod>2019-07-23T08:07:50.777Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -32,6 +25,20 @@
     <url>
         <loc>http://yoursite.com/tags/note/</loc>
         <lastmod>2019-07-24T08:35:49.401Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Document/</loc>
+        <lastmod>2019-07-25T01:00:25.844Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/7/</loc>
+        <lastmod>2019-07-25T02:20:27.569Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

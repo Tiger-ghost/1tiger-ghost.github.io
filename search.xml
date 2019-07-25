@@ -23,17 +23,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[ghost]]></title>
-    <url>%2F2018%2F08%2F28%2F%E5%89%8D%E8%A8%80%2F</url>
-    <content type="text"><![CDATA[As long as it starts it will not end！ body{ background-image:url(https://ws1.sinaimg.cn/large/005RRiqRly1fvw1bz9he2j33dc28w4qu.jpg); background-position:center; background-repeat:repeat-y； } 魔术剪辑届 “巫男” 的创意新作《魔术》本文作分享，请勿用于商业用途。]]></content>
-      <categories>
-        <category>life</category>
-      </categories>
-      <tags>
-        <tag>life</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[style]]></title>
     <url>%2F2018%2F08%2F28%2F%E6%A0%B7%E5%BC%8F%2F</url>
     <content type="text"><![CDATA[本文章写作样式 样式详情请转下方原文地址 且不问结果如何，尽自己之所能，积极的面对。Content (md partial supported) 站点配置文件 主题配置文件 站点配置文件 主题配置文件 Download Now 如果没有安装成功，那可能就是墙的原因。建议下载 Node.js 直接安装。关于更多基本操作和基础知识，请查阅 Hexo 与 NexT 官方文档. 点击访问博客 居中引用 1.数字块定义 5.命令历史相关环境变量 本文旨在介绍样式的使用规则。 本文旨在介绍样式的使用规则。 本文旨在介绍样式的使用规则。 GA17 YouTube ghost.me I heard the echo, from the valleys and the heartOpen to the lonely soul of sickle harvestingRepeat outrightly, but also repeat the well-being ofEventually swaying in the desert oasisI believe I amBorn as the bright summer flowersDo not withered undefeated fiery demon ruleHeart rate and breathing to bear the load of the cumbersomeBored GA17 1GA17 2GA17 3GA17 4逝者如斯夫，不舍昼夜我是一个怪物，来自我也不知道的地方f你觉得你死了，还有有人记得你吗 以上来源原文地址：https://qianling.pw/style/#TOC%E6%95%B0%E5%AD%97%E5%9D%97 以下为代码引用详情请看- https://highlightjs.org/ hljs.initHighlightingOnLoad(); #!/bin/bash 例子-例子 ###### CONFIG ACCEPTED_HOSTS="/root/.hag_accepted.conf" BE_VERBOSE=false if [ "$UID" -ne 0 ] then echo "Superuser rights required" exit 2 fi genApacheConf(){ echo -e "# Host ${HOME_DIR}$1/$2 :" } } 代码样式，直接粘贴直文档中，样式自动变化。 &lt;script type=&quot;text/javascript&quot; src=&quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js&quot;&gt;&lt;/script&gt; &lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt; &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css&quot;&gt; &lt;pre&gt; &lt;code class=&quot;Bash&quot; style=&quot;font-size: 18px; border:0px solid #000 ;&quot;&gt;]]></content>
@@ -42,6 +31,28 @@
       </categories>
       <tags>
         <tag>note</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[do]]></title>
+    <url>%2F2018%2F08%2F28%2F%E6%B5%8B%E8%AF%95%2F</url>
+    <content type="text"><![CDATA[fdjsiaijdfidpjsafdosjafdsjaofjdsjafdjsafdsafjdsjfsdjf]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>7</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ghost]]></title>
+    <url>%2F2018%2F08%2F28%2F%E5%89%8D%E8%A8%80%2F</url>
+    <content type="text"><![CDATA[As long as it starts it will not end！ body{ background-image:url(https://ws1.sinaimg.cn/large/005RRiqRly1fvw1bz9he2j33dc28w4qu.jpg); background-position:center; background-repeat:repeat-y； } 魔术剪辑届 “巫男” 的创意新作《魔术》本文作分享，请勿用于商业用途。]]></content>
+      <categories>
+        <category>life</category>
+      </categories>
+      <tags>
+        <tag>life</tag>
       </tags>
   </entry>
   <entry>
@@ -100,9 +111,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[分类]]></title>
-    <url>%2Fcategories%2Findex.html</url>
-    <content type="text"></content>
+    <title><![CDATA[about]]></title>
+    <url>%2Fabout%2Findex.html</url>
+    <content type="text"><![CDATA[blog 本博客从2018年7月左右开始搭建,博客所有搭建过程及修改均来自于互联网。本站使用基于 Node.js 的 Hexo 博客框架，托管于 Github,由 腾讯云 提供 DNS 解析服务 me 19年毕业(单身的老男人)，专业是计算机网络。现在正在一边工作，一边学习linux。 爱好:网易云音乐，写博客，改博客，美剧，动漫，switch You 互助，朋友留下邮箱]]></content>
   </entry>
   <entry>
     <title><![CDATA[标签]]></title>
@@ -110,8 +121,8 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[about]]></title>
-    <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[blog 本博客从2018年7月左右开始搭建,博客所有搭建过程及修改均来自于互联网。本站使用基于 Node.js 的 Hexo 博客框架，托管于 Github,由 腾讯云 提供 DNS 解析服务 me 19年毕业(单身的老男人)，专业是计算机网络。现在正在一边工作，一边学习linux。 爱好:网易云音乐，写博客，改博客，美剧，动漫，switch You 互助，朋友留下邮箱]]></content>
+    <title><![CDATA[分类]]></title>
+    <url>%2Fcategories%2Findex.html</url>
+    <content type="text"></content>
   </entry>
 </search>

@@ -173,7 +173,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/12/E4EatK.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/07/iT5eJA.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/12/E4VZge.png">
-<meta property="og:updated_time" content="2019-05-16T04:54:12.226Z">
+<meta property="og:updated_time" content="2019-07-25T01:00:05.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="document">
 <meta name="twitter:description" content="Linux 文档">
@@ -460,7 +460,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-16 12:54:12" itemprop="dateModified" datetime="2019-05-16T12:54:12+08:00">2019-05-16</time>
+                <time title="Modified: 2019-07-25 09:00:05" itemprop="dateModified" datetime="2019-07-25T09:00:05+08:00">2019-07-25</time>
               
             
           </span>
@@ -531,9 +531,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
       
 
       
-        <center><font face="FZShuTi">Linux 文档</font></center>
-
-<a id="more"></a>
+        <p><center><font face="FZShuTi">Linux 文档</font></center><br><a id="more"></a></p>
 <h1 id="用户和用户组管理"><a href="#用户和用户组管理" class="headerlink" title="用户和用户组管理"></a>用户和用户组管理</h1><h2 id="etc-passwd-用户信息文件"><a href="#etc-passwd-用户信息文件" class="headerlink" title="/etc/passwd:用户信息文件"></a>/etc/passwd:用户信息文件</h2><p><strong><code>user1:x:500:500::/home/user1:/bin/bash</code></strong><br>第一字段:用户名称；<br>第二字段:密码标志；<br>第三字段:UID(用户ID)；<br>　0：超级用户；<br>　1-499：系统用户(伪用户)；<br>　500-65535:普通用户；<br>第4字段：GID(用户初始组ID)<br>第5字段：用户说明<br>第6字段：家目录<br>　普通用户：/home/用户名/<br>　超级用户：/root/<br>第7字段：登录之后的Shell  </p>
 <h2 id="影子文件-etc-shadow"><a href="#影子文件-etc-shadow" class="headerlink" title="影子文件:/etc/shadow"></a>影子文件:<font color="blue">/etc/shadow</font></h2><p>第1字段：用户名<br>第2字符：加密密码<br>　加密算法升级为SHA512散列加密算法<br>　如果密码位是“ ！”或“ * ”代表没有密码，不能登录。<br>第3字段：密码最后一次修改日期：使用1970年1月1号作为标准时间，每过一天时间戳加1。<br>第4字段：两次密码的修改间隔时间(和第3字段相比)间隔多少时间后才可以修改密码。<br>第5字段：密码有效期(和第3字段相比)<br>第6字段：密码修改到期前的警告天数(和第5字段相比)<br>第7字段：密码过期后的宽限天数(和第5字段相比)<br>　0：代表密码过期后立即失效。<br>　-1：则代表密码永远不会失效。<br>第8字段：账号失效时间，要用时间戳表示<br>第9字段：保留<br>把时间戳换算为日期：<br><code>date -d &quot;1970-01-01 17740 days&quot;</code><br>把日期换算为时间戳：<br><code>echo $(($(date --date=&quot;2018/07/28&quot; +%s)/86400+1))</code></p>
 <h2 id="组信息文件-etc-group"><a href="#组信息文件-etc-group" class="headerlink" title="组信息文件/etc/group"></a>组信息文件/etc/group</h2><p>第一字段：组名<br>第二字段：组密码标志<br>第三字段：GID<br>第四字段：组中附加用户  </p>
@@ -1165,7 +1163,7 @@ background-repeat:repeat-y；
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1197,7 +1195,7 @@ background-repeat:repeat-y；
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/document/">document</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/7/">7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/document/">document</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -1331,7 +1329,7 @@ background-repeat:repeat-y；
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共64.8k字</span>
+  <span class="post-count">博客全站共64.9k字</span>
 </div>
 
 <div id="days"></div>
