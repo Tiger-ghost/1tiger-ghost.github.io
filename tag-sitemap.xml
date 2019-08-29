@@ -2,29 +2,29 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>http://yoursite.com/tags/life/</loc>
-        <lastmod>2019-06-20T11:25:18.394Z</lastmod>
+        <loc>http://yoursite.com/tags/command/</loc>
+        <lastmod>2019-08-01T10:50:17.752Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/command/</loc>
-        <lastmod>2019-07-21T13:58:28.055Z</lastmod>
+        <loc>http://yoursite.com/tags/life/</loc>
+        <lastmod>2019-08-18T10:10:40.979Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/note/</loc>
-        <lastmod>2019-07-24T08:35:49.401Z</lastmod>
+        <lastmod>2019-08-21T01:35:55.957Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/tags/Document/</loc>
-        <lastmod>2019-07-25T11:46:54.129Z</lastmod>
+        <lastmod>2019-08-28T11:32:36.257Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

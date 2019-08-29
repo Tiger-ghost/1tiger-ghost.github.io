@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom
+Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "ddf2b567"
+    });
+  daovoice('update');
+  </script>
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+  <meta name="description" content="linux 理论知识点">
+<meta name="keywords" content="Document">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Four">
+<meta property="og:url" content="http://yoursite.com/2019/07/26/Linux后期理论/index.html">
+<meta property="og:site_name" content="Tiger-ghost">
+<meta property="og:description" content="linux 理论知识点">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/31/etI8w4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/31/etO0df.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/31/eNggot.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/04/eysWGj.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/04/eyshzn.png">
+<meta property="og:updated_time" content="2019-08-28T11:32:36.257Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Four">
+<meta name="twitter:description" content="linux 理论知识点">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/31/etI8w4.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Tiger-ghost" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/26/Linux后期理论/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Four | Tiger-ghost</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/Tiger-ghost" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tiger-ghost</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">This is a memory</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/26/Linux后期理论/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tiger">
+      <meta itemprop="description" content="I love you">
+      <meta itemprop="image" content="/../images/head-portrait.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiger-ghost">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Four
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-26 21:27:03" itemprop="dateCreated datePublished" datetime="2019-07-26T21:27:03+08:00">2019-07-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-08-28 19:32:36" itemprop="dateModified" datetime="2019-08-28T19:32:36+08:00">2019-08-28</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/26/Linux后期理论/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2019/07/26/Linux后期理论/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+  
+
+      
+      
+
+      
+        <p><center><font face="FZShuTi">linux 理论知识点</font></center><br><a id="more"></a></p>
+<h1 id="修改开机自启"><a href="#修改开机自启" class="headerlink" title="修改开机自启"></a>修改开机自启</h1><p><code>ntsysv</code>图形界面 可查看开机自启的服务。*号表示服务开机自动启动。<br>例：查看当前运行模式<code>runlevel</code> 比如说是runlevel=5。 这里服务以atd为例<br>进入这个文件夹:cd /etc/rc5.d<br>查看当前文件夹下的服务可以看到开启自动启动的服务是以S开头的’S95atd’<br>当我们使用netsysv这个工具将atd前面的*号去掉时，再回来查看这里的atd服务就是以K开头的’K05atd’<br>而且这里的开机自启服务都是软链接，所以可以手工</p>
+<pre><code>rm -fr K05atd
+ln -s ../init.d/atd(原始路径) S95atd
+</code></pre><p><code>ntsysv</code> 这个工具只能修改当前运行级别的自启服务。如果想要修改其他的运行级别的</p>
+<pre><code>cd /etc/rc3.d/
+ntsysv --level 3 去掉*号以后，回到文件夹下查看
+已经没有S05atd变成了K05atd
+</code></pre><h2 id="chkconfig"><a href="#chkconfig" class="headerlink" title="chkconfig"></a>chkconfig</h2><p><code>chkconfig --level 13 atd on</code> 将1和3模式下的atd服务变为开机自启<br><code>chkconfig --list atd</code> 查看atd服务<br><code>chkconfig atd on</code> 默认开启2345模式下的atd服务<br>编写服务脚本</p>
+<pre><code>#!/bin/bash
+
+#chkconfig: 35 96 03 #35那里如果是 - 那就表示默认所有模式都是off
+#服务脚本的特殊格式，35表示启动的模式 runlevel,96表示启动，96表示S开头的开机自启动，03表示K开头的不自启动.后启动，先关。
+#descriptaion: test service
+. /etc/init.d/functions
+case $1 in
+start)
+        touch /var/lock/subsys/testsrv
+        action &quot;staring testsrv&quot; true
+        ;;
+stop)
+        rm -f /var/lock/subsys/testsrv
+        action &quot;stoping testsrv&quot; true
+        ;;
+restart)
+        action &quot;staring testsrv&quot; true
+        action &quot;stoping testsrv&quot; true
+        ;;
+status)
+        if [ -f  /var/lock/subsys/testsrv ];then
+                echo testsrv is running...
+        else
+                echo testsrv is stopped
+        fi
+        ;;
+*)
+        echo Usage: /etc/init.d/testsrv {start|stop|restart|status}
+esac
+</code></pre><h2 id="xinetd管理的服务"><a href="#xinetd管理的服务" class="headerlink" title="xinetd管理的服务"></a>xinetd管理的服务</h2><p>安装:<code>yum install -y telnet-server</code><br>service 命令：手动管理服务<br>service 服务 start|stop|restart service –status-all<br>瞬态（Transient）服务被xinetd进程所管理<br>进入的请求首先被xinetd代理<br>配置文件：<code>/etc/xinetd.conf、/etc/xinetd.d/&lt;service&gt;</code><br>与libwrap.so文件链接<br>用chkconfig控制的服务：<br>示例：chkconfig tftp on<br>安装服务以后，chkconfig –list 查看</p>
+<pre><code>xinetd based services:
+        chargen-dgram:  off # off 表示这个服务不能被xinetd唤醒
+        chargen-stream: off
+        daytime-dgram:  off
+        daytime-stream: off
+        discard-dgram:  off
+        discard-stream: off
+        echo-dgram:     off
+        echo-stream:    off
+        rsync:          off
+        tcpmux-server:  off
+        telnet:         off
+        time-dgram:     off
+        time-stream:    off
+[root@centos6 init.d]# vim /etc/xinetd.d/telnet 需要到配置文件下去修改
+# default: on
+# description: The telnet server serves telnet sessions; it uses \
+#       unencrypted username/password pairs for authentication.
+service telnet
+{
+        flags           = REUSE
+        socket_type     = stream
+        wait            = no
+        user            = root
+        server          = /usr/sbin/in.telnetd
+        log_on_failure  += USERID
+        disable         = no 这里的yes改为no
+}
+</code></pre><p>还可用命令更改<code>chkconfig telnet on/off</code></p>
+<div class="alert alert-warning">注意：正常级别下，最后启动一个服务S99local没有链接至/etc/rc.d/init.d一个服务脚本，而是指向了/etc/rc.d/rc.local脚本<br>不便或不需写为服务脚本放置于/etc/rc.d/init.d/目录，且又想开机时自动运行的命令，可直接放置于/etc/rc.d/rc.local文件中<br>/etc/rc.d/rc.local在指定运行级别脚本后运行<br>可以根据情况，进行自定义修改</div>
+
+<h2 id="centos6启动流程"><a href="#centos6启动流程" class="headerlink" title="centos6启动流程"></a>centos6启动流程</h2><p>post<br>mbr grub stagel stagel.5<br>grub stage2 /boot/grub/grub.conf<br>vmlinuz root= iniramfs.img<br>/sbin/init<br>/etc/inittab<br>/etc/rc.d/rc.sysinit<br>/etc/rcN.d/K S<br>/etc/rc.d/rc.local<br>login</p>
+<h2 id="CentOS-6启动流程："><a href="#CentOS-6启动流程：" class="headerlink" title="CentOS 6启动流程："></a>CentOS 6启动流程：</h2><p>POST –&gt; Boot Sequence(BIOS) –&gt; Boot Loader –&gt; Kernel(ramdisk) –&gt; rootfs –&gt; switchroot –&gt; /sbin/init –&gt;(/etc/inittab, /etc/init/*.conf) –&gt; 设定默认运行级别 –&gt; 系统初始化脚本rc.sysinit –&gt; 关闭或启动对应级别的服务 –&gt; 启动终端<br>参看：<a href="http://s4.51cto.com/wyfs02/M02/87/20/wKiom1fVBELjXsvaAAUkuL83t2Q304.jpg" target="_blank" rel="noopener">http://s4.51cto.com/wyfs02/M02/87/20/wKiom1fVBELjXsvaAAUkuL83t2Q304.jpg</a></p>
+<h1 id="grub修复1"><a href="#grub修复1" class="headerlink" title="grub修复1"></a>grub修复1</h1><p><code>hexdump -C /dev/sda -n 512</code><br><code>dd if=/dev/zero of=/dev/sda bs=1 count=446</code> 破坏前446个字节<br>reboot<br>进入光盘修复<br><code>grub-install</code>这个工具需要到/sbin/grub，ls /mnt/sysimage/sbin/grub所以要切根目录<br><code>chroot /mnt/sysimage/</code><br><code>grub-install /dev/sda</code><br><code>hexdupm -C /dev/sda -n 512</code> 查看已经修复成功<br><code>sync</code> 同步</p>
+<h2 id="grub修复2"><a href="#grub修复2" class="headerlink" title="grub修复2"></a>grub修复2</h2><p><code>grub&gt; root (hd0,0)</code> #第一个0表示第一个硬盘，第二个零表示第一个分区就代表/dev/sda,这里的表示方法不同。<br><code>grub&gt; setup (hd0)</code> #表示我要把446个字节写在那个硬盘上。<br>现在修复完成，但是这个命令有依赖性，他依赖于/boot/grub下的若干文件。</p>
+<p>ls /boot/grub下 默认只有grub.conf这一个文件是重要的，但是修复以后所产生的文件就都是必要的了。<br>grub.conf这个是gurb的配置文件</p>
+<pre><code>vim /boot/grub/grub.conf
+default=1 #指第一个title
+timeout=5
+password centos #这里是给进入单用户加一个密码centos，若是加了，想要进单用户，没有密码，就无法进入。
+password --md5 加密口令 #还可以使用md5加密方式 grub-md5-crypt
+password --encrypted $6$GVDpx3mdjq27eWWy$lZubXA/VXZgyJhaQzH/rX.pfttIxObIIdBkxjHHm/nRA4H4Z/h3oD5Yo80wGwfpYMyjG6UL7R1W55oSXxzK
+dB. #这里用的是加密的密码还是centos.方法:r!grub-crypt
+splashimage=(hd0,0)/grub/splash.xpm.gz #这里就是启动的背景图片，更换见下方详解。最后一步在这里更改图片name
+hiddenmenu
+title CentOS 6 (2.6.32-754.el6.x86_64)
+        root (hd0,0)
+        kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=c9ab54fa-2650-4363-bc37-fca60e23e8d0 rd_NO_LUKS rd_NO_LVM LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet
+        initrd /initramfs-2.6.32-754.el6.x86_64.img
+title CentOS 8 (4.6.32-754.el6.x86_64)#假设     #添加的启动菜单
+        root (hd0,0)
+        kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=c9ab54fa-2650-4363-bc37-fca60e23e8d0 rd_NO_LUKS rd_NO_LVM LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet
+        initrd /initramfs-2.6.32-754.el6.x86_64.img
+
+ #grub 认为boot才是根目录，下面可以写成这种形式.就是对于vmlinux-这个文件来讲，这个文件在第一个硬盘第一个分区里面，对应boot这个目录
+        kernel (hd0,0)/vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=c9ab54fa-2650-4363-bc37-fca60e23e8d0 rd_NO_LUKS rd_NO_LVM LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet
+        initrd (hd0,0)/initramfs-2.6.32-754.el6.x86_64.img #此文件加载根分区，加载文件驱动，不能和内核文件对调
+[root@centos6 grub]# 
+</code></pre><p><img src="https://s2.ax1x.com/2019/07/31/etI8w4.png" alt=""></p>
+<h2 id="启动背景更换"><a href="#启动背景更换" class="headerlink" title="启动背景更换"></a>启动背景更换</h2><p>CentOS6.5安装rz和sz命令<br>一条命令就行 <code>yum install -y lrzsz</code><br>用rz将图片传入linx，还需更改格式<br>linux 图片png转xpm工具<br>which convert 查看命令的路径<br>rpm -qf /usr/bin/convert 查看命令来自哪一个包</p>
+<pre><code>yum install -y ImageMagick 包名
+convert -resize 640x480 -colors 14 2019.png win.xpm
+gzip win.xpm 还要将图片压缩成gz，然后移动到/boot/grub然后去文件中更改图片名。
+</code></pre><h2 id="rm-fr-boot-grub-grub-conf"><a href="#rm-fr-boot-grub-grub-conf" class="headerlink" title="rm -fr /boot/grub/grub.conf"></a>rm -fr /boot/grub/grub.conf</h2><p>临时修复:<br><img src="https://s2.ax1x.com/2019/07/31/etO0df.png" alt=""><br>写入文件:</p>
+<pre><code>[root@centos6 grub]# cat grub.conf 
+default=0
+timeout=3
+title pan 
+#:r!ls /boot/initramfs-2.6.32-754.el6.x86_64.img /boot/vmlinuz-2.6.32-754.el6.x86_64
+kernel /vmlinuz-2.6.32-754.el6.x86_64 root=/dev/sda2
+initrd /initramfs-2.6.32-754.el6.x86_64.img 
+</code></pre><h2 id="rm-fr-boot"><a href="#rm-fr-boot" class="headerlink" title="rm -fr /boot/*"></a>rm -fr /boot/*</h2><p><img src="https://s2.ax1x.com/2019/07/31/eNggot.png" alt=""></p>
+<pre><code>sync 写入文件
+ls /mnt/sysimage/boot  查看没有grub
+chroot /mnt/sysimage
+grub-install /dev/sda 修复grub
+
+vim /boot/grub/grub.conf 修复grub目录后，grub.conf需要自己建立
+defaule=0
+timeout=3
+title=linux
+vmlinuz-2.6.32-754.el6.x86_64
+kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=/dev/sda2
+initrd /initramfs-2.6.32-754.el6.x86_64.img 
+    vim /etc/selinux/config
+    SELINUX=disable
+</code></pre><h2 id="mv-etc-fstab和rm-fr-boot"><a href="#mv-etc-fstab和rm-fr-boot" class="headerlink" title="mv /etc/fstab和rm -fr /boot"></a>mv /etc/fstab和rm -fr /boot</h2><p>进入救援模式<br>fdisk -l 查看当前的硬盘<br>找到根目录，然后挂载 mount /dev/sda2 /mnt/rootfs<br>vi /mnt/rootfs/etc/fstab 恢复这个文件<br><img src="https://s2.ax1x.com/2019/08/04/eysWGj.png" alt=""><br><img src="https://s2.ax1x.com/2019/08/04/eyshzn.png" alt=""><br>重启后再次进去救援模式，可以找到了，后面还需修复grub等。</p>
+<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>rmmod e1000<br>modprobe e1000</p>
+<h2 id="自制linux系统"><a href="#自制linux系统" class="headerlink" title="自制linux系统"></a>自制linux系统</h2><pre><code>[root@centos6 ~]# fdisk -l /dev/sdb        1.增加一块20G的硬盘分区
+
+Disk /dev/sdb: 21.5 GB, 21474836480 bytes
+255 heads, 63 sectors/track, 2610 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0xe03fcc2f
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sdb1               1         132     1060258+  83  Linux
+/dev/sdb2             133        1438    10490445   83  Linux
+/dev/sdb3            1439        1700     2104515   82  Linux swap / Solaris
+[root@centos6 ~]# mkfs.ext4 /dev/sdb1        2.创建文件系统 
+[root@centos6 ~]# mkfs.ext4 /dev/sdb2
+[root@centos6 ~]# mkswap /dev/sdb3
+
+[root@centos6 ~]# blkid
+/dev/sda1: UUID=&quot;018d560c-cf34-426f-9255-3644809c9cd1&quot; TYPE=&quot;ext4&quot; 
+/dev/sda2: UUID=&quot;c9ab54fa-2650-4363-bc37-fca60e23e8d0&quot; TYPE=&quot;ext4&quot; 
+/dev/sda3: UUID=&quot;c818ec58-ff08-4350-a41b-3016ec7caf4e&quot; TYPE=&quot;ext4&quot; 
+/dev/sda5: UUID=&quot;6e3af40a-8892-474c-a76f-597954888c62&quot; TYPE=&quot;swap&quot; 
+/dev/sdb2: UUID=&quot;e6089c91-2ce4-429e-bcbd-cbd407bdeb33&quot; TYPE=&quot;ext4&quot;  关注/dev/sdb
+/dev/sdb3: UUID=&quot;fcb6440e-d22f-4b96-947a-0b984705c5a6&quot; TYPE=&quot;swap&quot; 
+/dev/sdb1: UUID=&quot;27501ae9-4d2b-4a36-ade5-659bc74e27b9&quot; TYPE=&quot;ext4&quot; 
+
+[root@centos6 ~]# mkdir /mnt/boot        3.创建挂载点并挂载
+[root@centos6 ~]# mount /dev/sdb1 /mnt/boot
+[root@centos6 ~]# ls /mnt/boot
+lost+found
+
+4.安装grub,表示我要把grub的内容放到哪个/boot的grub,这里只需指定/mnt,他会自动寻找/mnt下的/boot
+[root@centos6 ~]# grub-install --root-directory=/mnt /dev/sdb        
+
+        5.复制/boot下的文件
+[root@centos6 ~]# cp /boot/initramfs-2.6.32-754.el6.x86_64.img /mnt/boot/initramfs.img
+[root@centos6 ~]# cp /boot/vmlinuz-2.6.32-754.el6.x86_64 /mnt/boot/vmliinux
+[root@centos6 ~]# ls /mnt/boot    拷贝两个文件，这两个文件也是必须有的
+grub  initramfs.img  lost+found  vmliinux
+
+[root@centos6 ~]# vim /mnt/boot/grub/grub.conf    6.编辑文件grub.conf
+default=0
+timeout=3
+title linux
+kernel /vmlinuz root=/dev/sda2 selinux=0 init=/bin/bash 
+#启动的时候，这里默认就会寻找init=/sbin/init 这个程序，这个程序又会寻找各种配置文件，所以这里改成bash
+initrd /initramfs.img
+
+[root@centos6 ~]# mount /dev/sdb2 /media/        # 7./dev/sdb2 把根分区，临时挂到一个目录上 
+[root@centos6 ~]# mkdir /media/{etc,dev,proc,sys,usr,var,tmp,mnt,lib,lib64,sbin,bin} -p        #创建根目录下应该有的文件
+
+[root@centos6 ~]# vim copycmd.sh     #8. 编辑复制代码程序，此文件的作用是拷贝命令和命令依赖的库到/mnt/sdb2/media/
+#!/bin/bash 
+ch_root=&quot;/media/&quot; #根目录
+[ ! -d $ch_root ] &amp;&amp; mkdir $ch_root
+bincopy() {
+    if which $1 &amp;&gt;/dev/null; then
+
+        local cmd_path=`which --skip-alias $1`
+        local bin_dir=`dirname $cmd_path`
+        [ -d ${ch_root}${bin_dir} ] || mkdir -p ${ch_root}${bin_dir}
+        [ -f ${ch_root}${cmd_path} ] || cp $cmd_path ${ch_root}${bin_dir}
+        return 0
+    else
+        echo &quot;Command not found.&quot;
+        return 1
+    fi
+}
+libcopy() {
+    local lib_list=$(ldd `which --skip-alias $1` | grep -Eo &#39;/[^[:space:]]+&#39;)
+    for loop in $lib_list;do
+        local lib_dir=`dirname $loop`
+        [ -d ${ch_root}${lib_dir} ] || mkdir -p  ${ch_root}${lib_dir}
+        [ -f ${ch_root}${loop} ] || cp $loop ${ch_root}${lib_dir}
+    done
+}
+read -p &quot;Please input a command: &quot; command
+
+while [ &quot;$command&quot; != &quot;quit&quot; ];do
+    if bincopy $command ;then
+        libcopy $command
+    fi
+    read -p &quot;Please input a command or quit: &quot; command
+done
+[root@centos6 ~]# bash copycmd.sh 
+Please input a command: bash
+please input a command or quit: modprobe
+please input a command or quit: insmod
+please input a command or quit: ifconfig
+please input a command or quit: ls
+please input a command or quit: mount
+please input a command or quit: cp
+please input a command or quit: ping
+please input a command or quit: cat 
+please input a command or quit: vim
+please input a command or quit: df
+please input a command or quit: blkid
+please input a command or quit: cp
+please input a command or quit: mv
+please input a command or quit: rm
+please input a command or quit: quit            ......
+[root@centos6 ~]# tree /media/
+
+ locate e1000 查看网卡驱动
+[root@centos6 ~]# cp /lib/modules/2.6.32-754.el6.x86_64/kernel/drivers/net/e1000/e1000.ko /media/lib/ 拷贝
+[root@centos6 ~]# chroot /media/
+
+</code></pre><h1 id="proc-目录"><a href="#proc-目录" class="headerlink" title="proc 目录"></a>proc 目录</h1><p><code>cat /proc/sys/net/ipv4/ip_forward</code> 这个文件里面的配置参数都可以放在sysctl.con 里面<br>sysctl命令：<br>默认配置文件：/etc/sysctl.conf<br>(1)设置某参数 sysctl -w parameter=VALUE<br>(2)通过读取配置文件设置参数 sysctl -p [/path/to/conf_file]<br>(3)查看所有生效参数 sysctl -a</p>
+<pre><code>[root@centos6 ~]# cat /proc/sys/vm/drop_caches 
+0         #0代表保留缓存数据
+[root@centos6 ~]# echo 1 &gt;/proc/sys/vm/drop_caches          #会立即清理缓存
+[root@centos6 ~]# free -h         #可以清晰的看到cached对比之前没有清理过的下降了很多
+</code></pre><pre><code>[root@centos6 ~]# echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all          
+[root@centos6 ~]# cat  /proc/sys/net/ipv4/icmp_echo_ignore_all 
+1        #这里改成1会禁ping     
+
+想要保存需要写到文件/etc/sysctl.conf
+[root@centos6 ~]# vim /etc/sysctl.conf 
+  1 # Kernel sysctl configuration file for Red Hat Linux
+  2 #
+  3 # For binary values, 0 is disabled, 1 is enabled.  See sysctl(8) and
+  4 # sysctl.conf(5) for more details.
+  5 #
+  6 # Use &#39;/sbin/sysctl -a&#39; to list all possible parameters.
+  7 
+  8 # Controls IP packet forwarding
+  9 net.ipv4.ip_forward = 0                
+ 10 net.ipv4.icmp_echo_ignore_all = 1    
+     #这里是我添加的一行，这里的格式要用点区分开.他和文件目录是对应的关系，sysctl管理的就是/proc/sys/目录下的文件，所以前面就不用写了。
+保存退出以后还没有生效使用sysctl -p
+ 这里注意: -p的作用是读取这个文件到内存中，如果读取到内存中发现是冲突的，那就拿文件覆盖到内存中，如果没有就保留原状态。
+ 所以这里如果禁止了ping，之后只是删除了文件加上sysctl -p这样是无法产生效果的，之前ping不通现在还是ping不通。
+这里重启可以。
+sysctl -a 查看所有生效的参数
+</code></pre><h1 id="sys目录："><a href="#sys目录：" class="headerlink" title="/sys目录："></a>/sys目录：</h1><p>sysfs：为用户使用的伪文件系统，输出内核识别出的各硬件设备的相关属性信息，也有内核对硬件特性的设定信息；有些参数是可以修改的，用于调整硬件工作特性<br>udev通过此路径下输出的信息动态为各设备创建所需要设备文件，udev是运行用户空间程序<br>专用工具：udevadmin, hotplug<br>udev为设备创建设备文件时，会读取其事先定义好的规则文件，一般在/etc/udev/rules.d及/usr/lib/udev/rules.d目录下</p>
+<h1 id="内核编译"><a href="#内核编译" class="headerlink" title="内核编译"></a>内核编译</h1><p>单内核体系设计、但充分借鉴了微内核设计体系的优点，为内核引入模块化机制<br>内核组成部分：<br>kernel：内核核心，一般为bzImage，通常在/boot目录下<br>名称为 vmlinuz-VERSION-RELEASE kernel object：内核对象，一般放置于<br>/lib/modules/VERSION-RELEASE/<br>[ ]: N            #不启用<br>[M]: M            #放到/lib/modules 以模块方式存放<br>[*]: Y            #放到核心里面 启用<br>辅助文件：ramdisk<br>initrd<br>initramfs </p>
+<h1 id="lsmod命令："><a href="#lsmod命令：" class="headerlink" title="lsmod命令："></a>lsmod命令：</h1><p>显示由核心已经装载的内核模块<br>显示的内容来自于: /proc/modules文件<br>modinfo命令：<br>显示模块的详细描述信息<br>modinfo [ -k kernel ] [ modulename|filename… ]<br>-n：只显示模块文件路径<br>-p：显示模块参数<br>-a：作者<br>-d：描述<br>示例：lsmod |grep xfs  <code>modinfo -n xfs</code></p>
+<h1 id="内核模块管理"><a href="#内核模块管理" class="headerlink" title="内核模块管理"></a>内核模块管理</h1><p>modprobe命令：<br>装载或卸载内核模块<br>modprobe [ -C config-file ] [ modulename ] [ module parame-ters… ]<br>modprobe [ -r ] modulename… 卸载模块<br>配置文件：/etc/modprobe.conf 存放硬件加载的各种模块, /etc/modprobe.d/*.conf</p>
+<h1 id="内核模块管理-1"><a href="#内核模块管理-1" class="headerlink" title="内核模块管理"></a>内核模块管理</h1><p>depmod命令：<br>内核模块依赖关系文件及系统信息映射文件的生成工具<br>装载或卸载内核模块：<br>insmod命令：指定模块文件，不自动解决依赖模块 insmod [ filename ] [ module options… ]<br>insmod <code>modinfo –n exportfs</code><br>lnsmod <code>modinfo –n xfs</code><br>rmmod命令：卸载模块<br>rmmod [ modulename ]<br>rmmod xfs<br>rmmod exportfs</p>
+<h1 id="内核编译-1"><a href="#内核编译-1" class="headerlink" title="内核编译"></a>内核编译</h1><pre><code>rz
+tar -xvf linux-4.18.13.tar.xz
+cp /boot/config-3.10.0-862.el7.x86_64 linux-5.2.7/.config
+[root@centos7 \~]# cd linux-5.2.7/
+[root@centos7 \~]# make menuconfig:配置内核选项
+这里还需要装一些软件包，不然无法使用。 yum groupinstall &quot;development tools&quot;
+[root@centos7 \~]# yum install -y ncurses-devel 根据提示装所缺少的包
+[root@centos7 \~]# make menuconfig:软件包装完后再配置内核选项
+[root@centos7 linux-4.18.13]# make -j 4 &amp;&amp; { echo -e &#39;\a&#39; ;sleep 0.5;echo -e &#39;\a&#39;;}
+yum install -y openssl-devel 继续安装缺少的包
+[root@centos7 linux-4.18.13]# make -j 4 &amp;&amp; { echo -e &#39;\a&#39; ;sleep 0.5;echo -e &#39;\a&#39;;}
+    jobs=4，同时最多跑4个作业
+    make自己会协调，如果CPU等资源不够可能小于4个。不过一般瓶颈都在硬盘，所以一般能看到4个进程一起跑。
+</code></pre><h1 id="centos7"><a href="#centos7" class="headerlink" title="centos7"></a>centos7</h1><p>systemd<br>POST –&gt; Boot Sequence –&gt; Bootloader –&gt; kernel + initramfs(initrd) – &gt; rootfs –&gt; /sbin/init<br>init:<br>CentOS 5    SysV init<br>CentOS 6    Upstart<br>CentOS 7    Systemd<br>Systemd：系统启动和服务器守护进程管理器，负责在系统启动或运行时，激活系统资源，服务器进程和其它进程<br>Systemd新特性<br>系统引导时实现服务并行启动<br>按需启动守护进程<br>自动化的服务依赖关系管理<br>同时采用socket式与D-Bus总线式激活服务系统状态快照</p>
+<h2 id="管理服务"><a href="#管理服务" class="headerlink" title="管理服务"></a>管理服务</h2><p>管理系统服务：<br>CentOS 7: service unit<br>注意：能兼容早期的服务脚本<br>命令：systemctl COMMAND name.service<br>启动：service name start ==&gt; systemctl start name.service<br>停止：service name stop ==&gt; systemctl stop name.service<br>重启：service name restart ==&gt; systemctl restart name.service<br>状态：service name status ==&gt; systemctl status name.service</p>
+<h2 id="管理服务-1"><a href="#管理服务-1" class="headerlink" title="管理服务"></a>管理服务</h2><p>条件式重启：已启动才重启，否则不做操作<br>service name condrestart ==&gt; systemctl try-restart name.service<br>重载或重启服务：先加载，再启动<br>systemctl reload-or-restart name.service<br>重载或条件式重启服务：<br>systemctl reload-or-try-restart name.service<br>禁止自动和手动启动：<br>systemctl mask name.service 他的作用就是创建了一个软链接，也可以手动创建，用法相同。<br><code>ln -s /dev/null /etc/systemd/system/httpd.service</code><br>取消禁止：<br>systemctl unmask name.service</p>
+<pre><code>systemctl is-enabled httpd 查看httpd是否开机启动
+systemctl is-active 查看httpd现在的状态
+</code></pre><h2 id="服务查看"><a href="#服务查看" class="headerlink" title="服务查看"></a>服务查看</h2><p>查看某服务当前激活与否的状态： <code>systemctl is-active name.service</code><br>查看所有已经激活的服务：<br><code>systemctl list-units --type|-t service</code><br>查看所有服务：<br><code>systemctl list-units --type service --all|-a</code><br>chkconfig命令的对应关系：<br>设定某服务开机自启：<br><code>chkconfig name on ==&gt; systemctl enable name.service</code><br>设定某服务开机禁止启动：<br><code>chkconfig name off ==&gt; systemctl disable name.service</code></p>
+<h2 id="服务查看-1"><a href="#服务查看-1" class="headerlink" title="服务查看"></a>服务查看</h2><p>查看所有服务的开机自启状态： <code>chkconfig --list ==&gt; systemctl list-unit-files --type service</code><br>用来列出该服务在哪些运行级别下启用和禁用 <code>chkconfig sshd –list ==&gt; ls /etc/systemd/system/\*.wants/sshd.service</code><br>查看服务是否开机自启：<code>systemctl is-enabled name.service</code><br>其它命令：<br>查看服务的依赖关系：<code>systemctl list-dependencies name.service</code><br>杀掉进程：<code>systemctl kill unitname</code></p>
+<h2 id="服务状态"><a href="#服务状态" class="headerlink" title="服务状态"></a>服务状态</h2><p>loaded    Unit配置文件已处理<br>active(running)  一次或多次持续处理的运行<br>active(exited)   成功完成一次性的配置<br>active(waiting)  运行中，等待一个事件<br>inactive   不运行<br>enabled  开机启动<br>disabled  开机不启动<br>static开机不启动，但可被另一个启用的服务激活</p>
+<h2 id="systemctl-命令示例"><a href="#systemctl-命令示例" class="headerlink" title="systemctl 命令示例"></a>systemctl 命令示例</h2><pre><code>显示所有单元状态
+systemctl 或 systemctl list-units
+只显示服务单元的状态 systemctl --type=service
+显示sshd服务单元
+systemctl –l status sshd.service
+验证sshd服务当前是否活动 systemctl is-active sshd
+启动，停止和重启sshd服务 systemctl start sshd.service systemctl stop sshd.service systemctl restart sshd.service
+</code></pre><h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h3><pre><code>重新加载配置
+systemctl reload sshd.service
+列出活动状态的所有服务单元
+systemctl list-units --type=service
+列出所有服务单元
+systemctl list-units --type=service --all
+查看服务单元的启用和禁用状态
+systemctl list-unit-files --type=service
+列出失败的服务
+systemctl --failed --type=service
+</code></pre><h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><pre><code>列出依赖的单元
+systemctl list-dependencies sshd
+验证sshd服务是否开机启动 systemctl is-enabled sshd
+禁用network，使之不能自动启动,但手动可以 systemctl disable network
+启用network
+systemctl enable network
+禁用network，使之不能手动或自动启动 systemctl mask network
+启用network
+systemctl unmask network
+</code></pre><h2 id="service-unit文件格式"><a href="#service-unit文件格式" class="headerlink" title="service unit文件格式"></a>service unit文件格式</h2><p>/etc/systemd/system：系统管理员和用户使用/usr/lib/systemd/system：发行版打包者使用<br>以 “#” 开头的行后面的内容会被认为是注释<br>相关布尔值，1、yes、on、true 都是开启，0、no、off、false 都是关闭<br>时间单位默认是秒，所以要用毫秒（ms）分钟（m）等须显式说明<br>service unit file文件通常由三部分组成：<br>[Unit]：定义与Unit类型无关的通用选项；用于提供unit的描述信息、unit行为及依赖关系等<br>[Service]：与特定类型相关的专用选项；此处为Service类型<br>[Install]：定义由“systemctl enable”以及”systemctl disable“命令在实现服务启用或禁用时用到的一些选项</p>
+<h2 id="service-unit文件格式-1"><a href="#service-unit文件格式-1" class="headerlink" title="service unit文件格式"></a>service unit文件格式</h2><p>Unit段的常用选项：<br>Description：描述信息<br>After：定义unit的启动次序，表示当前unit应该晚于哪些unit启动，其功能与<br>Before相反<br>Requires：依赖到的其它units，强依赖，被依赖的units无法激活时，当前unit也无法激活<br>Wants：依赖到的其它units，弱依赖<br>Conflicts：定义units间的冲突关系</p>
+<h3 id="service-unit文件格式-2"><a href="#service-unit文件格式-2" class="headerlink" title="service unit文件格式"></a>service unit文件格式</h3><p>Service段的常用选项：<br>Type：定义影响ExecStart及相关参数的功能的unit进程启动类型<br>simple：默认值，这个daemon主要由ExecStart接的指令串来启动，启动后常驻于内存中<br>forking：由ExecStart启动的程序透过spawns延伸出其他子程序来作为此daemon的主要服务。原生父程序在启动结束后就会终止<br>oneshot：与simple类似，不过这个程序在工作完毕后就结束了，不会常驻在内存中<br>dbus：与simple类似，但这个daemon必须要在取得一个D-Bus的名称后，才会继续运作.因此通常也要同时设定BusNname= 才行<br>notify：在启动完成后会发送一个通知消息。还需要配合 NotifyAccess 来让<br>Systemd 接收消息<br>idle：与simple类似，要执行这个daemon必须要所有的工作都顺利执行完毕后才会执行。这类的daemon通常是开机到最后才执行即可的服务</p>
+<h3 id="EnvironmentFile：环境配置文件"><a href="#EnvironmentFile：环境配置文件" class="headerlink" title="EnvironmentFile：环境配置文件"></a>EnvironmentFile：环境配置文件</h3><p>ExecStart：指明启动unit要运行命令或脚本的绝对路径<br>ExecStartPre： ExecStart前运行<br>ExecStartPost： ExecStart后运行<br>ExecStop：指明停止unit要运行的命令或脚本<br>Restart：当设定Restart=1 时，则当次daemon服务意外终止后，会再次自动启动此服务</p>
+<h2 id="service-unit文件格式-3"><a href="#service-unit文件格式-3" class="headerlink" title="service unit文件格式"></a>service unit文件格式</h2><p>Install段的常用选项：<br>Alias：别名，可使用systemctl command Alias.service<br>RequiredBy：被哪些units所依赖，强依赖<br>WantedBy：被哪些units所依赖，弱依赖<br>Also：安装本服务的时候还要安装别的相关服务<br>注意：对于新创建的unit文件，或者修改了的unit文件，要通知systemd重载此配置文件,而后可以选择重启<br>systemctl daemon-reload</p>
+<h3 id="服务Unit文件示例："><a href="#服务Unit文件示例：" class="headerlink" title="服务Unit文件示例："></a>服务Unit文件示例：</h3><pre><code>[root@centos7 system]# cat  /lib/systemd/system/bak.service
+[Unit]
+Description=backup /etc 
+Requires=atd.service
+[Service]
+Type=simple
+ExecStart=/bin/bash -c &quot;echo /data/bak.sh|at now&quot; [Install]
+WantedBy=multi-user.target
+[root@centos7 system]# cat /data/bak.sh 
+tar cvf /data/etc-`date + %F`.tar /etc/ &amp;&gt; /dev/null
+[root@centos7 system]# chmod +x !$
+
+[root@centos7 system]# systemctl daemon-reload
+[root@centos7 system]# systemctl list-units -t service -a|grep bak
+[root@centos7 system]# systemctl list-unit-files
+
+[root@centos7 system]#systemctl start bak
+
+</code></pre><h3 id="运行级别"><a href="#运行级别" class="headerlink" title="运行级别"></a>运行级别</h3><p>target units：<br>unit配置文件：.target<br>ls /usr/lib/systemd/system/*.target systemctl list-unit-files –type target –all<br>运行级别：<br>0    ==&gt; runlevel0.target, poweroff.target<br>1    ==&gt; runlevel1.target, rescue.target<br>2    ==&gt; runlevel2.target, multi-user.target<br>3    ==&gt; runlevel3.target, multi-user.target<br>4    ==&gt; runlevel4.target, multi-user.target<br>5    ==&gt; runlevel5.target, graphical.target<br>6    ==&gt; runlevel6.target, reboot.target<br>查看依赖性：<br>systemctl list-dependencies graphical.target</p>
+<h3 id="运行级别-1"><a href="#运行级别-1" class="headerlink" title="运行级别"></a>运行级别</h3><p>级别切换：init N ==&gt; systemctl isolate name.target<br>systemctl isolate multi-user.target<br>注：只有/lib/systemd/system/*.target文件中AllowIsolate=yes 才能切换(修改文件需执行systemctl daemon-reload才能生效)<br>查看target： runlevel ;who -r<br>systemctl list-units –type target<br>获取默认运行级别：<br>/etc/inittab ==&gt; systemctl get-default<br>修改默认级别：<br>/etc/inittab ==&gt; systemctl set-default name.target systemctl set-default multi-user.target<br>ls –l /etc/systemd/system/default.target</p>
+<p><code>ln -s /usr/lib/systemd/system/graphical.target  /etc/systemd/system/default.target</code> 就是修改了一个软链接</p>
+<h3 id="其它命令"><a href="#其它命令" class="headerlink" title="其它命令"></a>其它命令</h3><p>切换至紧急救援模式： systemctl rescue<br>切换至emergency模式： systemctl emergency<br>其它常用命令：<br>传统命令init，poweroff，halt，reboot都成为<br>systemctl的软链接<br>关机：systemctl halt、systemctl poweroff<br>重启：systemctl reboot<br>挂起：systemctl suspend<br>休眠：systemctl hibernate<br>休眠并挂起：systemctl hybrid-sleep</p>
+<h2 id="CentOS7引导顺序"><a href="#CentOS7引导顺序" class="headerlink" title="CentOS7引导顺序"></a>CentOS7引导顺序</h2><p>UEFi或BIOS初始化，运行POST开机自检<br>选择启动设备<br>引导装载程序, centos7是grub2<br>加载装载程序的配置文件：<br>/etc/grub.d/<br>/etc/default/grub<br>/boot/grub2/grub.cfg<br>加载initramfs驱动模块<br>加载内核选项<br>内核初始化，centos7使用systemd代替init<br>执行initrd.target所有单元，包括挂载/etc/fstab<br>从initramfs根文件系统切换到磁盘根目录<br>systemd执行默认target配置，配置文件<br>/etc/systemd/system/default.target</p>
+<h2 id="CentOS7引导顺序-1"><a href="#CentOS7引导顺序-1" class="headerlink" title="CentOS7引导顺序"></a>CentOS7引导顺序</h2><p>systemd执行sysinit.target初始化系统及basic.target准备操作系统<br>systemd启动multi-user.target下的本机与服务器服务<br>systemd执行multi-user.target下的/etc/rc.d/rc.local<br>Systemd执行multi-user.target下的getty.target及登录服务<br>systemd执行graphical需要的服务</p>
+<p>无限重启 <code>systemctl set-default reboot.target</code><br>在Linux16后面添加 <code>systemd.unit=multi-user.target</code><br>查看 <code>systemctl get-default</code><br>修改 <code>systemctl ser-default graphical.targer</code></p>
+<h2 id="破解CentOS7的root口令方法一"><a href="#破解CentOS7的root口令方法一" class="headerlink" title="破解CentOS7的root口令方法一"></a>破解CentOS7的root口令方法一</h2><p>启动时任意键暂停启动<br>按e键进入编辑模式<br>将光标移动linux16开始的行，添加内核参数rd.break<br>按ctrl-x启动<br>mount –o remount,rw /sysroot<br>chroot /sysroot<br>passwd root<br>touch /.autorelabel 针对SELINUX<br>exit<br>reboot</p>
+<h2 id="破解CentOS7的root口令方法二"><a href="#破解CentOS7的root口令方法二" class="headerlink" title="破解CentOS7的root口令方法二"></a>破解CentOS7的root口令方法二</h2><p>启动时任意键暂停启动<br>按e键进入编辑模式<br>将光标移动linux16开始的行，改为rw init=/sysroot/bin/sh<br>按ctrl-x启动<br>chroot /sysroot<br>passwd root<br>touch /.autorelabel<br>exit<br>reboot</p>
+<h2 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h2><p>修复/boot: chroot /mnt/sysimage<br>mount /dev/sr0 /mnt<br>rpm -ivh /mnt/Packages/Kernel-3.10.0-862.e17.x86_64.rpm –force<br>修复/grub:grub2-mkconfig -o /boot/grub2/grub.cfg</p>
+<h1 id="SElinux"><a href="#SElinux" class="headerlink" title="SElinux"></a>SElinux</h1><p>DAC：Discretionary Access Control自由访问控制<br>MAC：Mandatory Access Control 强制访问控制<br>DAC环境下进程是无束缚的<br>MAC环境下策略的规则决定控制的严格程度<br>MAC环境下进程可以被限制的<br>策略被用来定义被限制的进程能够使用那些资源（文件和端口）<br>默认情况下，没有被明确允许的行为将被拒绝</p>
+<h2 id="SELinux策略"><a href="#SELinux策略" class="headerlink" title="SELinux策略"></a>SELinux策略</h2><p>对象(object)：所有可以读取的对象，包括文件、目录和进程，端口等<br>主体：进程称为主体(subject)<br>SELinux中对所有的文件都赋予一个type的文件类型标签，对于所有的进程也赋予各自的一个domain的标签。domain标签能够执行的操作由安全策略里定义<br>当一个subject试图访问一个object，Kernel中的策略执行服务器将检查AVC (访<br>问矢量缓存Access Vector Cache), 在AVC中，subject和object的权限被缓存<br>(cached)，查找“应用+文件”的安全环境。然后根据查询结果允许或拒绝访问<br>安全策略：定义主体读取对象的规则数据库，规则中记录了哪个类型的主体使用哪个方法读取哪一个对象是允许还是拒绝的，并且定义了哪种行为是充许或拒绝</p>
+<h2 id="SELinux工作类型"><a href="#SELinux工作类型" class="headerlink" title="SELinux工作类型"></a>SELinux工作类型</h2><p>SELinux有四种工作类型：<br>Strict：CentOS 5,每个进程都受到selinux的控制<br>targeted：用来保护常见的网络服务,仅有限进程受到selinux控制，只监控容易被入侵的进程，CentOS 4只保护13个服务，CentOS 5保护88个服务<br>minimum：CentOS 7,修改的 targeted，只对选择的网络服务<br>mls：提供MLS（多级安全）机制的安全性<br>targeted为默认类型，minimum和mls稳定性不足，未加以应用，strict已不再使用</p>
+<h2 id="SELinux安全上下文"><a href="#SELinux安全上下文" class="headerlink" title="SELinux安全上下文"></a>SELinux安全上下文</h2><p>传统Linux，一切皆文件，由用户，组，权限控制访问<br>在SELinux中，一切皆对象（object），由存放在inode的扩展属性域的安全元素所控制其访问<br>所有文件和端口资源和进程都具备安全标签：安全上下文（security context）<br>安全上下文有五个元素组成：<br>user:role:type:sensitivity:category<br>user_u:object_r:tmp_t:s0:c0<br>实际上下文：存放在文件系统中，ls –Z;ps –Z<br>期望(默认)上下文：存放在二进制的SELinux策略库（映射目录和期望安全上下文）中<br>semanage fcontext –l</p>
+<h2 id="五个安全元素"><a href="#五个安全元素" class="headerlink" title="五个安全元素"></a>五个安全元素</h2><p>User：指示登录系统的用户类型,进程：如system_u为系统服务进程，是受到管制的，unconfined_u为不管制的进程，用户自己开启的，如 bash，文件：system_u系统进程创建的文件， unconfined_u为用户自已创建的文件</p>
+<p>Role：定义文件，进程和用户的用途：进程：system_r为系统服务进程，受到管制。unconfined_r 为不管制进程，通常都是用户自己开启的，如 bash，文件:object_r</p>
+<p>Type：指定数据类型，规则中定义何种进程类型访问何种文件Target策略基于type实现,多服务共用：public_content_t</p>
+<p>Sensitivity：限制访问的需要，由组织定义的分层安全级别，如 unclassified,secret,top,secret, 一个对象有且只有一个sensitivity,分0-15级，s0最低,Target策略默认使用s0</p>
+<p>Category：对于特定组织划分不分层的分类，如FBI Secret，NSA secret, 一个对象可以有多个categroy， c0-c1023共1024个分类， Target 策略不使用 category</p>
+<pre><code>[root@centos7 ~]# setenforce 0
+[root@centos7 ~]# getenforce selinux
+Permissive
+[root@centos7 ~]# setenforce 1
+[root@centos7 ~]# getenforce selinux
+Enforcing
+</code></pre><p>禁用可以在/boot/grub2/grub.cfg linux16末尾加上: selinux=0<br>查看selinux的状态还可以用<code>sestatus</code></p>
+<h2 id="配置SELinux"><a href="#配置SELinux" class="headerlink" title="配置SELinux"></a>配置SELinux</h2><p>相关命令：<br>getenforce: 获取selinux当前状态<br>sestatus :查看selinux状态<br>setenforce 0|1<br>0:    设置为permissive<br>1:    设置为enforcing<br>配置文件:<br>/boot/grub/grub.conf 在kernel行使用selinux=0禁用SELinux<br>/boot/grub2/grub.cfg 在linux16行使用selinux=0禁用SELinux<br>/etc/selinux/config<br>/etc/sysconfig/selinux<br>SELINUX={disabled|enforcing|permissive}</p>
+<pre><code>[root@centos7 ~]# ll -Z /var/log/messages     源文件
+-rw-------. root root system_u:object_r:var_log_t:s0   /var/log/messages
+[root@centos7 ~]# cp /var/log/messages /root    复制以后的文件
+[root@centos7 ~]# ll -Z /root/messages             查看属性，可以看到已经有了变化
+-rw-------. root root unconfined_u:object_r:admin_home_t:s0 /root/messages
+[root@centos7 ~]# mv /root/messages /var/log/messages        
+        即便移动回去属性也已经被破坏了，而且日志也无法记录了
+mv: overwrite ‘/var/log/messages’? y
+[root@centos7 ~]# ll -Z /var/log/messages    
+-rw-------. root root unconfined_u:object_r:admin_home_t:s0 /var/log/messages
+[root@centos7 ~]# semanage fcontext -l | grep &quot;/var/log/messages&quot;    查找数据库里面的文件原有类型
+/var/log/messages[^/]*                             all files          system_u:object_r:var_log_t:s0 
+[root@centos7 ~]# chcon -t var_log_t /var/log/messages
+[root@centos7 ~]# ll /var/log/messages -Z 
+-rw-------. root root unconfined_u:object_r:var_log_t:s0 /var/log/messages
+</code></pre><p><code>systemctl restart rsyslog</code> 重启日志服务</p>
+<pre><code>[root@centos7 ~]# chcon -t default_t /var/log/messages
+[root@centos7 ~]# ll -Z /var/log/messages
+-rw-------. root root unconfined_u:object_r:default_t:s0 /var/log/messages
+[root@centos7 ~]# restorecon /var/log/messages        这样也可以还原
+[root@centos7 ~]# ll !$ -Z
+ll /var/log/messages -Z
+-rw-------. root root unconfined_u:object_r:var_log_t:s0 /var/log/messages
+</code></pre><p>现在重启日志服务后可以记录了</p>
+<pre><code>[root@centos7 ~]# ll -d /var/www/html/index.html -Z
+-rw-r--r--. root root unconfined_u:object_r:httpd_sys_content_t:s0 /var/www/html/index.html
+[root@centos7 ~]# chcon -t var_log_t /var/www/html/index.html 
+-rw-r--r--. root root unconfined_u:object_r:var_log_t:s0 /var/www/html/index.html
+[root@centos7 ~]# semanage fcontext -a -t httpd_sys_content_t &quot;/data/www(/.*)?&quot; 将没有的加入数据库
+[root@centos7 ~]# semanage fcontext -l | grep &quot;/data/www&quot; 现在查看有了
+/data/www(/.*)?                                    all files          system_u:object_r:httpd_sys_content_t:s0
+[root@centos7 ~]# restorecon -R /data/www
+[root@centos7 ~]# ll -dZ /data/www/index.html 
+-rw-r--r--. root root unconfined_u:object_r:httpd_sys_content_t:s0 /data/www/index.html
+[root@centos7 ~]# semanage fcontext -d -t httpd_sys_content_t &quot;/data/www(/.*)?&quot; 
+</code></pre><p>服务更改端口后报错，是因为服务的端口没有加入<br>查询服务所能用的端口<br><code>semanage port -l | grep http</code><br><code>semanage port -a -t httpd_port_t -p tcp 9527</code> 添加一个tcp端口9527，现在使用semanage就可以查看到了</p>
+<h2 id="默认安全上下文查询与修改"><a href="#默认安全上下文查询与修改" class="headerlink" title="默认安全上下文查询与修改"></a>默认安全上下文查询与修改</h2><p>semanage：来自policycoreutils-python包<br>查看默认的安全上下文<br>semanage fcontext –l<br>添加安全上下文<br><code>semanage fcontext -a –t httpd_sys_content_t ‘/testdir(/.*)?’ restorecon –Rv /testdir</code><br>删除安全上下文<br><code>semanage fcontext  -d –t httpd_sys_content_t    ‘/testdir(/.*)?’</code></p>
+<h2 id="SElinux端口标签"><a href="#SElinux端口标签" class="headerlink" title="SElinux端口标签"></a>SElinux端口标签</h2><p>查看端口标签 semanage port –l<br>添加端口<br>semanage port -a -t port_label -p tcp|udp PORT<br>semanage port -a -t http_port_t -p tcp 9527<br>删除端口<br>semanage port -d -t port_label -p tcp|udp PORT<br>semanage port -d -t http_port_t -p tcp 9527<br>修改现有端口为新标签<br>semanage port -m -t port_label -p tcp|udp PORT<br>semanage port -m -t http_port_t -p tcp 9527</p>
+<h2 id="SELinux布尔值"><a href="#SELinux布尔值" class="headerlink" title="SELinux布尔值"></a>SELinux布尔值</h2><p><code>getsebool -a</code> 查看所有布尔值<br>布尔型规则： getsebool setsebool<br>查看bool命令：<br>getsebool [-a] [boolean]<br>semanage boolean –l<br>semanage boolean -l –C 查看修改过的布尔值<br>设置bool值命令：<br>setsebool [-P] boolean value（on,off）<br>setsebool [-P] Boolean=value（1，0）</p>
+<pre><code>[root@centos7 ~]# setsebool ftpd_anon_write on
+ftpd_anon_write                (on   ,  off)  Allow ftpd to anon write 表示临时生效，机器重启后还是off
+setsebool ftpd_anon_write 0             改成off
+[root@centos7 ~]# semanage boolean -l | grep ftp         -p永久保存
+[root@centos7 ~]# sestsebool -P ftpd_anon_write 1
+ftpd_anon_write                (on   ,   on)  Allow ftpd to anon write
+</code></pre><h2 id="SELinux日志管理"><a href="#SELinux日志管理" class="headerlink" title="SELinux日志管理"></a>SELinux日志管理</h2><p>yum install setroubleshoot（重启生效）<br>将错误的信息写入/var/log/message<br>grep setroubleshoot /var/log/messages<br>查看安全事件日志说明 sealert -l UUID<br>扫描并分析日志<br>sealert -a /var/log/audit/audit.log</p>
+<h2 id="SELinux帮助"><a href="#SELinux帮助" class="headerlink" title="SELinux帮助"></a>SELinux帮助</h2><p>yum –y install selinux-policy-devel ( centos7.2)<br>yum –y install selinux-policy-doc<br>mandb | makewhatis<br>man -k _selinux</p>
+<h1 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h1><pre><code>[root@centos7 ~]# awk &#39;{print $0}&#39; /etc/passwd        将整个文件全部打印一遍
+[root@centos7 ~]# awk &#39;{print &quot;abc&quot;$0}&#39; /etc/passwd        将整个文件全部打印一遍每行首都加入abc
+[root@centos7 ~]# awk &#39;{print 1+2}&#39; /etc/fstab        还可以做数据运算，依然是文件多少行，就会显示多少行出来
+
+[root@centos7 ~]# awk &#39;BEGIN{print &quot;1+2&quot;}&#39;        BEGIN表示读入文件前处理一次，也就是只显示一次。注意双引号的区别
+1+2
+
+[root@centos7 ~]# awk &#39;BEGIN{print &quot;1+2&quot;}{print $0}END{print &quot;end&quot;}&#39; /etc/fstab
+1+2
+    #这里三段分别表示开始处理前；逐行处理文件；最后处理一次
+#
+# /etc/fstab
+# Created by anaconda on Fri Mar 29 05:07:40 2019
+#
+# Accessible filesystems, by reference, are maintained under &#39;/dev/disk&#39;
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+UUID=deb83589-98fa-4bf0-a3fc-5e5448892ca9 /                       xfs     defaults        0 0
+UUID=fc8fc457-8851-43d6-9485-37b256d9e972 /boot                   xfs     defaults        0 0
+UUID=3aa10d04-b9e4-4b0f-84cf-8c59e7e77ad0 /data                   xfs     defaults        0 0
+UUID=f647ed48-10d0-4358-9ef5-3fa77d36bc23 swap                    swap    defaults        0 0
+end
+</code></pre><h2 id="awk变量"><a href="#awk变量" class="headerlink" title="awk变量"></a>awk变量</h2><pre><code>变量：内置和自定义变量
+FS：输入字段分隔符，默认为空白字符
+    awk -v FS=&#39;:&#39; &#39;{print $1,FS,$3}’ /etc/passwd 
+    awk –F: &#39;{print $1,$3,$7}’ /etc/passwd
+OFS：输出字段分隔符，默认为空白字符
+    awk -v FS=: -v OFS=: &#39;{print $1,$3}&#39; /etc/passwd
+    fs=:;awk -v FS=$fs -v OFS=$fs &#39;{print $1,$3}&#39; /etc/passwd
+RS：输入记录分隔符，指定输入时的换行符
+这里的意思是当awk &#39;{print $0} /etc/passwd&#39; 他会将整个文件都打印出来，他的分隔符也就是换行符。
+[root@centos7 ~]# cat f1.txt
+aa:bb:cc
+dd:eex:xxx
+zzz:xxaa
+[root@centos7 ~]# awk -v RS=&#39;:&#39; &#39;{print $0}&#39; f1.txt 更改换行符
+aa
+bb
+cc
+dd
+eex
+xxx
+zzz
+xxaa
+
+[root@centos7 ~]# cat f1.txt
+aa;xxx:bb;bzaa:cc
+dd:eex;zccc:xxx
+zzz:xxaa;adfad        #这里先以：进行段落分割，再以；作字段分割，空行是因为不存在。
+[root@centos7 ~]# awk -v FS=&quot;;&quot; -v RS=&quot;:&quot; &#39;{print $2}&#39; f1.txt 
+xxx
+bzaa
+
+zccc
+
+adfad
+
+ORS：输出记录分隔符，输出时用指定符号代替换行符 
+[root@centos7 ~]#cat f1.txt 
+aa;xxx:bb;bzaa:cc
+dd:eex;zccc:xxx
+zzz:xxaa;adfad
+[root@centos7 ~]#awk -v FS=&quot;;&quot; -v RS=&quot;:&quot; -v ORS=&quot;===&quot; &#39;{print $0}&#39; f1.txt 
+aa;xxx===bb;bzaa===cc
+dd===eex;zccc===xxx
+zzz===xxaa;adfad
+===[root@centos7 ~]#
+
+NF：字段数量
+    awk -F：‘{print NF}’    /etc/fstab    引用变量时，变量前不需加$
+    awk -F : &#39;{print NF}&#39; /etc/passwd 查看每行有多少个：
+    awk -F : &#39;{print $NF}&#39; /etc/passwd 被：分割的最后一列
+    awk -F : &#39;{print $(NF-1)}&#39; /etc/passwd 倒数第二列
+NR：记录号
+    awk &#39;{print NR}&#39;&#39; /etc/fstab ; awk END‘{print NR}’ /etc/fstab
+awk -v RS=&quot;:&quot; &#39;{print NR,$0}&#39; f1.txt 因为这里是以：为分割，所以会有没有计数的
+1 aa;xxx
+2 bb;bzaa
+3 cc
+dd
+4 eex;zccc
+5 xxx
+zzz
+6 xxaa;adfad
+FNR：各文件分别计数,记录号
+    awk &#39;{print FNR}&#39; /etc/fstab /etc/inittab
+    awk -F : &#39;{print FNR,$1}&#39; /etc/passwd /etc/group
+FILENAME：当前文件名
+    awk &#39;{print FILENAME}’ /etc/fstab
+    awk -F : &#39;{print FNR,FILENAME$1}&#39; /etc/passwd /etc/group
+1 /etc/passwdroot
+2 /etc/passwdbin
+3 /etc/passwddaemon
+4 /etc/passwdadm
+5 /etc/passwdlp ......
+ARGC：查看命令行参数的个数
+    awk -F : &#39;{print ARGC}&#39; /etc/passwd /etc/group 
+ARGV：数组，保存的是命令行所给定的各参数
+awk -F : &#39;{print ARGV[0]}&#39; /etc/passwd /etc/group
+awk -F : &#39;{print ARGV[1]}&#39; /etc/passwd /etc/group
+</code></pre><div class="alert alert-success">默认分隔符是空格<br>-F 指定分隔符  <code>awk -F : &#39;{print $1,$3}&#39; /etc/passwd</code><br>这里逗号是默认的，输出会变成空格，如果想要加指定的间隔符可以<br><code>awk -F : &#39;{print $1&quot;:&quot;$3}&#39; /etc/passwd</code><br>-v 变量赋值  <code>awk -v FS=&quot;:&quot; &#39;{print $1,$3}&#39; /etc/passwd</code><br><code>awk -v FS=&quot;:&quot; &#39;{print $1FS$3}&#39; /etc/passwd</code><br><code>df | awk -F &quot;[[:space:]]+&quot; &#39;{print $5}&#39;</code> 还可以用正则表达式</div>
+
+<p>调用shell中的变量 </p>
+<pre><code>fs=:
+awk -v FS=$fs &#39;{print $1FS$3}&#39; /etc/passwd
+awk -F $fs &#39;{print $1,$3}&#39; /etc/passwd
+</code></pre><p>可以写在文件中</p>
+<pre><code>[root@centos7 ~]# cat awk.txt 
+{print $1}
+[root@centos7 ~]# awk -F: -f awk.txt /etc/passwd 
+</code></pre><h2 id="printf"><a href="#printf" class="headerlink" title="printf"></a>printf</h2><p>他不会自动换行，需要显示给出换行符\n<br>格式符:</p>
+<pre><code>%c：显示字符的ASCII码
+%d, %i：显示十进制整数
+%e, %E：显示科学计数法数值
+%f：显示为浮点数
+%g, %G：以科学计数法或浮点形式显示数值
+%s：显示字符串
+%u：无符号整数
+%%：显示%自身
+</code></pre><p>修饰符<br><code>#[.#]</code> 第一个数字控制显示的宽度；第二个#表示小数点后精度，%3.1f<br><code>-</code> 左对齐（默认右对齐）%-15s<br><code>+</code> 显示数值的正负符号 %+d</p>
+<pre><code>[root@centos7 ~]# awk -F : &#39;{printf &quot;%20s %5d\n&quot;, $1,$3}&#39; /etc/passwd
+%20s 表示$1这第一个字段预留20个宽度，默认右对齐，%5d 表示$3这个字段预留5个宽度
+</code></pre><h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><p>比较操作符：<br><code>==, !=, &gt;, &gt;=, &lt;, &lt;=</code><br>模式匹配符：<br>~：左边是否和右边匹配，包含<br>!~：是否不匹配<br>示例：<br>awk -F: ‘$0 ~ /root/{print $1}‘ /etc/passwd<br>awk ‘$0~“^root”‘    /etc/passwd<br>awk ‘$0 !~ /root/‘    /etc/passwd<br>awk -F: ‘$3==0’    /etc/passwd</p>
+<h2 id="操作符-1"><a href="#操作符-1" class="headerlink" title="操作符"></a>操作符</h2><p>算术操作符：<br><code>x+y, x-y, x*y, x/y, x^y, x%y</code><br><code>-x</code>：转换为负数<br><code>+x</code>：将字符串转换为数值<br>字符串操作符：没有符号的操作符，字符串连接<br>赋值操作符：<br><code>=, +=, -=, *=, /=, %=, ^=，++, --</code><br>下面两语句有何不同<br>awk ‘BEGIN{i=0;print ++i,i}’ 先加后打印<br>awk ‘BEGIN{i=0;print i++,i}’ 先打印后加</p>
+<pre><code>[root@centos7 ~]# awk -v i=100 &#39;BEGIN{print i++,i}&#39;  
+100 101
+</code></pre><h2 id="操作符-2"><a href="#操作符-2" class="headerlink" title="操作符"></a>操作符</h2><p>逻辑操作符：与&amp;&amp;，或||，非!<br>示例：<br>awk -F:  ‘$3&gt;=0 &amp;&amp; $3&lt;=1000 {print $1}’ /etc/passwd<br>awk -F:  ‘$3==0 || $3&gt;=1000 {print $1}’ /etc/passwd<br>awk -F: ‘!($3==0) {print $1}’    /etc/passwd<br>awk -F: ‘!($3&gt;=500) {print $3}’ /etc/passwd<br>条件表达式（三目表达式）selector?if-true-expression:if-false-expression<br>示例：<br>awk -F: ‘{$3&gt;=1000?usertype=”Common User”:usertype=” SysUser”;printf “%15s:%-s\n”,$1,usertype}’ /etc/passwd</p>
+<pre><code>[root@centos7 ~]# awk -F : &#39;{$3&gt;=1000?name=&quot;common user&quot;:name=&quot;system user&quot;;print name,$1,$3}&#39; /etc/passwd
+这里表示$3&gt;1000 就怎样 ，否则就怎样；然后打印出来
+system user root 0            例
+system user bin 1
+system user daemon 2
+system user adm 3
+system user lp 4
+system user sync 5
+system user shutdown 6
+</code></pre><p><code>[root@centos7 ~]# ss -nt | awk -F &quot;[[:space:]]+|:&quot; &#39;/ESTAB/{print $7}&#39;</code><br>这里表示空格和:作为分隔符，后面的是正则表达式锁定/ESTSB/这行</p>
+<p>relational expression: 关系表达式，结果为“真”才会被处理<br>真：结果为非0值，非空字符串<br>假：结果为空字符串或0值<br><code>awk -v abc=&quot; &quot; &#39;abc{print $0}&#39; /etc/passwd</code></p>
+<h2 id="行范围"><a href="#行范围" class="headerlink" title="行范围"></a>行范围</h2><p>startline,endline：/pat1/,/pat2/ 不支持直接给出数字格式<br>awk -F: ‘/^root>/,/^nobody>/{print $1}’ /etc/passwd<br>awk -F: ‘(NR&gt;=10&amp;&amp;NR&lt;=20){print NR,$1}’ /etc/passwd</p>
+<pre><code>打印 ftp 到 rpc 的行
+[root@centos7 ~]#awk &#39;/^ftp/,/^rpc/{print $0}&#39; /etc/passwd
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+polkitd:x:999:998:User for polkitd:/:/sbin/nologin
+libstoragemgmt:x:998:996:daemon account for libstoragemgmt:/var/run/lsm:/sbin/nologin
+rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+[root@centos7 ~]#awk &#39;NR&gt;=10 &amp;&amp; NR&lt;=20{print NR,$0}&#39; /etc/passwd  
+                打印10-20行的内容 
+</code></pre><pre><code>seq 10 | awk &#39;i=!i&#39; 这里表示一开始i没有赋值所以就为假，然后!i就为真，就会打印出第一行，
+为真后第二行又!2所以是空值，不打印。以此类推
+1
+3
+5
+7
+9
+seq 10 | awk &#39;!(i=!i)&#39;  根据上面所以这里会打印出偶数行
+也就是说如果首先i有值为真，那么就可以直接打印出来偶数行
+seq 10 | awk -v i=&quot;1&quot; &#39;i=!i&#39;
+
+[root@centos7 ~]# seq 10 | awk &#39;{i=!i;print i}&#39;
+1
+0
+1
+0
+1
+0
+1
+0
+1
+0
+</code></pre><h2 id="awk控制语句if-else"><a href="#awk控制语句if-else" class="headerlink" title="awk控制语句if-else"></a>awk控制语句if-else</h2><pre><code>[root@centos7 ~]# awk -v score=66 &#39;BEGIN{if(score&lt;60){print &quot;no pass&quot;}else if(score &lt;=80){print &quot;score&quot;}else {print &quot;good&quot;}}&#39;
+score
+</code></pre><h2 id="awk控制语句"><a href="#awk控制语句" class="headerlink" title="awk控制语句"></a>awk控制语句</h2><p>while循环<br>语法：while(condition){statement;…}<br>条件“真”，进入循环；条件“假”，退出循环<br>使用场景：<br>对一行内的多个字段逐一类似处理时使用对数组中的各元素逐一处理时使用</p>
+<p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
+<p><script>hljs.initHighlightingOnLoad();</script></p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
+
+<hr>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>打赏</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://s2.ax1x.com/2019/04/29/E1FABt.jpg" alt="Tiger WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://s2.ax1x.com/2019/04/29/E1FZAf.jpg" alt="Tiger Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Tiger</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="http://yoursite.com/2019/07/26/Linux后期理论/" title="Four">http://yoursite.com/2019/07/26/Linux后期理论/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Document/" rel="tag"><i class="fa fa-tag"></i> Document</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/20/脚本/" rel="next" title="Three">
+                <i class="fa fa-chevron-left"></i> Three
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/../images/head-portrait.jpg"
+                alt="Tiger" />
+            
+              <p class="site-author-name" itemprop="name">Tiger</p>
+              <p class="site-description motion-element" itemprop="description">I love you</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+<div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div id="myCanvasContainer" class="widget tagcloud">
+        <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
+        </canvas>
+    </div>
+</div>
+
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:panxiaotiger@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://youtube.com/" target="_blank" title="YouTube"><i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/a68525cdd2e5" target="_blank" title="简书"><i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="tencent://message/?uin=1915333545&Site=Senlon.Net&Menu=yes" target="_blank" title="qq"><i class="fa fa-fw fa-qq"></i>qq</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://music.163.com/#/user/home?id=113656157" title="music" target="_blank">music</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://qianling.pw/style/#TOC%E6%95%B0%E5%AD%97%E5%9D%97" title="blog" target="_blank">blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#修改开机自启"><span class="nav-number">1.</span> <span class="nav-text">修改开机自启</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#chkconfig"><span class="nav-number">1.1.</span> <span class="nav-text">chkconfig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xinetd管理的服务"><span class="nav-number">1.2.</span> <span class="nav-text">xinetd管理的服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#centos6启动流程"><span class="nav-number">1.3.</span> <span class="nav-text">centos6启动流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS-6启动流程："><span class="nav-number">1.4.</span> <span class="nav-text">CentOS 6启动流程：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#grub修复1"><span class="nav-number">2.</span> <span class="nav-text">grub修复1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#grub修复2"><span class="nav-number">2.1.</span> <span class="nav-text">grub修复2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动背景更换"><span class="nav-number">2.2.</span> <span class="nav-text">启动背景更换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-fr-boot-grub-grub-conf"><span class="nav-number">2.3.</span> <span class="nav-text">rm -fr /boot/grub/grub.conf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-fr-boot"><span class="nav-number">2.4.</span> <span class="nav-text">rm -fr /boot/*</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mv-etc-fstab和rm-fr-boot"><span class="nav-number">2.5.</span> <span class="nav-text">mv /etc/fstab和rm -fr /boot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块"><span class="nav-number">2.6.</span> <span class="nav-text">模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自制linux系统"><span class="nav-number">2.7.</span> <span class="nav-text">自制linux系统</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proc-目录"><span class="nav-number">3.</span> <span class="nav-text">proc 目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sys目录："><span class="nav-number">4.</span> <span class="nav-text">/sys目录：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内核编译"><span class="nav-number">5.</span> <span class="nav-text">内核编译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lsmod命令："><span class="nav-number">6.</span> <span class="nav-text">lsmod命令：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内核模块管理"><span class="nav-number">7.</span> <span class="nav-text">内核模块管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内核模块管理-1"><span class="nav-number">8.</span> <span class="nav-text">内核模块管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内核编译-1"><span class="nav-number">9.</span> <span class="nav-text">内核编译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#centos7"><span class="nav-number">10.</span> <span class="nav-text">centos7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#管理服务"><span class="nav-number">10.1.</span> <span class="nav-text">管理服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管理服务-1"><span class="nav-number">10.2.</span> <span class="nav-text">管理服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务查看"><span class="nav-number">10.3.</span> <span class="nav-text">服务查看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务查看-1"><span class="nav-number">10.4.</span> <span class="nav-text">服务查看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务状态"><span class="nav-number">10.5.</span> <span class="nav-text">服务状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#systemctl-命令示例"><span class="nav-number">10.6.</span> <span class="nav-text">systemctl 命令示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#示例1"><span class="nav-number">10.6.1.</span> <span class="nav-text">示例1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例2"><span class="nav-number">10.7.</span> <span class="nav-text">示例2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service-unit文件格式"><span class="nav-number">10.8.</span> <span class="nav-text">service unit文件格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service-unit文件格式-1"><span class="nav-number">10.9.</span> <span class="nav-text">service unit文件格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#service-unit文件格式-2"><span class="nav-number">10.9.1.</span> <span class="nav-text">service unit文件格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EnvironmentFile：环境配置文件"><span class="nav-number">10.9.2.</span> <span class="nav-text">EnvironmentFile：环境配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service-unit文件格式-3"><span class="nav-number">10.10.</span> <span class="nav-text">service unit文件格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务Unit文件示例："><span class="nav-number">10.10.1.</span> <span class="nav-text">服务Unit文件示例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行级别"><span class="nav-number">10.10.2.</span> <span class="nav-text">运行级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行级别-1"><span class="nav-number">10.10.3.</span> <span class="nav-text">运行级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它命令"><span class="nav-number">10.10.4.</span> <span class="nav-text">其它命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS7引导顺序"><span class="nav-number">10.11.</span> <span class="nav-text">CentOS7引导顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS7引导顺序-1"><span class="nav-number">10.12.</span> <span class="nav-text">CentOS7引导顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#破解CentOS7的root口令方法一"><span class="nav-number">10.13.</span> <span class="nav-text">破解CentOS7的root口令方法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#破解CentOS7的root口令方法二"><span class="nav-number">10.14.</span> <span class="nav-text">破解CentOS7的root口令方法二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修复"><span class="nav-number">10.15.</span> <span class="nav-text">修复</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SElinux"><span class="nav-number">11.</span> <span class="nav-text">SElinux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux策略"><span class="nav-number">11.1.</span> <span class="nav-text">SELinux策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux工作类型"><span class="nav-number">11.2.</span> <span class="nav-text">SELinux工作类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux安全上下文"><span class="nav-number">11.3.</span> <span class="nav-text">SELinux安全上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五个安全元素"><span class="nav-number">11.4.</span> <span class="nav-text">五个安全元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置SELinux"><span class="nav-number">11.5.</span> <span class="nav-text">配置SELinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认安全上下文查询与修改"><span class="nav-number">11.6.</span> <span class="nav-text">默认安全上下文查询与修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SElinux端口标签"><span class="nav-number">11.7.</span> <span class="nav-text">SElinux端口标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux布尔值"><span class="nav-number">11.8.</span> <span class="nav-text">SELinux布尔值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux日志管理"><span class="nav-number">11.9.</span> <span class="nav-text">SELinux日志管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux帮助"><span class="nav-number">11.10.</span> <span class="nav-text">SELinux帮助</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#awk"><span class="nav-number">12.</span> <span class="nav-text">awk</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#awk变量"><span class="nav-number">12.1.</span> <span class="nav-text">awk变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#printf"><span class="nav-number">12.2.</span> <span class="nav-text">printf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作符"><span class="nav-number">12.3.</span> <span class="nav-text">操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作符-1"><span class="nav-number">12.4.</span> <span class="nav-text">操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作符-2"><span class="nav-number">12.5.</span> <span class="nav-text">操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行范围"><span class="nav-number">12.6.</span> <span class="nav-text">行范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk控制语句if-else"><span class="nav-number">12.7.</span> <span class="nav-text">awk控制语句if-else</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk控制语句"><span class="nav-number">12.8.</span> <span class="nav-text">awk控制语句</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tiger</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.4.0</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共77.0k字</span>
+</div>
+
+<div id="days"></div>
+</script>
+<script language="javascript">
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("09/02/2018 02:11:00");//月，日，年，小时，分钟，秒
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+// span_dt_dt.innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="Total Visitors">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="Total Views">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'OSdVe8DIEP8hGQHk01ktuvca-gzGzoHsz',
+        appKey: 'KqV97J1jQqvbF0Y6rh8SU3uo',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+
+</body>
+</html>

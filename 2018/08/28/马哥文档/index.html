@@ -166,7 +166,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/05/VU70JI.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/05/VNsoct.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/17/V7Dy79.png">
-<meta property="og:updated_time" content="2019-07-25T11:45:55.134Z">
+<meta property="og:updated_time" content="2019-08-25T07:46:24.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="two">
 <meta name="twitter:description" content="linux 培训文档">
@@ -397,7 +397,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/28/马哥文档/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="panxiaohu">
+      <meta itemprop="name" content="Tiger">
       <meta itemprop="description" content="I love you">
       <meta itemprop="image" content="/../images/head-portrait.jpg">
     </span>
@@ -453,7 +453,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-25 19:45:55" itemprop="dateModified" datetime="2019-07-25T19:45:55+08:00">2019-07-25</time>
+                <time title="Modified: 2019-08-25 15:46:24" itemprop="dateModified" datetime="2019-08-25T15:46:24+08:00">2019-08-25</time>
               
             
           </span>
@@ -646,7 +646,7 @@ mdadm -D /dev/md0
 
 <h2 id="划分子网"><a href="#划分子网" class="headerlink" title="划分子网"></a>划分子网</h2><p>一个子网划分成多少个小网。网络ID位变多，主机ID位才变少，网络ID向主机ID借位。分成2^N个小子网<br>10.0.0.1–10.255.255.254<br>划分两个子网<br>10.00 000000.0.0 </p>
 <p>10.00 000000.0.0 10.0.0.0/10<br>10.01 000000.0.0 10.64.0.0/10<br>10.10 000000.0.0 10.128.0.0/10<br>10.11 000000.0.0 10.192.0.0/10</p>
-<div class="alert alert-danger">题目:<br>10.0.0.0/8 给32省份划分各自子网<br>1.子网子网掩码 255.248.0.0<br>2.最小子网，最大子网的网络ID<br>3.每个子网主机数？2^19-2<br>4.第20个子网分给河南使用，最小ip，最大IP范围? 10.152.0.1 ➜ 10.159.255.254<br><center> 1. 根据公式2^n=子网数<br>    2^n=32 也就是借5位 8+5=13 网络位是13<br>掩码: 255.11111000.0.0 ➜ 255.248.0.0<br><br>2. 10.00000 000.0.0 10.0.0.0/13<br>   10.11111 000.0.0 10.248.0.0/13<br><br>3. 主机数: 2^(32-13)-2=<br><br>4. 0表示第一个子网，那么19就表示第20个子网<br>10.10011 000.0.1 ➜ 10.152.0.1<br>10.10011 111.255.254 ➜ 10.159.255.254<br></center><br></div>
+<div class="alert alert-danger">题目:<br>10.0.0.0/8 给32省份划分各自子网<br>1.子网子网掩码 255.248.0.0<br>2.最小子网，最大子网的网络ID<br>3.每个子网主机数？2^19-2<br>4.第20个子网分给河南使用，最小ip，最大IP范围? 10.152.0.1 ➜ 10.159.255.254<br><center> 1. 根据公式2^n=子网数<br>    2^n=32 也就是借5位 8+5=13 网络位是13<br>掩码: 255.11111000.0.0 ➜ 255.248.0.0<br><br>2. 10.00000 000.0.0 10.0.0.0/13<br>   10.11111 000.0.0 10.248.0.0/13<br><br>3. 主机数: 2^(32-13)-2=<br><br>4. 0表示第一个子网，那么19就表示第20个子网也就是”10011”(这里加起来是19)<br>10.10011 000.0.1 ➜ 10.152.0.1<br>10.10011 111.255.254 ➜ 10.159.255.254<br></center><br></div>
 
 <div class="alert alert-warning"><br>题目:河南省10.152.0.0/13 给15个市，划分各自子网<br><br>1. 子网子网掩码：<br>2^n&gt;=15 n&gt;=4 13+4=17位<br>11111111.11111111.1 0000000.00000000<br>255.255.128.0<br><br>2. 最小子网，最大子网的网络ID:<br>原：10.10011 000.0.0 10.152.0.0/13<br>现：10.10011 <font color="red">000.0</font> .0 借了4位<br>    10.10011 000.00000000.0 ➜ 10.152.0.0/17<br>    10.10011 111.10000000.0 ➜ 10.159.128.0/17<br><br>3. 每个子网主机数？<br>2^(32-17)-2<br><br>4. 最大子网的最小IP,最大IP范围<br>10.10011 111.10000000.0 最大子网<br>10.10011 111.1 0000000.1 ➜ 10.159.128.1<br>10.10011 111.1 1111111.254 ➜ 10.159.255.254<br></div>
 
@@ -759,14 +759,14 @@ ctrl d 结束
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="https://s2.ax1x.com/2019/04/29/E1FABt.jpg" alt="panxiaohu WeChat Pay"/>
+        <img id="wechat_qr" src="https://s2.ax1x.com/2019/04/29/E1FABt.jpg" alt="Tiger WeChat Pay"/>
         <p>WeChat Pay</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="https://s2.ax1x.com/2019/04/29/E1FZAf.jpg" alt="panxiaohu Alipay"/>
+        <img id="alipay_qr" src="https://s2.ax1x.com/2019/04/29/E1FZAf.jpg" alt="Tiger Alipay"/>
         <p>Alipay</p>
       </div>
     
@@ -783,7 +783,7 @@ ctrl d 结束
       <div>
         <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>Post author:  </strong>panxiaohu</li>
+    <strong>Post author:  </strong>Tiger</li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     <a href="http://yoursite.com/2018/08/28/马哥文档/" title="two">http://yoursite.com/2018/08/28/马哥文档/</a>
@@ -888,9 +888,9 @@ ctrl d 结束
             
               <img class="site-author-image" itemprop="image"
                 src="/../images/head-portrait.jpg"
-                alt="panxiaohu" />
+                alt="Tiger" />
             
-              <p class="site-author-name" itemprop="name">panxiaohu</p>
+              <p class="site-author-name" itemprop="name">Tiger</p>
               <p class="site-description motion-element" itemprop="description">I love you</p>
           </div>
 
@@ -901,7 +901,7 @@ ctrl d 结束
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -933,7 +933,7 @@ ctrl d 结束
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -1042,7 +1042,7 @@ ctrl d 结束
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">panxiaohu</span>
+  <span class="author" itemprop="copyrightHolder">Tiger</span>
 
   
 
@@ -1067,7 +1067,7 @@ ctrl d 结束
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共64.8k字</span>
+  <span class="post-count">博客全站共77.0k字</span>
 </div>
 
 <div id="days"></div>

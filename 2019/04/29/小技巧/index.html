@@ -160,7 +160,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:description" content="linux 小技巧+总结">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/16/V7UGwt.png">
-<meta property="og:updated_time" content="2019-07-25T01:00:25.844Z">
+<meta property="og:updated_time" content="2019-08-23T02:57:48.443Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技巧集合">
 <meta name="twitter:description" content="linux 小技巧+总结">
@@ -391,7 +391,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/29/小技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="panxiaohu">
+      <meta itemprop="name" content="Tiger">
       <meta itemprop="description" content="I love you">
       <meta itemprop="image" content="/../images/head-portrait.jpg">
     </span>
@@ -447,7 +447,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-25 09:00:25" itemprop="dateModified" datetime="2019-07-25T09:00:25+08:00">2019-07-25</time>
+                <time title="Modified: 2019-08-23 10:57:48" itemprop="dateModified" datetime="2019-08-23T10:57:48+08:00">2019-08-23</time>
               
             
           </span>
@@ -547,10 +547,35 @@ abcde
 </code></pre><h1 id="交互登录式shell的配置文件加载次序"><a href="#交互登录式shell的配置文件加载次序" class="headerlink" title="交互登录式shell的配置文件加载次序"></a>交互登录式shell的配置文件加载次序</h1><p><img src="https://s2.ax1x.com/2019/06/16/V7UGwt.png" alt=""></p>
 <h1 id="linux使用dhclient自动获取IP"><a href="#linux使用dhclient自动获取IP" class="headerlink" title="linux使用dhclient自动获取IP"></a>linux使用dhclient自动获取IP</h1><p>获取IP: <code>dhclient eth1</code><br>查看结果:<br>-方法1: <code>ifconfig eth1</code><br>-方法2,显示更详细: <code>cat /var/lib/dhclient/dhclient.leases</code><br>释放IP: <code>dhclient -r</code><br>dhclient -r并没有真正释放IP，下一次执行dhclient eth1时，没有discover这个步骤，而是直接REQUEST上次IP。<br>在网络拓扑或者配置变化的情况下，获取不到IP，需要删除/var/lib/dhclient/dhclient.leases 文件</p>
 <h1 id="PS1修改"><a href="#PS1修改" class="headerlink" title="PS1修改"></a>PS1修改</h1><pre><code>[root@Tiger data]# cat /etc/profile.d/panxiaohu.sh 
-PS1=&#39;\[\033[1;40;33m\][\u@\h \W]\$ \[\033[0m\]&#39;
+PS1=&#39;\[\033[1;40;33m\][\u@\h \W]\$ \[\033[0m\]&#39;     #注意引号
 &#39;PATH=/etc/profile.d/:$PATH&#39;
 </code></pre><h1 id="df"><a href="#df" class="headerlink" title="df"></a>df</h1><p><code>df -T</code> 可以查看文件系统类型</p>
 <h1 id="文件重启"><a href="#文件重启" class="headerlink" title="文件重启"></a>文件重启</h1><p><code>cat /sbin/shutdown -t3 -r now</code> 三秒以后重启</p>
+<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><pre><code>ps -eaf           # 查看所有进程
+kill -9 PID       # 强制终止某个PID进程
+kill -15 PID      # 安全退出 需程序内部处理信号
+cmd &amp;             # 命令后台运行
+nohup cmd &amp;       # 后台运行不受shell退出影响
+ctrl+z            # 将前台放入后台(暂停)
+jobs              # 查看后台运行程序
+bg 2              # 启动后台暂停进程
+fg 2              # 调回后台进程
+pstree            # 进程树
+vmstat 1 9        # 每隔一秒报告系统性能信息9次
+sar               # 查看cpu等状态
+lsof file         # 显示打开指定文件的所有进程
+lsof -i:32768     # 查看端口的进程
+renice +1 180     # 把180号进程的优先级加1
+</code></pre><h1 id="用户和用户组"><a href="#用户和用户组" class="headerlink" title="用户和用户组"></a>用户和用户组</h1><p><a href="https://mp.weixin.qq.com/s?__biz=MzA3OTgyMDcwNg==&amp;mid=2650637412&amp;idx=1&amp;sn=ffb9ec56b91bdcbd93c042da254375e7&amp;chksm=87a486a9b0d30fbfe01b5e9f714c49944cf5f292d14e3827f6958262eb2d66e6d2b65662d4fd&amp;mpshare=1&amp;scene=23&amp;srcid=&amp;sharer_sharetime=1564102447782&amp;sharer_shareid=837dfcba2206d025ecf6e6476b699921#rd" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzA3OTgyMDcwNg==&amp;mid=2650637412&amp;idx=1&amp;sn=ffb9ec56b91bdcbd93c042da254375e7&amp;chksm=87a486a9b0d30fbfe01b5e9f714c49944cf5f292d14e3827f6958262eb2d66e6d2b65662d4fd&amp;mpshare=1&amp;scene=23&amp;srcid=&amp;sharer_sharetime=1564102447782&amp;sharer_shareid=837dfcba2206d025ecf6e6476b699921#rd</a></p>
+<h1 id="开机启动脚本顺序"><a href="#开机启动脚本顺序" class="headerlink" title="开机启动脚本顺序"></a>开机启动脚本顺序</h1><pre><code>/etc/profile
+/etc/profile.d/*.sh
+~/bash_profile
+~/.bashrc
+/etc/bashrc
+</code></pre><h1 id="sed-替换内容"><a href="#sed-替换内容" class="headerlink" title="sed 替换内容"></a>sed 替换内容</h1><p><font color="red"><i class="fa fa-question-circle fa-2x"></i></font>将seq 10返回内容的1,5,8替换成xxx</p>
+<pre><code>seq 10 | sed -e{1,5,8}&#39;s#.*#xxx#&#39; 
+</code></pre><h1 id="显示已知用户的信息"><a href="#显示已知用户的信息" class="headerlink" title="显示已知用户的信息"></a>显示已知用户的信息</h1><p><code>lslogins</code></p>
+<h1 id="特殊变量：shell对一些参数做特殊处理-这些参数只能被引用而不能被赋值"><a href="#特殊变量：shell对一些参数做特殊处理-这些参数只能被引用而不能被赋值" class="headerlink" title="特殊变量：shell对一些参数做特殊处理,这些参数只能被引用而不能被赋值"></a>特殊变量：shell对一些参数做特殊处理,这些参数只能被引用而不能被赋值</h1><p><code>$#</code>  传递到脚本的参数个数<br><code>$*</code>  显示所有向脚本传递的参数                  #与位置变量不同，此选项参数可超过9个<br><code>$$</code>  获取当前shell的进程号<br><code>$!</code>  执行上一个指令的进程号<br><code>$?</code>  获取执行的上一个指令的返回值              #0为执行成功，非零为执行失败<br><code>$-</code>  显示shell使用的当前选项，与set命令功能相同<br><code>$@</code>  与$*相同，但是使用时加引号，并在引号中返回每个参数</p>
 <p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
 <p><script>hljs.initHighlightingOnLoad();</script></p>
 <p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css"><br><code class="Bash" style="font-size: 18px; border:0px solid #000 ;"></code></p>
@@ -587,14 +612,14 @@ PS1=&#39;\[\033[1;40;33m\][\u@\h \W]\$ \[\033[0m\]&#39;
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="https://s2.ax1x.com/2019/04/29/E1FABt.jpg" alt="panxiaohu WeChat Pay"/>
+        <img id="wechat_qr" src="https://s2.ax1x.com/2019/04/29/E1FABt.jpg" alt="Tiger WeChat Pay"/>
         <p>WeChat Pay</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="https://s2.ax1x.com/2019/04/29/E1FZAf.jpg" alt="panxiaohu Alipay"/>
+        <img id="alipay_qr" src="https://s2.ax1x.com/2019/04/29/E1FZAf.jpg" alt="Tiger Alipay"/>
         <p>Alipay</p>
       </div>
     
@@ -611,7 +636,7 @@ PS1=&#39;\[\033[1;40;33m\][\u@\h \W]\$ \[\033[0m\]&#39;
       <div>
         <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>Post author:  </strong>panxiaohu</li>
+    <strong>Post author:  </strong>Tiger</li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     <a href="http://yoursite.com/2019/04/29/小技巧/" title="技巧集合">http://yoursite.com/2019/04/29/小技巧/</a>
@@ -716,9 +741,9 @@ PS1=&#39;\[\033[1;40;33m\][\u@\h \W]\$ \[\033[0m\]&#39;
             
               <img class="site-author-image" itemprop="image"
                 src="/../images/head-portrait.jpg"
-                alt="panxiaohu" />
+                alt="Tiger" />
             
-              <p class="site-author-name" itemprop="name">panxiaohu</p>
+              <p class="site-author-name" itemprop="name">Tiger</p>
               <p class="site-description motion-element" itemprop="description">I love you</p>
           </div>
 
@@ -729,7 +754,7 @@ PS1=&#39;\[\033[1;40;33m\][\u@\h \W]\$ \[\033[0m\]&#39;
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -761,7 +786,7 @@ PS1=&#39;\[\033[1;40;33m\][\u@\h \W]\$ \[\033[0m\]&#39;
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -846,7 +871,7 @@ PS1=&#39;\[\033[1;40;33m\][\u@\h \W]\$ \[\033[0m\]&#39;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#simple-command"><span class="nav-number">1.</span> <span class="nav-text">simple command</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">2.</span> <span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sed"><span class="nav-number">2.1.</span> <span class="nav-text">sed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash中-的用法和变量的间接引用"><span class="nav-number">2.2.</span> <span class="nav-text">Bash中${}的用法和变量的间接引用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交互登录式shell的配置文件加载次序"><span class="nav-number">3.</span> <span class="nav-text">交互登录式shell的配置文件加载次序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux使用dhclient自动获取IP"><span class="nav-number">4.</span> <span class="nav-text">linux使用dhclient自动获取IP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PS1修改"><span class="nav-number">5.</span> <span class="nav-text">PS1修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#df"><span class="nav-number">6.</span> <span class="nav-text">df</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件重启"><span class="nav-number">7.</span> <span class="nav-text">文件重启</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#simple-command"><span class="nav-number">1.</span> <span class="nav-text">simple command</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">2.</span> <span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sed"><span class="nav-number">2.1.</span> <span class="nav-text">sed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash中-的用法和变量的间接引用"><span class="nav-number">2.2.</span> <span class="nav-text">Bash中${}的用法和变量的间接引用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交互登录式shell的配置文件加载次序"><span class="nav-number">3.</span> <span class="nav-text">交互登录式shell的配置文件加载次序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux使用dhclient自动获取IP"><span class="nav-number">4.</span> <span class="nav-text">linux使用dhclient自动获取IP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PS1修改"><span class="nav-number">5.</span> <span class="nav-text">PS1修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#df"><span class="nav-number">6.</span> <span class="nav-text">df</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件重启"><span class="nav-number">7.</span> <span class="nav-text">文件重启</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程"><span class="nav-number">8.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用户和用户组"><span class="nav-number">9.</span> <span class="nav-text">用户和用户组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开机启动脚本顺序"><span class="nav-number">10.</span> <span class="nav-text">开机启动脚本顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sed-替换内容"><span class="nav-number">11.</span> <span class="nav-text">sed 替换内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#显示已知用户的信息"><span class="nav-number">12.</span> <span class="nav-text">显示已知用户的信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特殊变量：shell对一些参数做特殊处理-这些参数只能被引用而不能被赋值"><span class="nav-number">13.</span> <span class="nav-text">特殊变量：shell对一些参数做特殊处理,这些参数只能被引用而不能被赋值</span></a></li></ol></div>
             
 
           </div>
@@ -870,7 +895,7 @@ PS1=&#39;\[\033[1;40;33m\][\u@\h \W]\$ \[\033[0m\]&#39;
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">panxiaohu</span>
+  <span class="author" itemprop="copyrightHolder">Tiger</span>
 
   
 
@@ -895,7 +920,7 @@ PS1=&#39;\[\033[1;40;33m\][\u@\h \W]\$ \[\033[0m\]&#39;
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共64.8k字</span>
+  <span class="post-count">博客全站共77.0k字</span>
 </div>
 
 <div id="days"></div>

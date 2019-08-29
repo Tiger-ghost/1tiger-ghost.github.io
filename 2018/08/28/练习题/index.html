@@ -160,7 +160,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:description" content="题目归档">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EauSmR.png">
-<meta property="og:updated_time" content="2019-07-23T13:42:35.291Z">
+<meta property="og:updated_time" content="2019-08-12T12:17:59.108Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test">
 <meta name="twitter:description" content="题目归档">
@@ -391,7 +391,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/28/练习题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="panxiaohu">
+      <meta itemprop="name" content="Tiger">
       <meta itemprop="description" content="I love you">
       <meta itemprop="image" content="/../images/head-portrait.jpg">
     </span>
@@ -447,7 +447,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-23 21:42:35" itemprop="dateModified" datetime="2019-07-23T21:42:35+08:00">2019-07-23</time>
+                <time title="Modified: 2019-08-12 20:17:59" itemprop="dateModified" datetime="2019-08-12T20:17:59+08:00">2019-08-12</time>
               
             
           </span>
@@ -757,7 +757,15 @@ for (( j=1;j&lt;=20;j++ ));do
         echo -n &quot;${a[$k]}&quot;
 done
 echo #换行
-</code></pre><h2 id="5、详细叙述centos7开机流程"><a href="#5、详细叙述centos7开机流程" class="headerlink" title="5、详细叙述centos7开机流程"></a>5、详细叙述centos7开机流程</h2><h2 id="6、编写Nginx的systemd配置文件，-实现nginx进程开机启动"><a href="#6、编写Nginx的systemd配置文件，-实现nginx进程开机启动" class="headerlink" title="6、编写Nginx的systemd配置文件， 实现nginx进程开机启动"></a>6、编写Nginx的systemd配置文件， 实现nginx进程开机启动</h2><p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
+</code></pre><h2 id="5、详细叙述centos7开机流程"><a href="#5、详细叙述centos7开机流程" class="headerlink" title="5、详细叙述centos7开机流程"></a>5、详细叙述centos7开机流程</h2><p>① POST加电自检(BIOS或UEFI进行硬件)<br>② MBR引导(自检没有问题后，BIOS将会直接去找硬盘的第一个扇区，找到前446字节，将MBR加载到内存中，MBR将告诉程序下一阶段去哪里找系统grub引导。此阶段属于grub的第一阶段。)<br>③ GRUB引导：grub的1.5和第2阶段，信息默认存放在扇区中，如果使用grub-install生成的文件是存放在/boot分区中的。为了加载内核系统,需要加载/boot分区，而加载/boot分区，又需要/boot分区的驱动，/boot分区的驱动是放在/boot分区中的，这里就进行了一个死循环。<br>——就grub来说，为了打破在MBR中只有446Bytes用于存放bootloader这一限制，所以这一步的实现是这样的：grub是通过分成三个阶段来实现加载内核这一功能的，这三个阶段分别是：stage1, stage1.5以及stage2。其中：</p>
+<p><font color="red"><i class="fa fa-pencil-square-o fa-1.5x"></i></font>stage1：存放于MBR的前446Bytes，用于加载stage1.5阶段，目的是为了识别并驱动stage2(或者/boot)所在分区的文件系统；</p>
+<p><font color="red"><i class="fa fa-pencil-square-o fa-1.5x"></i></font>stage1.5：存放于MBR之后的扇区，加载stage2所在分区的文件系统驱动，让stage1中的bootloader(引导加载程序)能识别stage2所在分区的文件系统；</p>
+<p><font color="red"><i class="fa fa-pencil-square-o fa-1.5x"></i></font>stage2：存放于磁盘分区之上，具体存放于/boot/grub目录之下，主要用于加载内核文件(vmlinuz-VERSION-RELEASE)以及ramdisk这个临时根文件系统(initrd-VERSION-RELEASE.img或initramfs-VERSION-RELEASE.img)。</p>
+<p><div class="alert alert-success">概述：假如要启动的是硬盘设备，首先我们的硬件平台主板BIOS必须能够识别硬盘，然后BIOS才能加载硬盘中的bootloader，而bootloader自身加载后就能够直接识别当前主机上的硬盘设备了；不过，能够识别硬盘设备不代表能够识别硬盘设备中的文件系统，因为文件系统是额外附加的一层软件组织的文件结构，所以要对接一种文件系统，就必须要有对应的能够识别和理解这种文件系统的驱动，这种驱动就称为文件系统驱动。而stage1.5就是向grub提供文件系统驱动的，这样stage1就能访问stage2及内核所在的分区(/boot)了<br>注意：kernel和initramfs的文件路径均以grub的”根”作为起始目录，且存放于stage2所在分区上；</div><div class="alert alert-warning">需要注意的是，stage2、内核以及ramdisk文件通常放置于一个基本磁盘分区之上，因为grub无法驱动lvm、高级软raid等复杂逻辑设备，除非提供一个复杂的驱动接口，否则如果stage2及内核等文件都存放在lvm等复杂逻辑设备上将无法被stage1所识别，更别说加载了！</div>④Kernel自身初始化<br>Kerenl在得到系统控制权之后，首先要进行自身初始化，而初始化的主要作用是：<br>    (1)探测可识别到的所有硬件设备；<br> bootloader将系统控制权移交给内核就好比如后朝推翻前朝，统治者(内核)当权之后，首先要检查一下有哪些是前朝所留下的，例如有哪些领土、人力、财力、兵力可用等等。<br>    (2)加载硬件驱动程序，即加载真正的根文件系统所在设备的驱动程序（有可能会借助于ramdisk加载驱动）；<br>这就像统治者(内核)在得知底下存在的人力、财力之后，开始将可以“为我所用”的人力纳入麾下，听自己使唤，而不听使唤的杀掉；<br>    (3)以只读方式挂载根文件系统；<br>如果有借助于ramdisk这个临时文件系统（虚根），则在这一步之后会执行根切换；否则不执行根切换。<br>    (4)运行用户空间的第一个应用程序：/sbin/init.<br>到这里内核空间的启动流程就结束了，而接下来是用户空间完成后续的系统启动流程。</p>
+<p><div class="alert alert-danger">注意：<br>ramdisk和内核是由bootloader一同加载到内存当中的，ramdisk是用于实现系统初始化的、基于内存的磁盘设备，即加载至内存（的某一段空间）后把内存当磁盘使用，并在内存中作为临时根文件系统提供给内核使用，帮助内核挂载真正的根文件系统。而之所以能够帮助内核挂载根文件系统是因为在ramdisk这个临时文件系统的/lib/modules目录下有真正的根文件系统所在设备的驱动程序；除此之外，这个临时文件系统也遵循FHS，例如有这些固定目录结构：/bin, /sbin, /lib, /lib64, /etc, /mnt, /media, …<br>因为Linux内核有一个特性就是通过使用缓冲/缓存来达到加速对磁盘上文件的访问的目的，而ramdisk是加载到内存并模拟成磁盘来使用的，所以Linux就会为内存中的“磁盘”再使用一层缓冲/缓存，但是我们的ramdisk本来就是内存，它只不过被当成硬盘来使用罢了，这就造成双缓冲/缓存了，而且不会起到提速效果，甚至影响了访问性能；CentOS 5系列以及之前版本的ramdisk文件为initrd-VERSION-RELEASE.img，就会出现上述所说到的问题；而为了解决一问题，CentOS 6/7系列版本就将其改为initramfs-VERSION-RELEASE.img，使用文件系统的方式就可以避免双缓冲/缓存了，我们可以说这是一种提速机制。<br>需要注意的是，系统发行商为了适应于各个不同的硬件接口，因此将各个不同的硬件接口的驱动组装打包起来，例如在用户第一次使用光盘安装完系统之后，会动态探测当前主机上的硬件设备并调用与之对应的设备驱动再做成ramdisk文件的。所以，ramdisk文件并非必须的，如果只是为了将Linux安装于特定硬件平台上，就可以直接把对应的驱动编译进内核即可，而不需要去使用ramdisk文件了。</div><br>⑤init管理用户空间服务进程<br>init可以理解成是内核派来管理用户空间的使者。虽然CentOS 5、CentOS 6以及CentOS 7的init配置 文件各不相同，但总体的启动流程是不变的。<br>这一步的流程是：/sbin/init –&gt; 根据init配置文件设置默认运行级别 –&gt; 运行系统初始化脚本/etc/rc.d/rc.sysinit，完成系统初始化 –&gt; 关闭或启动用户选定的默认运行级别所对应的服务 –&gt; 启动终端，打印登录提示符<br>grub中默认指定init=/sbin/init程序，可以在grub.conf中kernel行自定义执行程序init=/bin/bash,此时可以绕过下面步骤直接进入bash界面。<br>init启动的顺序，/sbin/init-&gt;/etc/init-&gt;/bin/init-&gt;/bin/sh,<br>(1)根据init配置文件设置默认运行级别<br>对于CentOS 5来说，初始化程序init是SysV init，其配置文件为：/etc/inittab；<br>对于CentOS 6来说，初始化程序init是upstart，其配置文件为：/etc/inittab， /etc/init/*.conf，也就是upstart将配置文件拆分成多个，在/etc/init/目录下以conf结尾的都是upstart风格的配置文件，而/etc/inittab仅用于设置默认运行级别；<br>对于CentOS 7来说，初始化程序init是systemd，其配置文件为：/usr/lib/system/systemd/*, /etc/systemd/system/*；</p>
+<p>详情请见原文：<a href="https://www.cnblogs.com/FengGeBlog/p/10392191.html" target="_blank" rel="noopener">https://www.cnblogs.com/FengGeBlog/p/10392191.html</a><br><a href="https://blog.csdn.net/qq_27754983/article/details/75212666" target="_blank" rel="noopener">https://blog.csdn.net/qq_27754983/article/details/75212666</a></p>
+<h2 id="6、编写Nginx的systemd配置文件，-实现nginx进程开机启动"><a href="#6、编写Nginx的systemd配置文件，-实现nginx进程开机启动" class="headerlink" title="6、编写Nginx的systemd配置文件， 实现nginx进程开机启动"></a>6、编写Nginx的systemd配置文件， 实现nginx进程开机启动</h2><p>1、判断UID是否大于等于500，如果为真就显示为普通用户，如果为假就显示为系统或管理用户<br>2、显示用户id为奇数的用户。<br>3、统计web服务访问日志中的ip访问量<br>4、简述加密类型以及数据加密解密过程<br>5、搭建私有CA并实现证书颁发</p>
+<p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
 <p><script>hljs.initHighlightingOnLoad();</script></p>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
 
@@ -794,14 +802,14 @@ echo #换行
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="https://s2.ax1x.com/2019/04/29/E1FABt.jpg" alt="panxiaohu WeChat Pay"/>
+        <img id="wechat_qr" src="https://s2.ax1x.com/2019/04/29/E1FABt.jpg" alt="Tiger WeChat Pay"/>
         <p>WeChat Pay</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="https://s2.ax1x.com/2019/04/29/E1FZAf.jpg" alt="panxiaohu Alipay"/>
+        <img id="alipay_qr" src="https://s2.ax1x.com/2019/04/29/E1FZAf.jpg" alt="Tiger Alipay"/>
         <p>Alipay</p>
       </div>
     
@@ -818,7 +826,7 @@ echo #换行
       <div>
         <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>Post author:  </strong>panxiaohu</li>
+    <strong>Post author:  </strong>Tiger</li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     <a href="http://yoursite.com/2018/08/28/练习题/" title="test">http://yoursite.com/2018/08/28/练习题/</a>
@@ -923,9 +931,9 @@ echo #换行
             
               <img class="site-author-image" itemprop="image"
                 src="/../images/head-portrait.jpg"
-                alt="panxiaohu" />
+                alt="Tiger" />
             
-              <p class="site-author-name" itemprop="name">panxiaohu</p>
+              <p class="site-author-name" itemprop="name">Tiger</p>
               <p class="site-description motion-element" itemprop="description">I love you</p>
           </div>
 
@@ -936,7 +944,7 @@ echo #换行
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -968,7 +976,7 @@ echo #换行
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -1077,7 +1085,7 @@ echo #换行
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">panxiaohu</span>
+  <span class="author" itemprop="copyrightHolder">Tiger</span>
 
   
 
@@ -1102,7 +1110,7 @@ echo #换行
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共64.8k字</span>
+  <span class="post-count">博客全站共77.0k字</span>
 </div>
 
 <div id="days"></div>
