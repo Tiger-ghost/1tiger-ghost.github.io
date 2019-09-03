@@ -166,7 +166,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/03/ENOeun.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/03/ENOnH0.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/04/EauSmR.png">
-<meta property="og:updated_time" content="2019-07-21T13:58:28.055Z">
+<meta property="og:updated_time" content="2019-08-31T15:57:41.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="one">
 <meta name="twitter:description" content="linux 培训的笔记">
@@ -453,7 +453,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-21 21:58:28" itemprop="dateModified" datetime="2019-07-21T21:58:28+08:00">2019-07-21</time>
+                <time title="Modified: 2019-08-31 23:57:41" itemprop="dateModified" datetime="2019-08-31T23:57:41+08:00">2019-08-31</time>
               
             
           </span>
@@ -825,6 +825,8 @@ other::---
      sed &#39;/^root/aadmin line&#39; /etc/passwd  
      sed &#39;/^UUID/w f1&#39; /etc/fstab  
      sed  &#39;/^UUID/=&#39; /etc/fstab  打印UUID开头的行显示行号  
+</code></pre><pre><code>[root@centos7 ~]# seq -s + 10  -s指定分隔符
+1+2+3+4+5+6+7+8+9+10
 </code></pre><h2 id="sed替换"><a href="#sed替换" class="headerlink" title="sed替换"></a>sed替换</h2><p><code>s///</code>    查找替换,支持使用其它分隔符，<code>s@@@</code>，<code>s###</code><br>替换标记：<br><code>g</code>    行内全局替换<br><code>p</code>    显示替换成功的行<br><code>w /PATH/FILE</code>  将替换成功的行保存至文件中<br>例：<br><code>sed -n  &#39;s/UUID/tempfilesystem/gp&#39; /etc/fstab</code><br><code>ifconfig | sed -n &#39;2p&#39; | sed &#39;s/.*inet //&#39;|sed &#39;s@ netmask.*$@@&#39;</code><br><code>ifconfig | sed -nr &#39;2s/.*t (.*) net.*/\1/gp&#39;</code><br><code>ifconfig ens33 | sed -r &#39;2!d;s/.*inet (addr:)?//;s/  .*//&#39;</code> sed取IP地址<br><code>echo /etc/sysconfig/network-scripts/ | sed -nr &#39;s#(^.*/)([^/].*)/?$#\1#p&#39;</code>取基名（不理解）<br>sed大小写转换：<br><code>sed -r &#39;s/[[:alpha:]]/\u&amp;/g&#39; /etc/fstab</code><br><code>sed -r &#39;s/[[:alpha:]]/\l&amp;/g&#39; /etc/fstab</code></p>
 <h2 id="sed-示例"><a href="#sed-示例" class="headerlink" title="sed 示例"></a>sed 示例</h2><pre><code>sed ‘2p’ /etc/passwd
 sed –n ‘2p’ /etc/passwd
@@ -1013,8 +1015,8 @@ echo &#39;PATH=/app/httpd/bin:$PATH&#39; &gt; /etc/profile.d/httpd.sh
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/28/document/" rel="prev" title="document">
-                document <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/28/linux command/" rel="prev" title="command">
+                command <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1258,7 +1260,7 @@ echo &#39;PATH=/app/httpd/bin:$PATH&#39; &gt; /etc/profile.d/httpd.sh
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共77.0k字</span>
+  <span class="post-count">博客全站共78.7k字</span>
 </div>
 
 <div id="days"></div>

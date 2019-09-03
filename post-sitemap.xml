@@ -8,7 +8,15 @@
 
     <url>
         <loc>http://yoursite.com/2019/07/26/Linux%E5%90%8E%E6%9C%9F%E7%90%86%E8%AE%BA/</loc>
-        <lastmod>2019-08-28T11:32:36.257Z</lastmod>
+        <lastmod>2019-09-01T15:39:59.996Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/08/28/%E9%A9%AC%E5%93%A5%E7%AC%94%E8%AE%B0/</loc>
+        <lastmod>2019-08-31T15:57:41.934Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -73,14 +81,6 @@
     <url>
         <loc>http://yoursite.com/2018/08/28/document/</loc>
         <lastmod>2019-07-25T11:44:58.786Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/08/28/%E9%A9%AC%E5%93%A5%E7%AC%94%E8%AE%B0/</loc>
-        <lastmod>2019-07-21T13:58:28.055Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

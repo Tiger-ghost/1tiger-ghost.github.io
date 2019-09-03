@@ -164,7 +164,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://s2.ax1x.com/2019/07/31/eNggot.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/08/04/eysWGj.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/08/04/eyshzn.png">
-<meta property="og:updated_time" content="2019-08-28T11:32:36.257Z">
+<meta property="og:updated_time" content="2019-09-01T15:39:59.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Four">
 <meta name="twitter:description" content="linux 理论知识点">
@@ -451,7 +451,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-28 19:32:36" itemprop="dateModified" datetime="2019-08-28T19:32:36+08:00">2019-08-28</time>
+                <time title="Modified: 2019-09-01 23:39:59" itemprop="dateModified" datetime="2019-09-01T23:39:59+08:00">2019-09-01</time>
               
             
           </span>
@@ -1001,7 +1001,7 @@ zzz===xxaa;adfad
 ===[root@centos7 ~]#
 
 NF：字段数量
-    awk -F：‘{print NF}’    /etc/fstab    引用变量时，变量前不需加$
+    awk -F：&#39;{print NF}&#39;    /etc/fstab    引用变量时，变量前不需加$
     awk -F : &#39;{print NF}&#39; /etc/passwd 查看每行有多少个：
     awk -F : &#39;{print $NF}&#39; /etc/passwd 被：分割的最后一列
     awk -F : &#39;{print $(NF-1)}&#39; /etc/passwd 倒数第二列
@@ -1016,6 +1016,8 @@ dd
 5 xxx
 zzz
 6 xxaa;adfad
+[root@centos7 ~]# awk END&#39;{print NR}&#39; /etc/fstab  打印总行号
+12
 FNR：各文件分别计数,记录号
     awk &#39;{print FNR}&#39; /etc/fstab /etc/inittab
     awk -F : &#39;{print FNR,$1}&#39; /etc/passwd /etc/group
@@ -1106,8 +1108,133 @@ seq 10 | awk -v i=&quot;1&quot; &#39;i=!i&#39;
 0
 </code></pre><h2 id="awk控制语句if-else"><a href="#awk控制语句if-else" class="headerlink" title="awk控制语句if-else"></a>awk控制语句if-else</h2><pre><code>[root@centos7 ~]# awk -v score=66 &#39;BEGIN{if(score&lt;60){print &quot;no pass&quot;}else if(score &lt;=80){print &quot;score&quot;}else {print &quot;good&quot;}}&#39;
 score
-</code></pre><h2 id="awk控制语句"><a href="#awk控制语句" class="headerlink" title="awk控制语句"></a>awk控制语句</h2><p>while循环<br>语法：while(condition){statement;…}<br>条件“真”，进入循环；条件“假”，退出循环<br>使用场景：<br>对一行内的多个字段逐一类似处理时使用对数组中的各元素逐一处理时使用</p>
-<p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
+</code></pre><h2 id="awk控制语句"><a href="#awk控制语句" class="headerlink" title="awk控制语句"></a>awk控制语句</h2><p>while循环<br>语法：while(条件){处理语句;…}<br>条件“真”，进入循环；条件“假”，退出循环<br>使用场景：<br>对一行内的多个字段逐一类似处理时使用对数组中的各元素逐一处理时使用<br><code>awk -F : &#39;NR==1{i=1;while(i&lt;=NF){print $i,length($i);i++}}&#39; /etc/passwd</code><br>打印/etc/passwd文件第一行的字段并逐行显示<br>NR 行号，NF字段<br><code>awk &#39;/^[[:space:]]*linux16/{i=1;while(i&lt;=NF) {print $i,length($i); i++}}&#39; /etc/grub2.cfg</code><br>加了条件:</p>
+<pre><code>awk &#39;/^[[:space:]]*linux16/{i=1;while(i&lt;=NF){if(length($i)&gt;=10){print $i,length($i)}; i++}}&#39; /etc/grub2.cfg
+</code></pre><h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><pre><code>[root@centos7 ~]# for i in {1..1000};do if [ $i -eq 1 ];then echo -e &quot;$RANDOM\c&quot; &gt;&gt;f1.txt;else echo -e &quot;,$RANDOM\c&quot; &gt;&gt; f1.txt;fi;done            
+                        随机1-1000的数字存在这个文件中
+awk -F &#39;,&#39; &#39;{i=2;max=$1;min=$1;while(i&lt;=NF){if($i &gt; max){max=$i}else if($i &lt; min){min=$i};i++}}END{print &quot;max=&quot;max,&quot;min=&quot;min}&#39; f1.txt           取最大值，最小值
+</code></pre><h2 id="awk控制语句-1"><a href="#awk控制语句-1" class="headerlink" title="awk控制语句"></a>awk控制语句</h2><p>do-while循环<br>语法：do {statement;…}while(condition)<br>意义：无论真假，至少执行一次循环体<br>示例：</p>
+<pre><code>[root@centos7 ~]# awk &#39;BEGIN{ total=0;i=0;do{ total+=i;i++;}while(i&lt;=100);print total}&#39;
+5050
+</code></pre><h2 id="awk控制语句-2"><a href="#awk控制语句-2" class="headerlink" title="awk控制语句"></a>awk控制语句</h2><p>for循环<br>语法：for(expr1;expr2;expr3) {statement;…}<br>常见用法<br>for(variable assignment;condition;iteration process)<br>{for-body}<br>特殊用法：能够遍历数组中的元素<br>语法：for(var in array) {for-body}<br>示例：</p>
+<pre><code>awk &#39;/^[[:space:]]*linux16/{for(i=1;i&lt;=NF;i++) {print $i,length($i)}}&#39; /etc/grub2.cfg
+awk &#39;BEGIN{for(i=0;i&lt;=100;i++)total+=i;print total}&#39;
+awk &#39;BEGIN{total=0;for(i=0;i&lt;=100;i++)total+=i;print total}&#39;
+</code></pre><p>用shell写法<code>for ((i=0,total=0;i&lt;=100;i++));do let total+=i;done; echo $total</code><br>查看时间：time “awk ‘BEGIN{total=0;for(i=1;i&lt;=100000;i++)total+=i;print total}’”  </p>
+<h2 id="awk控制语句-3"><a href="#awk控制语句-3" class="headerlink" title="awk控制语句"></a>awk控制语句</h2><p>switch语句<br>语法：switch(expression) {case VALUE1 or /REGEXP/: statement1; case VALUE2 or /REGEXP2/: statement2; …; default: statementn}<br>break和continue<br>awk ‘BEGIN{sum=0;for(i=1;i&lt;=100;i++) {if(i%2==0)continue;sum+=i}print sum}’<br>awk ‘BEGIN{sum=0;for(i=1;i&lt;=100;i++) {if(i==66)break;sum+=i}print sum}’</p>
+<pre><code>[root@centos7 ~]# awk &#39;BEGIN{total=0;for(i=0;i&lt;=100;i++){if(i==50)continue;total+=i};print total}&#39;
+5000
+[root@centos7 ~]# awk &#39;BEGIN{total=0;for(i=0;i&lt;=100;i++){if(i==50)break;total+=i};print total}&#39;        
+1225
+</code></pre><h2 id="next"><a href="#next" class="headerlink" title="next:"></a>next:</h2><p>提前结束对本行处理而直接进入下一行处理（awk自身循环）<br>awk -F: ‘{if($3%2!=0) next; print $1,$3}’ /etc/passwd</p>
+<pre><code>[root@centos7 ~]# awk -F : &#39;{if(NR%2==0)next;print NR,$0}&#39; /etc/passwd
+对2取模，显然NR必须都是偶数才满足。next跳过本行处理也就是跳过偶数行
+1 root:x:0:0:root:/root:/bin/bash            
+3 daemon:x:2:2:daemon:/sbin:/sbin/nologin
+5 lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+7 shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+9 mail:x:8:12:mail:/var/spool/mail:/sbin/nologin ......
+</code></pre><p><code>awk -F : &#39;NR%2==1{print NR,$0}&#39; /etc/passwd</code> 写法不同</p>
+<h2 id="awk数组"><a href="#awk数组" class="headerlink" title="awk数组"></a>awk数组</h2><p>关联数组：array[index-expression]<br>index-expression:<br>(1) 可使用任意字符串；字符串要使用双引号括起来<br>(2) 如果某数组元素事先不存在，在引用时，awk会自动创建此元素，并将其值初始化为“空串”<br>(3) 若要判断数组中是否存在某元素，要使用“index in array”格式进行遍历示例：<br>weekdays[“mon”]=”Monday”<br>awk ‘BEGIN{weekdays[“mon”]=”Monday”;weekdays[“tue”]=”Tuesday”; print weekdays[“mon”]}‘<br>awk ‘!line[$0]++’ dupfile<br>awk ‘{!line[$0]++;print $0, line[$0]}’ dupfile</p>
+<pre><code>[root@centos7 ~]# awk &#39;BEGIN{title[&quot;ceo&quot;]=&quot;mage&quot;;title[&quot;coo&quot;]=&quot;zhnagsir&quot;;title[3]=&quot;wnag&quot;;print title[3]}&#39;           
+wnag
+
+[root@centos7 ~]# cat f1.txt 
+abc
+abc
+ddd
+ccc
+ccc
+aaaa
+aaa
+abc
+[root@centos7 ~]# awk &#39;{!line[$0]++;print $0,line[$0]}&#39; f1.txt
+abc 1
+abc 2
+ddd 1
+ccc 1
+ccc 2
+aaaa 1
+aaa 1
+abc 3
+[root@centos7 ~]# awk &#39;!line[$0]++;&#39; f1.txt     表现为去除重复          
+abc
+ddd
+ccc
+aaaa
+aaa
+</code></pre><h2 id="awk数组-1"><a href="#awk数组-1" class="headerlink" title="awk数组"></a>awk数组</h2><p>若要遍历数组中的每个元素，要使用for循环<br>for(var in array) {for-body}<br>注意：var会遍历array的每个索引<br>示例：<br>awk‘BEGIN{weekdays[“mon”]=”Monday”;weekdays[“tue”]=”Tuesday”; for(i in weekdays) {print weekdays[i]}}’<br>netstat -tan | awk ‘/^tcp/{state[$NF]++} END{for(i in state) { print i,state[i]}}’<br><code>awk &#39;{ip[$1]++}END{for(i in ip){print i,ip[i]}}&#39; /var/log/httpd/access_log-20190824</code>  统计文件中的ip<br><code>ss -nt | awk -F &quot;[[:space:]]+|:&quot; &#39;/ESTAB/{ip[$(NF-2)]++}END{for (i in ip){print i;ip[i]}}&#39;</code></p>
+<pre><code>[root@centos7 ~]# awk &#39;/UUID/{filesystem[$3]++}END{for (i in filesystem){print i,filesystem[i]}}&#39; /etc/fstab
+swap 1
+xfs 3
+</code></pre><h2 id="awk函数"><a href="#awk函数" class="headerlink" title="awk函数"></a>awk函数</h2><p>数值处理：<br>rand()：返回0和1之间一个随机数<br><code>awk &#39;BEGIN{srand(); for (i=1;i&lt;=10;i++)print int(rand()*100) }&#39;</code><br><code>awk &#39;BEGIN{srand();print rand()}&#39;</code></p>
+<h3 id="字符串处理："><a href="#字符串处理：" class="headerlink" title="字符串处理："></a>字符串处理：</h3><p>length([s])：返回指定字符串的长度</p>
+<pre><code>sub(r,s,[t])：对t字符串搜索r表示模式匹配的内容，并将第一个匹配内容替换为s 
+echo &quot;2008:08:08 08:08:08&quot; | awk &#39;sub(/:/,&quot;-&quot;,$1)&#39;
+2008-08:08 08:08:08
+</code></pre><h3 id="gsub-r-s-t-：对t字符串进行搜索r表示的模式匹配的内容，并全部替换为s所表示的内容"><a href="#gsub-r-s-t-：对t字符串进行搜索r表示的模式匹配的内容，并全部替换为s所表示的内容" class="headerlink" title="gsub(r,s,[t])：对t字符串进行搜索r表示的模式匹配的内容，并全部替换为s所表示的内容"></a>gsub(r,s,[t])：对t字符串进行搜索r表示的模式匹配的内容，并全部替换为s所表示的内容</h3><pre><code>[root@centos7 ~]# echo &quot;2008:08:08 08:08:08&quot; | awk &#39;gsub(&quot;:&quot;,&quot;-&quot;,$1)&#39;
+2008-08-08 08:08:08
+
+[root@centos7 ~]# echo &quot;2008:08:08 08:08:08&quot; | awk &#39;{split($0,str,&quot;:&quot;)}END{for (i in str){print i,str[i]}}&#39;
+4 08
+5 08
+1 2008
+2 08
+3 08 08
+</code></pre><h3 id="split-s-array-r-：以r为分隔符，切割字符串s，并将切割后的结果保存至array所"><a href="#split-s-array-r-：以r为分隔符，切割字符串s，并将切割后的结果保存至array所" class="headerlink" title="split(s,array,[r])：以r为分隔符，切割字符串s，并将切割后的结果保存至array所"></a>split(s,array,[r])：以r为分隔符，切割字符串s，并将切割后的结果保存至array所</h3><p>表示的数组中，第一个索引值为1,第二个索引值为2,…</p>
+<pre><code>[root@centos7 ~]# netstat -tn
+Active Internet connections (w/o servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0     96 192.168.152.136:22      192.168.152.1:51449     ESTABLISHED
+tcp        0      0 192.168.152.136:22      192.168.152.1:51450     ESTABLISHED
+[root@centos7 ~]# netstat -tn | awk &#39;/^tcp/{split($5,ip,&quot;:&quot;);count[ip[1]]++}END{for (i in count){print i,count[i]}}&#39; 
+192.168.152.1 2        统计每一个IP的连接次数
+[root@centos7 ~]# netstat -tn | awk &#39;/^tcp/{split($5,ip,&quot;:&quot;);count[ip[2]]++}END{for (i in count){print i,count[i]}}&#39; 
+51449 1
+51450 1
+</code></pre><h2 id="awk函数-1"><a href="#awk函数-1" class="headerlink" title="awk函数"></a>awk函数</h2><pre><code>[root@centos7 ~]# cat func.awk         比较最大值
+function max(x,y){
+        x&gt;y?var=x:var=y
+        return var
+}
+BEGIN{print max(i,j)}
+[root@centos7 ~]# awk -v i=22 -v j=23 -f func.awk 
+23
+</code></pre><h2 id="awk中调用shell命令"><a href="#awk中调用shell命令" class="headerlink" title="awk中调用shell命令"></a>awk中调用shell命令</h2><p>system命令<br>空格是awk中的字符串连接符，如果system中需要使用awk中的变量可以使用空格分隔，或者说除了awk的变量外其他一律用””引用起来</p>
+<pre><code>awk &#39;BEGIN{system(&quot;hostname&quot;) }&#39;
+awk &#39;BEGIN{score=100; system(&quot;echo your score is &quot; score) }&#39;
+[root@centos7 ~]# awk &#39;BEGIN{dir=&quot;/boot&quot;;system(&quot;ls &quot;dir)}&#39; 调用变量
+</code></pre><h2 id="awk脚本"><a href="#awk脚本" class="headerlink" title="awk脚本"></a>awk脚本</h2><p>将awk程序写成脚本，直接调用或执行<br>示例：</p>
+<pre><code>[root@centos7 ~]# cat f1.awk 
+#!/bin/awk -f
+#this is a awk script
+{if($3&gt;=1000)print $1,$3}
+[root@centos7 ~]# ./f1.awk -F : /etc/passwd
+nfsnobody 65534
+pan 1000
+</code></pre><h2 id="向awk脚本传递参数"><a href="#向awk脚本传递参数" class="headerlink" title="向awk脚本传递参数"></a>向awk脚本传递参数</h2><p>格式：awkfile var=value var2=value2… Inputfile<br>注意：在BEGIN过程中不可用。直到首行输入完成以后，变量才可用。可以通过-v 参数，让awk在执行BEGIN之前得到变量的值。命令行中每一个指定的变量都需要一个-v参数<br>示例</p>
+<pre><code>[root@centos7 ~]# cat b.awk 
+#!/bin/awk -f
+{if($3&gt;=min &amp;&amp; $3&lt;=max)print $1,$3}
+[root@centos7 ~]# ./b.awk -F : min=50 max=80 /etc/passwd
+tss 59
+radvd 75
+sshd 74
+avahi 70
+tcpdump 72
+</code></pre><h2 id="将以下文件内容中FQDN取出并根据其进行计数从高到低排序"><a href="#将以下文件内容中FQDN取出并根据其进行计数从高到低排序" class="headerlink" title="将以下文件内容中FQDN取出并根据其进行计数从高到低排序"></a>将以下文件内容中FQDN取出并根据其进行计数从高到低排序</h2><pre><code>[root@centos7 ~]# cat ff.txt 
+http://mail.magedu.com/index.html 
+http://www.magedu.com/test.html 
+http://study.magedu.com/index.html 
+http://blog.magedu.com/index.html 
+http://www.magedu.com/images/logo.jpg 
+http://blog.magedu.com/20080102.html
+[root@centos7 ~]# awk -F &quot;/&quot; &#39;{fqdn[$3]++}END{for(i in fqdn){print i,fqdn[i]}}&#39; ff.txt | sort -k 2 -nr
+www.magedu.com 2
+blog.magedu.com 2
+study.magedu.com 1
+mail.magedu.com 1
+</code></pre><p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
 <p><script>hljs.initHighlightingOnLoad();</script></p>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
 
@@ -1400,7 +1527,7 @@ score
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#修改开机自启"><span class="nav-number">1.</span> <span class="nav-text">修改开机自启</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#chkconfig"><span class="nav-number">1.1.</span> <span class="nav-text">chkconfig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xinetd管理的服务"><span class="nav-number">1.2.</span> <span class="nav-text">xinetd管理的服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#centos6启动流程"><span class="nav-number">1.3.</span> <span class="nav-text">centos6启动流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS-6启动流程："><span class="nav-number">1.4.</span> <span class="nav-text">CentOS 6启动流程：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#grub修复1"><span class="nav-number">2.</span> <span class="nav-text">grub修复1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#grub修复2"><span class="nav-number">2.1.</span> <span class="nav-text">grub修复2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动背景更换"><span class="nav-number">2.2.</span> <span class="nav-text">启动背景更换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-fr-boot-grub-grub-conf"><span class="nav-number">2.3.</span> <span class="nav-text">rm -fr /boot/grub/grub.conf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-fr-boot"><span class="nav-number">2.4.</span> <span class="nav-text">rm -fr /boot/*</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mv-etc-fstab和rm-fr-boot"><span class="nav-number">2.5.</span> <span class="nav-text">mv /etc/fstab和rm -fr /boot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块"><span class="nav-number">2.6.</span> <span class="nav-text">模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自制linux系统"><span class="nav-number">2.7.</span> <span class="nav-text">自制linux系统</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proc-目录"><span class="nav-number">3.</span> <span class="nav-text">proc 目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sys目录："><span class="nav-number">4.</span> <span class="nav-text">/sys目录：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内核编译"><span class="nav-number">5.</span> <span class="nav-text">内核编译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lsmod命令："><span class="nav-number">6.</span> <span class="nav-text">lsmod命令：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内核模块管理"><span class="nav-number">7.</span> <span class="nav-text">内核模块管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内核模块管理-1"><span class="nav-number">8.</span> <span class="nav-text">内核模块管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内核编译-1"><span class="nav-number">9.</span> <span class="nav-text">内核编译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#centos7"><span class="nav-number">10.</span> <span class="nav-text">centos7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#管理服务"><span class="nav-number">10.1.</span> <span class="nav-text">管理服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管理服务-1"><span class="nav-number">10.2.</span> <span class="nav-text">管理服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务查看"><span class="nav-number">10.3.</span> <span class="nav-text">服务查看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务查看-1"><span class="nav-number">10.4.</span> <span class="nav-text">服务查看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务状态"><span class="nav-number">10.5.</span> <span class="nav-text">服务状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#systemctl-命令示例"><span class="nav-number">10.6.</span> <span class="nav-text">systemctl 命令示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#示例1"><span class="nav-number">10.6.1.</span> <span class="nav-text">示例1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例2"><span class="nav-number">10.7.</span> <span class="nav-text">示例2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service-unit文件格式"><span class="nav-number">10.8.</span> <span class="nav-text">service unit文件格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service-unit文件格式-1"><span class="nav-number">10.9.</span> <span class="nav-text">service unit文件格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#service-unit文件格式-2"><span class="nav-number">10.9.1.</span> <span class="nav-text">service unit文件格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EnvironmentFile：环境配置文件"><span class="nav-number">10.9.2.</span> <span class="nav-text">EnvironmentFile：环境配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service-unit文件格式-3"><span class="nav-number">10.10.</span> <span class="nav-text">service unit文件格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务Unit文件示例："><span class="nav-number">10.10.1.</span> <span class="nav-text">服务Unit文件示例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行级别"><span class="nav-number">10.10.2.</span> <span class="nav-text">运行级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行级别-1"><span class="nav-number">10.10.3.</span> <span class="nav-text">运行级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它命令"><span class="nav-number">10.10.4.</span> <span class="nav-text">其它命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS7引导顺序"><span class="nav-number">10.11.</span> <span class="nav-text">CentOS7引导顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS7引导顺序-1"><span class="nav-number">10.12.</span> <span class="nav-text">CentOS7引导顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#破解CentOS7的root口令方法一"><span class="nav-number">10.13.</span> <span class="nav-text">破解CentOS7的root口令方法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#破解CentOS7的root口令方法二"><span class="nav-number">10.14.</span> <span class="nav-text">破解CentOS7的root口令方法二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修复"><span class="nav-number">10.15.</span> <span class="nav-text">修复</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SElinux"><span class="nav-number">11.</span> <span class="nav-text">SElinux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux策略"><span class="nav-number">11.1.</span> <span class="nav-text">SELinux策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux工作类型"><span class="nav-number">11.2.</span> <span class="nav-text">SELinux工作类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux安全上下文"><span class="nav-number">11.3.</span> <span class="nav-text">SELinux安全上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五个安全元素"><span class="nav-number">11.4.</span> <span class="nav-text">五个安全元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置SELinux"><span class="nav-number">11.5.</span> <span class="nav-text">配置SELinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认安全上下文查询与修改"><span class="nav-number">11.6.</span> <span class="nav-text">默认安全上下文查询与修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SElinux端口标签"><span class="nav-number">11.7.</span> <span class="nav-text">SElinux端口标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux布尔值"><span class="nav-number">11.8.</span> <span class="nav-text">SELinux布尔值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux日志管理"><span class="nav-number">11.9.</span> <span class="nav-text">SELinux日志管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux帮助"><span class="nav-number">11.10.</span> <span class="nav-text">SELinux帮助</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#awk"><span class="nav-number">12.</span> <span class="nav-text">awk</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#awk变量"><span class="nav-number">12.1.</span> <span class="nav-text">awk变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#printf"><span class="nav-number">12.2.</span> <span class="nav-text">printf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作符"><span class="nav-number">12.3.</span> <span class="nav-text">操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作符-1"><span class="nav-number">12.4.</span> <span class="nav-text">操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作符-2"><span class="nav-number">12.5.</span> <span class="nav-text">操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行范围"><span class="nav-number">12.6.</span> <span class="nav-text">行范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk控制语句if-else"><span class="nav-number">12.7.</span> <span class="nav-text">awk控制语句if-else</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk控制语句"><span class="nav-number">12.8.</span> <span class="nav-text">awk控制语句</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#修改开机自启"><span class="nav-number">1.</span> <span class="nav-text">修改开机自启</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#chkconfig"><span class="nav-number">1.1.</span> <span class="nav-text">chkconfig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xinetd管理的服务"><span class="nav-number">1.2.</span> <span class="nav-text">xinetd管理的服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#centos6启动流程"><span class="nav-number">1.3.</span> <span class="nav-text">centos6启动流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS-6启动流程："><span class="nav-number">1.4.</span> <span class="nav-text">CentOS 6启动流程：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#grub修复1"><span class="nav-number">2.</span> <span class="nav-text">grub修复1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#grub修复2"><span class="nav-number">2.1.</span> <span class="nav-text">grub修复2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动背景更换"><span class="nav-number">2.2.</span> <span class="nav-text">启动背景更换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-fr-boot-grub-grub-conf"><span class="nav-number">2.3.</span> <span class="nav-text">rm -fr /boot/grub/grub.conf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm-fr-boot"><span class="nav-number">2.4.</span> <span class="nav-text">rm -fr /boot/*</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mv-etc-fstab和rm-fr-boot"><span class="nav-number">2.5.</span> <span class="nav-text">mv /etc/fstab和rm -fr /boot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块"><span class="nav-number">2.6.</span> <span class="nav-text">模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自制linux系统"><span class="nav-number">2.7.</span> <span class="nav-text">自制linux系统</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proc-目录"><span class="nav-number">3.</span> <span class="nav-text">proc 目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sys目录："><span class="nav-number">4.</span> <span class="nav-text">/sys目录：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内核编译"><span class="nav-number">5.</span> <span class="nav-text">内核编译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lsmod命令："><span class="nav-number">6.</span> <span class="nav-text">lsmod命令：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内核模块管理"><span class="nav-number">7.</span> <span class="nav-text">内核模块管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内核模块管理-1"><span class="nav-number">8.</span> <span class="nav-text">内核模块管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内核编译-1"><span class="nav-number">9.</span> <span class="nav-text">内核编译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#centos7"><span class="nav-number">10.</span> <span class="nav-text">centos7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#管理服务"><span class="nav-number">10.1.</span> <span class="nav-text">管理服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管理服务-1"><span class="nav-number">10.2.</span> <span class="nav-text">管理服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务查看"><span class="nav-number">10.3.</span> <span class="nav-text">服务查看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务查看-1"><span class="nav-number">10.4.</span> <span class="nav-text">服务查看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务状态"><span class="nav-number">10.5.</span> <span class="nav-text">服务状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#systemctl-命令示例"><span class="nav-number">10.6.</span> <span class="nav-text">systemctl 命令示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#示例1"><span class="nav-number">10.6.1.</span> <span class="nav-text">示例1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例2"><span class="nav-number">10.7.</span> <span class="nav-text">示例2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service-unit文件格式"><span class="nav-number">10.8.</span> <span class="nav-text">service unit文件格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service-unit文件格式-1"><span class="nav-number">10.9.</span> <span class="nav-text">service unit文件格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#service-unit文件格式-2"><span class="nav-number">10.9.1.</span> <span class="nav-text">service unit文件格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EnvironmentFile：环境配置文件"><span class="nav-number">10.9.2.</span> <span class="nav-text">EnvironmentFile：环境配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service-unit文件格式-3"><span class="nav-number">10.10.</span> <span class="nav-text">service unit文件格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务Unit文件示例："><span class="nav-number">10.10.1.</span> <span class="nav-text">服务Unit文件示例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行级别"><span class="nav-number">10.10.2.</span> <span class="nav-text">运行级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行级别-1"><span class="nav-number">10.10.3.</span> <span class="nav-text">运行级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它命令"><span class="nav-number">10.10.4.</span> <span class="nav-text">其它命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS7引导顺序"><span class="nav-number">10.11.</span> <span class="nav-text">CentOS7引导顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS7引导顺序-1"><span class="nav-number">10.12.</span> <span class="nav-text">CentOS7引导顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#破解CentOS7的root口令方法一"><span class="nav-number">10.13.</span> <span class="nav-text">破解CentOS7的root口令方法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#破解CentOS7的root口令方法二"><span class="nav-number">10.14.</span> <span class="nav-text">破解CentOS7的root口令方法二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修复"><span class="nav-number">10.15.</span> <span class="nav-text">修复</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SElinux"><span class="nav-number">11.</span> <span class="nav-text">SElinux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux策略"><span class="nav-number">11.1.</span> <span class="nav-text">SELinux策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux工作类型"><span class="nav-number">11.2.</span> <span class="nav-text">SELinux工作类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux安全上下文"><span class="nav-number">11.3.</span> <span class="nav-text">SELinux安全上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五个安全元素"><span class="nav-number">11.4.</span> <span class="nav-text">五个安全元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置SELinux"><span class="nav-number">11.5.</span> <span class="nav-text">配置SELinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认安全上下文查询与修改"><span class="nav-number">11.6.</span> <span class="nav-text">默认安全上下文查询与修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SElinux端口标签"><span class="nav-number">11.7.</span> <span class="nav-text">SElinux端口标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux布尔值"><span class="nav-number">11.8.</span> <span class="nav-text">SELinux布尔值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux日志管理"><span class="nav-number">11.9.</span> <span class="nav-text">SELinux日志管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELinux帮助"><span class="nav-number">11.10.</span> <span class="nav-text">SELinux帮助</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#awk"><span class="nav-number">12.</span> <span class="nav-text">awk</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#awk变量"><span class="nav-number">12.1.</span> <span class="nav-text">awk变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#printf"><span class="nav-number">12.2.</span> <span class="nav-text">printf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作符"><span class="nav-number">12.3.</span> <span class="nav-text">操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作符-1"><span class="nav-number">12.4.</span> <span class="nav-text">操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作符-2"><span class="nav-number">12.5.</span> <span class="nav-text">操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行范围"><span class="nav-number">12.6.</span> <span class="nav-text">行范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk控制语句if-else"><span class="nav-number">12.7.</span> <span class="nav-text">awk控制语句if-else</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk控制语句"><span class="nav-number">12.8.</span> <span class="nav-text">awk控制语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">12.9.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk控制语句-1"><span class="nav-number">12.10.</span> <span class="nav-text">awk控制语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk控制语句-2"><span class="nav-number">12.11.</span> <span class="nav-text">awk控制语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk控制语句-3"><span class="nav-number">12.12.</span> <span class="nav-text">awk控制语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next"><span class="nav-number">12.13.</span> <span class="nav-text">next:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk数组"><span class="nav-number">12.14.</span> <span class="nav-text">awk数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk数组-1"><span class="nav-number">12.15.</span> <span class="nav-text">awk数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk函数"><span class="nav-number">12.16.</span> <span class="nav-text">awk函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串处理："><span class="nav-number">12.16.1.</span> <span class="nav-text">字符串处理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gsub-r-s-t-：对t字符串进行搜索r表示的模式匹配的内容，并全部替换为s所表示的内容"><span class="nav-number">12.16.2.</span> <span class="nav-text">gsub(r,s,[t])：对t字符串进行搜索r表示的模式匹配的内容，并全部替换为s所表示的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#split-s-array-r-：以r为分隔符，切割字符串s，并将切割后的结果保存至array所"><span class="nav-number">12.16.3.</span> <span class="nav-text">split(s,array,[r])：以r为分隔符，切割字符串s，并将切割后的结果保存至array所</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk函数-1"><span class="nav-number">12.17.</span> <span class="nav-text">awk函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk中调用shell命令"><span class="nav-number">12.18.</span> <span class="nav-text">awk中调用shell命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk脚本"><span class="nav-number">12.19.</span> <span class="nav-text">awk脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向awk脚本传递参数"><span class="nav-number">12.20.</span> <span class="nav-text">向awk脚本传递参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将以下文件内容中FQDN取出并根据其进行计数从高到低排序"><span class="nav-number">12.21.</span> <span class="nav-text">将以下文件内容中FQDN取出并根据其进行计数从高到低排序</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1449,7 +1576,7 @@ score
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共77.0k字</span>
+  <span class="post-count">博客全站共78.7k字</span>
 </div>
 
 <div id="days"></div>
