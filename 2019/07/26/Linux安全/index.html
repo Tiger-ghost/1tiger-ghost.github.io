@@ -159,7 +159,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:site_name" content="Tiger-ghost">
 <meta property="og:description" content="linux 安全">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-06T07:10:40.274Z">
+<meta property="og:updated_time" content="2019-09-09T06:11:32.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Five">
 <meta name="twitter:description" content="linux 安全">
@@ -246,7 +246,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
     </div>
     
       
-        <p class="site-subtitle">This is a memory</p>
+        <p class="site-subtitle">Technology blog</p>
       
     
   </div>
@@ -445,7 +445,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-06 15:10:40" itemprop="dateModified" datetime="2019-09-06T15:10:40+08:00">2019-09-06</time>
+                <time title="Modified: 2019-09-09 14:11:32" itemprop="dateModified" datetime="2019-09-09T14:11:32+08:00">2019-09-09</time>
               
             
           </span>
@@ -552,6 +552,235 @@ passwd.gpg   这个文件现在查看已经是乱码了
         -d解密，然后按提示输入同样的口令，加密解密用的是一把钥匙，但是这样只会把文件打印到屏幕上，
 [root@centos6 ~]# gpg -d passwd.gpg  
         如果要形成新的文件需要  gpg -o passwd.log -d passwd.gpg 
+</code></pre><h2 id="实验-两台主机加密文件并解密"><a href="#实验-两台主机加密文件并解密" class="headerlink" title="实验:两台主机加密文件并解密"></a>实验:两台主机加密文件并解密</h2><div class="note info"><p>centos6建立公钥和私钥，传给centos7公钥并加密文件后，再传回centos6解密</p></div>
+<pre><code>[root@centos6 ~]# gpg --list-keys 查看公钥
+[root@centos6 ~]# gpg --gen-key        生成公钥
+gpg (GnuPG) 2.0.14; Copyright (C) 2009 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Please select what kind of key you want:    ##提示你用什么算法来实现
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)        ##这里是实现签名
+   (4) RSA (sign only)
+Your selection?             ##这里回车表示默认第一条
+RSA keys may be between 1024 and 4096 bits long.  
+What keysize do you want? (2048) 1024        ##指定加密位数
+Requested keysize is 1024 bits
+Please specify how long the key should be valid. 
+                ##这里表示你生成的秘钥是否要给他指定一个有效期
+         0 = key does not expire ##0表示一直有效
+      &lt;n&gt;  = key expires in n days
+      &lt;n&gt;w = key expires in n weeks
+      &lt;n&gt;m = key expires in n months
+      &lt;n&gt;y = key expires in n years
+Key is valid for? (0) 
+Key does not expire at all
+Is this correct? (y/N) y  ##你确定刚才的操作吗
+
+GnuPG needs to construct a user ID to identify your key.
+##需要你构建一个key的用户，表示这个key是谁的
+Real name: xiaohu
+Email address:  ##回车忽略
+Comment: 
+You selected this USER-ID:
+    &quot;xiaohu&quot;
+##更改用户名      更改描述  更改邮箱  或者 确定 退出
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o 
+
+
+can&#39;t connect to `/root/.gnupg/S.gpg-agent&#39;: No such file or directory
+##这句话表示没有这个目录(应该是默认不做加密操作就没有这个目录)，但是现在其实已经有了
+
+
+
+                         ┌─────────────────────────────────────────────────────┐
+                         │ Enter passphrase                                    │
+                         │                                                     │
+                         │                                                     │
+                         │ Passphrase ________________________________________ │
+                         │                                                     │
+                         │       &lt;OK&gt;                             &lt;Cancel&gt;     │
+                         └─────────────────────────────────────────────────────┘
+##这里提示你输入一个口令，他表示你需要对私钥加一个口令。(担心私钥泄露)也可以不加后面选择&quot;&lt;Take this one anyway&gt;&quot;
+
+##然后提示你一大堆文字，是要你在主机上随意点击鼠标位置，根据这个来生成大量随机数。最后生成的:
+
+gpg: checking the trustdb
+gpg: 3 marginal(s) needed, 1 complete(s) needed, PGP trust model
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+pub   2048R/DD213C96 2019-06-29
+      Key fingerprint = F035 585E 9E43 D3AA 69E2  FE43 77C4 B0A8 DD21 3C96
+uid                  xiaohu
+sub   2048R/9817AA4F 2019-06-29
+
+[root@centos6 ~]# cd /root/.gnupg/
+[root@centos6 .gnupg]# ll
+total 32
+-rw-------. 1 root root 7856 May 22 07:46 gpg.conf
+drwx------. 2 root root 4096 Jun 29 17:02 private-keys-v1.d
+-rw-------. 1 root root 1165 Jun 29 17:24 pubring.gpg ##公钥
+-rw-------. 1 root root 1165 Jun 29 17:24 pubring.gpg~
+-rw-------. 1 root root  600 Jun 29 17:24 random_seed
+-rw-------. 1 root root 2466 Jun 29 17:24 secring.gpg ##私钥
+-rw-------. 1 root root 1280 Jun 29 17:24 trustdb.gpg
+[root@centos6 .gnupg]# gpg -a --export -o /data/xiaohupubkey    ##倒出文件 
+
+-a，--armor：创建ascii输出
+--export：导出keys
+-o：输出文件至where name
+--gen-key：生成一对儿密钥
+-e，--encrypt：加密数据
+-r：使用哪个密钥对加密encrypt for USER-ID
+-d：解密文件
+##现在/data目录下已经有了这个文件，因为-a所以能看到内容不再是乱码
+    再把公钥拷贝的对应的机器上去scp xiaohupubkey 192.168.152.136:/data
+
+##在centos7新建一个公钥
+
+[root@centos7 .gnupg]# gpg --import /data/xiaohupubkey ##导入刚刚centos6传入的公钥
+##然后/root/.gnupg/pubring.gpg文件会变大
+[root@centos7 data]# gpg -e -r xiaohu passwd    ##使用centos6传入过来的秘钥进行加密，文件名passwd
+[root@centos7 data]# scp passwd.gpg 192.168.152.131:/data  ##将加密好的文件传入centos6
+[root@centos6 data]# gpg -o passwd.log -d passwd.gpg  ##-d解密文件passwd.gpg,-o输出到passwd.log
+gpg: encrypted with 2048-bit RSA key, ID 9817AA4F, created 2019-06-29
+      &quot;xiaohu&quot;
+实验结束
+
+删除密钥呢 (如果要删除公钥前要删除私钥)
+（1）删除私钥
+[root@centos6~]#gpg --delete-secret-keys centos6
+（2）删除公钥
+[root@centos6~]#gpg --delete-keys centos6
+</code></pre><h2 id="CA和证书"><a href="#CA和证书" class="headerlink" title="CA和证书"></a>CA和证书</h2><p><font color="#0d33ff"><i class="fa fa-lightbulb-o fa-2x"></i></font>PKI: Public Key Infrastructure<br>签证机构：CA（Certificate Authority）<br>注册机构：RA<br>证书吊销列表：CRL<br>证书存取库：</p>
+<p><font color="#0d33ff"><i class="fa fa-lightbulb-o fa-2x"></i></font>X.509：定义了证书的结构以及认证协议标准<br>版本号        主体公钥<br>序列号        CRL分发点<br>签名算法        扩展信息<br>颁发者        发行者签名<br>有效期限<br>主体名称    </p>
+<h2 id="openssl命令"><a href="#openssl命令" class="headerlink" title="openssl命令"></a>openssl命令</h2><p><font color="#0d33ff"><i class="fa fa-lightbulb-o fa-2x"></i></font>对称加密：<br>工具：openssl enc, gpg<br>算法：3des, aes, blowfish, twofish</p>
+<p><font color="#0d33ff"><i class="fa fa-lightbulb-o fa-2x"></i></font>enc命令：<br>帮助：man enc</p>
+<pre><code>enc:表示加密编码
+-e:进行加密操作，默认操作。
+-des3:加密算法
+-in:指定输入的密钥文件
+-out:指定提取生成公钥的文件(PEM公钥格式)
+-d:允许解密文件
+[root@centos7 data]# openssl enc -e -des3 -in passwd -out passwd.enc ##加密
+[root@centos7 data]# openssl enc -d -des3 -in passwd.enc -out passwd.jie ##解密
+</code></pre><h2 id="openssl命令-1"><a href="#openssl命令-1" class="headerlink" title="openssl命令"></a>openssl命令</h2><p><font color="#0d33ff"><i class="fa fa-file-archive-o fa-2x"></i></font>单向加密：<br>工具：md5sum, sha1sum, sha224sum,sha256sum…<br>openssl dgst<br>dgst命令：<br>帮助：man dgst<br>openssl dgst -md5 [-hex默认] /PATH/SOMEFILE<br>openssl dgst -md5 testfile<br>md5sum /PATH/TO/SOMEFILE</p>
+<p><font color="#0d33ff"><i class="fa fa-file-archive-o fa-2x"></i></font>MAC: Message Authentication Code，单向加密的一种延伸应用，用于实现网络通信中保证所传输数据的完整性机制<br>CBC-MAC<br>HMAC：使用md5或sha1算法</p>
+<pre><code>[root@centos6 data]# openssl dgst -sha512 passwd
+SHA512(passwd)= d9a43b2f911b81b10530a6bc25342d18a9df22a2cd2d69a3b93f10253302244f33dbaa7c336ba7cf5e4acf92c2ff44311ec1f4b2c7dd9081cf78909b7fb08a42
+[root@centos6 data]# openssl dgst -md5 passwd
+MD5(passwd)= 30dda824d8888aa640e1af6ba32c5c83
+[root@centos6 data]# md5sum passwd        虽然工具不一样，但是算法是一样的，所以结果也是一样的
+30dda824d8888aa640e1af6ba32c5c83  passwd
+</code></pre><h2 id="openssl命令-2"><a href="#openssl命令-2" class="headerlink" title="openssl命令"></a>openssl命令</h2><p><font color="#0d33ff"><i class="fa fa-file-text-o fa-2x"></i></font>生成用户密码：passwd命令:<br>帮助：man sslpasswd<br>openssl passwd -1 -salt SALT(最多8位) <font color="red"><br>-1表示使用md5加密</font><br>openssl passwd -1 –salt centos</p>
+<p><font color="#0d33ff"><i class="fa fa-file-text-o fa-2x"></i></font>生成随机数：<br>帮助：man sslrand<br>openssl rand -base64|-hex NUM<br>NUM: 表示字节数，使用-hex，每个字符为十六进制，相当于4位二进制，出现的字符数为NUM*2</p>
+<pre><code>##这里password:都是123456，但是来两次生成的密码都不一样，是因为他们本身使用了salt的功能；
+slat的作用就是虽然使用的密码一样的，但是最后生成的加密数是不一样的。但是我们可以指定salt，然后
+使用的密码是一样的，那么最后生成的密码文件也就是一样的了。
+[root@centos7 ~]# openssl passwd -1
+Password: 
+Verifying - Password: 
+$1$ZKfj9UF6$ObtWhvipf.ihRCt9bEXjl/
+[root@centos7 ~]# openssl passwd -1
+Password: 
+Verifying - Password: 
+$1$HS7Kkw4e$kyDAv.6jFtFIDesOAs4Ts/
+[root@centos7 ~]# openssl passwd -1 -salt &quot;ZKfj9UF6&quot;  ##指定salt
+Password: 
+$1$ZKfj9UF6$ObtWhvipf.ihRCt9bEXjl/
+
+[root@centos7 ~]# openssl rand -base64 3   
+ehix
+[root@centos7 ~]# openssl rand -base64 4
+9eMocw==
+##rand 生成随机数，使用base64编码，3表示3个字节，一个字节8位，24能被6整除，所以不会有等号
+[root@centos7 ~]# openssl rand -hex 6
+91b2b352a083
+##6个字节，8个二进制是一个字节，48个二进制。一个16进制是4个二进制，48/4=12个
+</code></pre><h2 id="openssl命令-3"><a href="#openssl命令-3" class="headerlink" title="openssl命令"></a>openssl命令</h2><p>生成密钥对儿：man genrsa</p>
+<p><font color="#0d33ff"><i class="fa fa-file-text-o fa-2x"></i></font>生成私钥<br>openssl genrsa -out /PATH/TO/PRIVATEKEY.FILE NUM_BITS<br>(umask 077; openssl genrsa –out test.key –des 2048)<br>openssl rsa -in test.key –out test2.key 将加密key解密</p>
+<p><font color="#0d33ff"><i class="fa fa-file-text-o fa-2x"></i></font>从私钥中提取出公钥<br><code>openssl rsa -in PRIVATEKEYFILE –pubout –out PUBLICKEYFILE</code><br><code>openssl rsa –in test.key –pubout –out test.key.pub</code></p>
+<p><font color="#0d33ff"><i class="fa fa-file-text-o fa-2x"></i></font>随机数生成器：伪随机数字键盘和鼠标，块设备中断<br>/dev/random：仅从熵池返回随机数；随机数用尽，阻塞<br>/dev/urandom：从熵池返回随机数；随机数用尽，会利用软件生成伪随机数,非阻塞<br><code>tr -dc &#39;a-zA-Z0-9&#39; /dev/random</code><br>-d:删除指定字符<br>-c:取反</p>
+<pre><code>[root@centos7 ssl]# (umask 066;openssl genrsa -out test.key 1024)  ##生成一个测试文件未加密
+Generating RSA private key, 1024 bit long modulus
+.......................++++++
+...................++++++
+e is 65537 (0x10001)
+[root@centos7 ssl]# ls
+test.key
+[root@centos7 ssl]# cat test.key 
+-----BEGIN RSA PRIVATE KEY-----
+MIICXAIBAAKBgQDGOXck947r8qCj/QDJgSYTqiE1v4R35ZhomqnmUObG40ZblUIB
+5wNJ+CjvdQkLlgl2pzzV15juUB8B/pQ1x5GLWvX57risicZ6osb0VeMGYYRt5BN+
+2RWPDbweMTQOfrd+wyBiuV436C3q5N81uosrLuqaT+5MdU70fS5t7lauZQIDAQAB
+AoGBAIzJddDgrzbvzZ6LbIqx2qxu0kWNb/WEMXpiFzfI0BAEjg0v9oDJZfGcet6Q
+PktnVfNbFn8/MJRafZt6CCQmSTzyHhu713xWB3MgqMfM4NnCSqmCtQd4S9iinCEy
+bflxO1hZvRHvHKVP4qYCqwNiDCbJVylYBXIP5CSHvaub5F5BAkEA+qEiKn/ZSMXe
+NusmmXXHppIHIlGEa1+jOEugWL3c+AWEfcBeRm+gltl5TH4D+2AdawzGnE462irv
+MdFM53im8QJBAMp420DvQ6D8g0aK+GZmiCFKaRpvDnfVhJ8lghU0y7wBkVm7qwr8
+3cR2l7lGISMQXTOmjM7Zu+DmNh9WLkoPBrUCQHrEDx5OPbrd4Xl5OhEVllRLV19C
+GuEVmbfro4GUjvaWjU2juwo5h6ocoMQNPhoV/JMBURAjacSQH1aBtW/0s6ECQD7y
+ef/jIxxuxQVueTGk2Ne4wZplQpNA/51W1O1w35JQznaeYNvmp6/Hyv3f7rdvA/rl
+4csBaGbQS61MZtHBgC0CQDavpFNYXIIJYvA2eZrgX93OlaBUp09+rTpfotTNy1Mv
+aWTd8RNaKXCNRW2rCYf1rqIss0nN6CHN+iN7p7K8jxM=
+-----END RSA PRIVATE KEY-----
+[root@centos7 ssl]# ll test.key 
+-rw------- 1 root root 887 Sep  9 20:00 test.key
+
+[root@centos7 ssl]# (umask 066;openssl genrsa -out ceshi.key -des3 1024)  ##生成测试文件并加密
+Generating RSA private key, 1024 bit long modulus
+.....................................++++++
+................................................++++++
+e is 65537 (0x10001)
+Enter pass phrase for ceshi.key:
+Verifying - Enter pass phrase for ceshi.key:
+[root@centos7 ssl]# cat ceshi.key 
+-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: DES-EDE3-CBC,160DA8EF125E7456
+
+xAaXoC6o7yoa3lPPd4YjvRgt0xygDJtHjjMZ4L/XLuW5V9eh/tX+Geju9pL2HHz6
+DRhhzpdaR60nfEIMEIdhWKe6Vmba5nID1tZluicJiZsnnlWj4wA9v1nau3jtOPJH
+cbdRRAr1bSR1tgfhixdoWxZ76kO+3vSqBy1onYwjamBuaVuqsvbSx2BiXS3+kVbw
+ohxzfBaBo9rXz+eq7sflDFA76n+oN/0dyFsIlVlMwQukahFI4trEpT3tpcbPq4PC
+ggCWRP9qtuyO399/9m2DIorjnPmTD+2V2m6X5hvbDWxzbauMI+oIaaUMhRlVso/h
+ytqNBp+Y16k00vl5HDAqN47zidhOYSAJuCdJc5v8nRo20odMk5a57cbhIMW46yGl
+wjUsmdN6U3v0ylQPk7YT568Vdzr9WP289Z36frhzj49EGRJ+D9+bDrgvbmheygwo
+xlqochRx3+qvYpwy/6Wq/8t3mPhX+I242oqVtXW3gpkUFD+NyeQ8SH/Xs9JfdXj2
+58Kf8flX8+Cu6r4RzerClphfOCr/KhbRemJbzgCUD6eHaaCGfjsHUsS/zmWK4V4N
+lFfQv/yCAJtRzQv92FTv3gLWeLji+iEyeMk6tCEAdIhl77LDpFxDlSVdfG36PW8M
+nVK3jL8wDz8xVYmmMef4kEJwLb4T4qlsEjdbZVHBWN8yNZaagiEDDfi9qhZjXUQU
+SLLuC/ES1Q5bY8mG/eBknK3LXiRC1RjMl+EsRfDrhIOCio+XZWU4++L1KszXYcNI
+tn70FsBKL6KzINCK9aCuM7AW7hgMEsOZEmqXiwV5VV+g+atLk3CZwg==
+-----END RSA PRIVATE KEY-----
+
+[root@centos7 ssl]# openssl rsa -in ceshi.key -out ceshi2.key       ##解密
+Enter pass phrase for ceshi.key:
+writing RSA key
+[root@centos7 ssl]# cat ceshi2.key 
+-----BEGIN RSA PRIVATE KEY-----
+MIICXQIBAAKBgQC3M6yoLiFfU8wdJSKxE2eVxY9lRlT7Gk0TdYlHMxE34ihAxMUo
+wB0wNvbffidKfGCQucd0ThmzlsYHEIiV69Fo/FLgwJ4QfpF2n/u+XiX9LI/WmLfZ
+cb4gJZvqC1pGf8GtWjDJ9hO70D530LWYoX417dV/pfwpIsbAzcTbCVNwOQIDAQAB
+AoGAJwvMcMvkMP0bM9sGWddY7IL+3QbwddRVOSCD8bjgopiBG8zUeKr5jZ0pYNjy
+Zt27dx0hdZhvwecQrdDIS6vHJcy72Bw9YZ7EZ/ZLkl5+yrgZ7eI8+V8gieNjgFsA
+yWZgsCGUtgg8OVUgDMnAyHp5rt2ulKBIH9YLMvjypv8pKEECQQDh9GFwmQul7PVw
+AR1hjLuMJx8BER1/IH0nNDDsAz76LSh3ZqMqzKwn1Rn+tbyO6zaR3AvwEK2dLSrT
+54oFhTs7AkEAz4/3ZL02xJd6ijuR2M1I1NBqPy/CLWAvF2Do8r8MqzkzncoDExSY
+SKSQ9Tuj22e4QoJagz+kBdZqNP8KT3WDGwJAJpcvYSSyaZdL3+JA211G1swDrpH2
+wLSSy3RNerGfOuklhScBbRjhujfaJbdySdKAUm8LlueyTyrcqq5b00+K6wJBAIBk
+8ggi86oQegDgcIvIEPF0KwUDKf6frQGtNOxUOiYAsGk++T/oUXs+MV1Bk065jkW2
+FP9zcqcZx4EY8uvMKVkCQQCPCy7Z5bopAoBmi57YmEGkwJVGSZbzeKhmvpeOYsWL
+5BWZzFRx0w9myQeFUnFQtDQ+12mb896fA8qYXym/7pMr
+-----END RSA PRIVATE KEY-----
+[root@centos7 ssl]# cat cehshijie.key     ##刚才生成的都是私钥，现在提取公钥
+-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC3M6yoLiFfU8wdJSKxE2eVxY9l
+RlT7Gk0TdYlHMxE34ihAxMUowB0wNvbffidKfGCQucd0ThmzlsYHEIiV69Fo/FLg
+wJ4QfpF2n/u+XiX9LI/WmLfZcb4gJZvqC1pGf8GtWjDJ9hO70D530LWYoX417dV/
+pfwpIsbAzcTbCVNwOQIDAQAB
+-----END PUBLIC KEY-----
 </code></pre><p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
 <p><script>hljs.initHighlightingOnLoad();</script></p>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
@@ -842,7 +1071,7 @@ passwd.gpg   这个文件现在查看已经是乱码了
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对称加密算法"><span class="nav-number">1.</span> <span class="nav-text">对称加密算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密算法"><span class="nav-number">2.</span> <span class="nav-text">非对称加密算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#非对称加密"><span class="nav-number">2.1.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非对称加密-1"><span class="nav-number">2.2.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单向散列"><span class="nav-number">2.3.</span> <span class="nav-text">单向散列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用程序：RPM"><span class="nav-number">2.4.</span> <span class="nav-text">应用程序：RPM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密钥交换"><span class="nav-number">2.5.</span> <span class="nav-text">密钥交换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用gpg实现对称加密"><span class="nav-number">2.6.</span> <span class="nav-text">使用gpg实现对称加密</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对称加密算法"><span class="nav-number">1.</span> <span class="nav-text">对称加密算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密算法"><span class="nav-number">2.</span> <span class="nav-text">非对称加密算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#非对称加密"><span class="nav-number">2.1.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非对称加密-1"><span class="nav-number">2.2.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单向散列"><span class="nav-number">2.3.</span> <span class="nav-text">单向散列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用程序：RPM"><span class="nav-number">2.4.</span> <span class="nav-text">应用程序：RPM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密钥交换"><span class="nav-number">2.5.</span> <span class="nav-text">密钥交换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用gpg实现对称加密"><span class="nav-number">2.6.</span> <span class="nav-text">使用gpg实现对称加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验-两台主机加密文件并解密"><span class="nav-number">2.7.</span> <span class="nav-text">实验:两台主机加密文件并解密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CA和证书"><span class="nav-number">2.8.</span> <span class="nav-text">CA和证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openssl命令"><span class="nav-number">2.9.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openssl命令-1"><span class="nav-number">2.10.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openssl命令-2"><span class="nav-number">2.11.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openssl命令-3"><span class="nav-number">2.12.</span> <span class="nav-text">openssl命令</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -891,7 +1120,7 @@ passwd.gpg   这个文件现在查看已经是乱码了
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共79.8k字</span>
+  <span class="post-count">博客全站共81.8k字</span>
 </div>
 
 <div id="days"></div>
