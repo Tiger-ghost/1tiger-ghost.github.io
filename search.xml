@@ -136,4 +136,9 @@
     <url>%2Fabout%2Findex.html</url>
     <content type="text"><![CDATA[blog 本博客从2018年7月左右开始搭建,博客所有搭建过程及修改均来自于互联网。本站使用基于 Node.js 的 Hexo 博客框架，托管于 Github,由 腾讯云 提供 DNS 解析服务 me逝者如斯夫 不舍昼夜 19年毕业(单身的老男人)，专业是计算机网络。现在正在一边工作，一边学习linux。 爱好:网易云音乐，写博客，改博客，美剧，动漫，switch You 互助，朋友留下邮箱]]></content>
   </entry>
+  <entry>
+    <title></title>
+    <url>%2FREADME.html</url>
+    <content type="text"><![CDATA[sourc]]></content>
+  </entry>
 </search>
