@@ -159,7 +159,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:site_name" content="Tiger-ghost">
 <meta property="og:description" content="linux 安全">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-09T06:11:32.867Z">
+<meta property="og:updated_time" content="2019-09-13T13:00:54.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Five">
 <meta name="twitter:description" content="linux 安全">
@@ -445,7 +445,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-09 14:11:32" itemprop="dateModified" datetime="2019-09-09T14:11:32+08:00">2019-09-09</time>
+                <time title="Modified: 2019-09-13 21:00:54" itemprop="dateModified" datetime="2019-09-13T21:00:54+08:00">2019-09-13</time>
               
             
           </span>
@@ -519,9 +519,9 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
         <p><center><font face="FZShuTi">linux 安全</font></center><br><a id="more"></a></p>
 <h1 id="对称加密算法"><a href="#对称加密算法" class="headerlink" title="对称加密算法"></a>对称加密算法</h1><p>对称加密：加密和解密使用同一个密钥<br>DES：Data Encryption Standard，56bits 3DES：<br>AES：Advanced (128, 192, 256bits)<br>Blowfish，Twofish<br>IDEA，RC6，CAST5<br>特性：<br>1、加密、解密使用同一个密钥，效率高<br>2、将原始数据分割成固定大小的块，逐个进行加密<br>缺陷：<br>1、密钥过多<br>2、密钥分发<br>3、数据来源无法确认</p>
 <h1 id="非对称加密算法"><a href="#非对称加密算法" class="headerlink" title="非对称加密算法"></a>非对称加密算法</h1><p>公钥加密：密钥是成对出现<br>公钥：公开给所有人；public key<br>私钥：自己留存，必须保证其私密性；secret key<br>特点：用公钥加密数据，只能使用与之配对的私钥解密；反之亦然<br>功能：<br>数字签名：主要在于让接收方确认发送方身份<br>对称密钥交换：发送方用对方的公钥加密一个对称密钥后发送给对方<br>数据加密：适合加密较小数据<br>缺点：密钥长，加密解密效率低下<br>算法：<br>RSA（加密，数字签名）<br>DSA（数字签名）<br>ELGamal</p>
-<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><p>基于一对公钥/密钥对<br>用密钥对中的一个加密，另一个解密<br>实现加密：<br>接收者<br>生成公钥/密钥对：P和S<br>公开公钥P，保密密钥S<br>发送者<br>使用接收者的公钥来加密消息M将P(M)发送给接收者<br>接收者<br>使用密钥S来解密：M=S(P(M))</p>
-<h2 id="非对称加密-1"><a href="#非对称加密-1" class="headerlink" title="非对称加密"></a>非对称加密</h2><p>实现数字签名：<br>发送者<br>生成公钥/密钥对：P和S<br>公开公钥P，保密密钥S<br>使用密钥S来加密消息M<br>发送给接收者S(M)<br>接收者<br>使用发送者的公钥来解密M=P(S(M))<br>结合签名和加密<br>分离签名</p>
-<h2 id="单向散列"><a href="#单向散列" class="headerlink" title="单向散列"></a>单向散列</h2><p>固定长度输出<br>若修改数据，指纹也会改变（“不会产生冲突”）<br>无法从指纹中重新生成数据（“单向”）<br>功能：数据完整性<br>常见算法<br>md5: 128bits、sha1: 160bits、sha224 、sha256、sha384、sha512<br>常用工具<br>md5sum | sha1sum [ –check ] file<br>openssl、gpg<br>rpm -V</p>
+<h1 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h1><p>基于一对公钥/密钥对<br>用密钥对中的一个加密，另一个解密<br>实现加密：<br>接收者<br>生成公钥/密钥对：P和S<br>公开公钥P，保密密钥S<br>发送者<br>使用接收者的公钥来加密消息M将P(M)发送给接收者<br>接收者<br>使用密钥S来解密：M=S(P(M))</p>
+<h1 id="非对称加密-1"><a href="#非对称加密-1" class="headerlink" title="非对称加密"></a>非对称加密</h1><p>实现数字签名：<br>发送者<br>生成公钥/密钥对：P和S<br>公开公钥P，保密密钥S<br>使用密钥S来加密消息M<br>发送给接收者S(M)<br>接收者<br>使用发送者的公钥来解密M=P(S(M))<br>结合签名和加密<br>分离签名</p>
+<h1 id="单向散列"><a href="#单向散列" class="headerlink" title="单向散列"></a>单向散列</h1><p>固定长度输出<br>若修改数据，指纹也会改变（“不会产生冲突”）<br>无法从指纹中重新生成数据（“单向”）<br>功能：数据完整性<br>常见算法<br>md5: 128bits、sha1: 160bits、sha224 、sha256、sha384、sha512<br>常用工具<br>md5sum | sha1sum [ –check ] file<br>openssl、gpg<br>rpm -V</p>
 <pre><code>        下载文件后与网络上的sha256值进行比对，是否属于同一文件
 [root@centos7 ssh]# sha256sum /dev/sr0
 506e4e06abf778c3435b4e5745df13e79ebfc86565d7ea1e128067ef6b5a6345  /dev/sr0
@@ -535,7 +535,7 @@ md5sum: WARNING: 1 computed checksum did NOT match
 [root@centos7 ~]# md5sum -c md5.log 
 a.txt: OK
 f1.txt: OK
-</code></pre><h2 id="应用程序：RPM"><a href="#应用程序：RPM" class="headerlink" title="应用程序：RPM"></a>应用程序：RPM</h2><p>文件完整性的两种实施方式<br>被安装的文件<br>MD5单向散列<br>rpm –verify  package_name (or -V)<br>发行的软件包文件<br>GPG公钥签名<br>rpm –import /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat*<br>rpm –checksig pakage_file_name (or -K)</p>
+</code></pre><h1 id="应用程序：RPM"><a href="#应用程序：RPM" class="headerlink" title="应用程序：RPM"></a>应用程序：RPM</h1><p>文件完整性的两种实施方式<br>被安装的文件<br>MD5单向散列<br>rpm –verify  package_name (or -V)<br>发行的软件包文件<br>GPG公钥签名<br>rpm –import /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat*<br>rpm –checksig pakage_file_name (or -K)</p>
 <pre><code>        导入公钥签名(磁盘里面也有)
 [root@centos7 data]# rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 [root@centos7 data]# rpm -K tree-1.6.0-10.el7.x86_64.rpm  检查tree包  
@@ -543,8 +543,8 @@ tree-1.6.0-10.el7.x86_64.rpm: rsa sha1 (md5) pgp md5 OK
 [root@centos7 data]# echo &gt;&gt; tree-1.6.0-10.el7.x86_64.rpm tree包增加一个回车
 [root@centos7 data]# rpm -K tree-1.6.0-10.el7.x86_64.rpm 
 tree-1.6.0-10.el7.x86_64.rpm: rsa sha1 (MD5) PGP MD5 NOT OK  检查出错
-</code></pre><h2 id="密钥交换"><a href="#密钥交换" class="headerlink" title="密钥交换"></a>密钥交换</h2><p>密钥交换：IKE（ Internet Key Exchange ）<br>公钥加密：<br>DH (Deffie-Hellman)：生成会话密钥，由惠特菲尔德·迪菲（Bailey Whitfield Diffie）和马丁·赫尔曼（Martin Edward Hellman）在1976年发表<br>参看：<a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange</a><br>DH：<br>A: g,p 协商生成公开的整数g, 大素数p<br>B: g,p<br>A:生成隐私数据 :a (a &lt; p)，计算得出 g^a%p，发送给B<br>B:生成隐私数据 :b,计算得出 g^b%p，发送给A<br>A:计算得出 [(g^b%p)^a] %p = g^ab%p，生成为密钥<br>B:计算得出 [(g^a%p)^b] %p = g^ab%p，生成为密钥</p>
-<h2 id="使用gpg实现对称加密"><a href="#使用gpg实现对称加密" class="headerlink" title="使用gpg实现对称加密"></a>使用gpg实现对称加密</h2><p>对称加密file文件 gpg -c file ls file.gpg<br>在另一台主机上解密file gpg -o file -d file.gpg</p>
+</code></pre><h1 id="密钥交换"><a href="#密钥交换" class="headerlink" title="密钥交换"></a>密钥交换</h1><p>密钥交换：IKE（ Internet Key Exchange ）<br>公钥加密：<br>DH (Deffie-Hellman)：生成会话密钥，由惠特菲尔德·迪菲（Bailey Whitfield Diffie）和马丁·赫尔曼（Martin Edward Hellman）在1976年发表<br>参看：<a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange</a><br>DH：<br>A: g,p 协商生成公开的整数g, 大素数p<br>B: g,p<br>A:生成隐私数据 :a (a &lt; p)，计算得出 g^a%p，发送给B<br>B:生成隐私数据 :b,计算得出 g^b%p，发送给A<br>A:计算得出 [(g^b%p)^a] %p = g^ab%p，生成为密钥<br>B:计算得出 [(g^a%p)^b] %p = g^ab%p，生成为密钥</p>
+<h1 id="使用gpg实现对称加密"><a href="#使用gpg实现对称加密" class="headerlink" title="使用gpg实现对称加密"></a>使用gpg实现对称加密</h1><p>对称加密file文件 gpg -c file ls file.gpg<br>在另一台主机上解密file gpg -o file -d file.gpg</p>
 <pre><code>[root@centos7 data]# gpg -c passwd        比如加密passwd然后输入密码
 [root@centos7 data]# ls            可以查看到有一个这样多出来的以.gpg的文件
 passwd.gpg   这个文件现在查看已经是乱码了
@@ -653,9 +653,9 @@ gpg: encrypted with 2048-bit RSA key, ID 9817AA4F, created 2019-06-29
 [root@centos6~]#gpg --delete-secret-keys centos6
 （2）删除公钥
 [root@centos6~]#gpg --delete-keys centos6
-</code></pre><h2 id="CA和证书"><a href="#CA和证书" class="headerlink" title="CA和证书"></a>CA和证书</h2><p><font color="#0d33ff"><i class="fa fa-lightbulb-o fa-2x"></i></font>PKI: Public Key Infrastructure<br>签证机构：CA（Certificate Authority）<br>注册机构：RA<br>证书吊销列表：CRL<br>证书存取库：</p>
+</code></pre><h1 id="CA和证书"><a href="#CA和证书" class="headerlink" title="CA和证书"></a>CA和证书</h1><p><font color="#0d33ff"><i class="fa fa-lightbulb-o fa-2x"></i></font>PKI: Public Key Infrastructure<br>签证机构：CA（Certificate Authority）<br>注册机构：RA<br>证书吊销列表：CRL<br>证书存取库：</p>
 <p><font color="#0d33ff"><i class="fa fa-lightbulb-o fa-2x"></i></font>X.509：定义了证书的结构以及认证协议标准<br>版本号        主体公钥<br>序列号        CRL分发点<br>签名算法        扩展信息<br>颁发者        发行者签名<br>有效期限<br>主体名称    </p>
-<h2 id="openssl命令"><a href="#openssl命令" class="headerlink" title="openssl命令"></a>openssl命令</h2><p><font color="#0d33ff"><i class="fa fa-lightbulb-o fa-2x"></i></font>对称加密：<br>工具：openssl enc, gpg<br>算法：3des, aes, blowfish, twofish</p>
+<h1 id="openssl命令"><a href="#openssl命令" class="headerlink" title="openssl命令"></a>openssl命令</h1><p><font color="#0d33ff"><i class="fa fa-lightbulb-o fa-2x"></i></font>对称加密：<br>工具：openssl enc, gpg<br>算法：3des, aes, blowfish, twofish</p>
 <p><font color="#0d33ff"><i class="fa fa-lightbulb-o fa-2x"></i></font>enc命令：<br>帮助：man enc</p>
 <pre><code>enc:表示加密编码
 -e:进行加密操作，默认操作。
@@ -665,7 +665,7 @@ gpg: encrypted with 2048-bit RSA key, ID 9817AA4F, created 2019-06-29
 -d:允许解密文件
 [root@centos7 data]# openssl enc -e -des3 -in passwd -out passwd.enc ##加密
 [root@centos7 data]# openssl enc -d -des3 -in passwd.enc -out passwd.jie ##解密
-</code></pre><h2 id="openssl命令-1"><a href="#openssl命令-1" class="headerlink" title="openssl命令"></a>openssl命令</h2><p><font color="#0d33ff"><i class="fa fa-file-archive-o fa-2x"></i></font>单向加密：<br>工具：md5sum, sha1sum, sha224sum,sha256sum…<br>openssl dgst<br>dgst命令：<br>帮助：man dgst<br>openssl dgst -md5 [-hex默认] /PATH/SOMEFILE<br>openssl dgst -md5 testfile<br>md5sum /PATH/TO/SOMEFILE</p>
+</code></pre><h1 id="openssl命令-1"><a href="#openssl命令-1" class="headerlink" title="openssl命令"></a>openssl命令</h1><p><font color="#0d33ff"><i class="fa fa-file-archive-o fa-2x"></i></font>单向加密：<br>工具：md5sum, sha1sum, sha224sum,sha256sum…<br>openssl dgst<br>dgst命令：<br>帮助：man dgst<br>openssl dgst -md5 [-hex默认] /PATH/SOMEFILE<br>openssl dgst -md5 testfile<br>md5sum /PATH/TO/SOMEFILE</p>
 <p><font color="#0d33ff"><i class="fa fa-file-archive-o fa-2x"></i></font>MAC: Message Authentication Code，单向加密的一种延伸应用，用于实现网络通信中保证所传输数据的完整性机制<br>CBC-MAC<br>HMAC：使用md5或sha1算法</p>
 <pre><code>[root@centos6 data]# openssl dgst -sha512 passwd
 SHA512(passwd)= d9a43b2f911b81b10530a6bc25342d18a9df22a2cd2d69a3b93f10253302244f33dbaa7c336ba7cf5e4acf92c2ff44311ec1f4b2c7dd9081cf78909b7fb08a42
@@ -673,7 +673,7 @@ SHA512(passwd)= d9a43b2f911b81b10530a6bc25342d18a9df22a2cd2d69a3b93f10253302244f
 MD5(passwd)= 30dda824d8888aa640e1af6ba32c5c83
 [root@centos6 data]# md5sum passwd        虽然工具不一样，但是算法是一样的，所以结果也是一样的
 30dda824d8888aa640e1af6ba32c5c83  passwd
-</code></pre><h2 id="openssl命令-2"><a href="#openssl命令-2" class="headerlink" title="openssl命令"></a>openssl命令</h2><p><font color="#0d33ff"><i class="fa fa-file-text-o fa-2x"></i></font>生成用户密码：passwd命令:<br>帮助：man sslpasswd<br>openssl passwd -1 -salt SALT(最多8位) <font color="red"><br>-1表示使用md5加密</font><br>openssl passwd -1 –salt centos</p>
+</code></pre><h1 id="openssl命令-2"><a href="#openssl命令-2" class="headerlink" title="openssl命令"></a>openssl命令</h1><p><font color="#0d33ff"><i class="fa fa-file-text-o fa-2x"></i></font>生成用户密码：passwd命令:<br>帮助：man sslpasswd<br>openssl passwd -1 -salt SALT(最多8位) <font color="red"><br>-1表示使用md5加密</font><br>openssl passwd -1 –salt centos</p>
 <p><font color="#0d33ff"><i class="fa fa-file-text-o fa-2x"></i></font>生成随机数：<br>帮助：man sslrand<br>openssl rand -base64|-hex NUM<br>NUM: 表示字节数，使用-hex，每个字符为十六进制，相当于4位二进制，出现的字符数为NUM*2</p>
 <pre><code>##这里password:都是123456，但是来两次生成的密码都不一样，是因为他们本身使用了salt的功能；
 slat的作用就是虽然使用的密码一样的，但是最后生成的加密数是不一样的。但是我们可以指定salt，然后
@@ -698,7 +698,7 @@ ehix
 [root@centos7 ~]# openssl rand -hex 6
 91b2b352a083
 ##6个字节，8个二进制是一个字节，48个二进制。一个16进制是4个二进制，48/4=12个
-</code></pre><h2 id="openssl命令-3"><a href="#openssl命令-3" class="headerlink" title="openssl命令"></a>openssl命令</h2><p>生成密钥对儿：man genrsa</p>
+</code></pre><h1 id="openssl命令-3"><a href="#openssl命令-3" class="headerlink" title="openssl命令"></a>openssl命令</h1><p>生成密钥对儿：man genrsa</p>
 <p><font color="#0d33ff"><i class="fa fa-file-text-o fa-2x"></i></font>生成私钥<br>openssl genrsa -out /PATH/TO/PRIVATEKEY.FILE NUM_BITS<br>(umask 077; openssl genrsa –out test.key –des 2048)<br>openssl rsa -in test.key –out test2.key 将加密key解密</p>
 <p><font color="#0d33ff"><i class="fa fa-file-text-o fa-2x"></i></font>从私钥中提取出公钥<br><code>openssl rsa -in PRIVATEKEYFILE –pubout –out PUBLICKEYFILE</code><br><code>openssl rsa –in test.key –pubout –out test.key.pub</code></p>
 <p><font color="#0d33ff"><i class="fa fa-file-text-o fa-2x"></i></font>随机数生成器：伪随机数字键盘和鼠标，块设备中断<br>/dev/random：仅从熵池返回随机数；随机数用尽，阻塞<br>/dev/urandom：从熵池返回随机数；随机数用尽，会利用软件生成伪随机数,非阻塞<br><code>tr -dc &#39;a-zA-Z0-9&#39; /dev/random</code><br>-d:删除指定字符<br>-c:取反</p>
@@ -774,14 +774,232 @@ wLSSy3RNerGfOuklhScBbRjhujfaJbdySdKAUm8LlueyTyrcqq5b00+K6wJBAIBk
 FP9zcqcZx4EY8uvMKVkCQQCPCy7Z5bopAoBmi57YmEGkwJVGSZbzeKhmvpeOYsWL
 5BWZzFRx0w9myQeFUnFQtDQ+12mb896fA8qYXym/7pMr
 -----END RSA PRIVATE KEY-----
-[root@centos7 ssl]# cat cehshijie.key     ##刚才生成的都是私钥，现在提取公钥
+
+    ##刚才生成的都是私钥，现在从私钥中提取公钥
+[root@centos7 ssl]# openssl rsa -in ceshi2.key -pubout -out cehshijie.key
+writing RSA key
+[root@centos7 ssl]# cat cehshijie.key     
 -----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC3M6yoLiFfU8wdJSKxE2eVxY9l
 RlT7Gk0TdYlHMxE34ihAxMUowB0wNvbffidKfGCQucd0ThmzlsYHEIiV69Fo/FLg
 wJ4QfpF2n/u+XiX9LI/WmLfZcb4gJZvqC1pGf8GtWjDJ9hO70D530LWYoX417dV/
 pfwpIsbAzcTbCVNwOQIDAQAB
 -----END PUBLIC KEY-----
-</code></pre><p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
+</code></pre><h1 id="实验两台主机创建CA和申请证书"><a href="#实验两台主机创建CA和申请证书" class="headerlink" title="实验两台主机创建CA和申请证书"></a>实验两台主机创建CA和申请证书</h1><h2 id="1-建立私钥"><a href="#1-建立私钥" class="headerlink" title="1.建立私钥"></a>1.建立私钥</h2><div class="alert alert-warning">私钥文件必须是这个文件名cakey.pema。详细可查看此文件vim /etc/pki/tls/openssl.cnf </div>
+
+<pre><code>[root@centos7 CA]# (umask 077;openssl genrsa -out /etc/pki/CA/private/cakey.pem 2048)
+Generating RSA private key, 2048 bit long modulus
+........+++
+...........................................................................................................................................................................+++
+e is 65537 (0x10001)
+[root@centos7 CA]# tree 
+.
+├── certs
+├── crl
+├── newcerts
+└── private
+    └── cakey.pem
+
+4 directories, 1 file
+[root@centos7 private]# ll cakey.pem 
+-rw------- 1 root root 1675 Sep 11 12:14 cakey.pem  ##上面umask值是077，现在文件的权限时600，文件夹的权限是700
+</code></pre><h2 id="2-生成自签名证书"><a href="#2-生成自签名证书" class="headerlink" title="2.生成自签名证书"></a>2.生成自签名证书</h2><p>创建CA和申请证书<br>生成自签名证书<br><code>openssl req -new -x509 -key /etc/pki/CA/private/cakey.pem -days 3650 -out /etc/pki/CA/cacert.pem</code><br>选项说明：<br>req：申请<br>-new：生成新证书签署请求<br>-x509：专用于CA生成自签证书<br>-key：生成请求时用到的私钥文件<br>-days n：证书的有效期限<br>-out /PATH/TO/SOMECERTFILE: 证书的保存路径</p>
+<pre><code>[root@centos7 private]# openssl req -new -x509 -key /etc/pki/CA/private/cakey.pem -days 3650 -out /etc/pki/CA/cacert.pem
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter &#39;.&#39;, the field will be left blank.
+-----
+Country Name (2 letter code) [XX]:CN   ##这里是要输入必要的信息。国家  这里等会要匹配
+State or Province Name (full name) []:beijing   ##省(州)  这里等会要匹配
+Locality Name (eg, city) [Default City]:beijing   ##(城市)
+Organization Name (eg, company) [Default Company Ltd]:pan   ##公司名  这里等会要匹配
+Organizational Unit Name (eg, section) []:devops       ##组织
+Common Name (eg, your name or your server&#39;s hostname) []:ca.magedu.com   ##表示证书是给那个域名颁发的
+Email Address []:
+[root@centos7 private]# ls        ##现在这个文件已经建立好了，可以穿到windows上，后缀名改为crt，就可以看到证书
+cakey.pem
+
+</code></pre><h2 id="颁发证书"><a href="#颁发证书" class="headerlink" title="颁发证书"></a>颁发证书</h2><p><div class="alert alert-danger">在需要使用证书的主机生成证书请求</div>现在是centos6的机器生成以下文件</p>
+<p><font color="#4de680"><i class="fa fa-arrow-down fa-2x"></i></font>给web服务器生成私钥<br><code>(umask 066; openssl genrsa –out    /data/test.key 2048)</code></p>
+<p><font color="#4de680"><i class="fa fa-arrow-down fa-2x"></i></font>生成证书申请文件<br><code>openssl req -new -key /data/test.key -out /data/test.csr</code></p>
+<p><font color="#4de680"><i class="fa fa-arrow-down fa-2x"></i></font>将证书请求文件传输给CA</p>
+<p><font color="#4de680"><i class="fa fa-arrow-down fa-2x"></i></font>CA签署证书，并将证书颁发给请求者<br><code>openssl ca -in /tmp/test.csr –out    /etc/pki/CA/certs/test.crt -days 100</code><br>注意：默认要求 国家，省，公司名称三项必须和CA一致</p>
+<pre><code>[root@centos6 ssl]# (umask 066;openssl genrsa -out /data/ssl/app.key 1024)  ##首先新建私钥
+Generating RSA private key, 1024 bit long modulus
+..........++++++
+.++++++
+e is 65537 (0x10001)
+[root@centos6 ssl]# ll
+total 4
+-rw-------. 1 root root 891 Jul  6 10:05 app.key
+
+##生成证书申请文件，注意：默认要求 国家，省，公司名称三项必须和CA一致，详情看上文
+[root@centos6 ssl]# openssl req -new -key app.key -out app.csr         
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter &#39;.&#39;, the field will be left blank.
+-----
+Country Name (2 letter code) [XX]:CN
+State or Province Name (full name) []:beijing
+Locality Name (eg, city) [Default City]:beijing
+Organization Name (eg, company) [Default Company Ltd]:pan
+Organizational Unit Name (eg, section) []:devops    
+Common Name (eg, your name or your server&#39;s hostname) []:*.magedu.com
+Email Address []:
+
+Please enter the following &#39;extra&#39; attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+[root@centos6 ssl]# ll
+total 8
+-rw-r--r--. 1 root root 651 Jul  6 10:42 app.csr
+-rw-------. 1 root root 891 Jul  6 10:05 app.key
+
+##将证书请求文件传输给CA.
+##现将文件传给centos7
+[root@centos6 ssl]# scp app.csr 192.168.152.136:/etc/pki/CA
+root@192.168.152.136&#39;s password: 
+app.csr                                                                                   100%  651     0.6KB/s   00:00   
+##CA签署证书，并将证书颁发给请求者
+[root@centos7 CA]# openssl ca -in app.csr -out /etc/pki/CA/certs/app.crt -days 1000
+Using configuration from /etc/pki/tls/openssl.cnf
+/etc/pki/CA/index.txt: No such file or directory
+unable to open &#39;/etc/pki/CA/index.txt&#39;
+140161312225168:error:02001002:system library:fopen:No such file or directory:bss_file.c:402:fopen(&#39;/etc/pki/CA/index.txt&#39;,&#39;r&#39;)
+140161312225168:error:20074002:BIO routines:FILE_CTRL:system lib:bss_file.c:404:
+[root@centos7 CA]# touch index.txt
+[root@centos7 CA]# openssl ca -in app.csr -out /etc/pki/CA/certs/app.crt -days 1000
+Using configuration from /etc/pki/tls/openssl.cnf
+/etc/pki/CA/serial: No such file or directory
+error while loading serial number
+140378285651856:error:02001002:system library:fopen:No such file or directory:bss_file.c:402:fopen(&#39;/etc/pki/CA/serial&#39;,&#39;r&#39;)
+140378285651856:error:20074002:BIO routines:FILE_CTRL:system lib:bss_file.c:404:
+[root@centos7 CA]# 
+[root@centos7 CA]# echo 0f &gt; serial ##这里例是0f，实际用00开始
+[root@centos7 CA]# cat serial
+0f
+[root@centos7 CA]# openssl ca -in app.csr -out /etc/pki/CA/certs/app.crt -days 1000
+Using configuration from /etc/pki/tls/openssl.cnf
+Check that the request matches the signature
+Signature ok
+Certificate Details:
+        Serial Number: 15 (0xf)
+        Validity
+            Not Before: Sep 12 19:29:53 2019 GMT
+            Not After : Jun  8 19:29:53 2022 GMT
+        Subject:
+            countryName               = CN
+            stateOrProvinceName       = beijing
+            organizationName          = pan
+            organizationalUnitName    = devops
+            commonName                = *.magedu.com
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                FC:32:AE:BF:AA:E2:A6:20:CD:2D:7C:99:81:F4:49:70:22:47:F0:B0
+            X509v3 Authority Key Identifier: 
+                keyid:51:A7:DF:E0:DE:4E:95:4C:A6:54:45:E4:7A:FF:17:30:04:59:CD:E8
+
+Certificate is to be certified until Jun  8 19:29:53 2022 GMT (1000 days)
+Sign the certificate? [y/n]:y
+
+
+1 out of 1 certificate requests certified, commit? [y/n]y
+Write out database with 1 new entries
+Data Base Updated
+[root@centos7 CA]# ll certs/app.crt 
+-rw-r--r-- 1 root root 3702 Sep 13 03:31 certs/app.crt
+[root@centos7 CA]# tree
+.
+├── app.csr
+├── cacert.pem
+├── certs
+│   └── app.crt
+├── crl
+├── index.txt
+├── index.txt.attr
+├── index.txt.old
+├── newcerts
+│   └── 0F.pem
+├── private
+│   └── cakey.pem
+├── serial
+└── serial.old
+
+4 directories, 10 files
+
+##现在可以将文证书文件传给客户机使用
+[root@centos7 CA]# scp certs/app.crt 192.168.152.131:/data/ssl 
+root@192.168.152.131&#39;s password: 
+app.crt                               
+</code></pre><h2 id="创建CA和证书管理"><a href="#创建CA和证书管理" class="headerlink" title="创建CA和证书管理"></a>创建CA和证书管理</h2><p>查看证书中的信息：</p>
+<p><div class="alert alert-success">openssl x509 -in /PATH/FROM/CERT_FILE -noout -text|issuer|subject|serial|dates<br>openssl ca -status SERIAL 查看指定编号的证书状态</div></p>
+<pre><code>openssl x509 -in app.crt -noout -text ##查看证书状态
+[root@centos7 CA]# cat index.txt          ##存放证书信息的数据库。这里的V表示此证书现在是有效的，吊销是R
+V       220608192953Z           0F      unknown /C=CN/ST=beijing/O=pan/OU=devops/CN=*.magedu.com
+[root@centos7 CA]# cat serial        ##下一个证书的编号
+10
+[root@centos7 CA]# cat serial.old         ##之前证书版本的备份
+0f
+##如果刚才那三项也就是生成新的证书签署的时候那三项设置的不通，发送到centos7后进项的颁发证书就会报错
+，如果不想重新申请可以更改这个文件: vim /etc/pki/tls/openssl.cnf 
+policy          = policy_match ##如果这里改成anything那么就是填啥都行，下面的就不用更改了‘
+ 82 
+ 83 # For the CA policy
+ 84 [ policy_match ]
+ 85 countryName             = match
+ 86 stateOrProvinceName     = optional ##optional表示设置的可以不一样(可选的，随意的)
+ 87 organizationName        = match
+ 88 organizationalUnitName  = optional
+ 89 commonName              = supplied
+ 90 emailAddress            = optional
+ 91 
+             ##吊销证书(此前我又建立了一个证书)
+[root@centos7 CA]# openssl ca -revoke /etc/pki/CA/certs/app2.crt 
+Using configuration from /etc/pki/tls/openssl.cnf
+Revoking Certificate 10.
+Data Base Updated
+[root@centos7 CA]# cat index.txt
+V       220608192953Z           0F      unknown /C=CN/ST=beijing/O=pan/OU=devops/CN=*.magedu.com
+R       220608223259Z   190912223838Z   10      unknown /C=CN/ST=henan/L=zhengzhou/O=magedu/OU=ops/CN=www.magedu.org
+        ##更新证书吊销列表
+[root@centos7 CA]# openssl ca -gencrl -out /etc/pki/CA/crl.pem
+        ##验证某个用户的证书，用上级证书来验证他颁发证书的有效性
+openssl verify -CAfile cacert.pem certs/app.crt
+</code></pre><h1 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h1><p><div class="alert alert-success"><i class="fa fa-lightbulb-o"></i> SSH协议版本<br>v1: 基于CRC-32做MAC，不安全；man-in-middle<br>v2：双方主机协议选择安全的MAC方式<font color="red"><br><i class="fa fa-file-code-o"></i></font> 具体的软件实现：<br>OpenSSH: ssh协议的开源实现，CentOS默认安装dropbear：另一个开源实现<br>基于DH算法做密钥交换，基于RSA或DSA实现身份认证<br>两种方式的用户登录认证：基于password；基于key</div><strong>*</strong></p>
+<h1 id="Openssh软件组成"><a href="#Openssh软件组成" class="headerlink" title="Openssh软件组成"></a>Openssh软件组成</h1><p>OpenSSH介绍<br>相关包： openssh openssh-clients openssh-server<br>工具：<br>基于C/S结构<br>Client: ssh, scp, sftp，slogin<br>Windows客户端：<br>xshell, putty, securecrt, sshsecureshellclient Server: sshd</p>
+<pre><code>[root@centos6 data]# vim /etc/ssh/ssh_host_key.pub         ##删除他的前面的，和末尾的回车换行
+base64 -d ssh_host_rsa_key.pub &gt; pubkey            ##得到原始公钥文件
+[root@centos6 data]# md5sum pubkey             ##然后将它做哈希运算
+1280b0eef28fba5de9f63aa933afb6da  pubkey    ##得到的加密代码
+
+[root@centos7 ~]# rm -fr .ssh              ##重新建立ssh连接，通过MD5加密得到的与之进行匹配
+[root@centos7 ~]# ssh 192.168.152.131
+The authenticity of host &#39;192.168.152.131 (192.168.152.131)&#39; can&#39;t be established.
+RSA key fingerprint is SHA256:xFjNGR2DgxSIn5nh9YBemaOxXJyrlztd316Ry0b8+WY.
+RSA key fingerprint is MD5:12:80:b0:ee:f2:8f:ba:5d:e9:f6:3a:a9:33:af:b6:da.
+Are you sure you want to continue connecting (yes/no)? yes
+</code></pre><h1 id="ssh客户端"><a href="#ssh客户端" class="headerlink" title="ssh客户端"></a>ssh客户端</h1><p>客户端组件：<br>ssh, 配置文件：/etc/ssh/ssh_config Host PATTERN<br>StrictHostKeyChecking no 首次登录不显示检查提示<br>格式：ssh [user@]host [COMMAND]<br>ssh [-l user] host [COMMAND]<br>常见选项<br>-p port：远程服务器监听的端口<br>-b：指定连接的源IP<br>-v：调试模式<br>-C：压缩方式<br>-X：支持x11转发(图形界面)<br>-t：强制伪tty分配<br>ssh -t remoteserver1 ssh -t remoteserver2    ssh    remoteserver3<br><code>ssh -t 192.168.152.131 ssh 192.168.152.130</code></p>
+<p><div class="alert alert-info"><i class="fa fa-link"></i> ssh客户端允许实现对远程系统经验证地加密安全访问<br>当用户远程连接ssh服务器时，会复制ssh服务器/etc/ssh/ssh_host*key.pub（CentOS7默认是ssh_host_ecdsa_key.pub）文件中的公钥到客户机的<br>~./ssh/know_hosts中。下次连接时，会自动匹配相应私钥，不能匹配，将拒绝连接</div></p>
+<p><div class="alert alert-info"><i class="fa fa-link"></i> 基于用户和口令登录验证<br>1 客户端发起ssh请求，服务器会把自己的公钥发送给用户<br>2 用户会根据服务器发来的公钥对密码进行加密<br>3 加密后的信息回传给服务器，服务器用自己的私钥解密，如果密码正确，则用户登录成功</div>.</p>
+<h2 id="基于key认证"><a href="#基于key认证" class="headerlink" title="基于key认证"></a>基于key认证</h2><p><div class="alert alert-success">基于密钥的登录方式<br>1 首先在客户端生成一对密钥（ssh-keygen）<br>2 并将客户端的公钥ssh-copy-id 拷贝到服务端<br>3 当客户端再次发送一个连接请求，包括ip、用户名<br>4 服务端得到客户端的请求后，会到authorized_keys中查找，如果有响应的IP和用户，就会随机生成一个字符串，例如：magedu<br>5 服务端将使用客户端拷贝过来的公钥进行加密，然后发送给客户端<br>6 得到服务端发来的消息后，客户端会使用私钥进行解密，然后将解密后的字符串发送给服务端<br>7 服务端接受到客户端发来的字符串后，跟之前的字符串进行对比，如果一致，就允许免密码登录</div>.<br>ssh服务登录验证<br><code>ssh-keygen</code> 建立key<br><code>ssh-copy-id -i /root/.ssh/id_rsa 192.168.152.130</code> 将key文件发送到对应的文件上,这样就已经可以使用了<br>上面建立的私钥并没有设置口令。基于key认证重设私钥口令： <code>ssh-keygen –p</code><br>但是这样每次连接时都必须输入口令。为了方便我们可以设置一个代理程序<br>known_host保存曾经连过的对方主机的公钥</p>
+<pre><code>[root@centos7 ~]# ssh-agent bash
+[root@centos7 ~]# ssh-add            ##钥匙通过命令添加给代理
+Enter passphrase for /root/.ssh/id_rsa:         ##刚刚设置私钥的口令
+Identity added: /root/.ssh/id_rsa (/root/.ssh/id_rsa)
+ ##这样每次连接时就可以直接连接了。但是只能连接一次，退出后就会失效
+</code></pre><p><div class="alert alert-danger"><font color="#4de680"><i class="fa fa-key fa-2x"></i></font>使用crt生成公钥私钥连接主机<br>crt-tool-Key Generation Wizard 依次默认点击生成公钥和私钥文件(如果最后选择OpenSSH Key format就不需要下面的转换格式)<br>将公钥传到需要连接的主机上,将文件放置~/.ssh目录下<code>ssh-keygen -i -f Identity.pub &gt;&gt; authorized_keys</code> 转换Identity.pub文件的格式，然后追加到文件<br>在crt上连接主机在验证方式这里——Authentication——PublicKey——Propreies选择对应的私钥文件，就可以连上了</div>.</p>
+<p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
 <p><script>hljs.initHighlightingOnLoad();</script></p>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
       
@@ -1071,7 +1289,7 @@ pfwpIsbAzcTbCVNwOQIDAQAB
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对称加密算法"><span class="nav-number">1.</span> <span class="nav-text">对称加密算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密算法"><span class="nav-number">2.</span> <span class="nav-text">非对称加密算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#非对称加密"><span class="nav-number">2.1.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非对称加密-1"><span class="nav-number">2.2.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单向散列"><span class="nav-number">2.3.</span> <span class="nav-text">单向散列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用程序：RPM"><span class="nav-number">2.4.</span> <span class="nav-text">应用程序：RPM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密钥交换"><span class="nav-number">2.5.</span> <span class="nav-text">密钥交换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用gpg实现对称加密"><span class="nav-number">2.6.</span> <span class="nav-text">使用gpg实现对称加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验-两台主机加密文件并解密"><span class="nav-number">2.7.</span> <span class="nav-text">实验:两台主机加密文件并解密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CA和证书"><span class="nav-number">2.8.</span> <span class="nav-text">CA和证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openssl命令"><span class="nav-number">2.9.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openssl命令-1"><span class="nav-number">2.10.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openssl命令-2"><span class="nav-number">2.11.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openssl命令-3"><span class="nav-number">2.12.</span> <span class="nav-text">openssl命令</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对称加密算法"><span class="nav-number">1.</span> <span class="nav-text">对称加密算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密算法"><span class="nav-number">2.</span> <span class="nav-text">非对称加密算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密"><span class="nav-number">3.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密-1"><span class="nav-number">4.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单向散列"><span class="nav-number">5.</span> <span class="nav-text">单向散列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用程序：RPM"><span class="nav-number">6.</span> <span class="nav-text">应用程序：RPM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#密钥交换"><span class="nav-number">7.</span> <span class="nav-text">密钥交换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用gpg实现对称加密"><span class="nav-number">8.</span> <span class="nav-text">使用gpg实现对称加密</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验-两台主机加密文件并解密"><span class="nav-number">8.1.</span> <span class="nav-text">实验:两台主机加密文件并解密</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CA和证书"><span class="nav-number">9.</span> <span class="nav-text">CA和证书</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令"><span class="nav-number">10.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令-1"><span class="nav-number">11.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令-2"><span class="nav-number">12.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令-3"><span class="nav-number">13.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验两台主机创建CA和申请证书"><span class="nav-number">14.</span> <span class="nav-text">实验两台主机创建CA和申请证书</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-建立私钥"><span class="nav-number">14.1.</span> <span class="nav-text">1.建立私钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-生成自签名证书"><span class="nav-number">14.2.</span> <span class="nav-text">2.生成自签名证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#颁发证书"><span class="nav-number">14.3.</span> <span class="nav-text">颁发证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建CA和证书管理"><span class="nav-number">14.4.</span> <span class="nav-text">创建CA和证书管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH"><span class="nav-number">15.</span> <span class="nav-text">SSH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Openssh软件组成"><span class="nav-number">16.</span> <span class="nav-text">Openssh软件组成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh客户端"><span class="nav-number">17.</span> <span class="nav-text">ssh客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于key认证"><span class="nav-number">17.1.</span> <span class="nav-text">基于key认证</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1120,7 +1338,7 @@ pfwpIsbAzcTbCVNwOQIDAQAB
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共81.8k字</span>
+  <span class="post-count">博客全站共84.7k字</span>
 </div>
 
 <div id="days"></div>
