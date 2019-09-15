@@ -166,7 +166,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/25/ZZFJwF.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/07/19/ZvwVLF.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/07/15/ZoddHS.png">
-<meta property="og:updated_time" content="2019-08-28T08:37:29.052Z">
+<meta property="og:updated_time" content="2019-09-15T04:26:55.327Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Three">
 <meta name="twitter:description" content="脚本..">
@@ -453,7 +453,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-28 16:37:29" itemprop="dateModified" datetime="2019-08-28T16:37:29+08:00">2019-08-28</time>
+                <time title="Modified: 2019-09-15 12:26:55" itemprop="dateModified" datetime="2019-09-15T12:26:55+08:00">2019-09-15</time>
               
             
           </span>
@@ -1115,8 +1115,15 @@ desfile install –m 770 –d /testdir/installdir
 </code></pre><p><code>install -m 700 -o pan -g p1 /etc/issue /data/issue_bak</code> 复制/etc/issue到/data/issue_bak/ 改文件权限为700，所有者为pan 用户，所属组p1。</p>
 <h2 id="expect介绍"><a href="#expect介绍" class="headerlink" title="expect介绍"></a>expect介绍</h2><p>expect 是由Don Libes基于Tcl（ Tool Command Language ）语言开发的，主要应用于自动化交互式操作的场景，借助Expect处理交互的命令，可以将交互过程如：ssh登录，ftp登录等写在一个脚本上，使之自动化完成。尤其适用于需要对多台服务器执行相同操作的环境中，可以大大提高系统管理人员的工作效率</p>
 <h2 id="expect命令"><a href="#expect命令" class="headerlink" title="expect命令"></a>expect命令</h2><p>expect 语法：<br>expect [选项] [ -c cmds ] [ [ -[f|b] ] cmdfile ] [ args ]<br>选项<br>-c：从命令行执行expect脚本，默认expect是交互地执行的示例：expect -c ‘expect “\n” {send “pressed enter\n”}<br>-d：可以输出输出调试信息<br>示例：expect -d ssh.exp<br>expect中相关命令<br>spawn：启动新的进程<br>send：用于向进程发送字符串<br>expect：从进程接收字符串<br>interact：允许用户交互<br>exp_continue 匹配多个字符串在执行动作后加此命令</p>
-<h2 id="expect"><a href="#expect" class="headerlink" title="expect"></a>expect</h2><p>expect最常用的语法(tcl语言:模式-动作)<br>单一分支模式语法：<br>expect “hi” {send “You said hi\n”}<br>匹配到hi后，会输出“you said hi”，并换行<br>多分支模式语法：</p>
-<pre><code>expect &quot;hi&quot; { send &quot;You said hi\n&quot; } \ 
+<h2 id="expect"><a href="#expect" class="headerlink" title="expect"></a>expect</h2><p>expect最常用的语法(tcl语言:模式-动作)<br>单一分支模式语法：<br>expect “hi” {send “You said hi\n”}<br>匹配到hi后，会输出“you said hi”，并换行</p>
+<pre><code>[root@centos7 ~]# expect 
+expect1.1&gt; expect &quot;hi&quot; { send &quot;You said hi\n&quot; }
+hi
+You said hi
+expect1.2&gt; 
+</code></pre><p>多分支模式语法：</p>
+<pre><code>expect
+expect &quot;hi&quot; { send &quot;You said hi\n&quot; } \ 
 &quot;hehe&quot; { send &quot;Hehe yourself\n&quot; } \ 
 &quot;bye&quot; { send &quot;Good bye\n&quot; }
 </code></pre><p>匹配 hi,hello,bye任意字符串时，执行相应输出。等同如下： </p>
@@ -1129,11 +1136,11 @@ desfile install –m 770 –d /testdir/installdir
 [root@centos7 data]# cat expect.sh 
 #!/usr/bin/expect
 spawn scp /etc/fstab pan@192.168.152.131:/data
-expect { #第一次会输yes，但我没见过
-&quot;yes/no&quot; { send &quot;yes\n&quot;;exp_continue } 
+expect {        ##这里是监听如果发现括号中的关键字就执行对应的操作
+&quot;yes/no&quot; { send &quot;yes\no&quot;;exp_continue }  ##如果是第一次连就要输入yes\no
 &quot;password&quot; { send &quot;123456\n&quot; }
 } #第二次输密码
-expect eof
+expect eof  ##结束expet的命令
 </code></pre><p>SCP 传送文件，第一次会提示yes,第二次会提示密码，但我测试一直都是密码？</p>
 <pre><code>用ssh登录到另外一台主机上并可以允许用户交互执行
 #!/usr/bin/expect
@@ -1574,7 +1581,7 @@ done &lt; iplist.txt
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共84.7k字</span>
+  <span class="post-count">博客全站共85.6k字</span>
 </div>
 
 <div id="days"></div>
