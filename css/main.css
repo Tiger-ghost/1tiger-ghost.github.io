@@ -2000,7 +2000,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0a6771;
+  background: #ff94d0;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3752,6 +3752,20 @@ a#download {
   height: 100%;
   left: 0;
   top: 0;
+}
+.hider_title {
+  font-family: "STCaiyun";
+  font-size: 30px;
+  cursor: pointer;
+  color: #007fff;
+  margin-top: -0.5cm;
+}
+.close:after {
+  content: "▼";
+  color: #000;
+}
+.open:after {
+  content: "▲";
 }
 @-moz-keyframes animate-yu-1 {
   0% {

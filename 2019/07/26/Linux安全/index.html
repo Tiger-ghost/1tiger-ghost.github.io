@@ -159,10 +159,13 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:site_name" content="Tiger-ghost">
 <meta property="og:description" content="linux 安全">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-15T14:49:15.827Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/19/nq6M80.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/19/nq6KCq.png">
+<meta property="og:updated_time" content="2019-09-19T16:24:34.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Five">
 <meta name="twitter:description" content="linux 安全">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/09/19/nq6M80.png">
 
 
 
@@ -445,7 +448,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-15 22:49:15" itemprop="dateModified" datetime="2019-09-15T22:49:15+08:00">2019-09-15</time>
+                <time title="Modified: 2019-09-20 00:24:34" itemprop="dateModified" datetime="2019-09-20T00:24:34+08:00">2019-09-20</time>
               
             
           </span>
@@ -701,7 +704,7 @@ ehix
 </code></pre><h1 id="openssl命令-3"><a href="#openssl命令-3" class="headerlink" title="openssl命令"></a>openssl命令</h1><p>生成密钥对儿：man genrsa</p>
 <p><font color="#0d33ff"><i class="fa fa-file-text-o fa-2x"></i></font>生成私钥<br>openssl genrsa -out /PATH/TO/PRIVATEKEY.FILE NUM_BITS<br>(umask 077; openssl genrsa –out test.key –des 2048)<br>openssl rsa -in test.key –out test2.key 将加密key解密</p>
 <p><font color="#0d33ff"><i class="fa fa-file-text-o fa-2x"></i></font>从私钥中提取出公钥<br><code>openssl rsa -in PRIVATEKEYFILE –pubout –out PUBLICKEYFILE</code><br><code>openssl rsa –in test.key –pubout –out test.key.pub</code></p>
-<p><font color="#0d33ff"><i class="fa fa-file-text-o fa-2x"></i></font>随机数生成器：伪随机数字键盘和鼠标，块设备中断<br>/dev/random：仅从熵池返回随机数；随机数用尽，阻塞<br>/dev/urandom：从熵池返回随机数；随机数用尽，会利用软件生成伪随机数,非阻塞<br><code>tr -dc &#39;a-zA-Z0-9&#39; /dev/random</code><br>-d:删除指定字符<br>-c:取反</p>
+<p><font color="#0d33ff"><i class="fa fa-file-text-o fa-2x"></i></font>随机数生成器：伪随机数字键盘和鼠标，块设备中断<br>/dev/random：仅从熵池返回随机数；随机数用尽，阻塞<br>/dev/urandom：从熵池返回随机数；随机数用尽，会利用软件生成伪随机数,非阻塞<br><code>tr -dc &#39;a-zA-Z0-9&#39; /dev/random</code><br>-d:删除指定字符<br>-c:取反<br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
 <pre><code>[root@centos7 ssl]# (umask 066;openssl genrsa -out test.key 1024)  ##生成一个测试文件未加密
 Generating RSA private key, 1024 bit long modulus
 .......................++++++
@@ -785,7 +788,9 @@ RlT7Gk0TdYlHMxE34ihAxMUowB0wNvbffidKfGCQucd0ThmzlsYHEIiV69Fo/FLg
 wJ4QfpF2n/u+XiX9LI/WmLfZcb4gJZvqC1pGf8GtWjDJ9hO70D530LWYoX417dV/
 pfwpIsbAzcTbCVNwOQIDAQAB
 -----END PUBLIC KEY-----
-</code></pre><h1 id="实验两台主机创建CA和申请证书"><a href="#实验两台主机创建CA和申请证书" class="headerlink" title="实验两台主机创建CA和申请证书"></a>实验两台主机创建CA和申请证书</h1><h2 id="1-建立私钥"><a href="#1-建立私钥" class="headerlink" title="1.建立私钥"></a>1.建立私钥</h2><div class="alert alert-warning">私钥文件必须是这个文件名cakey.pema。详细可查看此文件vim /etc/pki/tls/openssl.cnf </div>
+</code></pre>
+</div></div></p>
+<h1 id="实验两台主机创建CA和申请证书"><a href="#实验两台主机创建CA和申请证书" class="headerlink" title="实验两台主机创建CA和申请证书"></a>实验两台主机创建CA和申请证书</h1><h2 id="1-建立私钥"><a href="#1-建立私钥" class="headerlink" title="1.建立私钥"></a>1.建立私钥</h2><div class="alert alert-warning">私钥文件必须是这个文件名cakey.pema。详细可查看此文件vim /etc/pki/tls/openssl.cnf </div>
 
 <pre><code>[root@centos7 CA]# (umask 077;openssl genrsa -out /etc/pki/CA/private/cakey.pem 2048)
 Generating RSA private key, 2048 bit long modulus
@@ -827,6 +832,7 @@ cakey.pem
 <p><font color="#4de680"><i class="fa fa-arrow-down fa-2x"></i></font>生成证书申请文件<br><code>openssl req -new -key /data/test.key -out /data/test.csr</code></p>
 <p><font color="#4de680"><i class="fa fa-arrow-down fa-2x"></i></font>将证书请求文件传输给CA</p>
 <p><font color="#4de680"><i class="fa fa-arrow-down fa-2x"></i></font>CA签署证书，并将证书颁发给请求者<br><code>openssl ca -in /tmp/test.csr –out    /etc/pki/CA/certs/test.crt -days 100</code><br>注意：默认要求 国家，省，公司名称三项必须和CA一致</p>
+<div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
 <pre><code>[root@centos6 ssl]# (umask 066;openssl genrsa -out /data/ssl/app.key 1024)  ##首先新建私钥
 Generating RSA private key, 1024 bit long modulus
 ..........++++++
@@ -843,17 +849,17 @@ into your certificate request.
 What you are about to enter is what is called a Distinguished Name or a DN.
 There are quite a few fields but you can leave some blank
 For some fields there will be a default value,
-If you enter &#39;.&#39;, the field will be left blank.
+If you enter &apos;.&apos;, the field will be left blank.
 -----
 Country Name (2 letter code) [XX]:CN
 State or Province Name (full name) []:beijing
 Locality Name (eg, city) [Default City]:beijing
 Organization Name (eg, company) [Default Company Ltd]:pan
 Organizational Unit Name (eg, section) []:devops    
-Common Name (eg, your name or your server&#39;s hostname) []:*.magedu.com
+Common Name (eg, your name or your server&apos;s hostname) []:*.magedu.com
 Email Address []:
 
-Please enter the following &#39;extra&#39; attributes
+Please enter the following &apos;extra&apos; attributes
 to be sent with your certificate request
 A challenge password []:
 An optional company name []:
@@ -865,21 +871,21 @@ total 8
 ##将证书请求文件传输给CA.
 ##现将文件传给centos7
 [root@centos6 ssl]# scp app.csr 192.168.152.136:/etc/pki/CA
-root@192.168.152.136&#39;s password: 
+root@192.168.152.136&apos;s password: 
 app.csr                                                                                   100%  651     0.6KB/s   00:00   
 ##CA签署证书，并将证书颁发给请求者
 [root@centos7 CA]# openssl ca -in app.csr -out /etc/pki/CA/certs/app.crt -days 1000
 Using configuration from /etc/pki/tls/openssl.cnf
 /etc/pki/CA/index.txt: No such file or directory
-unable to open &#39;/etc/pki/CA/index.txt&#39;
-140161312225168:error:02001002:system library:fopen:No such file or directory:bss_file.c:402:fopen(&#39;/etc/pki/CA/index.txt&#39;,&#39;r&#39;)
+unable to open &apos;/etc/pki/CA/index.txt&apos;
+140161312225168:error:02001002:system library:fopen:No such file or directory:bss_file.c:402:fopen(&apos;/etc/pki/CA/index.txt&apos;,&apos;r&apos;)
 140161312225168:error:20074002:BIO routines:FILE_CTRL:system lib:bss_file.c:404:
 [root@centos7 CA]# touch index.txt
 [root@centos7 CA]# openssl ca -in app.csr -out /etc/pki/CA/certs/app.crt -days 1000
 Using configuration from /etc/pki/tls/openssl.cnf
 /etc/pki/CA/serial: No such file or directory
 error while loading serial number
-140378285651856:error:02001002:system library:fopen:No such file or directory:bss_file.c:402:fopen(&#39;/etc/pki/CA/serial&#39;,&#39;r&#39;)
+140378285651856:error:02001002:system library:fopen:No such file or directory:bss_file.c:402:fopen(&apos;/etc/pki/CA/serial&apos;,&apos;r&apos;)
 140378285651856:error:20074002:BIO routines:FILE_CTRL:system lib:bss_file.c:404:
 [root@centos7 CA]# 
 [root@centos7 CA]# echo 0f &gt; serial ##这里例是0f，实际用00开始
@@ -940,9 +946,11 @@ Data Base Updated
 
 ##现在可以将文证书文件传给客户机使用
 [root@centos7 CA]# scp certs/app.crt 192.168.152.131:/data/ssl 
-root@192.168.152.131&#39;s password: 
+root@192.168.152.131&apos;s password: 
 app.crt                               
-</code></pre><h2 id="创建CA和证书管理"><a href="#创建CA和证书管理" class="headerlink" title="创建CA和证书管理"></a>创建CA和证书管理</h2><p>查看证书中的信息：</p>
+</code></pre>
+</div></div>
+<h2 id="创建CA和证书管理"><a href="#创建CA和证书管理" class="headerlink" title="创建CA和证书管理"></a>创建CA和证书管理</h2><p>查看证书中的信息：</p>
 <p><div class="alert alert-success">openssl x509 -in /PATH/FROM/CERT_FILE -noout -text|issuer|subject|serial|dates<br>openssl ca -status SERIAL 查看指定编号的证书状态</div></p>
 <pre><code>openssl x509 -in app.crt -noout -text ##查看证书状态
 [root@centos7 CA]# cat index.txt          ##存放证书信息的数据库。这里的V表示此证书现在是有效的，吊销是R
@@ -1026,7 +1034,7 @@ f1
 
 sent 41,082 bytes  received 71,782 bytes  8,360.30 bytes/sec
 total size is 314,572,801  speedup is 2,787.18
-</code></pre><h2 id="pssh工具"><a href="#pssh工具" class="headerlink" title="pssh工具"></a>pssh工具</h2><p>pssh是一个python编写可以在多台服务器上执行命令的工具，也可实现文件复制<br>选项如下：<br>–version：查看版本<br>-h：主机文件列表，内容格式”[user@]host[:port]”<br>-H：主机字符串，内容格式”[user@]host[:port]”<br>-A：手动输入密码模式<br>-i：每个服务器内部处理信息输出<br>-l：登录使用的用户名<br>-p：并发的线程数【可选】<br>-o：输出的文件目录【可选】<br>-e：错误输入文件【可选】<br>-t：TIMEOUT 超时时间设置，0无限制【可选】<br>-O：SSH的选项<br>-P：打印出服务器返回信息<br>-v：详细模式</p>
+</code></pre><h1 id="pssh工具"><a href="#pssh工具" class="headerlink" title="pssh工具"></a>pssh工具</h1><p>pssh是一个python编写可以在多台服务器上执行命令的工具，也可实现文件复制<br>选项如下：<br>–version：查看版本<br>-h：主机文件列表，内容格式”[user@]host[:port]”<br>-H：主机字符串，内容格式”[user@]host[:port]”<br>-A：手动输入密码模式(当不支持ssh的key认证时，通过 -A选项，使用密码认证批量执行指令)<br>-i：每个服务器内部处理信息输出<br>-l：登录使用的用户名<br>-p：并发的线程数【可选】<br>-o：输出的文件目录【可选】<br>-e：错误输入文件【可选】<br>-t：TIMEOUT 超时时间设置，0无限制【可选】<br>-O：SSH的选项<br>-P：打印出服务器返回信息<br>-v：详细模式<br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
 <pre><code>[root@centos7 .ssh]# pssh -H 192.168.152.131 -A -i  ifconfig eth0
 Warning: do not enter your password if anyone else has superuser
 privileges or access to your account.
@@ -1043,9 +1051,195 @@ eth0      Link encap:Ethernet  HWaddr 00:0C:29:89:50:C2
 
 ##也可以这样两台主机一起使用，单用的是同一个密码
 [root@centos7 .ssh]# pssh -H 192.168.152.131 -H 192.168.152.141 -i -A  ifconfig eth0
-</code></pre><p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
+##写法不同
+[root@centos7 .ssh]#  pssh -H &quot;192.168.152.131 192.168.152.141&quot; -i -A ifconfig eth0 
+
+##使用文件列表
+[root@centos7 ~]# cat iplist.txt 
+192.168.152.136
+192.168.152.131
+192.168.152.141
+[root@centos7 ~]# pssh -h iplist.txt -i -A ifconfig eth0
+
+##查到的信息，文件保存至文件夹下
+[root@centos7 pssh]# pssh -h iplist.txt -o /data/pssh -i getent passwd pan
+[root@centos7 pssh]# ls                ##最后自动生成的文件
+192.168.152.131  192.168.152.136  192.168.152.141
+
+##有些命令没有执行需要加&apos;&apos;才会执行
+[root@centos7 ~]# pssh -h iplist.txt -i &apos;rm -fr /data/*&apos;
+
+##通过pssh批量关闭seLinux
+[root@centos7 ~]# pssh -h iplist.txt -i &apos;sed -i &quot;s/^SELINUX=.*/SELINUX=disabled/&quot; /etc/selinux/config&apos;
+</code></pre>
+</div></div></p>
+<h2 id="pscp-pssh命令"><a href="#pscp-pssh命令" class="headerlink" title="pscp.pssh命令"></a>pscp.pssh命令</h2><p>pscp.pssh功能是将本地文件批量复制到远程主机<br>-v 显示复制过程<br>-r 递归复制目录<br>将本地多个文件批量复制到/app/目录<br><code>pscp.pssh -H 192.168.1.10  /root/f1.sh /root/f2.sh    /app/</code><br>将本地目录批量复制到/app/目录<br><code>pscp.pssh -H 192.168.1.10  -r /root/test/    /app/</code><br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
+<pre><code>    ##将本地的f1.sh复制到远程主机/data的目录下。iplist.txt是远程主机的iP
+[root@centos7 ~]# pscp.pssh -h /root/iplist.txt /root/f1.sh /data
+    ##也就是先把文件传送过去，再执行  
+[root@centos7 ~]# pssh -h iplist.txt -i &apos;/data/f1.sh&apos;   
+</code></pre>
+</div></div></p>
+<h2 id="pslurp命令"><a href="#pslurp命令" class="headerlink" title="pslurp命令"></a>pslurp命令</h2><p>pslurp功能是将远程主机的文件批量复制到本地<br>-L 指定从远程主机下载到本机的存储的目录<br>-r 递归复制目录<br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
+<pre><code>        ##从远程主机上拷贝文件/etc/passwd/到本机/data目录上重命名为passwd.bak
+[root@centos7 ~]# pslurp -h /root/iplist.txt -L /data /etc/passwd passwd.bak
+[root@centos7 ~]# tree /data      ##拷贝后的路径
+/data
+├── 192.168.152.131
+│   └── passwd.bak
+├── 192.168.152.136
+│   └── passwd.bak
+└── 192.168.152.142
+    └── passwd.bak
+
+3 directories, 3 files
+</code></pre>
+</div></div></p>
+<h2 id="SSH端口转发"><a href="#SSH端口转发" class="headerlink" title="SSH端口转发"></a>SSH端口转发</h2><p>本地转发：-L localport:remotehost:remotehostport    sshserver<br>-f 后台启用<br>-N 不打开远程shell，处于等待状态<br>-g 启用网关功能<br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
+<pre><code>192.168.152.136([root@centos7 ~]# )——192.168.152.131([root@centos6 data]# )这台机器模拟ssh server
+——192.168.152.142([root@Tiger data]# )
+##首先拒绝centso7的连接
+[root@Tiger data]# iptables -A INPUT -s 192.168.152.136 -j REJECT
+##确定已经不能连接，那就需要将中间的那台机器作为跳板去先连接.142的机器
+[root@centos7 ~]# telnet 192.168.152.142
+Trying 192.168.152.142...
+telnet: connect to address 192.168.152.142: Connection refused
+    ##查看连接的机器
+[root@Tiger data]# ss -nt
+State      Recv-Q Send-Q                              Local Address:Port                                Peer Address:Port 
+ESTAB      0      96  
+    ##本地转发，本机端口，要登录的主机ip:端口,桥梁ip 但是这条命令有个缺点就是会自动登录到桥梁主机上(因为我之前做过ssh key验证登录，
+        所以他会自动登录上)-N表示以前台方式运行就无法敲其他命令，-f后台执行，
+[root@centos7 ~]# ssh -L 9527:192.168.152.142:23 -Nf 192.168.152.131 
+[root@centos6 data]# telnet 192.168.152.142  
+</code></pre>
+</div></div></p>
+<h2 id="SSH端口转发-1"><a href="#SSH端口转发-1" class="headerlink" title="SSH端口转发"></a>SSH端口转发</h2><p>远程转发:<br>-R sshserverport:remotehost:remotehostport  sshserver<br>示例：</p>
+<pre><code>[root@centos7 ~]# (ssh server)——[root@centos6 data]#(ssh client)——[root@Tiger data]#
+发起连接，注意顺序
+[root@centos6 ~]# ssh -R 9527:192.168.152.142:23 192.168.152.136
+[root@centos7 ~]# telnet 127.0.0.1 9527        ##现在实现了[root@centos7 ~]#和[root@Tiger data]的通讯
+
+动态端口转发
+[root@centos6 ~]# ssh -R 9527:192.168.152.142:23 -gfN 192.168.152.136 gateway
+[root@centos7 ~]# telnet 192.168.152.136 9527    
+这里可以理解为最左边有多台电脑，然后可以这里连接最右边的那台机器
+</code></pre><h2 id="动态端口转发："><a href="#动态端口转发：" class="headerlink" title="动态端口转发："></a>动态端口转发：</h2><p>-g表示另外一台机器也可以通过端口访问<br>当用firefox访问internet时，本机的1080端口做为代理服务器，firefox的访问请求被转发到sshserver上，由sshserver替之访问internet<br>ssh -D 1080 root@sshserver -fNg<br>在本机firefox设置代理socket proxy:127.0.0.1:1080 curl –socks5 127.0.0.1:1080 <a href="http://www.qq.com" target="_blank" rel="noopener">http://www.qq.com</a><br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
+<pre><code>192.168.152.136([root@centos7 ~]# )——192.168.152.142([root@Tiger data]# )——
+192.168.152.131([root@centos6 data]# )这台机器模拟internet
+[root@centos6 ~]# echo www.google.com &gt; /var/www/html/index.html
+[root@centos6 ~]# iptables -A INPUT -s 192.168.152.136 -j REJECT
+[root@centos7 ~]# curl 192.168.152.131
+curl: (7) Failed connect to 192.168.152.131:80; Connection refused
+[root@centos7 ~]# ssh -D 1080 192.168.152.142 -fN  
+    ##现在可以访问了，或者在图形化界面中配置代理以后也可以访问
+[root@centos7 ~]# curl --socks5 127.0.0.1:1080 192.168.152.131
+
+
+现在将本机的Windows电脑ip禁止访问，然后通过136访问到.131
+[root@centos6 ~]# iptables -A INPUT -s 192.168.152.1 -j REJECT
+[root@centos7 ~]# ssh -D 1080 192.168.152.142 -fNg
+[root@centos7 ~]# curl --socks5 192.168.152.136:1080 192.168.152.131 
+
+    ##自己指向自己也可以
+[root@centos7 ~]# ssh -D 1080 192.168.152.136 -fNg  
+然后在浏览器里设置代理就可以访问了
+</code></pre>
+</div></div></p>
+<h2 id="ssh服务器"><a href="#ssh服务器" class="headerlink" title="ssh服务器"></a>ssh服务器</h2><p>服务器端：sshd, 配置文件: /etc/ssh/sshd_config<br>日志文件:  cat /var/log/secure<br>限制可登录用户的办法：<br>AllowGroups 允许的组<br>DenyGroups    不允许的组<br><div><div class="fold_hider"><div class="close hider_title">点击查看配置文件信息</div></div><div class="fold">
+<pre><code>#LoginGraceTime 2m  ##等待输入用户名时间2分钟
+#PermitRootLogin yes ##允许root用户登录
+#StrictModes yes  ##检查.ssh/文件的所有者，权限等
+#MaxAuthTries 6   ##输入口令允许最大的错误次数(其实是一半)
+#MaxSessions 2  ##表示一个连接里面的最大会话数，就是说连上机器以后，crt有Clone Session的功能，最大允许克隆的次数。
+##这个更改以后，重启sshd服务，crt也要重新连接才会生效。
+
+#PubkeyAuthentication yes  ##这里表示支持公钥验证
+
+#PasswordAuthentication yes   ##这里表示支持口令验证
+#PermitEmptyPasswords no      ##禁止空口令登录
+
+GSSAPIAuthentication no ##连接慢
+
+#ClientAliveInterval 2  ##检查客户端是否活跃，2秒检查一次，
+#ClientAliveCountMax 3  ##连续检查3次，如果没有活动就断开
+UseDNS no   ##连接慢
+
+banner /etc/ssh/h.txt      ##登录提示信息 可以引用下面那个佛的文件
+
+allowusers pan  ##只允许用户pan连接
+denyusers  pan    ##黑名单，不允许连接的用户
+</code></pre>
+</div></div></p>
+<div><div class="fold_hider"><div class="close hider_title">点击查看代码:拜佛</div></div><div class="fold">
+<pre><code>////////////////////////////////////////////////////////////////////
+//                          _ooOoo_                               //
+//                         o8888888o                              //
+//                         88&quot; . &quot;88                              //
+//                         (| ^_^ |)                              //
+//                         O\  =  /O                              //
+//                      ____/`---&apos;\____                           //
+//                    .&apos;  \\|     |//  `.                         //
+//                   /  \\|||  :  |||//  \                        //
+//                  /  _||||| -:- |||||-  \                       //
+//                  |   | \\\  -  /// |   |                       //
+//                  | \_|  &apos;&apos;\---/&apos;&apos;  |   |                       //
+//                  \  .-\__  `-`  ___/-. /                       //
+//                ___`. .&apos;  /--.--\  `. . ___                     //
+//              .&quot;&quot; &apos;&lt;  `.___\_&lt;|&gt;_/___.&apos;  &gt;&apos;&quot;&quot;.                  //
+//            | | :  `- \`.;`\ _ /`;.`/ - ` : | |                 //
+//            \  \ `-.   \_ __\ /__ _/   .-` /  /                 //
+//      ========`-.____`-.___\_____/___.-`____.-&apos;========         //
+//                           `=---=&apos;                              //
+//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        //
+//         佛祖保佑       永无BUG     永不修改                  //
+////////////////////////////////////////////////////////////////////
+
+</code></pre>
+</div></div>
+<h1 id="dropbear"><a href="#dropbear" class="headerlink" title="dropbear"></a>dropbear</h1><p>源码编译安装 <font size="3"><br>1、安装开发包组:yum groupinstall “Development tools”<br>2、下载dropbear-2017.75.tar.bz2<br>3、tar xf dropbear-2017.75.tar.bz2<br>4、less INSTALL README<br>5、./configure<br>6、make PROGRAMS=”dropbear dbclient dropbearkey dropbearconvert scp”<br>7、make PROGRAMS=”dropbear dbclient dropbearkey dropbearconvert scp” install<br><code>dropbear -p :2222 -F –E  #前台运行</code></font>.<br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
+<pre><code>##下载(缺少解压)
+wget https://matt.ucc.asn.au/dropbear/dropbear-2019.78.tar.bz2
+[root@centos7 dropbear-2019.78]# ./configure --prefix=/app/dropbear --sysconfdir=/etc/dropbear
+/app/dropbear 安装目录
+/etc/dropbear 配置文件目录
+[root@centos7 dropbear-2019.78]# make PROGRAMS=&quot;dropbear dbclient dropbearkey dropbearconvert scp&quot; install
+[root@centos7 dropbear-2019.78]# cd /app/dropbear/
+[root@centos7 dropbear]# mkdir /etc/dropbear
+[root@centos7 dropbear]# cd /app/dropbear/bin/
+[root@centos7 bin]#  ./dropbearkey -t rsa -f /etc/dropbear/dropbear_rsa_host_key   ##生成私钥
+[root@centos7 bin]# cd /etc/dropbear/
+[root@centos7 dropbear]# ls
+dropbear_rsa_host_key
+[root@centos7 dropbear]# cd /app/dropbear/sbin/         ##服务器程序所在目录
+[root@centos7 sbin]# ls
+dropbear
+[root@centos7 sbin]# ./dropbear -FE -p 22222  ##启动服务，注意这是以前台方式连接的，不能敲别的命令
+[root@centos6 ~]# ssh 192.168.152.136 -p 22222   ##用另外一台机器连接，可以进入
+
+[root@centos7 dropbear]# cd  /app/dropbear/bin/       ##作为客户端
+[root@centos7 bin]# ./dbclient 192.168.152.131         ##连接其他机器
+[root@centos7 bin]# ./scp /etc/fstab 192.168.152.131:/data   ##这里使用scp报错,应该是scp间接
+##调用了dbclient,但是dbclient要求必须放在/usr/bin/dbclient,但是这里是放到了自定义的目录
+/usr/bin/dbclient: No such file or directory     
+lost connection
+[root@centos7 bin]# ln -s /app/dropbear/bin/dbclient /usr/bin/dbclient  ##所以创造一个软链接就行了
+[root@centos7 bin]# ./scp /etc/fstab 192.168.152.131:/data   ##成功执行
+##将他写入变量，PATH在最后表示默认就是用的我新编译的服务，不用自带的命令
+[root@centos7 bin]# echo &apos;PATH=/app/dropbear/bin:/app/dropbear/sbin:$PATH&apos; &gt; /etc/profile.d/dropbear.sh
+[root@centos7 bin]# . /etc/profile.d/dropbear.sh 
+
+##要是不要了，就删除所有的目录
+[root@centos7 ~]# rm -fr /app/dropbear/
+[root@centos7 data]# rm -fr /data/dropbear-2019.78*
+[root@centos7 data]# rm -fr /etc/profile.d/dropbear.sh 
+</code></pre>
+</div></div></p>
+<p><img src="https://s2.ax1x.com/2019/09/19/nq6M80.png" alt=""><br>手动指定安装源<br>linux askmethod ip=192.168.152.150 netmask=255.255.255.0<br><img src="https://s2.ax1x.com/2019/09/19/nq6KCq.png" alt=""><br>boot&gt; linux text 纯文本安装，以字符界面安装</p>
+<p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
 <p><script>hljs.initHighlightingOnLoad();</script></p>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
+
       
     </div>
 
@@ -1333,7 +1527,7 @@ eth0      Link encap:Ethernet  HWaddr 00:0C:29:89:50:C2
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对称加密算法"><span class="nav-number">1.</span> <span class="nav-text">对称加密算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密算法"><span class="nav-number">2.</span> <span class="nav-text">非对称加密算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密"><span class="nav-number">3.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密-1"><span class="nav-number">4.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单向散列"><span class="nav-number">5.</span> <span class="nav-text">单向散列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用程序：RPM"><span class="nav-number">6.</span> <span class="nav-text">应用程序：RPM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#密钥交换"><span class="nav-number">7.</span> <span class="nav-text">密钥交换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用gpg实现对称加密"><span class="nav-number">8.</span> <span class="nav-text">使用gpg实现对称加密</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验-两台主机加密文件并解密"><span class="nav-number">8.1.</span> <span class="nav-text">实验:两台主机加密文件并解密</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CA和证书"><span class="nav-number">9.</span> <span class="nav-text">CA和证书</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令"><span class="nav-number">10.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令-1"><span class="nav-number">11.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令-2"><span class="nav-number">12.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令-3"><span class="nav-number">13.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验两台主机创建CA和申请证书"><span class="nav-number">14.</span> <span class="nav-text">实验两台主机创建CA和申请证书</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-建立私钥"><span class="nav-number">14.1.</span> <span class="nav-text">1.建立私钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-生成自签名证书"><span class="nav-number">14.2.</span> <span class="nav-text">2.生成自签名证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#颁发证书"><span class="nav-number">14.3.</span> <span class="nav-text">颁发证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建CA和证书管理"><span class="nav-number">14.4.</span> <span class="nav-text">创建CA和证书管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH"><span class="nav-number">15.</span> <span class="nav-text">SSH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Openssh软件组成"><span class="nav-number">16.</span> <span class="nav-text">Openssh软件组成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh客户端"><span class="nav-number">17.</span> <span class="nav-text">ssh客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于key认证"><span class="nav-number">17.1.</span> <span class="nav-text">基于key认证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scp"><span class="nav-number">18.</span> <span class="nav-text">scp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rsync命令"><span class="nav-number">19.</span> <span class="nav-text">rsync命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pssh工具"><span class="nav-number">19.1.</span> <span class="nav-text">pssh工具</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对称加密算法"><span class="nav-number">1.</span> <span class="nav-text">对称加密算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密算法"><span class="nav-number">2.</span> <span class="nav-text">非对称加密算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密"><span class="nav-number">3.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密-1"><span class="nav-number">4.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单向散列"><span class="nav-number">5.</span> <span class="nav-text">单向散列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用程序：RPM"><span class="nav-number">6.</span> <span class="nav-text">应用程序：RPM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#密钥交换"><span class="nav-number">7.</span> <span class="nav-text">密钥交换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用gpg实现对称加密"><span class="nav-number">8.</span> <span class="nav-text">使用gpg实现对称加密</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验-两台主机加密文件并解密"><span class="nav-number">8.1.</span> <span class="nav-text">实验:两台主机加密文件并解密</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CA和证书"><span class="nav-number">9.</span> <span class="nav-text">CA和证书</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令"><span class="nav-number">10.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令-1"><span class="nav-number">11.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令-2"><span class="nav-number">12.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令-3"><span class="nav-number">13.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验两台主机创建CA和申请证书"><span class="nav-number">14.</span> <span class="nav-text">实验两台主机创建CA和申请证书</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-建立私钥"><span class="nav-number">14.1.</span> <span class="nav-text">1.建立私钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-生成自签名证书"><span class="nav-number">14.2.</span> <span class="nav-text">2.生成自签名证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#颁发证书"><span class="nav-number">14.3.</span> <span class="nav-text">颁发证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建CA和证书管理"><span class="nav-number">14.4.</span> <span class="nav-text">创建CA和证书管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH"><span class="nav-number">15.</span> <span class="nav-text">SSH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Openssh软件组成"><span class="nav-number">16.</span> <span class="nav-text">Openssh软件组成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh客户端"><span class="nav-number">17.</span> <span class="nav-text">ssh客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于key认证"><span class="nav-number">17.1.</span> <span class="nav-text">基于key认证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scp"><span class="nav-number">18.</span> <span class="nav-text">scp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rsync命令"><span class="nav-number">19.</span> <span class="nav-text">rsync命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pssh工具"><span class="nav-number">20.</span> <span class="nav-text">pssh工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pscp-pssh命令"><span class="nav-number">20.1.</span> <span class="nav-text">pscp.pssh命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pslurp命令"><span class="nav-number">20.2.</span> <span class="nav-text">pslurp命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH端口转发"><span class="nav-number">20.3.</span> <span class="nav-text">SSH端口转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH端口转发-1"><span class="nav-number">20.4.</span> <span class="nav-text">SSH端口转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态端口转发："><span class="nav-number">20.5.</span> <span class="nav-text">动态端口转发：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh服务器"><span class="nav-number">20.6.</span> <span class="nav-text">ssh服务器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dropbear"><span class="nav-number">21.</span> <span class="nav-text">dropbear</span></a></li></ol></div>
             
 
           </div>
@@ -1382,7 +1576,7 @@ eth0      Link encap:Ethernet  HWaddr 00:0C:29:89:50:C2
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共85.6k字</span>
+  <span class="post-count">博客全站共87.7k字</span>
 </div>
 
 <div id="days"></div>
