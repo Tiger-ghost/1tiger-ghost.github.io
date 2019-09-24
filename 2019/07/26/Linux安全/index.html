@@ -159,7 +159,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:site_name" content="Tiger-ghost">
 <meta property="og:description" content="linux 安全">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-24T14:41:38.691Z">
+<meta property="og:updated_time" content="2019-09-24T15:00:23.068Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Five">
 <meta name="twitter:description" content="linux 安全">
@@ -445,7 +445,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-24 22:41:38" itemprop="dateModified" datetime="2019-09-24T22:41:38+08:00">2019-09-24</time>
+                <time title="Modified: 2019-09-24 23:00:23" itemprop="dateModified" datetime="2019-09-24T23:00:23+08:00">2019-09-24</time>
               
             
           </span>
@@ -824,7 +824,12 @@ Email Address []:
 [root@centos7 private]# ls        ##现在这个文件已经建立好了，可以穿到windows上，后缀名改为crt，就可以看到证书
 cakey.pem
 
-</code></pre><h2 id="颁发证书"><a href="#颁发证书" class="headerlink" title="颁发证书"></a>颁发证书</h2><div class="alert alert-danger">在需要使用证书的主机生成证书请求</div>现在是centos6的机器生成以下文件<br><font color="#4de680"><i class="fa fa-arrow-down fa-2x"></i></font>给web服务器生成私钥<br><code>(umask 066; openssl genrsa –out    /data/test.key 2048)</code><br><font color="#4de680"><i class="fa fa-arrow-down fa-2x"></i></font>生成证书申请文件<br><code>openssl req -new -key /data/test.key -out /data/test.csr</code><br><font color="#4de680"><i class="fa fa-arrow-down fa-2x"></i></font>将证书请求文件传输给CA<br><font color="#4de680"><i class="fa fa-arrow-down fa-2x"></i></font>CA签署证书，并将证书颁发给请求者<br><code>openssl ca -in /tmp/test.csr –out    /etc/pki/CA/certs/test.crt -days 100</code><br>注意：默认要求 国家，省，公司名称三项必须和CA一致<br><br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
+</code></pre><h2 id="颁发证书"><a href="#颁发证书" class="headerlink" title="颁发证书"></a>颁发证书</h2><p><div class="alert alert-danger">在需要使用证书的主机生成证书请求</div>现在是centos6的机器生成以下文件</p>
+<p><font color="#4de680"><i class="fa fa-arrow-down fa-2x"></i></font>给web服务器生成私钥<br><code>(umask 066; openssl genrsa –out    /data/test.key 2048)</code></p>
+<p><font color="#4de680"><i class="fa fa-arrow-down fa-2x"></i></font>生成证书申请文件<br><code>openssl req -new -key /data/test.key -out /data/test.csr</code></p>
+<p><font color="#4de680"><i class="fa fa-arrow-down fa-2x"></i></font>将证书请求文件传输给CA</p>
+<p><font color="#4de680"><i class="fa fa-arrow-down fa-2x"></i></font>CA签署证书，并将证书颁发给请求者<br><code>openssl ca -in /tmp/test.csr –out    /etc/pki/CA/certs/test.crt -days 100</code><br>注意：默认要求 国家，省，公司名称三项必须和CA一致</p>
+<div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
 <pre><code>[root@centos6 ssl]# (umask 066;openssl genrsa -out /data/ssl/app.key 1024)  ##首先新建私钥
 Generating RSA private key, 1024 bit long modulus
 ..........++++++
@@ -941,7 +946,10 @@ Data Base Updated
 root@192.168.152.131&apos;s password: 
 app.crt                               
 </code></pre>
-</div></div><br><br><br>## 创建CA和证书管理<br>查看证书中的信息：<br><div class="alert alert-success">openssl x509 -in /PATH/FROM/CERT_FILE -noout -text|issuer|subject|serial|dates<br>openssl ca -status SERIAL 查看指定编号的证书状态</div><br><code>openssl x509 -in app.crt -noout -text ##查看证书状态
+</div></div>
+<h2 id="创建CA和证书管理"><a href="#创建CA和证书管理" class="headerlink" title="创建CA和证书管理"></a>创建CA和证书管理</h2><p>查看证书中的信息：</p>
+<p><div class="alert alert-success">openssl x509 -in /PATH/FROM/CERT_FILE -noout -text|issuer|subject|serial|dates<br>openssl ca -status SERIAL 查看指定编号的证书状态</div></p>
+<pre><code>openssl x509 -in app.crt -noout -text ##查看证书状态
 [root@centos7 CA]# cat index.txt          ##存放证书信息的数据库。这里的V表示此证书现在是有效的，吊销是R
 V       220608192953Z           0F      unknown /C=CN/ST=beijing/O=pan/OU=devops/CN=*.magedu.com
 [root@centos7 CA]# cat serial        ##下一个证书的编号
@@ -972,7 +980,10 @@ R       220608223259Z   190912223838Z   10      unknown /C=CN/ST=henan/L=zhengzh
         ##更新证书吊销列表
 [root@centos7 CA]# openssl ca -gencrl -out /etc/pki/CA/crl.pem
         ##验证某个用户的证书，用上级证书来验证他颁发证书的有效性
-openssl verify -CAfile cacert.pem certs/app.crt</code><br><br># SSH<br><div class="alert alert-success"><i class="fa fa-lightbulb-o"></i> SSH协议版本<br>v1: 基于CRC-32做MAC，不安全；man-in-middle<br>v2：双方主机协议选择安全的MAC方式<font color="red"><br><i class="fa fa-file-code-o"></i></font> 具体的软件实现：<br>OpenSSH: ssh协议的开源实现，CentOS默认安装dropbear：另一个开源实现<br>基于DH算法做密钥交换，基于RSA或DSA实现身份认证<br>两种方式的用户登录认证：基于password；基于key</div><strong>*</strong><br><br># Openssh软件组成<br>OpenSSH介绍<br>相关包： openssh openssh-clients openssh-server<br>工具：<br>基于C/S结构<br>Client: ssh, scp, sftp，slogin<br>Windows客户端：<br>xshell, putty, securecrt, sshsecureshellclient Server: sshd<br><code>[root@centos6 data]# vim /etc/ssh/ssh_host_key.pub         ##删除他的前面的，和末尾的回车换行
+openssl verify -CAfile cacert.pem certs/app.crt
+</code></pre><h1 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h1><p><div class="alert alert-success"><i class="fa fa-lightbulb-o"></i> SSH协议版本<br>v1: 基于CRC-32做MAC，不安全；man-in-middle<br>v2：双方主机协议选择安全的MAC方式<font color="red"><br><i class="fa fa-file-code-o"></i></font> 具体的软件实现：<br>OpenSSH: ssh协议的开源实现，CentOS默认安装dropbear：另一个开源实现<br>基于DH算法做密钥交换，基于RSA或DSA实现身份认证<br>两种方式的用户登录认证：基于password；基于key</div><strong>*</strong></p>
+<h1 id="Openssh软件组成"><a href="#Openssh软件组成" class="headerlink" title="Openssh软件组成"></a>Openssh软件组成</h1><p>OpenSSH介绍<br>相关包： openssh openssh-clients openssh-server<br>工具：<br>基于C/S结构<br>Client: ssh, scp, sftp，slogin<br>Windows客户端：<br>xshell, putty, securecrt, sshsecureshellclient Server: sshd</p>
+<pre><code>[root@centos6 data]# vim /etc/ssh/ssh_host_key.pub         ##删除他的前面的，和末尾的回车换行
 base64 -d ssh_host_rsa_key.pub &gt; pubkey            ##得到原始公钥文件
 [root@centos6 data]# md5sum pubkey             ##然后将它做哈希运算
 1280b0eef28fba5de9f63aa933afb6da  pubkey    ##得到的加密代码
@@ -982,19 +993,32 @@ base64 -d ssh_host_rsa_key.pub &gt; pubkey            ##得到原始公钥文件
 The authenticity of host &#39;192.168.152.131 (192.168.152.131)&#39; can&#39;t be established.
 RSA key fingerprint is SHA256:xFjNGR2DgxSIn5nh9YBemaOxXJyrlztd316Ry0b8+WY.
 RSA key fingerprint is MD5:12:80:b0:ee:f2:8f:ba:5d:e9:f6:3a:a9:33:af:b6:da.
-Are you sure you want to continue connecting (yes/no)? yes</code><br><br># ssh客户端<br>客户端组件：<br>ssh, 配置文件：/etc/ssh/ssh_config Host PATTERN<br>StrictHostKeyChecking no 首次登录不显示检查提示<br>格式：ssh [user@]host [COMMAND]<br>ssh [-l user] host [COMMAND]<br>常见选项<br>-p port：远程服务器监听的端口<br>-b：指定连接的源IP<br>-v：调试模式<br>-C：压缩方式<br>-X：支持x11转发(图形界面)<br>-t：强制伪tty分配<br>ssh -t remoteserver1 ssh -t remoteserver2    ssh    remoteserver3<br><code>ssh -t 192.168.152.131 ssh 192.168.152.130</code><br><div class="alert alert-info"><i class="fa fa-link"></i> ssh客户端允许实现对远程系统经验证地加密安全访问<br>当用户远程连接ssh服务器时，会复制ssh服务器/etc/ssh/ssh_host<em>key.pub（CentOS7默认是ssh_host_ecdsa_key.pub）文件中的公钥到客户机的<br>~./ssh/know_hosts中。下次连接时，会自动匹配相应私钥，不能匹配，将拒绝连接<br><div class="alert alert-info"><i class="fa fa-link"></i> 基于用户和口令登录验证<br>1 客户端发起ssh请求，服务器会把自己的公钥发送给用户<br>2 用户会根据服务器发来的公钥对密码进行加密<br>3 加密后的信息回传给服务器，服务器用自己的私钥解密，如果密码正确，则用户登录成功</div>.<br><br>## 基于key认证<br><div class="alert alert-success">基于密钥的登录方式<br>1 首先在客户端生成一对密钥（ssh-keygen）<br>2 并将客户端的公钥ssh-copy-id 拷贝到服务端<br>3 当客户端再次发送一个连接请求，包括ip、用户名<br>4 服务端得到客户端的请求后，会到authorized_keys中查找，如果有响应的IP和用户，就会随机生成一个字符串，例如：magedu<br>5 服务端将使用客户端拷贝过来的公钥进行加密，然后发送给客户端<br>6 得到服务端发来的消息后，客户端会使用私钥进行解密，然后将解密后的字符串发送给服务端<br>7 服务端接受到客户端发来的字符串后，跟之前的字符串进行对比，如果一致，就允许免密码登录</div>.<br>ssh服务登录验证<br><code>ssh-keygen</code> 生成私钥<br><code>ssh-copy-id -i /root/.ssh/id_rsa 192.168.152.130</code> 将key文件发送到对应的文件上,这样就已经可以使用了<br>上面建立的私钥并没有设置口令。基于key认证重设私钥口令： <code>ssh-keygen –p</code><br>但是这样每次连接时都必须输入口令。为了方便我们可以设置一个代理程序<br>known_host保存曾经连过的对方主机的公钥<br><br><code>[root@centos7 ~]# ssh-agent bash
+Are you sure you want to continue connecting (yes/no)? yes
+</code></pre><h1 id="ssh客户端"><a href="#ssh客户端" class="headerlink" title="ssh客户端"></a>ssh客户端</h1><p>客户端组件：<br>ssh, 配置文件：/etc/ssh/ssh_config Host PATTERN<br>StrictHostKeyChecking no 首次登录不显示检查提示<br>格式：ssh [user@]host [COMMAND]<br>ssh [-l user] host [COMMAND]<br>常见选项<br>-p port：远程服务器监听的端口<br>-b：指定连接的源IP<br>-v：调试模式<br>-C：压缩方式<br>-X：支持x11转发(图形界面)<br>-t：强制伪tty分配<br>ssh -t remoteserver1 ssh -t remoteserver2    ssh    remoteserver3<br><code>ssh -t 192.168.152.131 ssh 192.168.152.130</code></p>
+<p><div class="alert alert-info"><i class="fa fa-link"></i> ssh客户端允许实现对远程系统经验证地加密安全访问<br>当用户远程连接ssh服务器时，会复制ssh服务器/etc/ssh/ssh_host*key.pub（CentOS7默认是ssh_host_ecdsa_key.pub）文件中的公钥到客户机的<br>~./ssh/know_hosts中。下次连接时，会自动匹配相应私钥，不能匹配，将拒绝连接</div></p>
+<p><div class="alert alert-info"><i class="fa fa-link"></i> 基于用户和口令登录验证<br>1 客户端发起ssh请求，服务器会把自己的公钥发送给用户<br>2 用户会根据服务器发来的公钥对密码进行加密<br>3 加密后的信息回传给服务器，服务器用自己的私钥解密，如果密码正确，则用户登录成功</div>.</p>
+<h2 id="基于key认证"><a href="#基于key认证" class="headerlink" title="基于key认证"></a>基于key认证</h2><p><div class="alert alert-success">基于密钥的登录方式<br>1 首先在客户端生成一对密钥（ssh-keygen）<br>2 并将客户端的公钥ssh-copy-id 拷贝到服务端<br>3 当客户端再次发送一个连接请求，包括ip、用户名<br>4 服务端得到客户端的请求后，会到authorized_keys中查找，如果有响应的IP和用户，就会随机生成一个字符串，例如：magedu<br>5 服务端将使用客户端拷贝过来的公钥进行加密，然后发送给客户端<br>6 得到服务端发来的消息后，客户端会使用私钥进行解密，然后将解密后的字符串发送给服务端<br>7 服务端接受到客户端发来的字符串后，跟之前的字符串进行对比，如果一致，就允许免密码登录</div>.<br>ssh服务登录验证<br><code>ssh-keygen</code> 生成私钥<br><code>ssh-copy-id -i /root/.ssh/id_rsa 192.168.152.130</code> 将key文件发送到对应的文件上,这样就已经可以使用了<br>上面建立的私钥并没有设置口令。基于key认证重设私钥口令： <code>ssh-keygen –p</code><br>但是这样每次连接时都必须输入口令。为了方便我们可以设置一个代理程序<br>known_host保存曾经连过的对方主机的公钥</p>
+<pre><code>[root@centos7 ~]# ssh-agent bash
 [root@centos7 ~]# ssh-add            ##钥匙通过命令添加给代理
 Enter passphrase for /root/.ssh/id_rsa:         ##刚刚设置私钥的口令
 Identity added: /root/.ssh/id_rsa (/root/.ssh/id_rsa)
- ##这样每次连接时就可以直接连接了。但是只能连接一次，退出后就会失效</code><br><div class="alert alert-danger"><font color="#4de680"><i class="fa fa-key fa-2x"></i></font>使用crt生成公钥私钥连接主机<br>crt-tool-Key Generation Wizard 依次默认点击生成公钥和私钥文件(如果最后选择OpenSSH Key format就不需要下面的转换格式)<br>将公钥传到需要连接的主机上,将文件放置~/.ssh目录下<code>ssh-keygen -i -f Identity.pub &gt;&gt; authorized_keys</code> 转换Identity.pub文件的格式，然后追加到文件<br>在crt上连接主机在验证方式这里——Authentication——PublicKey——Propreies选择对应的私钥文件，就可以连上了</div>.<br><br><code>三个机器共用一套公钥私钥——实现互相连接不需要输入密码
+ ##这样每次连接时就可以直接连接了。但是只能连接一次，退出后就会失效
+</code></pre><p><div class="alert alert-danger"><font color="#4de680"><i class="fa fa-key fa-2x"></i></font>使用crt生成公钥私钥连接主机<br>crt-tool-Key Generation Wizard 依次默认点击生成公钥和私钥文件(如果最后选择OpenSSH Key format就不需要下面的转换格式)<br>将公钥传到需要连接的主机上,将文件放置~/.ssh目录下<code>ssh-keygen -i -f Identity.pub &gt;&gt; authorized_keys</code> 转换Identity.pub文件的格式，然后追加到文件<br>在crt上连接主机在验证方式这里——Authentication——PublicKey——Propreies选择对应的私钥文件，就可以连上了</div>.</p>
+<pre><code>三个机器共用一套公钥私钥——实现互相连接不需要输入密码
 ssh-keygen -t rsa -P &quot;&quot; -f ./id_rsa
 ssh-copy-id 192.168.152.136
 scp -rp /root/.ssh/ 192.168.152.131:/root/
-scp -rp /root/.ssh/ 192.168.152.140:/root/</code><br><br># scp<br>scp命令：<br>scp [options] SRC… DEST/<br>两种方式：<br><code>[root@centos7 ~]# scp /etc/fstab/ 192.168.152.131:/data
+scp -rp /root/.ssh/ 192.168.152.140:/root/
+</code></pre><h1 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h1><p>scp命令：<br>scp [options] SRC… DEST/<br>两种方式：</p>
+<pre><code>[root@centos7 ~]# scp /etc/fstab/ 192.168.152.131:/data
 fstab                                                                                     100%  595    65.5KB/s   00:00    
 [root@centos7 ~]# scp 192.168.152.131:/root/a.txt ./
-a.txt                                                                                     100%  329    30.4KB/s   00:00</code><br>常用选项：<br>-C    压缩数据流<br>-r    递归复制<br>-p    保持原文件的属性信息<br>-q    静默模式<br>-P PORT    指明remote host的监听的端口<br><code>##从远程机器拷贝到远程机器上
-scp 192.168.152.136:/etc/centos-release 192.168.152.140:/data</code><br># rsync命令<br>基于ssh和rsh服务实现高效率的远程系统之间复制文件<br>使用安全的shell连接做为传输方式<br>rsync -av /etc server1:/tmp    复制目录和目录下文件<br>rsync -av /etc/ server1:/tmp    只复制目录下文件<br>比scp更快，只复制不同的文件<br>常用选项：<br>-n    模拟复制过程<br>-v    显示详细过程<br>-r    递归复制目录树<br>-p    保留权限<br>-t    保留时间戳<br>-g    保留组信息<br>-o    保留所有者信息<br>-l    将软链接文件本身进行复制（默认）<br>-L    将软链接文件指向的文件复制<br>-a    存档，相当于–rlptgoD，但不保留ACL（-A）和SELinux属性（-X）<br><code>[root@centos7 ces]# rsync -r /root/ces 192.168.152.131:/root/ces 
+a.txt                                                                                     100%  329    30.4KB/s   00:00   
+</code></pre><p>常用选项：<br>-C    压缩数据流<br>-r    递归复制<br>-p    保持原文件的属性信息<br>-q    静默模式<br>-P PORT    指明remote host的监听的端口</p>
+<pre><code>##从远程机器拷贝到远程机器上
+scp 192.168.152.136:/etc/centos-release 192.168.152.140:/data
+</code></pre><h1 id="rsync命令"><a href="#rsync命令" class="headerlink" title="rsync命令"></a>rsync命令</h1><p>基于ssh和rsh服务实现高效率的远程系统之间复制文件<br>使用安全的shell连接做为传输方式<br>rsync -av /etc server1:/tmp    复制目录和目录下文件<br>rsync -av /etc/ server1:/tmp    只复制目录下文件<br>比scp更快，只复制不同的文件<br>常用选项：<br>-n    模拟复制过程<br>-v    显示详细过程<br>-r    递归复制目录树<br>-p    保留权限<br>-t    保留时间戳<br>-g    保留组信息<br>-o    保留所有者信息<br>-l    将软链接文件本身进行复制（默认）<br>-L    将软链接文件指向的文件复制<br>-a    存档，相当于–rlptgoD，但不保留ACL（-A）和SELinux属性（-X）</p>
+<pre><code>[root@centos7 ces]# rsync -r /root/ces 192.168.152.131:/root/ces 
 ##只复制/ces/这个目录到对应目录下
 [root@centos7 ces]# rsync -r /root/ces/ 192.168.152.131:/root/ces
 ##只复制/root/ces/目录下的文件到对应的机器上
@@ -1006,7 +1030,8 @@ sending incremental file list
 f1
 
 sent 41,082 bytes  received 71,782 bytes  8,360.30 bytes/sec
-total size is 314,572,801  speedup is 2,787.18</code><br><br># pssh工具<br>pssh是一个python编写可以在多台服务器上执行命令的工具，也可实现文件复制<br>选项如下：<br>–version：查看版本<br>-h：主机文件列表，内容格式”[user@]host[:port]”<br>-H：主机字符串，内容格式”[user@]host[:port]”<br>-A：手动输入密码模式(当不支持ssh的key认证时，通过 -A选项，使用密码认证批量执行指令)<br>-i：每个服务器内部处理信息输出<br>-l：登录使用的用户名<br>-p：并发的线程数【可选】<br>-o：输出的文件目录【可选】<br>-e：错误输入文件【可选】<br>-t：TIMEOUT 超时时间设置，0无限制【可选】<br>-O：SSH的选项<br>-P：打印出服务器返回信息<br>-v：详细模式<br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
+total size is 314,572,801  speedup is 2,787.18
+</code></pre><h1 id="pssh工具"><a href="#pssh工具" class="headerlink" title="pssh工具"></a>pssh工具</h1><p>pssh是一个python编写可以在多台服务器上执行命令的工具，也可实现文件复制<br>选项如下：<br>–version：查看版本<br>-h：主机文件列表，内容格式”[user@]host[:port]”<br>-H：主机字符串，内容格式”[user@]host[:port]”<br>-A：手动输入密码模式(当不支持ssh的key认证时，通过 -A选项，使用密码认证批量执行指令)<br>-i：每个服务器内部处理信息输出<br>-l：登录使用的用户名<br>-p：并发的线程数【可选】<br>-o：输出的文件目录【可选】<br>-e：错误输入文件【可选】<br>-t：TIMEOUT 超时时间设置，0无限制【可选】<br>-O：SSH的选项<br>-P：打印出服务器返回信息<br>-v：详细模式<br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
 <pre><code>[root@centos7 .ssh]# pssh -H 192.168.152.131 -A -i  ifconfig eth0
 Warning: do not enter your password if anyone else has superuser
 privileges or access to your account.
@@ -1044,13 +1069,15 @@ eth0      Link encap:Ethernet  HWaddr 00:0C:29:89:50:C2
 ##通过pssh批量关闭seLinux
 [root@centos7 ~]# pssh -h iplist.txt -i &apos;sed -i &quot;s/^SELINUX=.*/SELINUX=disabled/&quot; /etc/selinux/config&apos;
 </code></pre>
-</div></div><br><br>## pscp.pssh命令<br>pscp.pssh功能是将本地文件批量复制到远程主机<br>-v 显示复制过程<br>-r 递归复制目录<br>将本地多个文件批量复制到/app/目录<br><code>pscp.pssh -H 192.168.1.10  /root/f1.sh /root/f2.sh    /app/</code><br>将本地目录批量复制到/app/目录<br><code>pscp.pssh -H 192.168.1.10  -r /root/test/    /app/</code><br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
+</div></div></p>
+<h2 id="pscp-pssh命令"><a href="#pscp-pssh命令" class="headerlink" title="pscp.pssh命令"></a>pscp.pssh命令</h2><p>pscp.pssh功能是将本地文件批量复制到远程主机<br>-v 显示复制过程<br>-r 递归复制目录<br>将本地多个文件批量复制到/app/目录<br><code>pscp.pssh -H 192.168.1.10  /root/f1.sh /root/f2.sh    /app/</code><br>将本地目录批量复制到/app/目录<br><code>pscp.pssh -H 192.168.1.10  -r /root/test/    /app/</code><br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
 <pre><code>    ##将本地的f1.sh复制到远程主机/data的目录下。iplist.txt是远程主机的iP
 [root@centos7 ~]# pscp.pssh -h /root/iplist.txt /root/f1.sh /data
     ##也就是先把文件传送过去，再执行  
 [root@centos7 ~]# pssh -h iplist.txt -i &apos;/data/f1.sh&apos;   
 </code></pre>
-</div></div><br><br>## pslurp命令<br>pslurp功能是将远程主机的文件批量复制到本地<br>-L 指定从远程主机下载到本机的存储的目录<br>-r 递归复制目录<br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
+</div></div></p>
+<h2 id="pslurp命令"><a href="#pslurp命令" class="headerlink" title="pslurp命令"></a>pslurp命令</h2><p>pslurp功能是将远程主机的文件批量复制到本地<br>-L 指定从远程主机下载到本机的存储的目录<br>-r 递归复制目录<br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
 <pre><code>        ##从远程主机上拷贝文件/etc/passwd/到本机/data目录上重命名为passwd.bak
 [root@centos7 ~]# pslurp -h /root/iplist.txt -L /data /etc/passwd passwd.bak
 [root@centos7 ~]# tree /data      ##拷贝后的路径
@@ -1064,7 +1091,8 @@ eth0      Link encap:Ethernet  HWaddr 00:0C:29:89:50:C2
 
 3 directories, 3 files
 </code></pre>
-</div></div><br><br><br>## SSH端口转发<br>本地转发：-L localport:remotehost:remotehostport    sshserver<br>-f 后台启用<br>-N 不打开远程shell，处于等待状态<br>-g 启用网关功能<br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
+</div></div></p>
+<h2 id="SSH端口转发"><a href="#SSH端口转发" class="headerlink" title="SSH端口转发"></a>SSH端口转发</h2><p>本地转发：-L localport:remotehost:remotehostport    sshserver<br>-f 后台启用<br>-N 不打开远程shell，处于等待状态<br>-g 启用网关功能<br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
 <pre><code>192.168.152.136([root@centos7 ~]# )——192.168.152.131([root@centos6 data]# )这台机器模拟ssh server
 ——192.168.152.142([root@Tiger data]# )
 ##首先拒绝centso7的连接
@@ -1082,7 +1110,9 @@ ESTAB      0      96
 [root@centos7 ~]# ssh -L 9527:192.168.152.142:23 -Nf 192.168.152.131 
 [root@centos6 data]# telnet 192.168.152.142  
 </code></pre>
-</div></div><br><br><br>## SSH端口转发<br>远程转发:<br>-R sshserverport:remotehost:remotehostport  sshserver<br>示例：<br><code>[root@centos7 ~]# (ssh server)——[root@centos6 data]#(ssh client)——[root@Tiger data]#
+</div></div></p>
+<h2 id="SSH端口转发-1"><a href="#SSH端口转发-1" class="headerlink" title="SSH端口转发"></a>SSH端口转发</h2><p>远程转发:<br>-R sshserverport:remotehost:remotehostport  sshserver<br>示例：</p>
+<pre><code>[root@centos7 ~]# (ssh server)——[root@centos6 data]#(ssh client)——[root@Tiger data]#
 发起连接，注意顺序
 [root@centos6 ~]# ssh -R 9527:192.168.152.142:23 192.168.152.136
 [root@centos7 ~]# telnet 127.0.0.1 9527        ##现在实现了[root@centos7 ~]#和[root@Tiger data]的通讯
@@ -1090,7 +1120,8 @@ ESTAB      0      96
 动态端口转发
 [root@centos6 ~]# ssh -R 9527:192.168.152.142:23 -gfN 192.168.152.136 gateway
 [root@centos7 ~]# telnet 192.168.152.136 9527    
-这里可以理解为最左边有多台电脑，然后可以这里连接最右边的那台机器</code><br><br>## 动态端口转发：<br>-g表示另外一台机器也可以通过端口访问<br>当用firefox访问internet时，本机的1080端口做为代理服务器，firefox的访问请求被转发到sshserver上，由sshserver替之访问internet<br>ssh -D 1080 root@sshserver -fNg<br>在本机firefox设置代理socket proxy:127.0.0.1:1080 curl –socks5 127.0.0.1:1080 <a href="http://www.qq.com" target="_blank" rel="noopener">http://www.qq.com</a><br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
+这里可以理解为最左边有多台电脑，然后可以这里连接最右边的那台机器
+</code></pre><h2 id="动态端口转发："><a href="#动态端口转发：" class="headerlink" title="动态端口转发："></a>动态端口转发：</h2><p>-g表示另外一台机器也可以通过端口访问<br>当用firefox访问internet时，本机的1080端口做为代理服务器，firefox的访问请求被转发到sshserver上，由sshserver替之访问internet<br>ssh -D 1080 root@sshserver -fNg<br>在本机firefox设置代理socket proxy:127.0.0.1:1080 curl –socks5 127.0.0.1:1080 <a href="http://www.qq.com" target="_blank" rel="noopener">http://www.qq.com</a><br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
 <pre><code>192.168.152.136([root@centos7 ~]# )——192.168.152.142([root@Tiger data]# )——
 192.168.152.131([root@centos6 data]# )这台机器模拟internet
 [root@centos6 ~]# echo www.google.com &gt; /var/www/html/index.html
@@ -1111,7 +1142,8 @@ curl: (7) Failed connect to 192.168.152.131:80; Connection refused
 [root@centos7 ~]# ssh -D 1080 192.168.152.136 -fNg  
 然后在浏览器里设置代理就可以访问了
 </code></pre>
-</div></div><br><br>## ssh服务器<br>服务器端：sshd, 配置文件: /etc/ssh/sshd_config<br>日志文件:  cat /var/log/secure<br>限制可登录用户的办法：<br>AllowGroups 允许的组<br>DenyGroups    不允许的组<br><div><div class="fold_hider"><div class="close hider_title">点击查看配置文件信息</div></div><div class="fold">
+</div></div></p>
+<h2 id="ssh服务器"><a href="#ssh服务器" class="headerlink" title="ssh服务器"></a>ssh服务器</h2><p>服务器端：sshd, 配置文件: /etc/ssh/sshd_config<br>日志文件:  cat /var/log/secure<br>限制可登录用户的办法：<br>AllowGroups 允许的组<br>DenyGroups    不允许的组<br><div><div class="fold_hider"><div class="close hider_title">点击查看配置文件信息</div></div><div class="fold">
 <pre><code>#LoginGraceTime 2m  ##等待输入用户名时间2分钟
 #PermitRootLogin yes ##允许root用户登录
 #StrictModes yes  ##检查.ssh/文件的所有者，权限等
@@ -1135,7 +1167,8 @@ banner /etc/ssh/h.txt      ##登录提示信息 可以引用下面那个佛的�
 allowusers pan  ##只允许用户pan连接
 denyusers  pan    ##黑名单，不允许连接的用户
 </code></pre>
-</div></div><br><br><div><div class="fold_hider"><div class="close hider_title">点击查看代码:拜佛</div></div><div class="fold">
+</div></div></p>
+<div><div class="fold_hider"><div class="close hider_title">点击查看代码:拜佛</div></div><div class="fold">
 <pre><code>////////////////////////////////////////////////////////////////////
 //                          _ooOoo_                               //
 //                         o8888888o                              //
@@ -1160,7 +1193,8 @@ denyusers  pan    ##黑名单，不允许连接的用户
 ////////////////////////////////////////////////////////////////////
 
 </code></pre>
-</div></div><br><br><br># dropbear<br>源码编译安装 <font size="3"><br>1、安装开发包组:yum groupinstall “Development tools”<br>2、下载dropbear-2017.75.tar.bz2<br>3、tar xf dropbear-2017.75.tar.bz2<br>4、less INSTALL README<br>5、./configure<br>6、make PROGRAMS=”dropbear dbclient dropbearkey dropbearconvert scp”<br>7、make PROGRAMS=”dropbear dbclient dropbearkey dropbearconvert scp” install<br><code>dropbear -p :2222 -F –E  #前台运行</code></font>.<br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
+</div></div>
+<h1 id="dropbear"><a href="#dropbear" class="headerlink" title="dropbear"></a>dropbear</h1><p>源码编译安装 <font size="3"><br>1、安装开发包组:yum groupinstall “Development tools”<br>2、下载dropbear-2017.75.tar.bz2<br>3、tar xf dropbear-2017.75.tar.bz2<br>4、less INSTALL README<br>5、./configure<br>6、make PROGRAMS=”dropbear dbclient dropbearkey dropbearconvert scp”<br>7、make PROGRAMS=”dropbear dbclient dropbearkey dropbearconvert scp” install<br><code>dropbear -p :2222 -F –E  #前台运行</code></font>.<br><div><div class="fold_hider"><div class="close hider_title">点击查看代码</div></div><div class="fold">
 <pre><code>##下载(缺少解压)
 wget https://matt.ucc.asn.au/dropbear/dropbear-2019.78.tar.bz2
 [root@centos7 dropbear-2019.78]# ./configure --prefix=/app/dropbear --sysconfdir=/etc/dropbear
@@ -1197,7 +1231,9 @@ lost connection
 [root@centos7 data]# rm -fr /data/dropbear-2019.78*
 [root@centos7 data]# rm -fr /etc/profile.d/dropbear.sh 
 </code></pre>
-</div></div><br><br><br># aide<br><div class="alert alert-info">当一个入侵者进入了你的系统并且种植了木马，通常会想办法来隐蔽这个木马（除了木马自身的一些隐蔽特性外，他会尽量给你检查系统的过程设置障碍），通常入侵者会修改一些文件，比如管理员通常用ps -aux来查看系统进程，那么入侵者很可能用自己经过修改的ps程序来替换掉你系统上的ps程序，以使用ps命令查不到正在运行的木马程序。如果入侵者发现管理员正在运行crontab作业，也有可能替换掉crontab程序等等。所以由此可以看出对于系统文件或是关键文件的检查是很必要的。目前就系统完整性检查的工具用的比较多的有两款：Tripwire和AIDE，前者是一款商业软件，后者是一款免费的但功能也很强大的工具</div><font size="3"><br>•AIDE(Advanced Intrusion Detection Environment)<br>•高级入侵检测环境)是一个入侵检测工具，主要用途是检查文件的完整性，审计计算机上的那些文件被更改过了<br>•AIDE能够构造一个指定文件的数据库，它使用aide.conf作为其配置文件。AIDE数据库能够保存文件的各种属性，包括：权限(permission)、索引节点序号(inode number)、所属用户(user)、所属用户组(group)、文件大小、最后修改时间(mtime)、创建时间(ctime)、最后访问时间(atime)、增加的大小以及连接数。AIDE还能够使用下列算法：sha1、md5、rmd160、tiger，以密文形式建立每个文件的校验码或散列号<br>•这个数据库不应该保存那些经常变动的文件信息，例如：日志文件、邮件、/proc文件系统、用户起始目录以及临时目录</font>.<br><br><div><div class="fold_hider"><div class="close hider_title">配置文件aide.conf定义规则</div></div><div class="fold">
+</div></div></p>
+<h1 id="aide"><a href="#aide" class="headerlink" title="aide"></a>aide</h1><p><div class="alert alert-info">当一个入侵者进入了你的系统并且种植了木马，通常会想办法来隐蔽这个木马（除了木马自身的一些隐蔽特性外，他会尽量给你检查系统的过程设置障碍），通常入侵者会修改一些文件，比如管理员通常用ps -aux来查看系统进程，那么入侵者很可能用自己经过修改的ps程序来替换掉你系统上的ps程序，以使用ps命令查不到正在运行的木马程序。如果入侵者发现管理员正在运行crontab作业，也有可能替换掉crontab程序等等。所以由此可以看出对于系统文件或是关键文件的检查是很必要的。目前就系统完整性检查的工具用的比较多的有两款：Tripwire和AIDE，前者是一款商业软件，后者是一款免费的但功能也很强大的工具</div><font size="3"><br>•AIDE(Advanced Intrusion Detection Environment)<br>•高级入侵检测环境)是一个入侵检测工具，主要用途是检查文件的完整性，审计计算机上的那些文件被更改过了<br>•AIDE能够构造一个指定文件的数据库，它使用aide.conf作为其配置文件。AIDE数据库能够保存文件的各种属性，包括：权限(permission)、索引节点序号(inode number)、所属用户(user)、所属用户组(group)、文件大小、最后修改时间(mtime)、创建时间(ctime)、最后访问时间(atime)、增加的大小以及连接数。AIDE还能够使用下列算法：sha1、md5、rmd160、tiger，以密文形式建立每个文件的校验码或散列号<br>•这个数据库不应该保存那些经常变动的文件信息，例如：日志文件、邮件、/proc文件系统、用户起始目录以及临时目录</font>.</p>
+<div><div class="fold_hider"><div class="close hider_title">配置文件aide.conf定义规则</div></div><div class="fold">
 <pre><code>vim /etc/aide.conf 定义监控文件的各项规则
 @@define DBDIR /var/lib/aide ##存放的数据库路径
 @@define LOGDIR /var/log/aide ##日志
@@ -1215,7 +1251,8 @@ TEST = p+u+g+s+md5  ##这里表示需要检测的属性规则。我自定义监�
 
 ## R=p+i+n+u+g+s+m+c+md5 权限+索引节点+链接数+用户+组+大小+最后一次修改时间+创建时间+md5校验值
 </code></pre>
-</div></div><br><br><div><div class="fold_hider"><div class="close hider_title">*************************点击查看aide例:*************************</div></div><div class="fold">
+</div></div>
+<div><div class="fold_hider"><div class="close hider_title">*************************点击查看aide例:*************************</div></div><div class="fold">
 <pre><code>cp /etc/fstab f1
 cp /etc/fstab f2
 cp /etc/fstab f3 到/data/目录
@@ -1260,7 +1297,9 @@ File: /data/f1
 [root@centos7 aide]# mv /var/lib/aide/aide.db.new.gz aide.db.gz
 [root@centos7 aide]# aide -C  ##aide --help 查看帮助
 </code></pre>
-</div></div><br><br><br># sudo命令<br>ls -l /usr/bin/sudo<br>sudo –i –u wang 切换身份<br>sudo [-u user] COMMAND<br>-V 显示版本信息等配置信息<br>-u user 默认为root<br>-l,ll 列出用户在主机上可用的和被禁止的命令<br>-v 再延长密码有效期限5分钟,更新时间戳<br>-k 清除时间戳（1970-01-01），下次需要重新输密码<br>-K 与-k类似，还要删除时间戳文件<br>-b 在后台执行指令<br>-p 改变询问密码的提示符号<code>示例：-p &quot;password on %h for user %p:&quot;</code> 表示主机，p表示用户<br><code>[pan@centos6 sudo]$ sudo -p &quot;password on %h for user %p:&quot; cat /etc/messages</code><br>时间戳文件：/var/db/sudo<br>日志文件：/var/log/secure<br>visudo 可以检查文件的语法，但是他没有高亮，我们可以声明一下变量<br><code>export EDITOR=vim</code> 再次打开就有了<br>visudo -c 也可以检查语法，后面不用接文件。<br><br><div><div class="fold_hider"><div class="close hider_title">***********************sudo例子***********************</div></div><div class="fold">
+</div></div>
+<h1 id="sudo命令"><a href="#sudo命令" class="headerlink" title="sudo命令"></a>sudo命令</h1><p>ls -l /usr/bin/sudo<br>sudo –i –u wang 切换身份<br>sudo [-u user] COMMAND<br>-V 显示版本信息等配置信息<br>-u user 默认为root<br>-l,ll 列出用户在主机上可用的和被禁止的命令<br>-v 再延长密码有效期限5分钟,更新时间戳<br>-k 清除时间戳（1970-01-01），下次需要重新输密码<br>-K 与-k类似，还要删除时间戳文件<br>-b 在后台执行指令<br>-p 改变询问密码的提示符号<code>示例：-p &quot;password on %h for user %p:&quot;</code> 表示主机，p表示用户<br><code>[pan@centos6 sudo]$ sudo -p &quot;password on %h for user %p:&quot; cat /etc/messages</code><br>时间戳文件：/var/db/sudo<br>日志文件：/var/log/secure<br>visudo 可以检查文件的语法，但是他没有高亮，我们可以声明一下变量<br><code>export EDITOR=vim</code> 再次打开就有了<br>visudo -c 也可以检查语法，后面不用接文件。</p>
+<div><div class="fold_hider"><div class="close hider_title">***********************sudo例子***********************</div></div><div class="fold">
 <pre><code>[root@centos7 pan]# vim /etc/sudoers
  92 root    ALL=(ALL)       ALL
  93 pan     ALL=(root) /usr/bin/mount /dev/cdrom /data,/usr/bin/umount 
@@ -1279,7 +1318,8 @@ sudo -i: 为了频繁的执行某些只有超级用户才能执行的权限，�
 [root@centos6 ~]# vim /etc/sudoers.d/test 
 pan     ALL= sudoedit             ##这里表示pan用户能够使用sudoedit这个命令来更改sudo配置文件
 </code></pre>
-</div></div><br><br>## sudo 别名授权<br>sudoers<div class="alert alert-warning">授权规则格式：<br>用户 登入主机=(代表用户) 命令<br>示例：<br>root    ALL=(ALL)    ALL<br>格式说明：<br>user: 运行命令者的身份<br>host: 通过哪些主机<br>(runas)：以哪个用户的身份<br>command: 运行哪些命令</div><br><div><div class="fold_hider"><div class="close hider_title">-----------------------------------------sudo别名例-----------------------------------------</div></div><div class="fold">
+</div></div>
+<h2 id="sudo-别名授权"><a href="#sudo-别名授权" class="headerlink" title="sudo 别名授权"></a>sudo 别名授权</h2><p>sudoers<div class="alert alert-warning">授权规则格式：<br>用户 登入主机=(代表用户) 命令<br>示例：<br>root    ALL=(ALL)    ALL<br>格式说明：<br>user: 运行命令者的身份<br>host: 通过哪些主机<br>(runas)：以哪个用户的身份<br>command: 运行哪些命令</div><br><div><div class="fold_hider"><div class="close hider_title">-----------------------------------------sudo别名例-----------------------------------------</div></div><div class="fold">
 <pre><code>别名
 Users和runas: 
 username 
@@ -1346,9 +1386,12 @@ wang    ALL=(ALL) /bin/cat /var/log/messages* ##这条命令有个bug
 [pan@centos6 root]$ sudo cat /var/log/messages /etc/shadow   ##在最后居然可以查看密码文件
 pan     ALL=(root) /bin/cat /var/log/messages*,!/bin/cat /var/log/messages* * ##配置文件需要这样改
 </code></pre>
-</div></div><br><br># TCP_Wrappers介绍<br>作者：Wieste Venema，IBM，Google<br>工作在第四层（传输层）的TCP协议<br>对有状态连接的特定服务进行安全检测并实现访问控制<br>以库文件形式实现<br>某进程是否接受libwrap的控制取决于发起此进程的程序在编译时是否针对libwrap进行编译的<br>判断服务程序是否能够由tcp_wrapper进行访问控制的方法：<br>ldd /PATH/TO/PROGRAM|grep libwrap.so strings PATH/TO/PROGRAM|grep libwrap.so<br><code>cat /etc/hosts.deny         
+</div></div></p>
+<h1 id="TCP-Wrappers介绍"><a href="#TCP-Wrappers介绍" class="headerlink" title="TCP_Wrappers介绍"></a>TCP_Wrappers介绍</h1><p>作者：Wieste Venema，IBM，Google<br>工作在第四层（传输层）的TCP协议<br>对有状态连接的特定服务进行安全检测并实现访问控制<br>以库文件形式实现<br>某进程是否接受libwrap的控制取决于发起此进程的程序在编译时是否针对libwrap进行编译的<br>判断服务程序是否能够由tcp_wrapper进行访问控制的方法：<br>ldd /PATH/TO/PROGRAM|grep libwrap.so strings PATH/TO/PROGRAM|grep libwrap.so</p>
+<pre><code>cat /etc/hosts.deny         
 sshd: 192.168.152.136     ##只需要在机器行添加这一行，别的机器就无法连接。
-##/etc/hosts.allow文件的优先级比/etc/hosts.deny高，也就是说两个文件如果都有同样一个地址那么也是允许连接的。</code><br><br><code>[root@centos7 ~]# rpm -ql telent-server
+##/etc/hosts.allow文件的优先级比/etc/hosts.deny高，也就是说两个文件如果都有同样一个地址那么也是允许连接的。
+</code></pre><pre><code>[root@centos7 ~]# rpm -ql telent-server
 /etc/xinetd.d/telnet
 /usr/sbin/in.telnetd      ##主程序名
 /usr/share/man/man5/issue.net.5.gz
@@ -1358,7 +1401,9 @@ sshd: 192.168.152.136     ##只需要在机器行添加这一行，别的机器�
 in.telnetd,sshd:192.168.152.136   ##如果有多个IP可以sshd@192.168.152.136
 
 in.telnetd,sshd:172.18. EXPECT 172.18.0. EXPECT 172.18.0.7
-##在172.18.这个网段中，172.18.0.这个网段不被拒绝，但是172.18.0.7这台机器被拒绝</code><br><br>## TCP_Wrappers的使用<br>主机有多个IP，可用@hostIP来实现控制<br>如：<a href="mailto:in.telnetd@192.168.0.254" target="_blank" rel="noopener">in.telnetd@192.168.0.254</a><br><code>示例：只允许192.168.1.0/24的主机访问
+##在172.18.这个网段中，172.18.0.这个网段不被拒绝，但是172.18.0.7这台机器被拒绝
+</code></pre><h2 id="TCP-Wrappers的使用"><a href="#TCP-Wrappers的使用" class="headerlink" title="TCP_Wrappers的使用"></a>TCP_Wrappers的使用</h2><p>主机有多个IP，可用@hostIP来实现控制<br>如：<a href="mailto:in.telnetd@192.168.0.254" target="_blank" rel="noopener">in.telnetd@192.168.0.254</a></p>
+<pre><code>示例：只允许192.168.1.0/24的主机访问
 sshd /etc/hosts.allow
 sshd: 192.168.1. 
 /etc/hosts.deny
@@ -1394,7 +1439,8 @@ Trying 192.168.152.131...
 Connected to 192.168.152.131.
 Escape character is &#39;^]&#39;.
 403 forbindden
-Connection closed by foreign host.</code><br><br># TCP_Wrappers介绍<br>作者：Wieste Venema，IBM，Google<br>工作在第四层（传输层）的TCP协议<br>对有状态连接的特定服务进行安全检测并实现访问控制<br>以库文件形式实现<br>某进程是否接受libwrap的控制取决于发起此进程的程序在编译时是否针对libwrap进行编译的<br>判断服务程序是否能够由tcp_wrapper进行访问控制的方法：<br>ldd /PATH/TO/PROGRAM|grep libwrap.so<br>strings PATH/TO/PROGRAM|grep libwrap.so<br><div><div class="fold_hider"><div class="close hider_title">--------------------------查询服务是受TCP_Wrappers的控制--------------------------</div></div><div class="fold">
+Connection closed by foreign host.
+</code></pre><h1 id="TCP-Wrappers介绍-1"><a href="#TCP-Wrappers介绍-1" class="headerlink" title="TCP_Wrappers介绍"></a>TCP_Wrappers介绍</h1><p>作者：Wieste Venema，IBM，Google<br>工作在第四层（传输层）的TCP协议<br>对有状态连接的特定服务进行安全检测并实现访问控制<br>以库文件形式实现<br>某进程是否接受libwrap的控制取决于发起此进程的程序在编译时是否针对libwrap进行编译的<br>判断服务程序是否能够由tcp_wrapper进行访问控制的方法：<br>ldd /PATH/TO/PROGRAM|grep libwrap.so<br>strings PATH/TO/PROGRAM|grep libwrap.so<br><div><div class="fold_hider"><div class="close hider_title">--------------------------查询服务是受TCP_Wrappers的控制--------------------------</div></div><div class="fold">
 <pre><code>[root@centos6 data]# rpm -ql telnet-server
 /etc/xinetd.d/telnet                ##里面没有libwrap.so但是他是受xinetd管理的
 /usr/sbin/in.telnetd
@@ -1420,9 +1466,11 @@ Connection closed by foreign host.</code><br><br># TCP_Wrappers介绍<br>作者�
         /lib64/ld-linux-x86-64.so.2 (0x000055ca092e3000)
         libfreebl3.so =&gt; /lib64/libfreebl3.so (0x00007f49da101000)
 </code></pre>
-</div></div><br><br><code>cat /etc/hosts.deny         
+</div></div></p>
+<pre><code>cat /etc/hosts.deny         
 sshd: 192.168.152.136     ##只需要在机器行添加这一行，别的机器就无法连接。
-##/etc/hosts.allow文件的优先级比/etc/hosts.deny高，也就是说两个文件如果都有同样一个地址那么也是允许连接的。</code><br><br><code>[root@centos7 ~]# rpm -ql telent-server
+##/etc/hosts.allow文件的优先级比/etc/hosts.deny高，也就是说两个文件如果都有同样一个地址那么也是允许连接的。
+</code></pre><pre><code>[root@centos7 ~]# rpm -ql telent-server
 /etc/xinetd.d/telnet
 /usr/sbin/in.telnetd      ##主程序名
 /usr/share/man/man5/issue.net.5.gz
@@ -1432,7 +1480,8 @@ sshd: 192.168.152.136     ##只需要在机器行添加这一行，别的机器�
 in.telnetd,sshd:192.168.152.136   ##如果有多个IP可以sshd@192.168.152.136
 
 in.telnetd,sshd:172.18. EXPECT 172.18.0. EXPECT 172.18.0.7
-##在172.18.这个网段中，172.18.0.这个网段不被拒绝，但是172.18.0.7这台机器被拒绝</code><br><br>## TCP_Wrappers的使用<br>主机有多个IP，可用@hostIP来实现控制<br>如：<a href="mailto:in.telnetd@192.168.0.254" target="_blank" rel="noopener">in.telnetd@192.168.0.254</a><br><div><div class="fold_hider"><div class="close hider_title">--------------------------使用例子--------------------------</div></div><div class="fold">
+##在172.18.这个网段中，172.18.0.这个网段不被拒绝，但是172.18.0.7这台机器被拒绝
+</code></pre><h2 id="TCP-Wrappers的使用-1"><a href="#TCP-Wrappers的使用-1" class="headerlink" title="TCP_Wrappers的使用"></a>TCP_Wrappers的使用</h2><p>主机有多个IP，可用@hostIP来实现控制<br>如：<a href="mailto:in.telnetd@192.168.0.254" target="_blank" rel="noopener">in.telnetd@192.168.0.254</a><br><div><div class="fold_hider"><div class="close hider_title">--------------------------使用例子--------------------------</div></div><div class="fold">
 <pre><code>示例：只允许192.168.1.0/24的主机访问
 sshd /etc/hosts.allow
 sshd: 192.168.1. 
@@ -1484,11 +1533,12 @@ client:   address  192.168.34.5
 server:   process  in.telnetd
 access:   granted
 </code></pre>
-</div></div><br><br># PAM认证机制<br>PAM:Pluggable Authentication Modules<br>认证库：文本文件，MySQL，NIS，LDAP等<br>Sun公司于1995 年开发的一种与认证相关的通用框架机制<br>PAM 是关注如何为服务验证用户的 API，通过提供一些动态链接库和一套统一的API，将系统提供的服务和该服务的认证方式分开<br>使得系统管理员可以灵活地根据需要给不同的服务配置不同的认证方式而无需更改服务程序<br>一种认证框架，自身不做认证<br><br>PAM认证机制<br>它提供了对所有服务进行认证的中央机制，适用于本地登录，远程登录，如：telnet,rlogin,fsh,ftp,点对点协议PPP，su等应用程序中，系统管理员通过PAM配置文件来制定不同应用程序的不同认证策略；应用程序开发者通过在服务程序中使用PAM API(pam_xxxx( ))来实现对认证方法的调用；而PAM服务模块的开发者则利用PAM SPI来编写模块（主要调用函数pam_sm_xxxx( )供PAM接口库调用，将不同的认证机制加入到系统中；PAM接口库（libpam）则读取配置文件，将应用程序和相应的PAM服务模块联系起来<br><br>## PAM相关文件<br><div class="alert alert-danger">模块文件目录：/lib64/security/\</div></em>.so<br>环境相关的设置：/etc/security/<br>主配置文件:/etc/pam.conf，默认不存在<br>为每种应用模块提供一个专用的配置文件：/etc/pam.d/APP_NAME<br>注意：如/etc/pam.d存在，/etc/pam.conf将失效</div>
-
+</div></div></p>
+<h1 id="PAM认证机制"><a href="#PAM认证机制" class="headerlink" title="PAM认证机制"></a>PAM认证机制</h1><p>PAM:Pluggable Authentication Modules<br>认证库：文本文件，MySQL，NIS，LDAP等<br>Sun公司于1995 年开发的一种与认证相关的通用框架机制<br>PAM 是关注如何为服务验证用户的 API，通过提供一些动态链接库和一套统一的API，将系统提供的服务和该服务的认证方式分开<br>使得系统管理员可以灵活地根据需要给不同的服务配置不同的认证方式而无需更改服务程序<br>一种认证框架，自身不做认证</p>
+<p>PAM认证机制<br>它提供了对所有服务进行认证的中央机制，适用于本地登录，远程登录，如：telnet,rlogin,fsh,ftp,点对点协议PPP，su等应用程序中，系统管理员通过PAM配置文件来制定不同应用程序的不同认证策略；应用程序开发者通过在服务程序中使用PAM API(pam_xxxx( ))来实现对认证方法的调用；而PAM服务模块的开发者则利用PAM SPI来编写模块（主要调用函数pam_sm_xxxx( )供PAM接口库调用，将不同的认证机制加入到系统中；PAM接口库（libpam）则读取配置文件，将应用程序和相应的PAM服务模块联系起来</p>
+<h2 id="PAM相关文件"><a href="#PAM相关文件" class="headerlink" title="PAM相关文件"></a>PAM相关文件</h2><p><div class="alert alert-danger">模块文件目录：/lib64/security/*.so<br>环境相关的设置：/etc/security/<br>主配置文件:/etc/pam.conf，默认不存在<br>为每种应用模块提供一个专用的配置文件：/etc/pam.d/APP_NAME<br>注意：如/etc/pam.d存在，/etc/pam.conf将失效</div>.</p>
 <p><font color="0033FF"><i class="fa fa-puzzle-piece fa-2x"></i></font> pam认证原理<br>PAM认证一般遵循这样的顺序：Service(服务)→PAM(配置文件)→pam_*.so<br>PAM认证首先要确定那一项服务，然后加载相应的PAM的配置文件(位于/etc/pam.d下)，最后调用认证文件(位于/lib/security下)进行安全认证</p>
-<div class="alert alert-success"><i class="fa fa-lightbulb-o"></i>PAM认证过程：<font size="3"><br>1.使用者执行/usr/bin/passwd 程序，并输入密码<br>2.passwd开始调用PAM模块，PAM模块会搜寻passwd程序的PAM相关设置文件，这个设置文件一般是在/etc/pam.d/里边的与程序同名的文件，即PAM会搜寻/etc/pam.d/passwd此设置文件<br>3.经由/etc/pam.d/passwd设定文件的数据，取用PAM所提供的相关模块来进行验证<br>4.将验证结果回传给passwd这个程序，而passwd这个程序会根据PAM回传的结果决定下一个动作（重新输入密码或者通过验证）</font></div>
-
+<p><div class="alert alert-success"><i class="fa fa-lightbulb-o"></i>PAM认证过程：<font size="3"><br>1.使用者执行/usr/bin/passwd 程序，并输入密码<br>2.passwd开始调用PAM模块，PAM模块会搜寻passwd程序的PAM相关设置文件，这个设置文件一般是在/etc/pam.d/里边的与程序同名的文件，即PAM会搜寻/etc/pam.d/passwd此设置文件<br>3.经由/etc/pam.d/passwd设定文件的数据，取用PAM所提供的相关模块来进行验证<br>4.将验证结果回传给passwd这个程序，而passwd这个程序会根据PAM回传的结果决定下一个动作（重新输入密码或者通过验证）</font></div>.</p>
 <p>PAM认证机制</p>
 <p><font color="#27ab13"><i class="fa fa-modx fa-2x"></i></font>通用配置文件/etc/pam.conf格式<br>application type control module-path arguments</p>
 <p><font color="#27ab13"><i class="fa fa-modx fa-2x"></i></font>专用配置文件/etc/pam.d/* 格式<br>type(类型)    control    module-path(模块名)    arguments(模块的参数)<br>说明：</p>
@@ -1499,8 +1549,7 @@ access:   granted
 <p><font color="#27ab13"><i class="fa fa-modx fa-2x"></i></font>Arguments 用来传递给该模块的参数</p>
 <h2 id="模块类型（module-type）"><a href="#模块类型（module-type）" class="headerlink" title="模块类型（module-type）"></a>模块类型（module-type）</h2><p><font color="#27ab13"><i class="fa fa-check-circle"></i></font>Auth 账号的认证和授权<font color="#27ab13"><br><i class="fa fa-check-circle"></i></font>Account 与账号管理相关的非认证类的功能，如：用来限制/允许用户对某个服务的访问时间，当前有效的系统资源(最多可以有多少个用户)，限制用户的位置(例如：root用户只能从控制台登录)<font color="#27ab13"><br><i class="fa fa-check-circle"></i></font>Password 用户修改密码时密码复杂度检查机制等功能<font color="#27ab13"><br><i class="fa fa-check-circle"></i></font>Session 用户获取到服务之前或使用服务完成之后需要进行一些附加的操作，如：记录打开/关闭数据的信息，监视目录等<font color="#27ab13"><br><i class="fa fa-check-circle"></i></font>-type 表示因为缺失而不能加载的模块将不记录到系统日志,对于那些不总是安装在系统上的模块有用</p>
 <h2 id="Control"><a href="#Control" class="headerlink" title="Control"></a>Control</h2><p><i class="fa fa-check-square-o "></i>PAM库如何处理与该服务相关的PAM模块成功或失败情况<br>两种方式实现：简单和复杂</p>
-<div class="alert alert-success"><i class="fa fa-check-square-o "></i>简单方式实现：一个关健词实现<br><i class="fa fa fa-check-square-o "></i> required ：一票否决，表示本模块必须返回成功才能通过认证，但是如果该模块返回失败，失败结果也不会立即通知用户，而是要等到同一type中的所有模块全部执行完毕再将失败结果返回给应用程序，即为必要条件<br><i class="fa fa-circle-o-notch "></i> requisite ：一票否决，该模块必须返回成功才能通过认证，但是一旦该模块返回失败，将不再执行同一type内的任何模块，而是直接将控制权返回给应用程序。是一个必要条件<br><i class="fa fa-circle-o-notch "></i> sufficient ：一票通过，表明本模块返回成功则通过身份认证的要求，不必再执行同一type内的其它模块，但如果本模块返回失败可忽略，即为充分条件<br><i class="fa fa-circle-o-notch "></i> optional ：表明本模块是可选的，它的成功与否不会对身份认证起关键作用，其返回值一般被忽略<br><i class="fa fa-circle-o-notch "></i> include： 调用其他的配置文件中定义的配置信息</div>
-
+<p><div class="alert alert-success"><i class="fa fa-check-square-o "></i>简单方式实现：一个关健词实现<br><i class="fa fa fa-check-square-o "></i> required ：一票否决，表示本模块必须返回成功才能通过认证，但是如果该模块返回失败，失败结果也不会立即通知用户，而是要等到同一type中的所有模块全部执行完毕再将失败结果返回给应用程序，即为必要条件<br><i class="fa fa-circle-o-notch "></i> requisite ：一票否决，该模块必须返回成功才能通过认证，但是一旦该模块返回失败，将不再执行同一type内的任何模块，而是直接将控制权返回给应用程序。是一个必要条件<br><i class="fa fa-circle-o-notch "></i> sufficient ：一票通过，表明本模块返回成功则通过身份认证的要求，不必再执行同一type内的其它模块，但如果本模块返回失败可忽略，即为充分条件<br><i class="fa fa-circle-o-notch "></i> optional ：表明本模块是可选的，它的成功与否不会对身份认证起关键作用，其返回值一般被忽略<br><i class="fa fa-circle-o-notch "></i> include： 调用其他的配置文件中定义的配置信息</div>.</p>
 <h2 id="pam-nologin-so"><a href="#pam-nologin-so" class="headerlink" title="pam_nologin.so"></a>pam_nologin.so</h2><pre><code>touch /etc/nologin 建立这个文件以后，系统只允许root用户登录
 su 除外,因为没有调用
 cd /etc/pam.d 
@@ -1803,7 +1852,7 @@ echo &quot;此文件的作用不允许普通用户登录&quot; &gt;&gt; /etc/nol
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对称加密算法"><span class="nav-number">1.</span> <span class="nav-text">对称加密算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密算法"><span class="nav-number">2.</span> <span class="nav-text">非对称加密算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密"><span class="nav-number">3.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密-1"><span class="nav-number">4.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单向散列"><span class="nav-number">5.</span> <span class="nav-text">单向散列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用程序：RPM"><span class="nav-number">6.</span> <span class="nav-text">应用程序：RPM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#密钥交换"><span class="nav-number">7.</span> <span class="nav-text">密钥交换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用gpg实现对称加密"><span class="nav-number">8.</span> <span class="nav-text">使用gpg实现对称加密</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验-两台主机加密文件并解密"><span class="nav-number">8.1.</span> <span class="nav-text">实验:两台主机加密文件并解密</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CA和证书"><span class="nav-number">9.</span> <span class="nav-text">CA和证书</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令"><span class="nav-number">10.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令-1"><span class="nav-number">11.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令-2"><span class="nav-number">12.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令-3"><span class="nav-number">13.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验两台主机创建CA和申请证书"><span class="nav-number">14.</span> <span class="nav-text">实验两台主机创建CA和申请证书</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-建立私钥"><span class="nav-number">14.1.</span> <span class="nav-text">1.建立私钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-生成自签名证书"><span class="nav-number">14.2.</span> <span class="nav-text">2.生成自签名证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#颁发证书"><span class="nav-number">14.3.</span> <span class="nav-text">颁发证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块类型（module-type）"><span class="nav-number">14.4.</span> <span class="nav-text">模块类型（module-type）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Control"><span class="nav-number">14.5.</span> <span class="nav-text">Control</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pam-nologin-so"><span class="nav-number">14.6.</span> <span class="nav-text">pam_nologin.so</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对称加密算法"><span class="nav-number">1.</span> <span class="nav-text">对称加密算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密算法"><span class="nav-number">2.</span> <span class="nav-text">非对称加密算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密"><span class="nav-number">3.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非对称加密-1"><span class="nav-number">4.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单向散列"><span class="nav-number">5.</span> <span class="nav-text">单向散列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用程序：RPM"><span class="nav-number">6.</span> <span class="nav-text">应用程序：RPM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#密钥交换"><span class="nav-number">7.</span> <span class="nav-text">密钥交换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用gpg实现对称加密"><span class="nav-number">8.</span> <span class="nav-text">使用gpg实现对称加密</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验-两台主机加密文件并解密"><span class="nav-number">8.1.</span> <span class="nav-text">实验:两台主机加密文件并解密</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CA和证书"><span class="nav-number">9.</span> <span class="nav-text">CA和证书</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令"><span class="nav-number">10.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令-1"><span class="nav-number">11.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令-2"><span class="nav-number">12.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openssl命令-3"><span class="nav-number">13.</span> <span class="nav-text">openssl命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验两台主机创建CA和申请证书"><span class="nav-number">14.</span> <span class="nav-text">实验两台主机创建CA和申请证书</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-建立私钥"><span class="nav-number">14.1.</span> <span class="nav-text">1.建立私钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-生成自签名证书"><span class="nav-number">14.2.</span> <span class="nav-text">2.生成自签名证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#颁发证书"><span class="nav-number">14.3.</span> <span class="nav-text">颁发证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建CA和证书管理"><span class="nav-number">14.4.</span> <span class="nav-text">创建CA和证书管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH"><span class="nav-number">15.</span> <span class="nav-text">SSH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Openssh软件组成"><span class="nav-number">16.</span> <span class="nav-text">Openssh软件组成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh客户端"><span class="nav-number">17.</span> <span class="nav-text">ssh客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于key认证"><span class="nav-number">17.1.</span> <span class="nav-text">基于key认证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scp"><span class="nav-number">18.</span> <span class="nav-text">scp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rsync命令"><span class="nav-number">19.</span> <span class="nav-text">rsync命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pssh工具"><span class="nav-number">20.</span> <span class="nav-text">pssh工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pscp-pssh命令"><span class="nav-number">20.1.</span> <span class="nav-text">pscp.pssh命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pslurp命令"><span class="nav-number">20.2.</span> <span class="nav-text">pslurp命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH端口转发"><span class="nav-number">20.3.</span> <span class="nav-text">SSH端口转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH端口转发-1"><span class="nav-number">20.4.</span> <span class="nav-text">SSH端口转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态端口转发："><span class="nav-number">20.5.</span> <span class="nav-text">动态端口转发：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh服务器"><span class="nav-number">20.6.</span> <span class="nav-text">ssh服务器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dropbear"><span class="nav-number">21.</span> <span class="nav-text">dropbear</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#aide"><span class="nav-number">22.</span> <span class="nav-text">aide</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sudo命令"><span class="nav-number">23.</span> <span class="nav-text">sudo命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sudo-别名授权"><span class="nav-number">23.1.</span> <span class="nav-text">sudo 别名授权</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-Wrappers介绍"><span class="nav-number">24.</span> <span class="nav-text">TCP_Wrappers介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-Wrappers的使用"><span class="nav-number">24.1.</span> <span class="nav-text">TCP_Wrappers的使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-Wrappers介绍-1"><span class="nav-number">25.</span> <span class="nav-text">TCP_Wrappers介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-Wrappers的使用-1"><span class="nav-number">25.1.</span> <span class="nav-text">TCP_Wrappers的使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PAM认证机制"><span class="nav-number">26.</span> <span class="nav-text">PAM认证机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PAM相关文件"><span class="nav-number">26.1.</span> <span class="nav-text">PAM相关文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块类型（module-type）"><span class="nav-number">26.2.</span> <span class="nav-text">模块类型（module-type）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Control"><span class="nav-number">26.3.</span> <span class="nav-text">Control</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pam-nologin-so"><span class="nav-number">26.4.</span> <span class="nav-text">pam_nologin.so</span></a></li></ol></li></ol></div>
             
 
           </div>
