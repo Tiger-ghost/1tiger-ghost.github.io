@@ -8,21 +8,21 @@
 
     <url>
         <loc>http://yoursite.com/categories/life/</loc>
-        <lastmod>2019-08-18T10:10:40.979Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/linux/</loc>
-        <lastmod>2019-10-01T11:27:42.167Z</lastmod>
+        <lastmod>2019-10-01T12:17:11.624Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/categories/write/</loc>
-        <lastmod>2019-10-01T11:34:27.726Z</lastmod>
+        <lastmod>2019-10-01T16:01:23.922Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/linux/</loc>
+        <lastmod>2019-10-07T15:25:02.775Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
