@@ -161,7 +161,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/19/nq6M80.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/19/nq6KCq.png">
-<meta property="og:updated_time" content="2019-10-07T15:25:02.775Z">
+<meta property="og:updated_time" content="2019-10-18T15:02:03.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Six">
 <meta name="twitter:description" content="自动化服务">
@@ -448,7 +448,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-10-07 23:25:02" itemprop="dateModified" datetime="2019-10-07T23:25:02+08:00">2019-10-07</time>
+                <time title="Modified: 2019-10-18 23:02:03" itemprop="dateModified" datetime="2019-10-18T23:02:03+08:00">2019-10-18</time>
               
             
           </span>
@@ -1253,18 +1253,8 @@ rid of this message.
 
 </code></pre>
 </div></div>
-<h2 id="常用模块"><a href="#常用模块" class="headerlink" title="常用模块"></a>常用模块</h2><div class="alert alert-info"><br>Copy：从服务器复制文件到客户端<br>ansible srv -m copy -a “src=/root/f1.sh dest=/tmp/f2.sh owner=wang mode=600 backup=yes”<br>如目标存在，默认覆盖，此处指定先备份<br>ansible srv -m copy -a “content=‘test content\n’ dest=/tmp/f1.txt”<br>指定内容，直接生成目标文件<br>Fetch：从客户端取文件至服务器端，copy相反，目录可先tar<br>ansible srv -m fetch -a ‘src=/root/a.sh dest=/data/scripts’<br>File：设置文件属性<br>ansible srv -m file -a “path=/root/a.sh owner=wang mode=755“<br>ansible web -m file -a ‘src=/app/testfile dest=/app/testfile-link state=link’</div>
+<h2 id="常用模块"><a href="#常用模块" class="headerlink" title="常用模块"></a>常用模块</h2><div class="alert alert-info">Copy：从服务器复制文件到客户端<br>ansible srv -m copy -a “src=/root/f1.sh dest=/tmp/f2.sh owner=wang mode=600 backup=yes”<br>如目标存在，默认覆盖，此处指定先备份<br>ansible srv -m copy -a “content=‘test content\n’ dest=/tmp/f1.txt”<br>指定内容，直接生成目标文件<br>Fetch：从客户端取文件至服务器端，copy相反，目录可先tar<br>ansible srv -m fetch -a ‘src=/root/a.sh dest=/data/scripts’<br>File：设置文件属性<br>ansible srv -m file -a “path=/root/a.sh owner=wang mode=755“<br>ansible web -m file -a ‘src=/app/testfile dest=/app/testfile-link state=link’</div>
 
-
-<p> Hostname：管理主机名</p>
-<p> ansible node1 -m hostname -a “name=websrv”</p>
-<p> Cron：计划任务</p>
-<p>支持时间：minute，hour，day，month，weekday</p>
-<p> ansible srv -m cron -a “minute=*/5 job=‘/usr/sbin/ntpdate<br>172.16.0.1 &amp;&gt;/dev/null’ name=Synctime” 创建任务</p>
-<p> ansible srv -m cron -a ‘state=absent name=Synctime’  删除任务</p>
-<p> Yum：管理包</p>
-<p> ansible srv -m yum -a ‘name=httpd state=present’ 安装</p>
-<p> ansible srv -m yum -a ‘name=httpd state=absent’ 删除</p>
 <pre><code>[root@ansible ~]# ansible all -m copy -a &quot;src=/etc/fstab dest=/root/data/ owner=pan mode=600&quot;
 ##将源文件/etc/fstab复制到目标主机/root/data目录下，拥有者修改为pan，权限修改为600
 
@@ -1307,17 +1297,716 @@ rid of this message.
 [root@ansible data]# ansible all -m cron -a &#39;name=synctime state=absent&#39;   ##删除计划任务
 
 [root@ansible ~]# ansible 192.168.175.132 -m yum -a &quot;name=dstat&quot;  ##使用yum安装软件
+ansible srv -m yum -a &#39;name=httpd state=present&#39; 安装
+[root@ansible ~]# ansible 192.168.175.10 -m yum -a &#39;name=httpd,vsftpd state=absent&#39;  ##卸载软件 
+[root@ansible ~]# ansible all -m yum -a &quot;name=dstat update_cache=yes&quot;  ##更新yum缓存后安装软件
+[root@ansible ~]# ansible 192.168.175.133 -m service -a &#39;name=httpd state=started&#39;   ##启动服务
+[root@ansible ~]# ansible all -m service -a &#39;name=httpd state=stopped&#39; ##停止服务
+[root@ansible ~]# ansible all -m service -a &#39;name=httpd state=started enabled=yes&#39;   ##设置为开机启动 
+这里不能同时对多个服务启动，只能一个一个的启动&quot;name=httpd,vsftpd state=started&quot;错误的用法
+
+[root@ansible ~]# ansible all -m user -a &#39;name=test comment=&quot;test user&quot; uid=2000 home=/data/testhome group=root groups=bin,nobody shell=/sbin/nologin&#39;   
+##创建用户 name 名称，comment 描述，
+[root@ansible ~]# ansible all -m user -a &#39;name=test state=absent remove=yes&#39;
+##删除用户，remove表示连目录下的文件也一起删除
+</code></pre><h2 id="ansible-galaxy"><a href="#ansible-galaxy" class="headerlink" title="ansible-galaxy"></a>ansible-galaxy</h2><p>连接 <a href="https://galaxy.ansible.com" target="_blank" rel="noopener">https://galaxy.ansible.com</a> 下载相应的roles<br>列出所有已安装的galaxyansible-galaxy list<br>安装galaxy:ansible-galaxy install geerlingguy.redis<br>删除galaxy:ansible-galaxy remove geerlingguy.redis</p>
+<h2 id="ansible-playbook"><a href="#ansible-playbook" class="headerlink" title="ansible-playbook"></a>ansible-playbook</h2><p>执行playbook<br>示例：ansible-playbook hello.yml</p>
+<pre><code>cat hello.yml 
+#hello world yml file
+- hosts: webserver
+  remote_user: root
+  tasks:
+    - name: hello world
+      command: /usr/bin/wall hello world
+</code></pre><h2 id="ansible-vault"><a href="#ansible-vault" class="headerlink" title="ansible-vault"></a>ansible-vault</h2><p>功能：管理加密解密yml文件<br>ansible-vault [create|decrypt|edit|encrypt|rekey|view]<br>ansible-vault encrypt hello.yml  加密<br>ansible-vault decrypt hello.yml  解密<br>nsible-vault view hello.ymlansible-vault edit hello.yml<br>查看<br>编辑加密文件<br>ansible-vault rekey<br>hello.yml<br>修改口令<br>ansible-vault create new.yml<br>创建新文件直接加密 </p>
+<h2 id="Ansible-console-2-0-新增，可交互执行命令，支持tab"><a href="#Ansible-console-2-0-新增，可交互执行命令，支持tab" class="headerlink" title="Ansible-console 2.0+新增，可交互执行命令，支持tab"></a>Ansible-console 2.0+新增，可交互执行命令，支持tab</h2><h2 id="playbook"><a href="#playbook" class="headerlink" title="playbook"></a>playbook</h2><p>playbook是由一个或多个“play”组成的列表<br>play的主要功能在于将预定义的一组主机，装扮成事先通过ansible中的task定义好的角色。Task实际是调用ansible的一个module，将多个play组织在一个playbook中，即可以让它们联合起来，按事先编排的机制执行预定义的动作<br>Playbook采用YAML语言编写</p>
+<pre><code>[root@ansible playbook]# cat a.yml    ##yml文件
+---
+- hosts: webserver ##主机
+  remote_user: root
+
+  tasks: 
+    - name: first task
+      ping:
+    - name: second task
+      shell: /bin/ls /data/
+ansible-playbook -C a.yml  ##检查语法
+[root@ansible playbook]# ansible-playbook a.yml 执行
+ansible-playbook a.yml --list-hosts   ##查看操作的主机
+ansible-playbook a.yml --list-tasks   ##查看任务
+ansible-playbook a.yml --limit 192.168.175.101   ##查看特定主机
+ansible-playbook a.yml -v    ##执行显示详细过程
+</code></pre><p>在本机安装了httpd,并且将它的端口改为8080,然后配置文件复制到了/etc/playbook/httpd.conf,还创建了apache账户，系统组，gid为80，秘钥是123456加密。发布到管理的主机后，启动服务。</p>
+<pre><code>[root@ansible playbook]# cat httpd.yml 
+---
+- hosts: webserver
+  remote_user: root
+
+  tasks:
+     - name: create group
+       group: name=apache system=yes gid=80
+     - name: create user     ##systemctl 系统组                       
+       user: name=apache group=apache uid=81 shell=/sbin/noloign home=/usr/share/httpd system=yes password=&#39;$1$vyYsCY3r$.bt4t6Uam7D3PJy6FgFSi0&#39;       ##password= openssl passwd -1加密的秘钥   
+     - name: install package
+       yum: name=httpd
+     - name: config file
+       copy: src=/root/playbook/httpd.conf dest=/etc/httpd/conf/ backup=yes
+     - name: service 
+       service: name=httpd state=started enabled=yes
+ansible-playbook httpd.yml    ##执行
+ansible webserver -a &quot;ss -ntl&quot;     ##查看端口
+</code></pre><p>sha512加密算法,生成加密算法工具:<code>python -c &#39;import crypt,getpass;pw=&quot;123456&quot;;print(crypt.crypt(pw))&#39;</code></p>
+<h2 id="handlers和notify结合使用触发条件"><a href="#handlers和notify结合使用触发条件" class="headerlink" title="handlers和notify结合使用触发条件"></a>handlers和notify结合使用触发条件</h2><p>Handlers是task列表，这些task与前述的task并没有本质上的不同,用于当关注的资源发生变化时，才会采取一定的操作<br>Notify此action可用于在每个play的最后被触发，这样可避免多次有改变发生时每次都执行指定的操作，仅在所有的变化发生完成后一次性地执行指定操作。在notify中列出的操作称为handler，也即notify中调用handler中定义的操作</p>
+<pre><code>---
+- hosts: webserver
+  remote_user: root
+
+  tasks:
+     - name: create group
+       group: name=apache system=yes gid=80
+     - name: create user                      
+       user: name=apache group=apache uid=80 shell=/sbin/noloign home=/usr/share/httpd system=yes password=&#39;$1$vyYsCY3r$.bt4t6Uam7D3PJy6FgFSi0&#39;
+     - name: install package
+       yum: name=httpd
+     - name: config file
+       copy: src=/root/playbook/httpd.conf dest=/etc/httpd/conf/ backup=yes
+       notify: restart service    ##只有当文件和之前相比发生变化
+     - name: service 
+       service: name=httpd state=started enabled=yes
+
+  handlers:
+     - name: restart service
+       service: name=httpd state=restarted    ##就会执行重启httpd的命令
+</code></pre><h2 id="Playbook中tags使用"><a href="#Playbook中tags使用" class="headerlink" title="Playbook中tags使用"></a>Playbook中tags使用</h2><pre><code>[root@ansible playbook]# cat httpd.yml
+---
+- hosts: webserver
+  remote_user: root
+
+  tasks:
+     - name: create group
+       group: name=apache system=yes gid=80
+     - name: create user                      
+       user: name=apache group=apache uid=80 shell=/sbin/noloign home=/usr/share/httpd system=yes password=&#39;$1$vyYsCY3r$.bt4t6Uam7D3PJy6FgFSi0&#39;
+     - name: install package
+       yum: name=httpd
+     - name: config file
+       copy: src=/root/playbook/httpd.conf dest=/etc/httpd/conf/ backup=yes
+       tags: c
+       notify: 
+         - restart service 
+         - check httpd
+     - name: service 
+       tags: service
+       service: name=httpd state=started enabled=yes
+
+  handlers:
+     - name: restart service
+       service: name=httpd state=restarted
+     - name: check httpd
+       shell: /usr/bin/killall -0 httpd &amp;&gt; /tmp/httpd.log
+ansible-playbook -t c httpd.yml ##指定某个标签只执行任务
+</code></pre><h2 id="Playbook中变量使用"><a href="#Playbook中变量使用" class="headerlink" title="Playbook中变量使用"></a>Playbook中变量使用</h2><p>变量名：仅能由字母、数字和下划线组成，且只能以字母开头<br>变量来源：<font color="87ceeb"><br><i class="fa  fa-ravelry "></i></font> ansible setup facts 远程主机的所有变量都可直接调用 <font color="87ceeb"><br><i class="fa  fa-ravelry "></i></font> 在/etc/ansible/hosts中定义<br>普通变量：主机组中主机单独定义，优先级高于公共变量<br>公共（组）变量：针对主机组中所有主机定义统一变量<font color="87ceeb"><br><i class="fa  fa-ravelry "></i></font> 通过命令行指定变量，优先级最高ansible-playbook –e varname=value <font color="87ceeb"><br><i class="fa  fa-ravelry "></i></font>在playbook中定义<br>vars:</p>
+<ul>
+<li>var1: value1</li>
+<li>var2: value2<br><font color="87ceeb"><i class="fa  fa-ravelry "></i></font> 在独立的变量YAML文件中定义<br><font color="87ceeb"><i class="fa  fa-ravelry "></i></font> 在role中定义<br>示例:</li>
+</ul>
+<pre><code>---
+- hosts: webserver
+  remote_user: root
+
+  tasks:
+     - name: install package
+       yum: name={{ name1 }} ##变量
+     - name: service
+       tags: c
+       service: name={{ name2 }} state=started enabled=yes
+ansible-playbook -e &quot;name1=samba name2=smbd&quot; test.yml   ##可以指定不同的变量
+
+##内置变量
+---
+- hosts: webserver
+  remote_user: root
+  vars:
+    - name1: samba
+    - name2: smb
+
+  tasks:
+     - name: install package
+       yum: name={{ name1 }} ##变量
+     - name: service
+       tags: c
+       service: name={{ name2 }} state=started enabled=yes
+
+[root@ansible playbook]# cat variable.yml   ##写入变量文件
+name1: httpd
+name2: httpd
+[root@ansible playbook]# cat test.yml   
+---
+- hosts: webserver
+  remote_user: root
+  vars_files:                          ##引入变量文件
+   - variable.yml     
+
+  tasks:
+     - name: install package
+       yum: name={{ name1 }} ##变量
+     - name: service
+       tags: c
+       service: name={{ name2 }} state=started enabled=yes
+</code></pre><h2 id="在hosts中定义变量"><a href="#在hosts中定义变量" class="headerlink" title="在hosts中定义变量"></a>在hosts中定义变量</h2><pre><code>[webserver]
+192.168.175.101 nodename=centos7_1     ##普通变量
+192.168.175.10  nodename=centos7_2
+
+[root@ansible playbook]# cat test3.yml  
+---
+- hosts: webserver
+  remote_user: root
+
+  tasks:
+       - name: hostname
+         hostname: name={{ nodename }}
+[root@ansible playbook]# ansible webserver -a &quot;hostname&quot;
+192.168.175.10 | CHANGED | rc=0 &gt;&gt;
+centos7_2
+
+192.168.175.101 | CHANGED | rc=0 &gt;&gt;
+centos7_1
+
+
+##分组变量
+[root@ansible ansible]# cat /etc/ansible/hosts 
+[webserver]
+192.168.175.101 nodename=centos7_1
+192.168.175.10  nodename=centos7_2
+
+[webserver:vars]
+suffix=magedu.com
+[root@ansible playbook]# cat test3.yml 
+---
+- hosts: webserver
+  remote_user: root
+
+  tasks:
+    - name: hostname
+      hostname: name={{ nodename }}.{{ suffix }}
+[root@ansible playbook]# ansible webserver -a &quot;hostname&quot;  ##执行效果
+192.168.175.10 | CHANGED | rc=0 &gt;&gt;
+centos7_2.magedu.com
+
+192.168.175.101 | CHANGED | rc=0 &gt;&gt;
+centos7_1.magedu.com
+</code></pre><h2 id="模板templates"><a href="#模板templates" class="headerlink" title="模板templates"></a>模板templates</h2><p>templates功能：根据模块文件动态生成对应的配置文件<br>templates文件必须存放于templates目录下，且命名为 .j2 结尾<br>yaml/yml 文件需和templates目录平级，目录结构如下：</p>
+<pre><code>./
+├── temnginx.yml
+└── templates
+   └── nginx.conf.j2
+</code></pre><pre><code>cd /playbook
+[root@ansible playbook]# yum install -y nginx 
+[root@ansible playbook]# cp /etc/nginx/nginx.conf .
+[root@ansible playbook]# mkdir templates
+[root@ansible playbook]# mv nginx.conf templates/nginx.conf.j2
+
+[root@ansible playbook]# cat test_temp.yml 
+---
+- hosts: webserver
+  remote_user: root
+
+  tasks:
+    - name: install
+      yum: name=nginx
+    - name: service
+      service: name=nginx state=started enabled=yes
+##在webserver分组里面的主机安装一个nginx，并且启动服务，将他设置为开机启动 
+
+[root@ansible playbook]# ansible webserver -m setup -a &quot;filter=ansible_processor_count&quot;
+##查看他的CPU个数，对方机器有几个cpu，就会生成几个worker文件
+[root@ansible playbook]# ansible webserver -a &quot;ps aux | grep nginx&quot;  
+nginx      8351  0.0  0.7 123264  3548 ?        S    05:28   0:00 nginx: worker process
+nginx      8352  0.0  0.7 123264  3548 ?        S    05:28   0:00 nginx: worker process
+##其中一台机器生成了两个worker进程
+
+##修改文件
+[root@ansible playbook]# cat test_temp.yml 
+---
+- hosts: webserver
+  remote_user: root
+
+  tasks:
+    - name: install
+      yum: name=nginx
+    - name: template
+      template: src=nginx.conf.j2 dest=/etc/nginx/nginx.conf
+      notify: restart
+    - name: service
+      service: name=nginx state=started enabled=yes
+
+  handlers:
+    - name: restart
+      service: name=nginx state=restarted
+
+
+[root@ansible playbook]# vim templates/nginx.conf.j2
+user nginx;
+worker_processes {{ansible_processor_count*2}};  
+##auto 表示cpu几个就生成几个worker.现在的意思是通过变量计算cpu的个数*2,让的worker他生成原有的2倍
+
+[root@ansible playbook]# ansible webserver -a &quot;ps aux | grep nginx&quot; 
+nginx     16715  0.0  0.7 123264  3552 ?        S    20:07   0:00 nginx: worker process
+nginx     16716  0.0  0.7 123264  3552 ?        S    20:07   0:00 nginx: worker process
+nginx     16717  0.0  0.7 123264  3552 ?        S    20:07   0:00 nginx: worker process
+nginx     16718  0.0  0.7 123264  3552 ?        S    20:07   0:00 nginx: worker process
+##现在其中的一台测试机器已经实现了
+
+[root@ansible playbook]# vim /etc/ansible/hosts ##在主机清单里面定义变量端口
+[webserver]
+192.168.175.101 nodename=centos7_1 port=81
+192.168.175.10  nodename=centos6_2 port=82
+[root@ansible playbook]# vim templates/nginx.conf.j2  ##在模板文件里面引用
+    server {
+        listen       {{port}} default_server;
+[root@ansible playbook]# ansible-playbook test_temp.yml  ##执行生效
+
+##还可以在playbook文件也可以添加端口，和主机清单相比较，playbook的优先级更高
+- hosts: webserver
+  remote_user: root
+  vars:
+       port: 8080  
+##但是下面这句话的优先级更高
+[root@ansible playbook]# ansible-playbook -e &quot;port=9191&quot; test_temp.yml 
+
+
+##通过文件安装不同的系统软件，6,7上面的httpd
+[root@ansible playbook]# ls templates/
+httpd6.conf.j2  httpd7.conf.j2  ##从各自系统复制过来的配置文件然后改名
+[root@ansible playbook]# cat /etc/ansible/hosts
+[webserver]
+192.168.175.136 http_port=86
+192.168.175.10  http_port=87
+
+[root@ansible playbook]# cat test2_temp.yml
+---
+- hosts: webserver
+  remote_user: root
+
+  tasks:
+    - name: install
+      yum: name=httpd
+    - name: template
+      template: src=httpd6.conf.j2 dest=/etc/httpd/conf/httpd.conf
+      when: ansible_distribution_major_version==&quot;6&quot; ##判断是否相等
+      notify: restart
+
+    - name: template
+      template: src=httpd7.conf.j2 dest=/etc/httpd/conf/httpd.cofn
+      notify: restart
+      when: ansible_distribution_major_version==&quot;7&quot; ##判断是否相等
+    - name: service
+      service: name=httpd state=started enabled=yes
+
+  handlers:
+    - name: restart
+      service: name=httpd state=restarted
+最后执行生效
+</code></pre><h2 id="迭代：with-items"><a href="#迭代：with-items" class="headerlink" title="迭代：with_items"></a>迭代：with_items</h2><p>迭代：当有需要重复性执行的任务时，可以使用迭代机制<br>对迭代项的引用，固定变量名为”item”<br>要在task中使用with_items给定要迭代的元素列表<br>列表格式：<br>字符串<br>字典</p>
+<pre><code>例:自动拷贝文件
+cd /root/playbook
+[root@ansible playbook]# cat file.yml 
+---
+- hosts: webserver
+  remote_user: root
+
+  tasks:
+      - name: copy files
+        copy: src={{item}} dest=/root/data/ mode=600
+        with_items:
+         - file1
+         - file2
+         - file3
+##这里写几个，他就拷贝几遍
+
+[root@ansible playbook]# ls files
+file1   file2  file3
+</code></pre><h3 id="批量创建用户和组"><a href="#批量创建用户和组" class="headerlink" title="批量创建用户和组"></a>批量创建用户和组</h3><pre><code>[root@ansible playbook]# cat file.yml 
+---
+- hosts: webserver
+  remote_user: root
+
+  tasks:
+    - name: create groups
+      group: name={{item}} 
+      with_items:
+        - g1
+        - g2
+        - g3
+    - name: create users
+      user: name={{item.name}} group={{item.group}}
+      with_items:     ##字典
+        - {name: &#39;user1&#39;,group: &#39;g1&#39;}
+        - {name: &#39;user2&#39;,group: &#39;g2&#39;}
+        - {name: &#39;user3&#39;,group: &#39;g3&#39;}
+</code></pre><h3 id="批量安装软件"><a href="#批量安装软件" class="headerlink" title="批量安装软件"></a>批量安装软件</h3><pre><code>[root@ansible playbook]# cat yum.yml 
+---
+- hosts: webserver
+  remote_user: root
+
+  tasks: 
+    - name: install 
+      yum: name={{item}}
+      with_items:
+        - httpd
+        - vaftpd
+        - memcached
+</code></pre><h3 id="批量生成文件"><a href="#批量生成文件" class="headerlink" title="批量生成文件"></a>批量生成文件</h3><pre><code>[root@ansible playbook]# cat for.yml 
+---
+- hosts: webserver
+  remote_user: root
+  vars: 
+    ports: 
+        - 81
+        - 82
+        - 83
+
+  tasks:
+     - name: template
+       template: src=test_for.conf.j2 dest=/data/test_for.conf
+[root@ansible playbook]# cat templates/test_for.conf.j2 
+{% for p in ports %}
+service{
+        listen {{p}}
+}
+{% endfor %}
+## 最终结果
+[root@centos7 data]# cat test_for.conf 
+service{
+        listen 81
+}
+service{
+        listen 82
+}
+service{
+        listen 83
+}
+</code></pre><h3 id="另外一种写法"><a href="#另外一种写法" class="headerlink" title="另外一种写法"></a>另外一种写法</h3><pre><code>[root@ansible playbook]# cat for.yml 
+---
+- hosts: webserver
+  remote_user: root
+  vars: 
+    ports: 
+       - listen_port: 81
+       - listen_port: 82
+       - listen_port: 83
+  tasks:
+     - name: template
+       template: src=test_for.conf.j2 dest=/data/test_for.conf
+[root@ansible playbook]# cat templates/test_for.conf.j2 
+{% for p in ports %}
+service{
+        listen {{p.listen_port}}
+}
+{% endfor %}
+</code></pre><h3 id="自动添加文件内容，减少重复性操作"><a href="#自动添加文件内容，减少重复性操作" class="headerlink" title="自动添加文件内容，减少重复性操作"></a>自动添加文件内容，减少重复性操作</h3><pre><code>[root@ansible playbook]# cat templates/test_for.conf.j2 
+{% for p in vhosts %}
+service{
+        listen {{p.listen_port}}
+        server_name {{p.host_name}}
+        root {{p.dirname}}
+}
+{% endfor %}
+[root@ansible playbook]# cat for.yml 
+---
+- hosts: webserver
+  remote_user: root
+  vars: 
+    vhosts:
+       - host1: 
+         listen_port: 81
+         host_name: www.a.com
+         dirname: /data/www1
+       - host2:
+         listen_port: 82
+         host_name: www.b.com
+         dirname: /data/www2
+       - host3:
+         listen_port: 83
+         host_name: www.c.com
+         dirname: /data/www3
+
+  tasks:
+     - name: template
+       template: src=test_for.conf.j2 dest=/data/test_for.conf
+[root@centos7 data]# cat test_for.conf   ##最终结果
+service{
+        listen 81
+        server_name www.a.com
+        root /data/www1
+}
+service{
+        listen 82
+        server_name www.b.com
+        root /data/www2
+}
+service{
+        listen 83
+        server_name www.c.com
+        root /data/www3
+}
+</code></pre><h2 id="if使用"><a href="#if使用" class="headerlink" title="if使用"></a>if使用</h2><pre><code>[root@ansible playbook]# cat for.yml 
+---
+- hosts: webserver
+  remote_user: root
+  vars: 
+    vhosts:
+       - host1: 
+         listen_port: 81
+         host_name: www.a.com
+         dirname: /data/www1
+       - host2:
+         listen_port: 82
+         #host_name: www.b.com  ##这里注释掉了
+         dirname: /data/www2
+       - host3:
+         listen_port: 83
+         host_name: www.c.com
+         dirname: /data/www3
+
+  tasks:
+     - name: template
+       template: src=test_for.conf.j2 dest=/data/test_for.conf
+[root@ansible playbook]# cat templates/test_for.conf.j2 
+{% for p in vhosts %}
+server{
+        listen {{p.listen_port}}
+
+{%if p.host_name is defined %}   ##监控，当文件上面的文件没有定义是，就不会被执行
+        server_name {{p.host_name}}
+{%endif%}
+
+        root {{p.dirname}}
+}
+{% endfor %}
+##实际效果
+[root@centos7 data]# cat test_for.conf 
+server{
+        listen 81
+
+        server_name www.a.com
+
+        root /data/www1
+}
+server{
+        listen 82
+##这里空出来了，因为上面被注释掉。
+
+        root /data/www2
+}
+server{
+        listen 83
+
+        server_name www.c.com
+
+        root /data/www3
+}
+</code></pre><h1 id="roles"><a href="#roles" class="headerlink" title="roles"></a>roles</h1><p>能够根据层次型结构自动装载变量文件、tasks以及handlers等。要使用roles只需要在playbook中使用include指令即可。简单来讲，roles就是通过分别将变量、文件、任务、模板及处理器放置于单独的目录中，并可以便捷地include它们的一种机制。角色一般用于基于主机构建服务的场景中，但也可以是用于构建守护进程等场景中<br>复杂场景：建议使用roles，代码复用度高<br>变更指定主机或主机组<br>如命名不规范维护和传承成本大<br>某些功能需多个Playbook，通过includes即可实现</p>
+<pre><code>[root@ansible playbook]# tree roles/  ##这里以httpd为例，其他的服务参照这个来
+roles/
+├── httpd
+│   ├── files  
+│   │   └── httpd.conf          ##存放的是http配置文件，从本机复制过来的
+│   ├── handlers                  ##本次实验此文件夹加无文件
+│   ├── tasks    ##此文件夹存放的是步骤文件
+│   │   ├── config.yml
+│   │   ├── group.yml
+│   │   ├── install.yml
+│   │   ├── main.yml
+│   │   ├── service.yml
+│   │   └── user.yml
+│   ├── templates         ##本次实验此文件夹加无文件
+│   └── vars              ##本次实验此文件夹加无文件
+├── mysql
+│   ├── files
+│   ├── handlers
+│   ├── tasks
+│   ├── templates
+│   └── vars
+└── nginx
+    ├── files
+    ├── handlers
+    ├── tasks
+    ├── tempatles
+    └── vars
+[root@ansible playbook]# cat httpd_role.yml 
+- hosts: webserver
+  remote_user: root
+
+  roles:
+    - role: httpd
+</code></pre><div><div class="fold_hider"><div class="close hider_title">---------------------------------------tasks目录下各文件详情-----------------------------</div></div><div class="fold">
+<pre><code>[root@ansible tasks]# cat group.yml 
+- name: create group
+  group: name=apache system=yes gid=80
+[root@ansible tasks]# cat user.yml 
+- name: create user
+  user: name=apache group=apache uid=80 shell=/sbin/nologin home=/usr/share/httpd system=yes
+[root@ansible tasks]# cat install.yml 
+- name: install package
+  yum: name=httpd
+[root@ansible tasks]# cat config.yml 
+- name: config file
+  copy: src=httpd.conf dest=/etc/httpd/conf/ backup=yes  
+##这里没有写绝对路径，他会自动从刚刚新建的httpd下的files文件夹里面寻找
+[root@ansible tasks]# cat service.yml 
+- name: service 
+  service: name=httpd state=started enabled=yes  
+[root@ansible tasks]# cat main.yml  ##执行顺序
+- include: group.yml
+- include: user.yml
+- include: install.yml
+- include: config.yml
+- include: service.yml
+</code></pre>
+</div></div>
+<h2 id="给httpd再换一个测试页面"><a href="#给httpd再换一个测试页面" class="headerlink" title="给httpd再换一个测试页面"></a>给httpd再换一个测试页面</h2><pre><code>[root@ansible playbook]# vim roles/httpd/files/index.html 
+&lt;h1&gt;welcome to My index.html!&lt;/h1&gt;
+[root@ansible playbook]# cat roles/httpd/tasks/data.yml 
+- name: data file   ##src在files 文件夹默认在这里面寻找，不用写路径
+  copy: src=index.html dest=/var/www/html/    ##复制文件到指定的测试目录
+[root@ansible playbook]# cat roles/httpd/tasks/main.yml 
+- include: group.yml
+- include: user.yml
+- include: install.yml
+- include: config.yml
+- include: service.yml
+- include: data.yml  ##加入刚刚创建的文件
+ansible-playbook httpd_role.yml  ##最后执行
+</code></pre><h2 id="Roles各目录作用"><a href="#Roles各目录作用" class="headerlink" title="Roles各目录作用"></a>Roles各目录作用</h2><p>/roles/project/ :项目名称,有以下子目录<br>files/ ：存放由copy或script模块等调用的文件<br>templates/：template模块查找所需要模板文件的目录<br>tasks/：定义task,role的基本元素，至少应该包含一个名为main.yml的文件；其它的文件需要在此文件中通过include进行包含<br>handlers/：至少应该包含一个名为main.yml的文件；其它的文件需要在此文件中通过include进行包含<br>vars/：定义变量，至少应该包含一个名为main.yml的文件；其它的文件需要在此文件中通过include进行包含<br>meta/：定义当前角色的特殊设定及其依赖关系,至少应该包含一个名为main.yml的文件，其它文件需在此文件中通过include进行包含<br>default/：设定默认变量时使用此目录中的main.yml文件</p>
+<h2 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h2><pre><code>[root@ansible playbook]# tree roles/
+roles/
+└── nginx
+    ├── files   ##本次实验此目录无文件
+    ├── handlers  ##这里写了监控当文件发生变动，就会重启服务
+    │   └── main.yml
+    ├── tasks
+    │   ├── config.yml
+    │   ├── data.yml
+    │   ├── install.yml
+    │   ├── main.yml
+    │   └── service.yml
+    ├── templates
+    │   └── nginx.conf.j2   ##默认复制复制过来的配置文件改名
+    └── vars     ##本次实验此目录无文件
+
+[root@ansible roles]# cat nginx/handlers/main.yml 
+- name: restart
+  service: name=nginx state=restarted
+
+
+[root@ansible tasks]# cat config.yml 
+- name: config file
+  template: src=nginx.conf.j2 dest=/etc/nginx/nginx.conf
+  notify: restart  ##监控文件，与上文对应
+[root@ansible tasks]# cat data.yml 
+- name: data    ##这里是调用了刚刚配置httpd里面的测试文件，roles是总目录,所以这里可以这样写
+  copy: src=roles/httpd/files/index.html dest=/usr/share/nginx/html/  ##nginx测试文件存放路径
+[root@ansible tasks]# cat install.yml 
+- name: install package
+  yum: name=nginx
+[root@ansible tasks]# cat main.yml 
+- include: install.yml
+- include: config.yml
+- include: service.yml
+- include: data.yml
+[root@ansible tasks]# cat service.yml 
+- name: service 
+  service: name=nginx state=started enabled=yes
+
+[root@ansible playbook]# cat nginx_role.yml 
+- hosts: webserver
+  remote_user: root
+
+  roles:
+    - role: nginx
+    - role: httpd  ##可以同时执行
+</code></pre><h2 id="增加变量"><a href="#增加变量" class="headerlink" title="增加变量"></a>增加变量</h2><pre><code>配置完nginx后给其一个变量
+[root@ansible nginx]# cat vars/main.yml 
+username: daemon   ##定义变量名
+[root@ansible nginx]# vim templates/nginx.conf.j2
+user {{username}};    ##在配置文件中引用
+[root@ansible ~]# ansible 192.168.175.136 -a &quot;getent passwd daemon&quot;  ##查看，已成功执行
+192.168.175.136 | CHANGED | rc=0 &gt;&gt;
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+</code></pre><h2 id="不同的文件拷贝到不同的系统中"><a href="#不同的文件拷贝到不同的系统中" class="headerlink" title="不同的文件拷贝到不同的系统中"></a>不同的文件拷贝到不同的系统中</h2><pre><code>[root@ansible playbook]# tree  roles/httpd/
+roles/httpd/
+├── files
+│   ├── httpd.conf 
+│   └── index.html
+├── handlers
+│   └── restart.yml
+├── tasks
+│   ├── config.yml
+│   ├── data.yml
+│   ├── group.yml
+│   ├── install.yml
+│   ├── main.yml
+│   ├── service.yml
+│   └── user.yml
+├── templates
+│   ├── httpd6.conf.j2  ##不同系统中的httpd配置文件改名后的结果
+│   └── httpd7.conf.j2
+└── vars
+配置和上面的httpd配置一样，只是两个位置需要改动
+[root@ansible httpd]# cat tasks/config.yml 
+- name: config file1
+  template: src=httpd6.conf.j2 dest=/etc/httpd/conf/httpd.conf backup=yes
+  when: ansible_distribution_major_version==&quot;6&quot;
+- name: config file2
+  template: src=httpd7.conf.j2 dest=/etc/httpd/conf/httpd.conf backup=yes
+  when: ansible_distribution_major_version==&quot;7&quot;
+</code></pre><h2 id="使用标签"><a href="#使用标签" class="headerlink" title="使用标签"></a>使用标签</h2><pre><code>其他的配置不变，只是最后的执行文件更改了
+[root@ansible playbook]# cat all_role.yml 
+- hosts: webserver
+  remote_user: root
+
+  roles:
+    - {role: httpd,tags: [&quot;httpd&quot;,&quot;web&quot;]}  ##表示两个标签
+    - {role: nginx,tags: [&quot;nginx&quot;,&quot;web&quot;]}
+
+[root@ansible playbook]# ansible-playbook -t nginx all_role.yml 
+##表示只装了一个nginx
+</code></pre><h2 id="memcached-自动安装以及生成缓存范围数值"><a href="#memcached-自动安装以及生成缓存范围数值" class="headerlink" title="memcached 自动安装以及生成缓存范围数值"></a>memcached 自动安装以及生成缓存范围数值</h2><pre><code>[root@ansible roles]# tree memcached/
+memcached/
+├── files 
+├── handlers
+│   └── restart.yml
+├── tasks
+│   ├── config.yml
+│   ├── install.yml
+│   ├── main.yml
+│   └── service.yml
+├── templates
+│   └── memcached.j2
+└── vars
+[root@ansible memcached]# cat handlers/restart.yml 
+- name: restart
+  service: name=nginx state=restarted
+[root@ansible tasks]# cat *
+- name: config file1
+  template: src=memcached.j2 dest=/etc/sysconfig/memcached backup=yes
+- name: install packatge
+  yum: name=memcached
+- include: install.yml
+- include: config.yml
+- include: service.yml
+- name: service 
+  service: name=memcached state=started enabled=yes
+[root@ansible memcached]# cat templates/memcached.j2 
+PORT=&quot;11211&quot;
+USER=&quot;memcached&quot;
+MAXCONN=&quot;1024&quot;
+CACHESIZE={{ansible_memtotal_mb//4}} ##内存大小整除
+OPTIONS=&quot;&quot;
 </code></pre><p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
 <p><script>hljs.initHighlightingOnLoad();</script></p>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
-
-
-
-
-
-
-
-
       
     </div>
 
@@ -1413,6 +2102,10 @@ rid of this message.
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/09/25/DNS+/" rel="prev" title="Seven">
+                Seven <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -1488,7 +2181,7 @@ rid of this message.
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1520,7 +2213,7 @@ rid of this message.
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -1605,7 +2298,7 @@ rid of this message.
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#自动安装操作系统"><span class="nav-number">1.</span> <span class="nav-text">自动安装操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自动安装"><span class="nav-number">1.1.</span> <span class="nav-text">自动安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件式安装"><span class="nav-number">1.2.</span> <span class="nav-text">文件式安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#制作光盘文件"><span class="nav-number">2.</span> <span class="nav-text">制作光盘文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#同步分区表"><span class="nav-number">3.</span> <span class="nav-text">同步分区表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DHCP服务"><span class="nav-number">4.</span> <span class="nav-text">DHCP服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询服务配置目录"><span class="nav-number">5.</span> <span class="nav-text">查询服务配置目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PXE工作原理"><span class="nav-number">6.</span> <span class="nav-text">PXE工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#centos6-自动安装"><span class="nav-number">7.</span> <span class="nav-text">centos6 自动安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自动安装6-7"><span class="nav-number">7.1.</span> <span class="nav-text">自动安装6,7</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cobbler-自动化安装"><span class="nav-number">8.</span> <span class="nav-text">cobbler 自动化安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义应答文件"><span class="nav-number">8.1.</span> <span class="nav-text">自定义应答文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web管理"><span class="nav-number">8.2.</span> <span class="nav-text">web管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ansible"><span class="nav-number">9.</span> <span class="nav-text">Ansible</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#匹配模式"><span class="nav-number">9.1.</span> <span class="nav-text">匹配模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置ansible"><span class="nav-number">9.2.</span> <span class="nav-text">配置ansible</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ansible-192-168-175-10-m-ping-k"><span class="nav-number">9.3.</span> <span class="nav-text">ansible 192.168.175.10 -m ping -k</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ansible命令执行过程"><span class="nav-number">9.4.</span> <span class="nav-text">ansible命令执行过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ansible常用模块"><span class="nav-number">9.5.</span> <span class="nav-text">ansible常用模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用模块"><span class="nav-number">9.6.</span> <span class="nav-text">常用模块</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#自动安装操作系统"><span class="nav-number">1.</span> <span class="nav-text">自动安装操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自动安装"><span class="nav-number">1.1.</span> <span class="nav-text">自动安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件式安装"><span class="nav-number">1.2.</span> <span class="nav-text">文件式安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#制作光盘文件"><span class="nav-number">2.</span> <span class="nav-text">制作光盘文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#同步分区表"><span class="nav-number">3.</span> <span class="nav-text">同步分区表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DHCP服务"><span class="nav-number">4.</span> <span class="nav-text">DHCP服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询服务配置目录"><span class="nav-number">5.</span> <span class="nav-text">查询服务配置目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PXE工作原理"><span class="nav-number">6.</span> <span class="nav-text">PXE工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#centos6-自动安装"><span class="nav-number">7.</span> <span class="nav-text">centos6 自动安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自动安装6-7"><span class="nav-number">7.1.</span> <span class="nav-text">自动安装6,7</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cobbler-自动化安装"><span class="nav-number">8.</span> <span class="nav-text">cobbler 自动化安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义应答文件"><span class="nav-number">8.1.</span> <span class="nav-text">自定义应答文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web管理"><span class="nav-number">8.2.</span> <span class="nav-text">web管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ansible"><span class="nav-number">9.</span> <span class="nav-text">Ansible</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#匹配模式"><span class="nav-number">9.1.</span> <span class="nav-text">匹配模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置ansible"><span class="nav-number">9.2.</span> <span class="nav-text">配置ansible</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ansible-192-168-175-10-m-ping-k"><span class="nav-number">9.3.</span> <span class="nav-text">ansible 192.168.175.10 -m ping -k</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ansible命令执行过程"><span class="nav-number">9.4.</span> <span class="nav-text">ansible命令执行过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ansible常用模块"><span class="nav-number">9.5.</span> <span class="nav-text">ansible常用模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用模块"><span class="nav-number">9.6.</span> <span class="nav-text">常用模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ansible-galaxy"><span class="nav-number">9.7.</span> <span class="nav-text">ansible-galaxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ansible-playbook"><span class="nav-number">9.8.</span> <span class="nav-text">ansible-playbook</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ansible-vault"><span class="nav-number">9.9.</span> <span class="nav-text">ansible-vault</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ansible-console-2-0-新增，可交互执行命令，支持tab"><span class="nav-number">9.10.</span> <span class="nav-text">Ansible-console 2.0+新增，可交互执行命令，支持tab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#playbook"><span class="nav-number">9.11.</span> <span class="nav-text">playbook</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#handlers和notify结合使用触发条件"><span class="nav-number">9.12.</span> <span class="nav-text">handlers和notify结合使用触发条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Playbook中tags使用"><span class="nav-number">9.13.</span> <span class="nav-text">Playbook中tags使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Playbook中变量使用"><span class="nav-number">9.14.</span> <span class="nav-text">Playbook中变量使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在hosts中定义变量"><span class="nav-number">9.15.</span> <span class="nav-text">在hosts中定义变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板templates"><span class="nav-number">9.16.</span> <span class="nav-text">模板templates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代：with-items"><span class="nav-number">9.17.</span> <span class="nav-text">迭代：with_items</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#批量创建用户和组"><span class="nav-number">9.17.1.</span> <span class="nav-text">批量创建用户和组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#批量安装软件"><span class="nav-number">9.17.2.</span> <span class="nav-text">批量安装软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#批量生成文件"><span class="nav-number">9.17.3.</span> <span class="nav-text">批量生成文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#另外一种写法"><span class="nav-number">9.17.4.</span> <span class="nav-text">另外一种写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动添加文件内容，减少重复性操作"><span class="nav-number">9.17.5.</span> <span class="nav-text">自动添加文件内容，减少重复性操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if使用"><span class="nav-number">9.18.</span> <span class="nav-text">if使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#roles"><span class="nav-number">10.</span> <span class="nav-text">roles</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#给httpd再换一个测试页面"><span class="nav-number">10.1.</span> <span class="nav-text">给httpd再换一个测试页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Roles各目录作用"><span class="nav-number">10.2.</span> <span class="nav-text">Roles各目录作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置nginx"><span class="nav-number">10.3.</span> <span class="nav-text">配置nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增加变量"><span class="nav-number">10.4.</span> <span class="nav-text">增加变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不同的文件拷贝到不同的系统中"><span class="nav-number">10.5.</span> <span class="nav-text">不同的文件拷贝到不同的系统中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用标签"><span class="nav-number">10.6.</span> <span class="nav-text">使用标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#memcached-自动安装以及生成缓存范围数值"><span class="nav-number">10.7.</span> <span class="nav-text">memcached 自动安装以及生成缓存范围数值</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1654,7 +2347,7 @@ rid of this message.
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共98.9k字</span>
+  <span class="post-count">博客全站共104.9k字</span>
 </div>
 
 <div id="days"></div>

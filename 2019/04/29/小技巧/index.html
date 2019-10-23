@@ -160,7 +160,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:description" content="linux 小技巧+总结">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/16/V7UGwt.png">
-<meta property="og:updated_time" content="2019-08-23T02:57:48.443Z">
+<meta property="og:updated_time" content="2019-10-11T13:43:16.719Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技巧集合">
 <meta name="twitter:description" content="linux 小技巧+总结">
@@ -447,7 +447,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-23 10:57:48" itemprop="dateModified" datetime="2019-08-23T10:57:48+08:00">2019-08-23</time>
+                <time title="Modified: 2019-10-11 21:43:16" itemprop="dateModified" datetime="2019-10-11T21:43:16+08:00">2019-10-11</time>
               
             
           </span>
@@ -576,6 +576,7 @@ renice +1 180     # 把180号进程的优先级加1
 <pre><code>seq 10 | sed -e{1,5,8}&#39;s#.*#xxx#&#39; 
 </code></pre><h1 id="显示已知用户的信息"><a href="#显示已知用户的信息" class="headerlink" title="显示已知用户的信息"></a>显示已知用户的信息</h1><p><code>lslogins</code></p>
 <h1 id="特殊变量：shell对一些参数做特殊处理-这些参数只能被引用而不能被赋值"><a href="#特殊变量：shell对一些参数做特殊处理-这些参数只能被引用而不能被赋值" class="headerlink" title="特殊变量：shell对一些参数做特殊处理,这些参数只能被引用而不能被赋值"></a>特殊变量：shell对一些参数做特殊处理,这些参数只能被引用而不能被赋值</h1><p><code>$#</code>  传递到脚本的参数个数<br><code>$*</code>  显示所有向脚本传递的参数                  #与位置变量不同，此选项参数可超过9个<br><code>$$</code>  获取当前shell的进程号<br><code>$!</code>  执行上一个指令的进程号<br><code>$?</code>  获取执行的上一个指令的返回值              #0为执行成功，非零为执行失败<br><code>$-</code>  显示shell使用的当前选项，与set命令功能相同<br><code>$@</code>  与$*相同，但是使用时加引号，并在引号中返回每个参数</p>
+<h1 id="服务端口"><a href="#服务端口" class="headerlink" title="服务端口"></a>服务端口</h1><p>samba 默认用445端口<br>httpd 默认80端口</p>
 <p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
 <p><script>hljs.initHighlightingOnLoad();</script></p>
 <p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css"><br><code class="Bash" style="font-size: 18px; border:0px solid #000 ;"></code></p>
@@ -754,7 +755,7 @@ renice +1 180     # 把180号进程的优先级加1
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -786,7 +787,7 @@ renice +1 180     # 把180号进程的优先级加1
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -871,7 +872,7 @@ renice +1 180     # 把180号进程的优先级加1
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#simple-command"><span class="nav-number">1.</span> <span class="nav-text">simple command</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">2.</span> <span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sed"><span class="nav-number">2.1.</span> <span class="nav-text">sed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash中-的用法和变量的间接引用"><span class="nav-number">2.2.</span> <span class="nav-text">Bash中${}的用法和变量的间接引用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交互登录式shell的配置文件加载次序"><span class="nav-number">3.</span> <span class="nav-text">交互登录式shell的配置文件加载次序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux使用dhclient自动获取IP"><span class="nav-number">4.</span> <span class="nav-text">linux使用dhclient自动获取IP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PS1修改"><span class="nav-number">5.</span> <span class="nav-text">PS1修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#df"><span class="nav-number">6.</span> <span class="nav-text">df</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件重启"><span class="nav-number">7.</span> <span class="nav-text">文件重启</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程"><span class="nav-number">8.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用户和用户组"><span class="nav-number">9.</span> <span class="nav-text">用户和用户组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开机启动脚本顺序"><span class="nav-number">10.</span> <span class="nav-text">开机启动脚本顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sed-替换内容"><span class="nav-number">11.</span> <span class="nav-text">sed 替换内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#显示已知用户的信息"><span class="nav-number">12.</span> <span class="nav-text">显示已知用户的信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特殊变量：shell对一些参数做特殊处理-这些参数只能被引用而不能被赋值"><span class="nav-number">13.</span> <span class="nav-text">特殊变量：shell对一些参数做特殊处理,这些参数只能被引用而不能被赋值</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#simple-command"><span class="nav-number">1.</span> <span class="nav-text">simple command</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">2.</span> <span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sed"><span class="nav-number">2.1.</span> <span class="nav-text">sed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash中-的用法和变量的间接引用"><span class="nav-number">2.2.</span> <span class="nav-text">Bash中${}的用法和变量的间接引用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交互登录式shell的配置文件加载次序"><span class="nav-number">3.</span> <span class="nav-text">交互登录式shell的配置文件加载次序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux使用dhclient自动获取IP"><span class="nav-number">4.</span> <span class="nav-text">linux使用dhclient自动获取IP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PS1修改"><span class="nav-number">5.</span> <span class="nav-text">PS1修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#df"><span class="nav-number">6.</span> <span class="nav-text">df</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件重启"><span class="nav-number">7.</span> <span class="nav-text">文件重启</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程"><span class="nav-number">8.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用户和用户组"><span class="nav-number">9.</span> <span class="nav-text">用户和用户组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开机启动脚本顺序"><span class="nav-number">10.</span> <span class="nav-text">开机启动脚本顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sed-替换内容"><span class="nav-number">11.</span> <span class="nav-text">sed 替换内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#显示已知用户的信息"><span class="nav-number">12.</span> <span class="nav-text">显示已知用户的信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特殊变量：shell对一些参数做特殊处理-这些参数只能被引用而不能被赋值"><span class="nav-number">13.</span> <span class="nav-text">特殊变量：shell对一些参数做特殊处理,这些参数只能被引用而不能被赋值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务端口"><span class="nav-number">14.</span> <span class="nav-text">服务端口</span></a></li></ol></div>
             
 
           </div>
@@ -920,7 +921,7 @@ renice +1 180     # 把180号进程的优先级加1
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共98.9k字</span>
+  <span class="post-count">博客全站共104.9k字</span>
 </div>
 
 <div id="days"></div>
