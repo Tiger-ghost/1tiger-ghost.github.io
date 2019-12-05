@@ -151,18 +151,21 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
         }
     })();
 </script>
-  <meta name="description" content="DNS+">
+  <meta name="description" content="DNS+Mysql">
 <meta name="keywords" content="Document">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Seven">
 <meta property="og:url" content="http://yoursite.com/2019/09/25/DNS+/index.html">
 <meta property="og:site_name" content="Tiger-ghost">
-<meta property="og:description" content="DNS+">
+<meta property="og:description" content="DNS+Mysql">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-23T02:46:06.183Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/27/KsNf2j.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/15/MdLUMT.png">
+<meta property="og:updated_time" content="2019-12-02T12:19:51.330Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Seven">
-<meta name="twitter:description" content="DNS+">
+<meta name="twitter:description" content="DNS+Mysql">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/10/27/KsNf2j.png">
 
 
 
@@ -445,7 +448,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-10-23 10:46:06" itemprop="dateModified" datetime="2019-10-23T10:46:06+08:00">2019-10-23</time>
+                <time title="Modified: 2019-12-02 20:19:51" itemprop="dateModified" datetime="2019-12-02T20:19:51+08:00">2019-12-02</time>
               
             
           </span>
@@ -516,7 +519,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
       
 
       
-        <p><center><font face="FZShuTi">DNS+</font></center><br><a id="more"></a></p>
+        <p><center><font face="FZShuTi">DNS+Mysql</font></center><br><a id="more"></a></p>
 <h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><pre><code>yum install -y bind ##安装此软件来做DNS实验
 [root@ansible ~]# vim /etc/named.conf 
 12 options {
@@ -529,7 +532,8 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 dig -t ns magedu.com  查看是哪个dns服务器提供解析的
 dig www.magedu.com @dns10.hichina.com.  ##指定某个dns提供解析
 ;; flags: qr aa rd;    ##这里有aa字样的就是权威的DNS服务器解析的
-</code></pre><h2 id="资源记录"><a href="#资源记录" class="headerlink" title="资源记录"></a>资源记录</h2><p>区域解析库：由众多RR组成：<br>资源记录：Resource Record, RR<br>记录类型：A, AAAA, PTR, SOA, NS, CNAME, MX<br>SOA：Start Of Authority，起始授权记录；一个区域解析库有且仅能有一个SOA记录，必须位于解析库的第一条记录<br>A：internet Address，作用，FQDN –&gt; IP<br>AAAA：FQDN –&gt; IPv6<br>PTR：PoinTeR，IP –&gt; FQDN<br>NS：Name Server，专用于标明当前区域的DNS服务器<br>CNAME ： Canonical Name，别名记录<br>MX：Mail eXchanger，邮件交换器<br>TXT：对域名进行标识和说明的一种方式，一般做验证记录时会使用此项，如：SPF（反垃圾邮件）记录，https验证等<br>示例：_dnsauth TXT 2012011200000051qgs69bwoh4h6nht4n1h0lr038x</p>
+</code></pre><p><img src="https://s2.ax1x.com/2019/10/27/KsNf2j.png" alt=""></p>
+<h2 id="资源记录"><a href="#资源记录" class="headerlink" title="资源记录"></a>资源记录</h2><p>区域解析库：由众多RR组成：<br>资源记录：Resource Record, RR<br>记录类型：A, AAAA, PTR, SOA, NS, CNAME, MX<br>SOA：Start Of Authority，起始授权记录；一个区域解析库有且仅能有一个SOA记录，必须位于解析库的第一条记录<br>A：internet Address，作用，FQDN –&gt; IP<br>AAAA：FQDN –&gt; IPv6<br>PTR：PoinTeR，IP –&gt; FQDN<br>NS：Name Server，专用于标明当前区域的DNS服务器<br>CNAME ： Canonical Name，别名记录<br>MX：Mail eXchanger，邮件交换器<br>TXT：对域名进行标识和说明的一种方式，一般做验证记录时会使用此项，如：SPF（反垃圾邮件）记录，https验证等<br>示例：_dnsauth TXT 2012011200000051qgs69bwoh4h6nht4n1h0lr038x</p>
 <h2 id="资源记录定义的格式：vim-magedu-com-zone"><a href="#资源记录定义的格式：vim-magedu-com-zone" class="headerlink" title="资源记录定义的格式：vim magedu.com.zone"></a>资源记录定义的格式：vim magedu.com.zone</h2><p>语法：name [TTL]  IN    rr_type    value<br>注意：<br>(1) TTL可从全局继承<br>(2) @可用于引用当前区域的名字<br>(3) 同一个名字可以通过多条记录定义多个不同的值；此时DNS服务器会以轮询方式响应<br>(4) 同一个值也可能有多个不同的定义名字；通过多个不同的名字指向同一个值进行定义；此仅表示通过多个不同的名字可以找到同一个主机</p>
 <h2 id="搭建一个DNS服务器-正向解析"><a href="#搭建一个DNS服务器-正向解析" class="headerlink" title="搭建一个DNS服务器-正向解析"></a>搭建一个DNS服务器-正向解析</h2><pre><code>[root@ansible named]# vim /etc/named.rfc1912.zones ##这是主配置文件中记录的另外一个文件
 zone &quot;magedu.com&quot; {
@@ -659,7 +663,1656 @@ dns2    A       192.168.175.136      ##这一行就是添加的从服务器的�
 主DNS服务器进行文件推送需要更改serial号
 TCP端口负责主从复制，如果只是关闭TCP端口，还是可以查询的，只是文件不能复制
 UDP端口负责查询
-</code></pre><h2 id="子域"><a href="#子域" class="headerlink" title="子域"></a>子域</h2><p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
+</code></pre><h2 id="子域和父域委派"><a href="#子域和父域委派" class="headerlink" title="子域和父域委派"></a>子域和父域委派</h2><pre><code>放在同一台电脑上配置子域
+[root@ansible named]# vim /etc/named.rfc1912.zones
+zone &quot;beijing.magedu.com&quot; {
+        type master;
+        file &quot;beijing.magedu.com.zone&quot;;
+};
+
+[root@ansible named]# cat beijing.magedu.com.zone 
+$TTL 1D
+@       IN SOA  dns1    admin. (
+                                        1       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+        NS      dns1
+dns1    A       192.168.175.22
+www     CNAME   websrv
+websrv  A       8.8.8.8
+
+dig www.beijing.magedu.com 在其他的机器上测试子域
+</code></pre><h2 id="子域和父域委派-不同机器"><a href="#子域和父域委派-不同机器" class="headerlink" title="子域和父域委派(不同机器)"></a>子域和父域委派(不同机器)</h2><pre><code>需要在主DNS服务器上添加子域的地址
+[root@ansible named]# cat magedu.com.zone 
+$TTL 1D
+@       IN SOA  dns1    admin.magedu.com. (
+                                        2       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+        NS      dns1
+        NS      dns2
+shenzhen NS     dns3  ##子域
+dns1    A       192.168.175.22
+dns2    A       192.168.175.136
+dns3    A       192.168.175.137  ##子域的地址
+www     CNAME   websrv
+websrv  A       66.66.66.66
+
+1.在另外一台机器上安装DNS服务bind；并修改主配置文件端口信息vim /etc/named.conf
+2.[root@c7 yum.repos.d]# vim /etc/named.rfc1912.zones 
+zone &quot;shenzhen.magedu.com&quot; {
+        type master;
+        file &quot;shenzhen.magedu.com.zone&quot;;
+};
+3.cat /var/named/shenzhen.magedu.com.zone 
+$TTL 1D
+@       IN SOA  dns1    admin (
+                                        0       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+        NS      dns1
+dns1    A       192.168.175.137
+www     CNAME   websrv
+websrv  A       7.7.7.7
+shenzhen.magedu.com.zone 这个文件的所属主要改成named
+systemctl restart named  ##启动服务
+在其他机器测试时，dns只写主dns或备用dns服务器地址。看dig是否识别(还未识别实验为成功)
+</code></pre><h2 id="DNS转发"><a href="#DNS转发" class="headerlink" title="DNS转发"></a>DNS转发</h2><div><div class="fold_hider"><div class="close hider_title">第一台搭建的DNS</div></div><div class="fold">
+<pre><code>[root@ansible ~]# vim /etc/named.rfc1912.zones 
+zone &quot;magedu.com&quot; {
+        type master;
+        file &quot;magedu.com.zone&quot;;
+};
+[root@ansible ~]# cat /var/named/magedu.com.zone 
+$TTL 1D
+@       IN SOA  dns1    admin.magedu.com. (
+                                        2       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+        NS      dns1
+        NS      dns2
+shenzhen NS     dns3
+dns1    A       192.168.175.22
+dns2    A       192.168.175.101
+dns3    A       192.168.175.138
+
+www     CNAME   websrv
+websrv  A       66.66.66.66
+</code></pre>
+</div></div>
+<pre><code>当第一台DNS服务器建立好了之后，再另外一台主机再搭一台
+[root@centos7 ~]# vim /etc/named.rfc1912.zones 
+zone &quot;wang.com&quot; {
+        type master;
+        file &quot;wang.com.zone&quot;;
+};
+[root@centos7 ~]# cat /var/named/wang.com.zone 
+$TTL 1D
+@       IN SOA  dns1    admin (
+                                        2       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+        NS dns1
+dns1 A 192.168.175.101
+www A  6.6.6.6
+##再到另外一台主机上面检测，现在这台主机上只有主DNS的地址，是检测不到新搭建的，所以要设置转发在主dns主机上
+[root@ansible ~]# vim /etc/named.conf
+        forwarde  only;  ##我这台机器没有，只允许到转发到下面这个地址，如果他没有，就失败
+        forwarders      { 192.168.175.101;};
+##forward  first;我这没有转发到指定的机器上，如果指定的机器也没有，我再到互联网上去问
+[root@ansible network-scripts]# vim /etc/named.conf  ##下面两行记得改为no，不然无法访问
+ 39         dnssec-enable no;
+ 40         dnssec-validation no;
+
+##这样就可以访问了，如果去访问一个不存在的记录，dig www.wnagge.com 我——第一台DNS机器上没有——转发的DNS机器找，如果也没有，——到互联网上去找
+如果把机器的网络down了，也能查，因为有缓存。 清缓存rndc flush
+
+
+##现在改成first
+first:你问我，我没有，我转到转发的服务器上去，转发的服务器上没有，我再去网络上问
+[root@ansible network-scripts]# vim /etc/named.conf
+        forward  first;
+        forwarders      { 192.168.175.101;};
+那么这个时候，主dns联网，转发的dns没有联网，到其他主机上查一个不存在的记录，只要主dns联网他就可以解析出来
+</code></pre><h2 id="实现智能DNS"><a href="#实现智能DNS" class="headerlink" title="实现智能DNS"></a>实现智能DNS</h2><p>bind中ACL<br>bind有四个内置的acl:<br>none    没有一个主机<br>any        任意主机<br>localhost    本机<br>localnet    本机的IP同掩码运算后得到的网络地址<br>注意：只能先定义后使用；因此一般定义在配置文件中，处于options的前面<br><div><div class="fold_hider"><div class="close hider_title">----------------------------------实验</div></div><div class="fold">
+<pre><code>##First
+[root@ansible named]# cat magedu.com.zone.bj  ##表示北京地区
+$TTL 1D
+@       IN SOA  dns1    admin.magedu.com. (
+                                        2       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+        NS      dns1
+        NS      dns2
+shenzhen NS     dns3
+dns1    A       192.168.175.22
+dns2    A       192.168.175.101
+dns3    A       192.168.175.138
+
+www     CNAME   websrv
+websrv  A       6.6.6.6
+
+[root@ansible named]# cat magedu.com.zone.sh   ##表示上海地区
+$TTL 1D
+@       IN SOA  dns1    admin.magedu.com. (
+                                        2       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+        NS      dns1
+        NS      dns2
+shenzhen NS     dns3
+dns1    A       192.168.175.22
+dns2    A       192.168.175.101
+dns3    A       192.168.175.138
+
+www     CNAME   websrv
+websrv  A       7.7.7.7
+
+[root@ansible named]# cat magedu.com.zone.sz
+$TTL 1D
+@       IN SOA  dns1    admin.magedu.com. (
+                                        2       ; serial
+                                        1D      ; refresh
+                                        1H      ; retry
+                                        1W      ; expire
+                                        3H )    ; minimum
+        NS      dns1
+        NS      dns2
+shenzhen NS     dns3
+dns1    A       192.168.175.22
+dns2    A       192.168.175.101
+dns3    A       192.168.175.138
+
+www     CNAME   websrv
+websrv  A       8.8.8.8
+
+##Second
+[root@ansible named]# vim /etc/named.conf 
+acl beijingnet {
+        192.168.175.0/24;
+};
+acl shanghainet {
+        192.168.152.0/24;
+};
+acl shenzhennet {
+        any;
+};
+.......................
+view view_beijing {
+        match-clients { beijingnet;};
+        include &quot;/etc/named.rfc1912.zones&quot;;
+};
+view view_shanghai {
+        match-clients { shanghainet;};
+        include &quot;/etc/named.rfc1912.zones.shanghai&quot;;
+};
+view view_shenzhen {
+        match-clients { shenzhennet;};
+        include &quot;/etc/named.rfc1912.zones.shenzhen&quot;;
+};
+
+##Third:
+[root@ansible named]# vim /etc/named.rfc1912.zones
+zone &quot;.&quot; IN {
+        type hint;
+        file &quot;named.ca&quot;;
+};
+
+zone &quot;magedu.com&quot; {
+        type master;
+        file &quot;magedu.com.zone.bj&quot;;
+};
+
+
+[root@ansible named]# cat /etc/named.rfc1912.zones.shanghai
+zone &quot;.&quot; IN {
+        type hint;
+        file &quot;named.ca&quot;;
+};
+zone &quot;magedu.com&quot; {
+        type master;
+        file &quot;magedu.com.zone.sh&quot;;
+};
+
+[root@ansible named]# cat /etc/named.rfc1912.zones.shenzhen
+zone &quot;.&quot; IN {
+        type hint;
+        file &quot;named.ca&quot;;
+};
+
+zone &quot;magedu.com&quot; {
+        type master;
+        file &quot;magedu.com.zone.sz&quot;;
+};
+</code></pre>
+</div></div></p>
+<h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><pre><code>yum -y install mariadb mariadb-server 本地磁盘安装mariadb
+##不进入mysql就执行命令
+[root@ansible ~]# mysql -e &quot;show databases;&quot;
+
+[root@ansible mysql]# cat /etc/my.cnf
+[mysqld]
+skip-networking   ##这句表示不走网络连接，加了这句后重启服务，就会默认关闭3306端口
+datadir=/var/lib/mysql   ##数据库的目录
+symbolic-links=0  ##是否支持软链接，0表示禁用，不支持
+</code></pre><h2 id="创建逻辑卷，更换数据库的目录"><a href="#创建逻辑卷，更换数据库的目录" class="headerlink" title="创建逻辑卷，更换数据库的目录"></a>创建逻辑卷，更换数据库的目录</h2><pre><code>[root@ansible ~]# pvcreate /dev/sda6(干净的分区)
+  Physical volume &quot;/dev/sda6&quot; successfully created.
+[root@ansible ~]# vgcreate vg0 /dev/sda6
+  Volume group &quot;vg0&quot; successfully created
+[root@ansible ~]# lvcreate -n mysql -l 100%FREE vg0  ##使用逻辑卷的所有空间
+  Logical volume &quot;mysql&quot; created.
+[root@ansible ~]# lvdisplay  ##查看
+  --- Logical volume ---
+  LV Path                /dev/vg0/mysql
+  LV Name                mysql
+  VG Name                vg0
+  LV UUID                935qed-srm4-AfkE-ar1U-ca6K-vhxf-gaCeun
+  LV Write Access        read/write
+  LV Creation host, time ansible, 2019-11-03 19:19:14 +0800
+  LV Status              available
+  # open                 0
+  LV Size                1020.00 MiB
+  Current LE             255
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:0
+[root@ansible ~]# mkfs.xfs /dev/vg0/mysql  ##创建文件系统
+blkid ##查看
+[root@ansible data]# mount /dev/vg0/mysql /data/mysql  ##挂载到目录
+[root@ansible data]# chown mysql:mysql /data/mysql
+[root@ansible data]# cat /etc/my.cnf
+    datadir=/data/mysql/
+重启服务，后该目录下方，已有文件产生
+</code></pre><h2 id="通用二进制格式安装过程"><a href="#通用二进制格式安装过程" class="headerlink" title="通用二进制格式安装过程"></a>通用二进制格式安装过程</h2><pre><code>到mariadb官网下载已经linux-64位编译好的源码包，传入linux中。
+tar -xvf mariadb-10.2.19-linux-x86_64.tar.gz -C /usr/local  解压到指定的目录
+ln -s /usr/local/mariadb-10.2.19-linux-x86_64/ /usr/local/mysql
+[root@new local]# chown root:root -R /usr/local/mysql/   ##修改权限
+[root@new local]# useradd -r -s /sbin/nologin -d /data/mysql -c &quot;mariadb user&quot; mysql
+install -d /data/mysql -o mysql -g mysql  ##创建目录，install见脚本一章
+
+##执行mysql的安装数据库脚本在/usr/local/mysql/scripts/mysql_install_db --help
+只能在这个目录下执行/usr/local/mysql，因为如果在/usr/local/mysql/scripts/目录下执行，他会报错需要调用一个文件，
+在上级目录的bin中。所以要执行这个/usr/local/mysql/scripts/mysql_install_db，只能在他的上级目录执行:/usr/local/mysql
+scripts/mysql_install_db --user=mysql --datadir=/data/mysql  指定以mysql的身份去去创建，指定创建的文件放在/data/mysql目录
+cp support-files/my-huge.cnf /etc/mysql/my.cnf   ##复制程序的配置模板文件到指定目录
+        socket          = /data/mysql/mysql.sock  ##客户端的sock文件默认到此文件夹寻找
+        [mysqld]
+        datadir=/data/mysql  ##加入这一条
+        socket          = /data/mysql/mysql.sock ##服务器端的sock文件
+[root@new mysql]# cp /usr/local/mysql/support-files/mysql.server /etc/init.d 复制服务脚本
+cd /etc/init.d/  mv mysql.server mysqld      ##改名
+chkconfig --list ##查看没有 ， chkconfig --add mysqld ##将此服务加入进去。 注意这都是在centos7上实验。
+service restart mysqld ##启动服务 3306端口已开启
+    此时执行mysql，报错没有办法找到文件目录，是因为执行路径在/usr/local/mysql/bin这个目录下，为了方便使用
+    echo &#39;PATH=/usr/local/mysql/bin:$PATH&#39; &gt; /etc/profile.d/mysql.sh 
+    . /etc/profile.d/mysql.sh
+    mysql  ##成功执行
+    MariaDB [(none)]&gt; show variables like &#39;datadir&#39;; ##查看数据库路径
+    MariaDB [(none)]&gt; select @@datadir;  ##变量的写法
+
+/usr/local/mysql/bin/mysql_secure_installation 给mysql设置密码，但是更改了mysql.sock文件路径报错
+vim /etc/mysql/my.cnf  只能先将这里改回来
+    socket          = /tmp/mysql.sock  ##客户端的sock文件默认到此文件夹寻找
+    socket          = /tmp/mysql.sock ##服务器端的sock文件  重新启动服务
+[root@new mysql]# mysql -uroot -p123456  ##进去mysql
+use mysql 
+MariaDB [mysql]&gt; select user,host,password,authentication_string from user;  ##查看口令
+</code></pre><h2 id="源码安装mariadb"><a href="#源码安装mariadb" class="headerlink" title="源码安装mariadb"></a>源码安装mariadb</h2><p>安装包</p>
+<pre><code>yum install bison bison-devel zlib-devel libcurl-devel libarchive-devel boost-devel gcc gcc-c++ cmake ncurses-devel gnutls-devel libxml2-devel openssl-devel libevent-devel libaio-devel
+</code></pre><p>做准备做准备用户和数据目录</p>
+<pre><code>useradd -r -s /sbin/nologin -d /data/mysql/ mysql 
+mkdir /data/mysql
+chown mysql:mysql /data/mysql
+</code></pre><p>解压</p>
+<pre><code>tar -xvf mariadb-10.2.18.tar.gz
+</code></pre><font sieze="3">cmake的重要特性之一是其独立于源码(out-of-source)的编译功能，即编译工作可以在另一个指定的目录中而非源码目录中进行，这可以保证源码目录不受任何一次编译的影响，因此在同一个源码树上可以进行多次不同的编译，如针对于不同平台编译</font>
+
+<p>源码编译安装mariadb</p>
+<pre><code>cd mariadb-10.2.18/
+cmake . \
+-DCMAKE_INSTALL_PREFIX=/app/mysql \      
+-DMYSQL_DATADIR=/data/mysql/ \
+-DSYSCONFDIR=/etc/mysql \
+-DMYSQL_USER=mysql \
+-DWITH_INNOBASE_STORAGE_ENGINE=1 \
+-DWITH_ARCHIVE_STORAGE_ENGINE=1 \
+-DWITH_BLACKHOLE_STORAGE_ENGINE=1 \
+-DWITH_PARTITION_STORAGE_ENGINE=1 \
+-DWITHOUT_MROONGA_STORAGE_ENGINE=1 \
+-DWITH_DEBUG=0 \
+-DWITH_READLINE=1 \
+-DWITH_SSL=system \
+-DWITH_ZLIB=system \
+-DWITH_LIBWRAP=0 \
+-DENABLED_LOCAL_INFILE=1 \
+-DMYSQL_UNIX_ADDR=/data/mysql/mysql.sock \
+-DDEFAULT_CHARSET=utf8 \
+-DDEFAULT_COLLATION=utf8_general_ci
+-DPLUGIN_TOKUDB=NO   ##不加会报错
+
+make -j &amp;&amp; make install
+    提示：如果出错，执行rm -f CMakeCache.txt
+
+/data/mysql ##数据库二进制程序目录
+cd /app/mysql/
+scripts/mysql_install_db --user=mysql --datadir=/data/mysql
+echo &#39;PATH=/app/mysql/bin:$PATH&#39; &gt; /etc/profile.d/mysql.sh
+. /etc/profile.d/mysql.sh
+cp support-files/my-huge.cnf /etc/my.cnf
+vim /etc/my.cnf
+    socket=/data/mysql/mysql.sock  ##可以看到都已经改好了，编译好了
+cp support-files/mysql.server /etc/init.d/mysqld
+chkconfig --add mysqld 然后启动
+</code></pre><h2 id="SQL语言规范"><a href="#SQL语言规范" class="headerlink" title="SQL语言规范"></a>SQL语言规范</h2><p>在数据库系统中，SQL语句不区分大小写(建议用大写)<br>SQL语句可单行或多行书写，以“;”结尾<br>关键词不能跨多行或简写<br>用空格和缩进来提高语句的可读性<br>子句通常位于独立行，便于编辑，提高可读性<br>注释：<br>SQL标准：</p>
+<pre><code>/*注释内容*/    多行注释
+-- 注释内容  单行注释，注意有空格
+MySQL注释： #
+</code></pre><h2 id="mysql多实例的实现"><a href="#mysql多实例的实现" class="headerlink" title="mysql多实例的实现"></a>mysql多实例的实现</h2><pre><code>二进制安装完成后的多实例
+MariaDB [(none)]&gt; show variables like &#39;datadir&#39;; ##查看mysql数据库路径
++---------------+--------------+
+| Variable_name | Value        |
++---------------+--------------+
+| datadir       | /data/mysql/ |
++---------------+--------------+
+1 row in set (0.04 sec)
+
+退出mysql, cd /data/
+[root@new data]# mkdir /mysql/{3306,3307,3308} -pv
+systemctl stop mariadb  ##先停掉现在的mysql
+cd /mysql
+[root@new mysql]# mkdir {3306,3307,3308}/{etc,socket,log,pid} -pv
+[root@new mysql]# chown -R mysql:mysql *
+##准备数据库文件。现在执行mysql的安装数据脚本，并生成文件到我们刚刚创建的目录中(去刚刚已经利用二进制安装包安装的mysql目录)
+cd /usr/local/mysql
+[root@new mysql]# ./scripts/mysql_install_db --user=mysql --datadir=/mysql/3306
+[root@new mysql]# ./scripts/mysql_install_db --user=mysql --datadir=/mysql/3307
+[root@new mysql]# ./scripts/mysql_install_db --user=mysql --datadir=/mysql/3308
+
+##继续准备数据库的配置文件
+[root@new mysql]# cp /etc/mysql/my.cnf /mysql/3306/etc        
+[root@new mysql]# cp /etc/mysql/my.cnf /mysql/3307/etc
+[root@new mysql]# cp /etc/mysql/my.cnf /mysql/3308/etc
+[root@new mysql]# vim /mysql/3306/etc/my.cnf         
+    [client]
+    #password       = your_password
+    port            = 3306   ##修改端口号
+    socket          = /mysql/3306/socket/mysql.sock   ##主要修改这里
+
+    [mysqld]
+    datadir=/data/mysql
+    port            = 3306
+    socket          = /mysql/3306/socket/mysql.sock   ##主要修改这里
+依次复制到/mysql/3307/etc/my.cnf  并修改端口和文件夹位置
+依次复制到/mysql/3308/etc/my.cnf
+
+准备服务的启动脚本，详情看下面的服务启动脚本。
+
+[root@new mysql]# chmod +x 3306/mysqld  ##给脚本加上执行权限
+[root@new mysql]# chmod +x 3307/mysqld
+[root@new mysql]# chmod +x 3308/mysqld 
+[root@new mysql]# . 3306/mysqld start
+ss -ntl 可以看到对应的端口已经开启
+[root@new mysql]# mysql -uroot -p -S /mysql/3308/socket/mysql.sock  或者
+[root@new mysql]# mysql -uroot -h127.0.0.1 -P 3308
+[root@new 3308]# ./mysqld stop  ##停止运行
+
+[root@new 3308]# mysql -uroot -h127.0.0.1 -P 3308
+MariaDB [(none)]&gt; select user,password,host from mysql.user;  ##查看口令
+[root@new 3308]# mysql_secure_installation -S /mysql/3308/socket/mysql.sock  ##设置安全选项，设置口令
+[root@new 3308]# mysql -uroot -h127.0.0.1 -P 3308 -P123456   ##进入mysql需要加密码
+[root@new 3308]# cp mysqld /etc/init.d/mysqld3308  ##使用service命令来控制
+[root@new 3308]# service mysqld3308 start   ##启动成功
+chkconfig --add mysqld3308
+如果要使用chkconfig命令来控制，就还需要在服务启动脚本文件中加入这一行
+#chkconfig: 345 80 2
+345 代表在哪些模式下使用，80表示启动顺序可以在cat /etc/rc.5d(我现在是桌面模式下)里面进行查看各个服务的启动顺序
+</code></pre><div><div class="fold_hider"><div class="close hider_title">-----------------------服务启动脚本-----------------------------</div></div><div class="fold">
+<pre><code>依次拷贝到3306,3307,3308 下，并更改port端口号
+[root@new mysql]# cat 3306/mysqld 
+#!/bin/bash
+#chkconfig: 345 80 2
+port=3306
+mysql_user=&quot;root&quot;
+mysql_pwd=&quot;&quot; ##这里填写设置的口令
+cmd_path=&quot;/usr/local/mysql/bin&quot;  ##数据库的二进制路径，注意这里之前是以二进制安装的路径(上面)
+mysql_basedir=&quot;/mysql&quot;
+mysql_sock=&quot;${mysql_basedir}/${port}/socket/mysql.sock&quot;
+
+function_start_mysql()
+{
+    if [ ! -e &quot;$mysql_sock&quot; ];then
+      printf &quot;Starting MySQL...\n&quot;
+      ${cmd_path}/mysqld_safe --defaults-file=${mysql_basedir}/${port}/etc/my.cnf  &amp;&gt; /dev/null  &amp;
+    else
+      printf &quot;MySQL is running...\n&quot;
+      exit
+    fi
+}
+
+
+function_stop_mysql()
+{
+    if [ ! -e &quot;$mysql_sock&quot; ];then
+       printf &quot;MySQL is stopped...\n&quot;
+       exit
+    else
+       printf &quot;Stoping MySQL...\n&quot;
+       ${cmd_path}/mysqladmin -u ${mysql_user} -p${mysql_pwd} -S ${mysql_sock} shutdown
+   fi
+}
+## -p${mysql_pwd} 这个表示关闭mysql时是否提示需要输入密码
+##如果设置了口令，这里被注释掉，关闭mysql的时候就会报错。也就是设置了口令后
+##这里不能被注释，而且上面还需要添加这是的口令，在这个文件中
+
+function_restart_mysql()
+{
+    printf &quot;Restarting MySQL...\n&quot;
+    function_stop_mysql
+    sleep 2
+    function_start_mysql
+}
+
+case $1 in
+start)
+    function_start_mysql
+;;
+stop)
+    function_stop_mysql
+;;
+restart)
+    function_restart_mysql
+;;
+*)
+    printf &quot;Usage: ${mysql_basedir}/${port}/bin/mysqld {start|stop|restart}\n&quot;
+esac
+
+
+[root@new 3307]# cat ../3306/etc/my.cnf 
+[mysqld]
+port=3306
+datadir=/mysql/3306
+socket=/mysql/3306/socket/mysql.sock
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+# Settings user and group are ignored when systemd is used.
+# If you need to run mysqld under a different user or group,
+# customize your systemd unit file for mariadb according to the
+# instructions in http://fedoraproject.org/wiki/Systemd
+
+[mysqld_safe]
+log-error=/mysql/3306/log/mariadb.log
+pid-file=/mysql/3306/pid/mariadb.pid
+
+#
+# include all files from the config directory
+#
+#!includedir /etc/my.cnf.d
+</code></pre>
+</div></div>
+<pre><code>## 因为现在的mysql里面show databases;etc目录也会显示出来，所以先给数据库文件夹换一个目录
+[root@new 3307]#
+mv mysqld etc/ /mnt
+rm -fr *
+mkdir {data,etc,pid,socker,log}
+cd /usr/local/mysql
+./scripts/mysql_install_db --user=mysql --datadir=/mysql/3307/data
+cd /mysql/3307/data
+[root@new data]# mv /mnt/etc /mnt/mysqld /mysql/3307
+[root@new 3307]# vim etc/my.cnf
+datadir=/mysql/3307/data
+[root@new 3307]# ./mysqld start
+[root@new 3307]# mysql -uroot -S socket/mysql.sock
+</code></pre><h2 id="数据库和表管理"><a href="#数据库和表管理" class="headerlink" title="数据库和表管理"></a>数据库和表管理</h2><pre><code>mysql -uroot -S /mysql/3307/socket/mysql.sock
+MariaDB [(none)]&gt; create database testdb;  ##创建数据库，对应的自动建立/mysql/3307/data/testdb这个目录 
+MariaDB [(none)]&gt; show create database testdb;  ##查看当初是怎么建立数据库的
++----------+-------------------------------------------------------------------+
+| Database | Create Database                                                   |
++----------+-------------------------------------------------------------------+
+| testdb   | CREATE DATABASE `testdb` /*!40100 DEFAULT CHARACTER SET latin1 */ | latin1 就是字符集
++----------+-------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+MariaDB [(none)]&gt;create database db_utf8mb64 CHARCTER SET=utf8mb4;  ##创建数据库，指定字符集
+MariaDB [(none)]&gt;drop database testdb;  ##删除数据库
+create database studentdb;
+use studentdb;
+MariaDB [studentdb]&gt; create table student (id int unsigned auto_increment primary key,name varchar(10) not null,sex enum(&#39;f&#39;,&#39;m&#39;) default &#39;m&#39;,age tinyint unsigned ,mobile char(11),address varchar(50));  ##创建表
+unsigned 全是正数,auto_increment 自动递增。primary key 表示主键，varchar 占用空间不一样(char 占用一样的空间)，
+not null 不允许为空，enum 指定输入值，default &#39;m&#39; 默认值是m，就是如果不输入自动填m，不允许空值。TINYINT 1字节。
+char 字符串 固定最大字符长度
+
+MariaDB [studentdb]&gt;desc student;   或者  show columns from student;   ##查看表
+show table status like &#39;student&#39;\G  ##查看表状态
+show table status status from mysql\G  ##查看mysql仓库中的表
+show indexes from student\G  ##查看索引
+</code></pre><h2 id="DML语句"><a href="#DML语句" class="headerlink" title="DML语句"></a>DML语句</h2><p>增，删，改</p>
+<pre><code>MariaDB [studentdb]&gt; select * from student;    ##可以看出这张表是空表
+Empty set (0.01 sec)
+
+MariaDB [studentdb]&gt; select count(*) student;    ##查询这张表中的记录数，现在还未添加记录
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+
+MariaDB [studentdb]&gt; desc student;
++---------+---------------------+------+-----+---------+----------------+
+| Field   | Type                | Null | Key | Default | Extra          |
++---------+---------------------+------+-----+---------+----------------+
+| id      | int(10) unsigned    | NO   | PRI | NULL    | auto_increment |
+| name    | varchar(10)         | NO   |     | NULL    |                |
+| sex     | enum(&#39;f&#39;,&#39;m&#39;)       | YES  |     | m       |                |
+| age     | tinyint(3) unsigned | YES  |     | NULL    |                |
+| mobile  | char(11)            | YES  |     | NULL    |                |
+| address | varchar(50)         | YES  |     | NULL    |                |
++---------+---------------------+------+-----+---------+----------------+
+6 rows in set (0.01 sec)
+
+##添加记录一，id会自动增加没有添加，sex默认自动指定也没有添加
+MariaDB [studentdb]&gt; insert into student (name,age,mobile,address) values (&#39;mage&#39;,30,10086,&#39;beijing&#39;),
+-&gt; (&#39;zhangsir&#39;,28,10010,&#39;zhengzhou&#39;);
+Query OK, 2 rows affected (0.03 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+MariaDB [studentdb]&gt; select * from student;
++----+----------+------+------+--------+-----------+
+| id | name     | sex  | age  | mobile | address   |
++----+----------+------+------+--------+-----------+
+|  1 | mage     | m    |   30 | 10086  | beijing   |
+|  2 | zhangsir | m    |   28 | 10010  | zhengzhou |
++----+----------+------+------+--------+-----------+
+[studentdb]&gt; select count(*) from student;  ##只添加了两条记录
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+</code></pre><h2 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h2><div><div class="fold_hider"><div class="close hider_title">---------------------------------添加记录二-----------------------------</div></div><div class="fold">
+<pre><code>另外一种添加数据的方式
+MariaDB [studentdb]&gt; insert student set name=&apos;wang&apos;,age=18,address=&apos;beijing&apos;;
+Query OK, 1 row affected (0.00 sec)
+MariaDB [studentdb]&gt; select * from student;
++----+----------+------+------+--------+-----------+
+| id | name     | sex  | age  | mobile | address   |
++----+----------+------+------+--------+-----------+
+|  1 | mage     | m    |   30 | 10086  | beijing   |
+|  2 | zhangsir | m    |   28 | 10010  | zhengzhou |
+|  3 | wang     | m    |   18 | NULL   | beijing   |
++----+----------+------+------+--------+-----------+
+3 rows in set (0.00 sec)
+
+MariaDB [studentdb]&gt; insert into student (age,name,mobile,address) values (20,&apos;zhao&apos;,null,&apos;shanghai&apos;);
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [studentdb]&gt; select * from student;
++----+----------+------+------+--------+-----------+
+| id | name     | sex  | age  | mobile | address   |
++----+----------+------+------+--------+-----------+
+|  1 | mage     | m    |   30 | 10086  | beijing   |
+|  2 | zhangsir | m    |   28 | 10010  | zhengzhou |
+|  3 | wang     | m    |   18 | NULL   | beijing   |
+|  4 | zhao     | m    |   20 | NULL   | shanghai  |
++----+----------+------+------+--------+-----------+
+4 rows in set (0.00 sec)
+</code></pre>
+</div></div>
+<div><div class="fold_hider"><div class="close hider_title">------------------------------克隆表到新表(复制数据和不复制数据)---------------------------------</div></div><div class="fold">
+<pre><code>##克隆某个表到新表
+MariaDB [studentdb]&gt; create table employee select * from student;
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [studentdb]&gt; desc employee;   ##可以看到表结构与原表一样
++---------+---------------------+------+-----+---------+-------+
+| Field   | Type                | Null | Key | Default | Extra |
++---------+---------------------+------+-----+---------+-------+
+| id      | int(10) unsigned    | NO   |     | 0       |       |
+| name    | varchar(10)         | NO   |     | NULL    |       |
+| sex     | enum(&apos;f&apos;,&apos;m&apos;)       | YES  |     | m       |       |
+| age     | tinyint(3) unsigned | YES  |     | NULL    |       |
+| mobile  | char(11)            | YES  |     | NULL    |       |
+| address | varchar(50)         | YES  |     | NULL    |       |
++---------+---------------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+                                ##刚刚添加的内容也是一样的，都克隆过去了
+MariaDB [studentdb]&gt; select * from employee;
++----+----------+------+------+--------+-----------+
+| id | name     | sex  | age  | mobile | address   |
++----+----------+------+------+--------+-----------+
+|  1 | mage     | m    |   30 | 10086  | beijing   |
+|  2 | zhangsir | m    |   28 | 10010  | zhengzhou |
++----+----------+------+------+--------+-----------+
+2 rows in set (0.00 sec)
+
+##只克隆表结构，不克隆内容
+MariaDB [studentdb]&gt; create table custom like student;  
+Query OK, 0 rows affected (0.01 sec)
+
+MariaDB [studentdb]&gt; desc custom;
++---------+---------------------+------+-----+---------+----------------+
+| Field   | Type                | Null | Key | Default | Extra          |
++---------+---------------------+------+-----+---------+----------------+
+| id      | int(10) unsigned    | NO   | PRI | NULL    | auto_increment |
+| name    | varchar(10)         | NO   |     | NULL    |                |
+| sex     | enum(&apos;f&apos;,&apos;m&apos;)       | YES  |     | m       |                |
+| age     | tinyint(3) unsigned | YES  |     | NULL    |                |
+| mobile  | char(11)            | YES  |     | NULL    |                |
+| address | varchar(50)         | YES  |     | NULL    |                |
++---------+---------------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+##将现有的表student的数据克隆到另外一张表custom上(前提条件为:现有的表与原表的结构是一样的)
+MariaDB [studentdb]&gt; insert custom select * from student;
+</code></pre>
+</div></div>
+<h2 id="添加中文"><a href="#添加中文" class="headerlink" title="添加中文"></a>添加中文</h2><pre><code>到db_utf8mb4仓库里面，新建student表并且复制studentdb仓库的student表(没有数据)
+MariaDB [db_utf8mb4]&gt; create table student like studentdb.student;
+
+##在db_utf8mb4仓库中,将studentdb仓库中的student表中的数据拷贝到db_utf8mb4仓库中的student表里面
+MariaDB [db_utf8mb4]&gt; insert student select * from studentdb.student;
+
+
+MariaDB [db_utf8mb4]&gt; alter table student CHARACTER SET = utf8mb4;
+##更改字符集，这条命令执行以后，status查看，可以看到utf8mb8只有一个生效了，编码不一致
+那么修改整个数据库的编码需要在/etc/my.cnf和/etc/my.cnf.d/mysql-clients.cnf的配置文件里面修改，
+一个服务器，一个客户端。
+vim /etc/my.cnf   ##这里的两个文件是磁盘下安装的mysql里面的文件试验成功的
+character-set-server=utf8mb4
+
+vim /etc/my.cnf.d/mysql-clients.cnf
+[mysql]
+default-character-set=utf8mb4
+再次进入mysql，status就能看到编码都是utf8mb4，这个数据库的实例就都是这个编码，那么此时此刻就可以在表中
+存取中文的字符了。
+MariaDB [db_utf8mb4]&gt; desc t1;   
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| id    | int(11) | YES  |     | NULL    |       |
+| name  | char(3) | YES  |     | NULL    |       |
++-------+---------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+MariaDB [db_utf8mb4]&gt; insert t1 values(1,&#39;王&#39;);
+MariaDB [db_utf8mb4]&gt; select * from t1;
++------+------+
+| id   | name |
++------+------+
+|    1 | 王   |
++------+------+
+</code></pre><p><font color="red">这里需要注意的是，虽然默认改了配置文件可以添加中文字段了，但是如果在建立表的时候字段指定的是<br>其他的(例:latin1)，也是无法添加中文字段的。show create table 表名:可以查看到</font></p>
+<pre><code>show create table t2 后，经过删除某些代码后，可以直接粘贴，自动创建
+CREATE TABLE `t2` (
+  `id` int(10) unsigned NOT NULL DEFAULT 0,
+  `name` varchar(10)   NOT NULL,
+  `sex` enum(&#39;f&#39;,&#39;m&#39;)   DEFAULT &#39;m&#39;,
+  `age` tinyint(3) unsigned DEFAULT NULL,
+  `mobile` char(11)   DEFAULT NULL,
+  `address` varchar(50)   DEFAULT NULL
+) ENGINE=InnoDB
+然后自动创建t2表后，没有指定字符集，他会用自动指定的字符集，再次用show table t2 查看
+
+MariaDB [db_utf8mb4]&gt; insert t2 (name,age,address) values(&#39;马哥&#39;,22,&#39;北京&#39;);  ##添加中文
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [db_utf8mb4]&gt; select * from t2;
++----+--------+------+------+--------+---------+
+| id | name   | sex  | age  | mobile | address |
++----+--------+------+------+--------+---------+
+|  0 | 马哥   | m    |   22 | NULL   | 北京    |
++----+--------+------+------+--------+---------+
+</code></pre><h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><pre><code>MariaDB [db_utf8mb4]&gt; select * from student;
++----+----------+------+------+--------+-----------+
+| id | name     | sex  | age  | mobile | address   |
++----+----------+------+------+--------+-----------+
+|  1 | mage     | m    |   30 | 10086  | beijing   |
+|  2 | zhangsir | m    |   28 | 10010  | zhengzhou |
+|  3 | wang     | m    |   18 | NULL   | beijing   |
+|  4 | zhao     | m    |   20 | NULL   | shanghai  |
+|  5 | libai    | m    |   26 | NULL   | changan   |
++----+----------+------+------+--------+-----------+
+5 rows in set (0.00 sec)
+
+MariaDB [db_utf8mb4]&gt; delete from student where id &gt;=5;  ##删除数据一定记得加上条件
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [db_utf8mb4]&gt; select * from student;
++----+----------+------+------+--------+-----------+
+| id | name     | sex  | age  | mobile | address   |
++----+----------+------+------+--------+-----------+
+|  1 | mage     | m    |   30 | 10086  | beijing   |
+|  2 | zhangsir | m    |   28 | 10010  | zhengzhou |
+|  3 | wang     | m    |   18 | NULL   | beijing   |
+|  4 | zhao     | m    |   20 | NULL   | shanghai  |
++----+----------+------+------+--------+-----------+
+[21:27:504 rows in set (0.00 sec)
+truncate table student;  ##也可以使用这条命令，他也可以删除，都是删除数据，不删除表
+</code></pre><h2 id="将每个表的文件独立分开，强烈建议加上。"><a href="#将每个表的文件独立分开，强烈建议加上。" class="headerlink" title="将每个表的文件独立分开，强烈建议加上。"></a>将每个表的文件独立分开，强烈建议加上。</h2><pre><code>MariaDB [db_utf8mb4]&gt; show variables like &#39;%per_table%&#39;;
++-----------------------+-------+
+| Variable_name         | Value |
++-----------------------+-------+
+| innodb_file_per_table | ON    |  ##ON表示开启的，如果是OFF需要在配置文件中打开
++-----------------------+-------+
+在配置文件中加上 innodb_file_per_table 
+</code></pre><h2 id="修改表的数据字段"><a href="#修改表的数据字段" class="headerlink" title="修改表的数据字段"></a>修改表的数据字段</h2><pre><code>MariaDB [db_utf8mb4]&gt; select * from student;
++----+----------+------+------+--------+-----------+
+| id | name     | sex  | age  | mobile | address   |
++----+----------+------+------+--------+-----------+
+|  1 | mage     | m    |   30 | 10086  | beijing   |
+|  2 | zhangsir | m    |   28 | 10010  | zhengzhou |
+|  3 | wang     | m    |   18 | NULL   | beijing   |
+|  4 | zhao     | m    |   20 | NULL   | shanghai  |
++----+----------+------+------+--------+-----------+
+4 rows in set (0.00 sec)
+
+MariaDB [db_utf8mb4]&gt; update student set name=&#39;bbb&#39; where id=4;  ##修改注意加上where条件
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [db_utf8mb4]&gt; select * from student;
++----+----------+------+------+--------+-----------+
+| id | name     | sex  | age  | mobile | address   |
++----+----------+------+------+--------+-----------+
+|  1 | mage     | m    |   30 | 10086  | beijing   |
+|  2 | zhangsir | m    |   28 | 10010  | zhengzhou |
+|  3 | wang     | m    |   18 | NULL   | beijing   |
+|  4 | bbb      | m    |   20 | NULL   | shanghai  |
++----+----------+------+------+--------+-----------+
+4 rows in set (0.00 sec)
+       这种where容易忘记，容易出错，为了避免人间惨剧的发生,加一条语句到客户端里面去
+[root@new etc]# vim my.cnf.d/mysql-clients.cnf 
+[mysql]
+safe-updates          ##那么以后删除表的不加where就不会执行
+</code></pre><h2 id="DML语言"><a href="#DML语言" class="headerlink" title="DML语言"></a>DML语言</h2><pre><code>MariaDB [studentdb]&gt; select * from student;   ##&quot;*&quot;表示所有字段的字段名
++----+----------+------+------+--------+-----------+
+| id | name     | sex  | age  | mobile | address   |
++----+----------+------+------+--------+-----------+
+|  1 | mage     | m    |   30 | 10086  | beijing   |
+|  2 | zhangsir | m    |   28 | 10010  | zhengzhou |
+|  3 | wang     | m    |   18 | NULL   | beijing   |
+|  4 | zhao     | m    |   20 | NULL   | shanghai  |
+|  5 | libai    | m    |   26 | NULL   | changan   |
++----+----------+------+------+--------+-----------+
+5 rows in set (0.02 sec)
+
+MariaDB [studentdb]&gt; select name,id,age from student; ##这里的顺序不同，显示也就不同
++----------+----+------+
+| name     | id | age  |
++----------+----+------+
+| mage     |  1 |   30 |
+| zhangsir |  2 |   28 |
+| wang     |  3 |   18 |
+| zhao     |  4 |   20 |
+| libai    |  5 |   26 |
++----------+----+------+
+5 rows in set (0.00 sec)
+                                        ##设置查看时显示中文
+MariaDB [studentdb]&gt; select name as 姓名,id ,age from student;
++----------+----+------+
+| 姓名     | id | age  |
++----------+----+------+
+| mage     |  1 |   30 |
+| zhangsir |  2 |   28 |
+| wang     |  3 |   18 |
+| zhao     |  4 |   20 |
+| libai    |  5 |   26 |
++----------+----+------+
+5 rows in set (0.00 sec)
+                                        ##as可以带也可以不带
+MariaDB [studentdb]&gt; select name as 姓名,id 序号,age 年龄 from student;    
++----------+--------+--------+
+| 姓名     | 序号   | 年龄   |
++----------+--------+--------+
+| mage     |      1 |     30 |
+| zhangsir |      2 |     28 |
+| wang     |      3 |     18 |
+| zhao     |      4 |     20 |
+| libai    |      5 |     26 |
++----------+--------+--------+
+                                        ##加入条件显示
+MariaDB [studentdb]&gt; select * from student where age &gt; 20; 
++----+----------+------+------+--------+-----------+
+| id | name     | sex  | age  | mobile | address   |
++----+----------+------+------+--------+-----------+
+|  1 | mage     | m    |   30 | 10086  | beijing   |
+|  2 | zhangsir | m    |   28 | 10010  | zhengzhou |
+|  5 | libai    | m    |   26 | NULL   | changan   |
++----+----------+------+------+--------+-----------+
+3 rows in set (0.02 sec)
+                                        ##and条件
+MariaDB [studentdb]&gt; select * from student where age &gt;=26 and age &lt;=28; 
+或者使用这句一样的效果:   select * from student where age between 26 and 28; 
++----+----------+------+------+--------+-----------+
+| id | name     | sex  | age  | mobile | address   |
++----+----------+------+------+--------+-----------+
+|  2 | zhangsir | m    |   28 | 10010  | zhengzhou |
+|  5 | libai    | m    |   26 | NULL   | changan   |
++----+----------+------+------+--------+-----------+
+                                    ##表示只显示20和30
+MariaDB [studentdb]&gt; select * from student where age in (20,30);  
+
+                                    ##mobile是null的显示
+MariaDB [studentdb]&gt; select * from student where mobile is null;   ##查询为空的
++----+-------+------+------+--------+----------+
+| id | name  | sex  | age  | mobile | address  |
++----+-------+------+------+--------+----------+
+|  3 | wang  | m    |   18 | NULL   | beijing  |
+|  4 | zhao  | m    |   20 | NULL   | shanghai |
+|  5 | libai | m    |   26 | NULL   | changan  |
++----+-------+------+------+--------+----------+
+MariaDB [studentdb]&gt; select * from student where mobile is not  null;   ##查询不为空的
+</code></pre><h2 id="模糊匹配"><a href="#模糊匹配" class="headerlink" title="模糊匹配"></a>模糊匹配</h2><pre><code>MariaDB [studentdb]&gt; select * from student where name like &#39;%a%&#39;;
++----+----------+------+------+--------+-----------+         ##这句表示name包含a的字段，%是通配符
+| id | name     | sex  | age  | mobile | address   |         ##如果查找已a开头的就是a%
++----+----------+------+------+--------+-----------+
+|  1 | mage     | m    |   30 | 10086  | beijing   |
+|  2 | zhangsir | m    |   28 | 10010  | zhengzhou |
+|  3 | wang     | m    |   18 | NULL   | beijing   |
+|  4 | zhao     | m    |   20 | NULL   | shanghai  |
+|  5 | libai    | m    |   26 | NULL   | changan   |
++----+----------+------+------+--------+-----------+
+
+
+MariaDB [studentdb]&gt; insert student (name,sex,age)values(&#39;xieshan&#39;,&#39;f&#39;,20); 
+MariaDB [studentdb]&gt; select * from student;
++----+----------+------+------+--------+-----------+
+| id | name     | sex  | age  | mobile | address   |
++----+----------+------+------+--------+-----------+
+|  1 | mage     | m    |   30 | 10086  | beijing   |
+|  2 | zhangsir | m    |   28 | 10010  | zhengzhou |
+|  3 | wang     | m    |   18 | NULL   | beijing   |
+|  4 | zhao     | m    |   20 | NULL   | shanghai  |
+|  5 | libai    | m    |   26 | NULL   | changan   |
+|  6 | xieshan  | f    |   20 | NULL   | NULL      |
++----+----------+------+------+--------+-----------+
+MariaDB [studentdb]&gt; select distinct sex from student;      ##去除重复显示
++------+
+| sex  |
++------+
+| m    |
+| f    |
++------+
+</code></pre><h2 id="最大值，最小值，分组"><a href="#最大值，最小值，分组" class="headerlink" title="最大值，最小值，分组"></a>最大值，最小值，分组</h2><div><div class="fold_hider"><div class="close hider_title">---------------------------------实验sql脚本-----------------------------</div></div><div class="fold">
+<pre><code>[root@new ~]# cat hellodb_MyISAM.sql 
+-- MySQL dump 10.13  Distrib 5.5.33, for Linux (x86_64)
+--
+-- Host: localhost    Database: hellodb
+-- ------------------------------------------------------
+-- Server version       5.5.33-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE=&apos;+00:00&apos; */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE=&apos;NO_AUTO_VALUE_ON_ZERO&apos; */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `hellodb`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `hellodb` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `hellodb`;
+
+--
+-- Table structure for table `classes`
+--
+
+DROP TABLE IF EXISTS `classes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `classes` (
+  `ClassID` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `Class` varchar(100) DEFAULT NULL,
+  `NumOfStu` smallint(5) unsigned DEFAULT NULL,
+  PRIMARY KEY (`ClassID`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `classes`
+--
+
+LOCK TABLES `classes` WRITE;
+/*!40000 ALTER TABLE `classes` DISABLE KEYS */;
+INSERT INTO `classes` VALUES (1,&apos;Shaolin Pai&apos;,10),(2,&apos;Emei Pai&apos;,7),(3,&apos;QingCheng Pai&apos;,11),(4,&apos;Wudang Pai&apos;,12),(5,&apos;Riyue Shenjiao&apos;,31),(6,&apos;Lianshan Pai&apos;,27),(7,&apos;Ming Jiao&apos;,27),(8,&apos;Xiaoyao Pai&apos;,15);
+/*!40000 ALTER TABLE `classes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `coc`
+--
+
+DROP TABLE IF EXISTS `coc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `coc` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ClassID` tinyint(3) unsigned NOT NULL,
+  `CourseID` smallint(5) unsigned DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `coc`
+--
+
+LOCK TABLES `coc` WRITE;
+/*!40000 ALTER TABLE `coc` DISABLE KEYS */;
+INSERT INTO `coc` VALUES (1,1,2),(2,1,5),(3,2,2),(4,2,6),(5,3,1),(6,3,7),(7,4,5),(8,4,2),(9,5,1),(10,5,9),(11,6,3),(12,6,4),(13,7,4),(14,7,3);
+/*!40000 ALTER TABLE `coc` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `courses`
+--
+
+DROP TABLE IF EXISTS `courses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `courses` (
+  `CourseID` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `Course` varchar(100) NOT NULL,
+  PRIMARY KEY (`CourseID`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `courses`
+--
+
+LOCK TABLES `courses` WRITE;
+/*!40000 ALTER TABLE `courses` DISABLE KEYS */;
+INSERT INTO `courses` VALUES (1,&apos;Hamo Gong&apos;),(2,&apos;Kuihua Baodian&apos;),(3,&apos;Jinshe Jianfa&apos;),(4,&apos;Taiji Quan&apos;),(5,&apos;Daiyu Zanghua&apos;),(6,&apos;Weituo Zhang&apos;),(7,&apos;Dagou Bangfa&apos;);
+/*!40000 ALTER TABLE `courses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `scores`
+--
+
+DROP TABLE IF EXISTS `scores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `scores` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `StuID` int(10) unsigned NOT NULL,
+  `CourseID` smallint(5) unsigned NOT NULL,
+  `Score` tinyint(3) unsigned DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `scores`
+--
+
+LOCK TABLES `scores` WRITE;
+/*!40000 ALTER TABLE `scores` DISABLE KEYS */;
+INSERT INTO `scores` VALUES (1,1,2,77),(2,1,6,93),(3,2,2,47),(4,2,5,97),(5,3,2,88),(6,3,6,75),(7,4,5,71),(8,4,2,89),(9,5,1,39),(10,5,7,63),(11,6,1,96),(12,7,1,86),(13,7,7,83),(14,8,4,57),(15,8,3,93);
+/*!40000 ALTER TABLE `scores` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `students`
+--
+
+DROP TABLE IF EXISTS `students`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `students` (
+  `StuID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Name` varchar(50) NOT NULL,
+  `Age` tinyint(3) unsigned NOT NULL,
+  `Gender` enum(&apos;F&apos;,&apos;M&apos;) NOT NULL,
+  `ClassID` tinyint(3) unsigned DEFAULT NULL,
+  `TeacherID` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`StuID`)
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `students`
+--
+
+LOCK TABLES `students` WRITE;
+/*!40000 ALTER TABLE `students` DISABLE KEYS */;
+INSERT INTO `students` VALUES (1,&apos;Shi Zhongyu&apos;,22,&apos;M&apos;,2,3),(2,&apos;Shi Potian&apos;,22,&apos;M&apos;,1,7),(3,&apos;Xie Yanke&apos;,53,&apos;M&apos;,2,16),(4,&apos;Ding Dian&apos;,32,&apos;M&apos;,4,4),(5,&apos;Yu Yutong&apos;,26,&apos;M&apos;,3,1),(6,&apos;Shi Qing&apos;,46,&apos;M&apos;,5,NULL),(7,&apos;Xi Ren&apos;,19,&apos;F&apos;,3,NULL),(8,&apos;Lin Daiyu&apos;,17,&apos;F&apos;,7,NULL),(9,&apos;Ren Yingying&apos;,20,&apos;F&apos;,6,NULL),(10,&apos;Yue Lingshan&apos;,19,&apos;F&apos;,3,NULL),(11,&apos;Yuan Chengzhi&apos;,23,&apos;M&apos;,6,NULL),(12,&apos;Wen Qingqing&apos;,19,&apos;F&apos;,1,NULL),(13,&apos;Tian Boguang&apos;,33,&apos;M&apos;,2,NULL),(14,&apos;Lu Wushuang&apos;,17,&apos;F&apos;,3,NULL),(15,&apos;Duan Yu&apos;,19,&apos;M&apos;,4,NULL),(16,&apos;Xu Zhu&apos;,21,&apos;M&apos;,1,NULL),(17,&apos;Lin Chong&apos;,25,&apos;M&apos;,4,NULL),(18,&apos;Hua Rong&apos;,23,&apos;M&apos;,7,NULL),(19,&apos;Xue Baochai&apos;,18,&apos;F&apos;,6,NULL),(20,&apos;Diao Chan&apos;,19,&apos;F&apos;,7,NULL),(21,&apos;Huang Yueying&apos;,22,&apos;F&apos;,6,NULL),(22,&apos;Xiao Qiao&apos;,20,&apos;F&apos;,1,NULL),(23,&apos;Ma Chao&apos;,23,&apos;M&apos;,4,NULL),(24,&apos;Xu Xian&apos;,27,&apos;M&apos;,NULL,NULL),(25,&apos;Sun Dasheng&apos;,100,&apos;M&apos;,NULL,NULL);
+/*!40000 ALTER TABLE `students` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `teachers`
+--
+
+DROP TABLE IF EXISTS `teachers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `teachers` (
+  `TID` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `Name` varchar(100) NOT NULL,
+  `Age` tinyint(3) unsigned NOT NULL,
+  `Gender` enum(&apos;F&apos;,&apos;M&apos;) DEFAULT NULL,
+  PRIMARY KEY (`TID`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `teachers`
+--
+
+LOCK TABLES `teachers` WRITE;
+/*!40000 ALTER TABLE `teachers` DISABLE KEYS */;
+INSERT INTO `teachers` VALUES (1,&apos;Song Jiang&apos;,45,&apos;M&apos;),(2,&apos;Zhang Sanfeng&apos;,94,&apos;M&apos;),(3,&apos;Miejue Shitai&apos;,77,&apos;F&apos;),(4,&apos;Lin Chaoying&apos;,93,&apos;F&apos;);
+/*!40000 ALTER TABLE `teachers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `toc`
+--
+
+DROP TABLE IF EXISTS `toc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `toc` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `CourseID` smallint(5) unsigned DEFAULT NULL,
+  `TID` smallint(5) unsigned DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `toc`
+--
+
+LOCK TABLES `toc` WRITE;
+/*!40000 ALTER TABLE `toc` DISABLE KEYS */;
+/*!40000 ALTER TABLE `toc` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2013-09-03
+</code></pre>
+</div></div>
+<pre><code>[root@new ~]# mysql -uroot -S  /mysql/3307/socket/mysql.sock &lt; hellodb_MyISAM.sql
+        ##将这个脚本导入到Mysql
+然后进入mysql，进入此脚本
+MariaDB [hellodb]&gt; select * from students;
++-------+---------------+-----+--------+---------+-----------+
+| StuID | Name          | Age | Gender | ClassID | TeacherID |
++-------+---------------+-----+--------+---------+-----------+
+|     1 | Shi Zhongyu   |  22 | M      |       2 |         3 |
+|     2 | Shi Potian    |  22 | M      |       1 |         7 |
+|     3 | Xie Yanke     |  53 | M      |       2 |        16 |
+|     4 | Ding Dian     |  32 | M      |       4 |         4 |
+|     5 | Yu Yutong     |  26 | M      |       3 |         1 |
+|     6 | Shi Qing      |  46 | M      |       5 |      NULL |
+|     7 | Xi Ren        |  19 | F      |       3 |      NULL |
+|     8 | Lin Daiyu     |  17 | F      |       7 |      NULL |
+|     9 | Ren Yingying  |  20 | F      |       6 |      NULL |
+|    10 | Yue Lingshan  |  19 | F      |       3 |      NULL |
+|    11 | Yuan Chengzhi |  23 | M      |       6 |      NULL |
+|    12 | Wen Qingqing  |  19 | F      |       1 |      NULL |
+|    13 | Tian Boguang  |  33 | M      |       2 |      NULL |
+|    14 | Lu Wushuang   |  17 | F      |       3 |      NULL |
+|    15 | Duan Yu       |  19 | M      |       4 |      NULL |
+|    16 | Xu Zhu        |  21 | M      |       1 |      NULL |
+|    17 | Lin Chong     |  25 | M      |       4 |      NULL |
+|    18 | Hua Rong      |  23 | M      |       7 |      NULL |
+|    19 | Xue Baochai   |  18 | F      |       6 |      NULL |
+|    20 | Diao Chan     |  19 | F      |       7 |      NULL |
+|    21 | Huang Yueying |  22 | F      |       6 |      NULL |
+|    22 | Xiao Qiao     |  20 | F      |       1 |      NULL |
+|    23 | Ma Chao       |  23 | M      |       4 |      NULL |
+|    24 | Xu Xian       |  27 | M      |    NULL |      NULL |
+|    25 | Sun Dasheng   | 100 | M      |    NULL |      NULL |
++-------+---------------+-----+--------+---------+-----------+
+2MariaDB [hellodb]&gt; select * from students where gender &lt;&gt; &#39;m&#39;;   ##性别不等于m
+2MariaDB [hellodb]&gt; select * from students where gender != &#39;m&#39;;    ##写法等价
++-------+---------------+-----+--------+---------+-----------+
+| StuID | Name          | Age | Gender | ClassID | TeacherID |
++-------+---------------+-----+--------+---------+-----------+
+|     7 | Xi Ren        |  19 | F      |       3 |      NULL |
+|     8 | Lin Daiyu     |  17 | F      |       7 |      NULL |
+|     9 | Ren Yingying  |  20 | F      |       6 |      NULL |
+|    10 | Yue Lingshan  |  19 | F      |       3 |      NULL |
+|    12 | Wen Qingqing  |  19 | F      |       1 |      NULL |
+|    14 | Lu Wushuang   |  17 | F      |       3 |      NULL |
+|    19 | Xue Baochai   |  18 | F      |       6 |      NULL |
+|    20 | Diao Chan     |  19 | F      |       7 |      NULL |
+|    21 | Huang Yueying |  22 | F      |       6 |      NULL |
+|    22 | Xiao Qiao     |  20 | F      |       1 |      NULL |
++-------+---------------+-----+--------+---------+-----------+
+MariaDB [hellodb]&gt; select count(*) from students;      ##查询表有几条记录
++----------+
+| count(*) |
++----------+
+|       25 |
++----------+
+MariaDB [hellodb]&gt; select gender,count(*) from students group by gender;   ##按性别分组计数
++--------+----------+
+| gender | count(*) |
++--------+----------+
+| F      |       10 |
+| M      |       15 |
++--------+----------+
+MariaDB [hellodb]&gt; select gender,avg(age) from students group by gender;   ##显示平均年龄
++--------+----------+
+| gender | avg(age) |
++--------+----------+
+| F      |  19.0000 |
+| M      |  33.0000 |
++--------+----------+
+
+MariaDB [hellodb]&gt; select classid,gender,max(age) from students group by classid,gender;
++---------+--------+----------+        ##统计age的最大值，后面的表示先区分classid，在区分gender
+| classid | gender | max(age) |
++---------+--------+----------+
+|    NULL | M      |      100 |
+|       1 | F      |       20 |
+|       1 | M      |       22 |
+|       2 | M      |       53 |
+|       3 | F      |       19 |
+|       3 | M      |       26 |
+|       4 | M      |       32 |
+|       5 | M      |       46 |
+|       6 | F      |       22 |
+|       6 | M      |       23 |
+|       7 | F      |       19 |
+|       7 | M      |       23 |
++---------+--------+----------+
+
+MariaDB [hellodb]&gt; select gender,avg(age) from students group by gender having gender=&#39;m&#39;;
++--------+----------+
+| gender | avg(age) |    ##只统计男生的平均年龄，这里是先分完组之后，从分完组的结果中过滤
++--------+----------+
+| M      |  33.0000 |
++--------+----------+
+MariaDB [hellodb]&gt; select gender,avg(age) from students where gender = &#39;m&#39; group by gender;
++--------+----------+
+| gender | avg(age) |    ##虽然结果一样但是这里表示的是，先过滤完了以后再分组
++--------+----------+
+| M      |  33.0000 |
++--------+----------+
+MariaDB [hellodb]&gt; select classid,count(*) from students where age &gt; 30 group by classid having classid &gt;=3;
++---------+----------+
+| classid | count(*) |    ##先过滤age大于30的然后再次过滤classid大于等于3的
++---------+----------+
+|       4 |        1 |
+|       5 |        1 |
++---------+----------+
+
+MariaDB [hellodb]&gt; select * from students order by age;     ##默认从小到大排列
+MariaDB [hellodb]&gt; select * from students order by age desc;   ##从大到小排列
+
+MariaDB [hellodb]&gt; select * from students order by age desc limit 3; ##将age从小到大排列以后，只取前3
++-------+-------------+-----+--------+---------+-----------+
+| StuID | Name        | Age | Gender | ClassID | TeacherID |
++-------+-------------+-----+--------+---------+-----------+
+|    25 | Sun Dasheng | 100 | M      |    NULL |      NULL |
+|     3 | Xie Yanke   |  53 | M      |       2 |        16 |
+|     6 | Shi Qing    |  46 | M      |       5 |      NULL |
++-------+-------------+-----+--------+---------+-----------+
+MariaDB [hellodb]&gt; select * from students order by age asc limit 3,4;   ##跳过前三取后续的四个
++-------+--------------+-----+--------+---------+-----------+
+| StuID | Name         | Age | Gender | ClassID | TeacherID |
++-------+--------------+-----+--------+---------+-----------+
+|    15 | Duan Yu      |  19 | M      |       4 |      NULL |
+|    12 | Wen Qingqing |  19 | F      |       1 |      NULL |
+|    10 | Yue Lingshan |  19 | F      |       3 |      NULL |
+|     7 | Xi Ren       |  19 | F      |       3 |      NULL |
++-------+--------------+-----+--------+---------+-----------+
+MariaDB [hellodb]&gt;  select * from students order by -classid desc;   ##将classid空字段放在最后
+
+MariaDB [hellodb]&gt; select classid,avg(age) from students group by classid having avg(age) &gt; 30;
+##以classid为分组依据，显示每组的平均年龄大于30的分组及平均年龄
++---------+----------+
+| classid | avg(age) |
++---------+----------+
+|    NULL |  63.5000 |
+|       2 |  36.0000 |
+|       5 |  46.0000 |
++---------+----------+
+3 rows in set (0.00 sec)
+</code></pre><h2 id="多表操作"><a href="#多表操作" class="headerlink" title="多表操作"></a>多表操作</h2><pre><code>MariaDB [hellodb]&gt; select * from teachers;    ##这是另外一张表
++-----+---------------+-----+--------+
+| TID | Name          | Age | Gender |
++-----+---------------+-----+--------+
+|   1 | Song Jiang    |  45 | M      |
+|   2 | Zhang Sanfeng |  94 | M      |
+|   3 | Miejue Shitai |  77 | F      |
+|   4 | Lin Chaoying  |  93 | F      |
++-----+---------------+-----+--------+
+4 rows in set (0.00 sec)
+
+MariaDB [hellodb]&gt; select stuid,name,age,gender from students    ##合并显示
+    -&gt; union             ##用union合并表的时候会默认去重(现在没有重复)
+    -&gt; select * from teachers;
++-------+---------------+-----+--------+
+| stuid | name          | age | gender |
++-------+---------------+-----+--------+
+|     1 | Shi Zhongyu   |  22 | M      |
+|     2 | Shi Potian    |  22 | M      |
+|     3 | Xie Yanke     |  53 | M      |
+|     4 | Ding Dian     |  32 | M      |
+|     5 | Yu Yutong     |  26 | M      |
+|     6 | Shi Qing      |  46 | M      |
+|     7 | Xi Ren        |  19 | F      |
+|     8 | Lin Daiyu     |  17 | F      |
+|     9 | Ren Yingying  |  20 | F      |
+|    10 | Yue Lingshan  |  19 | F      |
+|    11 | Yuan Chengzhi |  23 | M      |
+|    12 | Wen Qingqing  |  19 | F      |
+|    13 | Tian Boguang  |  33 | M      |
+|    14 | Lu Wushuang   |  17 | F      |
+|    15 | Duan Yu       |  19 | M      |
+|    16 | Xu Zhu        |  21 | M      |
+|    17 | Lin Chong     |  25 | M      |
+|    18 | Hua Rong      |  23 | M      |
+|    19 | Xue Baochai   |  18 | F      |
+|    20 | Diao Chan     |  19 | F      |
+|    21 | Huang Yueying |  22 | F      |
+|    22 | Xiao Qiao     |  20 | F      |
+|    23 | Ma Chao       |  23 | M      |
+|    24 | Xu Xian       |  27 | M      |
+|    25 | Sun Dasheng   | 100 | M      |
+|     1 | Song Jiang    |  45 | M      |
+|     2 | Zhang Sanfeng |  94 | M      |
+|     3 | Miejue Shitai |  77 | F      |
+|     4 | Lin Chaoying  |  93 | F      |
++-------+---------------+-----+--------+
+29 rows in set (0.00 sec)
+
+MariaDB [hellodb]&gt; select stuid ,name from students union select tid,name from teachers;    ##也可以只查看某些字段
+
+MariaDB [db1]&gt; select * from t2;          ##新表
++------+
+| id   |
++------+
+|    1 |
+|    2 |
+|    2 |
++------+
+MariaDB [db1]&gt; select * from t2 union select * from t2;            ##这里是自己给自己去重
++------+
+| id   |
++------+
+|    1 |
+|    2 |
++------+
+MariaDB [db1]&gt; select distinct * from t2;     ##也是去重
++------+
+| id   |
++------+
+|    1 |
+|    2 |
++------+
+</code></pre><h2 id="横向合并"><a href="#横向合并" class="headerlink" title="横向合并"></a>横向合并</h2><p>以上介绍的都是竖向合并，现在横向合并，也就是交叉连接，cross jion。当两个表行数不一致时<br>一张表中的所有内容(一列)就会和另一张表中的内容(一列)全部组合一遍<br>这里显示的就是当两张表合并在一起的输出效果，一共125行(其余的已省略)</p>
+<pre><code>##students表25条记录*teachers表5条记录=125条记录。但是这种查看一般都没用，太混乱
+MariaDB [hellodb]&gt; select * from students cross join teachers;
++-------+---------------+-----+--------+---------+-----------+-----+---------------+-----+--------+
+| StuID | Name          | Age | Gender | ClassID | TeacherID | TID | Name          | Age | Gender |
++-------+---------------+-----+--------+---------+-----------+-----+---------------+-----+--------+
+|     1 | Shi Zhongyu   |  22 | M      |       2 |         3 |   1 | Song Jiang    |  45 | M      |
+|     1 | Shi Zhongyu   |  22 | M      |       2 |         3 |   2 | Zhang Sanfeng |  94 | M      |
+|     1 | Shi Zhongyu   |  22 | M      |       2 |         3 |   3 | Miejue Shitai |  77 | F      |
+|     1 | Shi Zhongyu   |  22 | M      |       2 |         3 |   4 | Lin Chaoying  |  93 | F      |
+|     1 | Shi Zhongyu   |  22 | M      |       2 |         3 |   5 | Yu yutong     |  26 | M      |
+|     2 | Shi Potian    |  22 | M      |       1 |         7 |   1 | Song Jiang    |  45 | M      |
+|     2 | Shi Potian    |  22 | M      |       1 |         7 |   2 | Zhang Sanfeng |  94 | M      |
+|     2 | Shi Potian    |  22 | M      |       1 |         7 |   3 | Miejue Shitai |  77 | F      |
+|     2 | Shi Potian    |  22 | M      |       1 |         7 |   4 | Lin Chaoying  |  93 | F      |
+|     2 | Shi Potian    |  22 | M      |       1 |         7 |   5 | Yu yutong     |  26 | M      |
+|     3 | Xie Yanke     |  53 | M      |       2 |        16 |   1 | Song Jiang    |  45 | M      |
+|     3 | Xie Yanke     |  53 | M      |       2 |        16 |   2 | Zhang Sanfeng |  94 | M      |
+|     3 | Xie Yanke     |  53 | M      |       2 |        16 |   3 | Miejue Shitai |  77 | F      |
+|     3 | Xie Yanke     |  53 | M      |       2 |        16 |   4 | Lin Chaoying  |  93 | F      |
+|     3 | Xie Yanke     |  53 | M      |       2 |        16 |   5 | Yu yutong     |  26 | M      |
++-------+---------------+-----+--------+---------+-----------+-----+---------------+-----+--------+
+......
+125 rows in set (0.01 sec)
+</code></pre><h2 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h2><p>将两张表横向合并在一起</p>
+<pre><code>这里表示只要两个表的ID相同就可以了(这种叫内连接)
+MariaDB [hellodb]&gt; select * from students,teachers where students.teacherid=teachers.tid;
++-------+-------------+-----+--------+---------+-----------+-----+---------------+-----+--------+
+| StuID | Name        | Age | Gender | ClassID | TeacherID | TID | Name          | Age | Gender |
++-------+-------------+-----+--------+---------+-----------+-----+---------------+-----+--------+
+|     5 | Yu Yutong   |  26 | M      |       3 |         1 |   1 | Song Jiang    |  45 | M      |
+|     1 | Shi Zhongyu |  22 | M      |       2 |         3 |   3 | Miejue Shitai |  77 | F      |
+|     4 | Ding Dian   |  32 | M      |       4 |         4 |   4 | Lin Chaoying  |  93 | F      |
++-------+-------------+-----+--------+---------+-----------+-----+---------------+-----+--------+
+MariaDB [hellodb]&gt; update students set teacherid=1 where stuid=25;    ##这里改了students这张表
+|    25 | Sun Dasheng   | 100 | M      |    NULL |         1 |
+那么这两张表就增加了一组对应的行了
+MariaDB [hellodb]&gt; select * from students,teachers where students.teacherid=teachers.tid;
++-------+-------------+-----+--------+---------+-----------+-----+---------------+-----+--------+
+| StuID | Name        | Age | Gender | ClassID | TeacherID | TID | Name          | Age | Gender |
++-------+-------------+-----+--------+---------+-----------+-----+---------------+-----+--------+
+|     5 | Yu Yutong   |  26 | M      |       3 |         1 |   1 | Song Jiang    |  45 | M      |
+|    25 | Sun Dasheng | 100 | M      |    NULL |         1 |   1 | Song Jiang    |  45 | M      |
+|     1 | Shi Zhongyu |  22 | M      |       2 |         3 |   3 | Miejue Shitai |  77 | F      |
+|     4 | Ding Dian   |  32 | M      |       4 |         4 |   4 | Lin Chaoying  |  93 | F      |
++-------+-------------+-----+--------+---------+-----------+-----+---------------+-----+--------+
+上面这种写法比较老(不推荐写)
+
+MariaDB [hellodb]&gt; select * from students inner join teachers on students.teacherid=teachers.tid;
++-------+-------------+-----+--------+---------+-----------+-----+---------------+-----+--------+
+| StuID | Name        | Age | Gender | ClassID | TeacherID | TID | Name          | Age | Gender |
++-------+-------------+-----+--------+---------+-----------+-----+---------------+-----+--------+
+|     5 | Yu Yutong   |  26 | M      |       3 |         1 |   1 | Song Jiang    |  45 | M      |
+|    25 | Sun Dasheng | 100 | M      |    NULL |         1 |   1 | Song Jiang    |  45 | M      |
+|     1 | Shi Zhongyu |  22 | M      |       2 |         3 |   3 | Miejue Shitai |  77 | F      |
+|     4 | Ding Dian   |  32 | M      |       4 |         4 |   4 | Lin Chaoying  |  93 | F      |
++-------+-------------+-----+--------+---------+-----------+-----+---------------+-----+--------+
+
+select stuid,students.name as sName,tid,teachers.name as tName from students inner join teachers on students.teacherid=teachers.tid; 
+
+select stuid,s.name as student_name,tid,t.name teacher_name from students as s inner join teachers t on s.teacherid=t.tid;    ##这里是给表起别名(一旦起了别名以后后面就必须用别名)
++-------+-------------+-----+---------------+
+| stuid | sName       | tid | tName         |
++-------+-------------+-----+---------------+
+|     5 | Yu Yutong   |   1 | Song Jiang    |
+|    25 | Sun Dasheng |   1 | Song Jiang    |
+|     1 | Shi Zhongyu |   3 | Miejue Shitai |
+|     4 | Ding Dian   |   4 | Lin Chaoying  |
++-------+-------------+-----+---------------+
+</code></pre><p><img src="https://s2.ax1x.com/2019/11/15/MdLUMT.png" alt=""></p>
+<pre><code>左外连接:左边全要，右边只要和左边相同的
+MariaDB [hellodb]&gt; select * from students as s left outer join teachers as t on s.teacherid=t.tid;
+右外连接:右边全要，左边只要和右边相同的
+MariaDB [hellodb]&gt; select * from students as s right outer join teachers as t on s.teacherid=t.tid;
+
+两张表，去除右边表和 右边表与左边表相同的内容
+MariaDB [hellodb]&gt; select * from students as s left outer join teachers t on s.teacherid=t.tid where t.tid is null;
+
+两张表，去除左边表和 左边表与右边表相同的内容
+MariaDB [hellodb]&gt; select * from students as s right outer join teachers t on s.teacherid=t.tid where s.teacherid is null;
+
+            ##查询teacher表里面age大于students表里面的age的平均数
+            子查询:MariaDB [hellodb]&gt;  select * from teachers where age &gt; (select avg(age) from students);
+
+这是将两张表合并在一起，全部显示出来，并且合并相同的
+MariaDB [hellodb]&gt; select * from students as s left outer join teachers t on s.teacherid=t.tid
+    -&gt; union
+    -&gt; select * from students as s right outer join teachers t on s.teacherid=t.tid;
+
+最后这里是取两边的部分，去掉交集
+select * from (select stuid,s.name as student_name,s.age as student_age,s.gender as student_gender,classid,teacherid,tid,t.name as teacher_name,t.age as teacher_age,t.gender as teacher_gender from students as s left outer join teachers t on s.teacherid=t.tid union select stuid,s.name,s.age,s.gender,classid,teacherid,tid,t.name,t.age,t.gender from students as s right outer join teachers t on s.teacherid=t.tid) as f where f.teacherid is null or f.tid is null;
+</code></pre><h2 id="自查询"><a href="#自查询" class="headerlink" title="自查询"></a>自查询</h2><pre><code>MariaDB [hellodb]&gt; select * from emp;
++------+-----------+----------+
+| id   | name      | leaderid |
++------+-----------+----------+
+|    1 | 马永亮    |     NULL |
+|    2 | 张冠宇    |        1 |
+|    3 | wan       |        2 |
+|    4 | yan       |        3 |
++------+-----------+----------+
+##只有这一张表，现在查看他们的名字和他们的上司名，这里用到的是交集-内连接。这里把它们当成了两个表来看。
+MariaDB [hellodb]&gt; select a.name,b.name from emp as a inner join emp as b on a.leaderid=b.id;
++-----------+-----------+
+| name      | name      |
++-----------+-----------+
+| 张冠宇    | 马永亮    |
+| wan       | 张冠宇    |
+| yan       | wan       |
++-----------+-----------+
+##如果需要都保存，那就用到了左外连接
+MariaDB [hellodb]&gt; select a.name,b.name from emp as a left join emp as b on a.leaderid=b.id;        
++-----------+-----------+
+| name      | name      |
++-----------+-----------+
+| 张冠宇    | 马永亮    |
+| wan       | 张冠宇    |
+| yan       | wan       |
+| 马永亮    | NULL      |
++-----------+-----------+
+</code></pre><pre><code>需要查看学生姓名，考试科目，考试成绩
+这里有三张表，效果在最后
+courses 
+scores            |
+students 
+MariaDB [hellodb]&gt; select * from courses;
++----------+----------------+
+| CourseID | Course         |
++----------+----------------+
+|        1 | Hamo Gong      |
+|        2 | Kuihua Baodian |
+|        3 | Jinshe Jianfa  |
+|        4 | Taiji Quan     |
+|        5 | Daiyu Zanghua  |
+|        6 | Weituo Zhang   |
+|        7 | Dagou Bangfa   |
++----------+----------------+
+7 rows in set (0.00 sec)
+
+MariaDB [hellodb]&gt; select * from scores;
++----+-------+----------+-------+
+| ID | StuID | CourseID | Score |
++----+-------+----------+-------+
+|  1 |     1 |        2 |    77 |
+|  2 |     1 |        6 |    93 |
+|  3 |     2 |        2 |    47 |
+|  4 |     2 |        5 |    97 |
+|  5 |     3 |        2 |    88 |
+|  6 |     3 |        6 |    75 |
+|  7 |     4 |        5 |    71 |
+|  8 |     4 |        2 |    89 |
+|  9 |     5 |        1 |    39 |
+| 10 |     5 |        7 |    63 |
+| 11 |     6 |        1 |    96 |
+| 12 |     7 |        1 |    86 |
+| 13 |     7 |        7 |    83 |
+| 14 |     8 |        4 |    57 |
+| 15 |     8 |        3 |    93 |
++----+-------+----------+-------+
+
+MariaDB [hellodb]&gt; select st.name,sc.courseid,sc.score from students as st inner join scores as sc on st.stuid=sc.id;
+学生姓名            课程编号        考试成绩
++---------------+----------+-------+
+| name          | courseid | score |
++---------------+----------+-------+
+| Shi Zhongyu   |        2 |    77 |
+| Shi Potian    |        6 |    93 |
+| Xie Yanke     |        2 |    47 |
+| Ding Dian     |        5 |    97 |
+| Yu Yutong     |        2 |    88 |
+| Shi Qing      |        6 |    75 |
+| Xi Ren        |        5 |    71 |
+| Lin Daiyu     |        2 |    89 |
+| Ren Yingying  |        1 |    39 |
+| Yue Lingshan  |        7 |    63 |
+| Yuan Chengzhi |        1 |    96 |
+| Wen Qingqing  |        1 |    86 |
+| Tian Boguang  |        7 |    83 |
+| Lu Wushuang   |        4 |    57 |
+| Duan Yu       |        3 |    93 |
++---------------+----------+-------+
+MariaDB [hellodb]&gt; select st.name,co.Course,sc.score from students as st inner join scores as sc on st.stuid=sc.id inner join courses as co on sc.courseid=co.CourseID;
++---------------+----------------+-------+
+| name          | Course         | score |
++---------------+----------------+-------+
+| Shi Zhongyu   | Kuihua Baodian |    77 |
+| Shi Potian    | Weituo Zhang   |    93 |
+| Xie Yanke     | Kuihua Baodian |    47 |
+| Ding Dian     | Daiyu Zanghua  |    97 |
+| Yu Yutong     | Kuihua Baodian |    88 |
+| Shi Qing      | Weituo Zhang   |    75 |
+| Xi Ren        | Daiyu Zanghua  |    71 |
+| Lin Daiyu     | Kuihua Baodian |    89 |
+| Ren Yingying  | Hamo Gong      |    39 |
+| Yue Lingshan  | Dagou Bangfa   |    63 |
+| Yuan Chengzhi | Hamo Gong      |    96 |
+| Wen Qingqing  | Hamo Gong      |    86 |
+| Tian Boguang  | Dagou Bangfa   |    83 |
+| Lu Wushuang   | Taiji Quan     |    57 |
+| Duan Yu       | Jinshe Jianfa  |    93 |
++---------------+----------------+-------+
+</code></pre><h2 id="mysql的资源管理"><a href="#mysql的资源管理" class="headerlink" title="mysql的资源管理"></a>mysql的资源管理</h2><p>视图中的数据事实上存储于“基表”中，因此，其修改操作也会针对基表实现；其修改操作受基表限制<br>视图:view,虚表。保存有实表的查询结果<br>创建方法: </p>
+<pre><code>MariaDB [hellodb]&gt; insert v_old_students values(27,&#39;li&#39;,20);  ##创建视图
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [hellodb]&gt; select * from v_old_students;            ##查看视图
++-------+-------------+-----+
+| stuid | name        | age |
++-------+-------------+-----+
+|     3 | Xie Yanke   |  53 |
+|    25 | Sun Dasheng | 100 |
++-------+-------------+-----+
+</code></pre><h2 id="mysql-用户和权限管理"><a href="#mysql-用户和权限管理" class="headerlink" title="mysql 用户和权限管理"></a>mysql 用户和权限管理</h2><pre><code>mysql需要远程必须单独建立账号。
+use mysql  ##进入mysql库
+create user test@&#39;192.168.175.%&#39; identified by &#39;centos&#39;;  ##建立远程登录的账户。&#39;centos&#39;为密码
+select user,host from user;  ##查看建立的账号
+mysql -utest -pcentos -h192.168.175.22(这里是mysql所在库的机器ip)
+
+MariaDB [mysql]&gt; select user,host from user;
++------+---------------------+
+| user | host                |
++------+---------------------+
+| root | 127.0.0.1           |
+| test | 192.168.175.%       |
+| root | ::1                 |
+| root | centos7.localdomain |
+|      | localhost           |
+| root | localhost           |
++------+---------------------+
+MariaDB [mysql]&gt; drop user &#39;&#39;@&#39;localhost&#39;；   ##删除某个用户
+
+set password for &#39;user&#39;@&#39;host&#39;=password(&#39;password字符串&#39;);   ##修改密码
+
+
+用户重命名：RENAME USER
+RENAME USER old_user_name TO new_user_name;
+
+mysql&gt;UPDATE mysql.user SET password=PASSWORD(&#39;password&#39;) WHERE clause;  ##修改密码
+此方法需要执行下面指令才能生效： mysql&gt; FLUSH PRIVILEGES;
+#mysqladmin -u root -poldpass password &#39;newpass&#39;
+update user set password=password(&#39;centos&#39;) where user=&#39;root&#39;;    ##批量修改root账户密码
+MariaDB [mysql]&gt; select user,host,password from user;                          
++------+---------------------+-------------------------------------------+
+| user | host                | password                                  |
++------+---------------------+-------------------------------------------+
+| root | localhost           | *128977E278358FF80A246B5046F51043A2B1FCED |
+| root | centos7.localdomain | *128977E278358FF80A246B5046F51043A2B1FCED |
+| root | 127.0.0.1           | *128977E278358FF80A246B5046F51043A2B1FCED |
+| root | ::1                 | *128977E278358FF80A246B5046F51043A2B1FCED |
+| test | 192.168.175.%       | *6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9 |
++------+---------------------+-------------------------------------------+
+            MariaDB [mysql]&gt; flush privileges;    ##然后执行这句命令，密码生效
+            ##使用上面update报错解决方式:        
+            showvariables like &#39;sql_safe%&#39;;  
+        执行SQL:
+        set sql_safe_updates=0;
+        或
+        set sql_safe_updates=off;
+</code></pre><h2 id="忘记口令如何破解"><a href="#忘记口令如何破解" class="headerlink" title="忘记口令如何破解"></a>忘记口令如何破解</h2><pre><code>vim /etc/my.cnf 
+   skip-grant-tables  ##在这个文件中添加这一行:取消授权操作
+systemctl restart mariadb  ##重启服务
+mysql  ##已经可以进入并且不用输口令
+update mysql.user set password=password(&#39;123456&#39;) where user=&#39;root&#39;;   ##再把密码改回来
+再去/etc/my.cnf中，将刚刚添加的那一行注释掉。然后再次进入mysql -p123456
+</code></pre><h2 id="给用户加权限"><a href="#给用户加权限" class="headerlink" title="给用户加权限"></a>给用户加权限</h2><p>创建的用户，远程登录的用户，是没有太多的权限的。这里是先创建账号后加的权限</p>
+<pre><code>##all:所有权限，hellodb:所有表 给test用户(此时test用户就可以show查看和use进入到这张表也可以增删改查)
+MariaDB [hellodb]&gt; grant all on hellodb.* to test@&#39;192.168.175.%&#39;;
+</code></pre><h2 id="授权和创建账号一起"><a href="#授权和创建账号一起" class="headerlink" title="授权和创建账号一起"></a>授权和创建账号一起</h2><pre><code>MariaDB [hellodb]&gt; grant select(name,age) on hellodb.students to test2@&#39;192.168.175.%&#39; identified by &#39;centos&#39;;
+##创建账号test2,指定登录的网段192.168.175.0，账号密码:centos。只允许查询hellodb库的students表里面的name和age字段。
+MariaDB [hellodb]&gt; show grants for test2@&#39;192.168.175.%&#39;;  ##查看某个账号的权限
+
+MariaDB [hellodb]&gt; grant all on *.* to test3@&#39;192.168.175.%&#39; identified by &#39;centos&#39;;   ##给所有权限并创建test3
+MariaDB [hellodb]&gt; revoke select on *.* from test3@&#39;192.168.175.%&#39;;   ##删除他的select权限，也就是只能曾删改，不能查
+
+</code></pre><h2 id="MyISAM引擎特点"><a href="#MyISAM引擎特点" class="headerlink" title="MyISAM引擎特点"></a>MyISAM引擎特点</h2><p>不支持事务<br>表级锁定<br>读写相互阻塞，写入不能读，读时不能写<br>只缓存索引<br>不支持外键约束<br>不支持聚簇索引<br>读取数据较快，占用资源较少<br>不支持MVCC（多版本并发控制机制）高并发<br>崩溃恢复性较差<br>MySQL5.5.5前默认的数据库引擎<br>存储引擎<br>MyISAM存储引擎适用场景<br>只读（或者写较少）、表较小（可以接受长时间进行修复操作）</p>
+<h2 id="MyISAM引擎文件"><a href="#MyISAM引擎文件" class="headerlink" title="MyISAM引擎文件"></a>MyISAM引擎文件</h2><p>tbl_name.frm    表格式定义<br>tbl_name.MYD    数据文件<br>tbl_name.MYI    索引文件</p>
+<h2 id="InnoDB引擎特点"><a href="#InnoDB引擎特点" class="headerlink" title="InnoDB引擎特点"></a>InnoDB引擎特点</h2><p>行级锁<br>支持事务，适合处理大量短期事务<br>读写阻塞与事务隔离级别相关<br>可缓存数据和索引<br>支持聚簇索引<br>崩溃恢复性更好<br>支持MVCC高并发<br>从MySQL5.5后支持全文索引<br>从MySQL5.5.5开始为默认的数据库引擎</p>
+<pre><code>查看库里所有表的存储引擎:show table status from hellodb\G
+default-storage-engine=innodb  在my.cnf中添加，之后再次建立表默认就会用innodb了
+进入数据库后:show enginess 查看
+</code></pre><h2 id="InnoDB数据库文件"><a href="#InnoDB数据库文件" class="headerlink" title="InnoDB数据库文件"></a>InnoDB数据库文件</h2><p>所有InnoDB表的数据和索引放置于同一个表空间中表空间文件：datadir定义的目录下<br>数据文件：ibddata1, ibddata2, …<br>每个表单独使用一个表空间存储表的数据和索引<br>启用：innodb_file_per_table=ON<br>参看：<a href="https://mariadb.com/kb/en/library/xtradbinnodb-server-system-variables/#innodb_file_per_table" target="_blank" rel="noopener">https://mariadb.com/kb/en/library/xtradbinnodb-server-system-variables/#innodb_file_per_table</a><br>ON (&gt;= MariaDB 5.5)<br>两类文件放在数据库独立目录中<br>数据文件(存储数据和索引)：tb_name.ibd<br>表格式定义：tb_name.frm</p>
+<h2 id="查看mysql支持的存储引擎"><a href="#查看mysql支持的存储引擎" class="headerlink" title="查看mysql支持的存储引擎"></a>查看mysql支持的存储引擎</h2><pre><code>show engines;
+查看当前默认的存储引擎
+show variables like &#39;%storage_engine%&#39;;
+设置默认的存储引擎 
+vim /etc/my.conf [mysqld]
+default_storage_engine= InnoDB
+</code></pre><h2 id="管理存储引擎"><a href="#管理存储引擎" class="headerlink" title="管理存储引擎"></a>管理存储引擎</h2><pre><code>查看库中所有表使用的存储引擎 show table status from db_name;
+查看库中指定表的存储引擎show table status like &#39; tb_name &#39;; 
+show create table tb_name;
+设置表的存储引擎：
+CREATE TABLE tb_name(... ) ENGINE=InnoDB; 
+ALTER TABLE tb_name ENGINE=InnoDB;
+</code></pre><h2 id="MySQL中的系统数据库"><a href="#MySQL中的系统数据库" class="headerlink" title="MySQL中的系统数据库"></a>MySQL中的系统数据库</h2><p><i class="fa fa-map-pin "></i>mysql数据库是mysql的核心数据库，类似于Sql Server中的master库，主要负责存储数据库的用户、权限设置、关键字等mysql自己需要使用的控制和管理信息<br><i class="fa fa-map-pin "></i>performance_schema数据库<br>MySQL 5.5开始新增的数据库，主要用于收集数据库服务器性能参数,库里表的存储引擎均为PERFORMANCE_SCHEMA，用户不能创建存储引擎为<br>PERFORMANCE_SCHEMA的表<br><i class="fa fa-map-pin "></i>information_schema数据库<br>MySQL 5.0之后产生的，一个虚拟数据库，物理上并不存在<br>information_schema数据库类似与“数据字典”，提供了访问数据库元数据的方式，即数据的数据。比如数据库名或表名，列类型，访问权限（更加细化的访问方式）</p>
+<h2 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h2><p>mysqld选项，服务器系统变量和服务器状态变量<br><a href="https://dev.mysql.com/doc/refman/8.0/en/server-option-variable-reference.html" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/8.0/en/server-option-variable-reference.html</a><br><a href="https://mariadb.com/kb/en/library/full-list-of-mariadb-options-system-and-status-variables/" target="_blank" rel="noopener">https://mariadb.com/kb/en/library/full-list-of-mariadb-options-system-and-status-variables/</a><br>注意：其中有些参数支持运行时修改，会立即生效；有些参数不支持，且只能通过修改配置文件，并重启服务器程序生效；有些参数作用域是全局的，且不可改变；有些可以为每个用户提供单独（会话）的设置</p>
+<h2 id="服务器配置-1"><a href="#服务器配置-1" class="headerlink" title="服务器配置"></a>服务器配置</h2><p>获取mysqld的可用选项列表： mysqld –help –verbose<br>mysqld –print-defaults 获取默认设置<br>设置服务器选项方法：<br>在命令行中设置<br>shell&gt; ./mysqld_safe –skip-name-resolve=1<br>在配置文件my.cnf中设置 skip_name_resolve=1</p>
+<h2 id="服务器系统变量：分全局和会话两种"><a href="#服务器系统变量：分全局和会话两种" class="headerlink" title="服务器系统变量：分全局和会话两种"></a>服务器系统变量：分全局和会话两种</h2><p>获取系统变量<br>mysql&gt; SHOW GLOBAL VARIABLES;<br>mysql&gt; SHOW [SESSION] VARIABLES;<br>mysql&gt; SELECT @@VARIABLES;<br>修改服务器变量的值： mysql&gt; help SET<br>修改全局变量：仅对修改后新创建的会话有效；对已经建立的会话无效 mysql&gt; SET GLOBAL system_var_name=value;<br>mysql&gt; SET @@global.system_var_name=value;<br>修改会话变量：<br>mysql&gt; SET [SESSION] system_var_name=value;<br>mysql&gt; SET @@[session.]system_var_name=value;</p>
+<h2 id="服务器状态变量："><a href="#服务器状态变量：" class="headerlink" title="服务器状态变量："></a>服务器状态变量：</h2><p>分全局和会话两种<br>状态变量（只读）：用于保存mysqld运行中的统计数据的变量，不可更改<br>mysql&gt; SHOW GLOBAL STATUS;<br>mysql&gt; SHOW [SESSION] STATUS;</p>
+<h2 id="服务器变量SQL-MODE"><a href="#服务器变量SQL-MODE" class="headerlink" title="服务器变量SQL_MODE"></a>服务器变量SQL_MODE</h2><p>常见MODE:</p>
+<pre><code>NO_AUTO_CREATE_USER 禁止GRANT创建密码为空的用户
+NO_ZERO_DATE 在严格模式，不允许使用‘0000-00-00’的时间
+ONLY_FULL_GROUP_BY 对于GROUP BY聚合操作，如果在SELECT中的列，没有在GROUP BY中出现，那么将认为这个SQL是不合法的
+NO_BACKSLASH_ESCAPES  反斜杠“\”作为普通字符而非转义字符
+PIPES_AS_CONCAT  将&quot;||&quot;视为连接操作符而非“或运算符
+</code></pre><h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p>索引：是特殊数据结构，定义在查找时作为查找条件的字段，在MySQL又称为键key，索引通过存储引擎实现<br>优点：<br>索引可以降低服务需要扫描的数据量，减少了IO次数索引可以帮助服务器避免排序和使用临时表<br>索引可以帮助将随机I/O转为顺序I/O<br>缺点：占用额外空间，影响插入速度</p>
+<pre><code>创建索引:                        索引名      指定哪个表，指定表中的字段(前多少个字符)
+MariaDB [hellodb]&gt; create index idx_name on testlog(name(10));
+
+查看索引:
+show indexes from testlog\G
+
+查询，使用了索引
+MariaDB [hellodb]&gt; explain select * from testlog where name=&#39;wang10000&#39;;
+[16:11:20+------+-------------+---------+------+---------------+----------+---------+-------+------+-----------------------+
+[16:11:20| id   | select_type | table   | type | possible_keys | key      | key_len | ref   | rows | Extra                 |
+[16:11:20+------+-------------+---------+------+---------------+----------+---------+-------+------+-----------------------+
+[16:11:20|    1 | SIMPLE      | testlog | ref  | idx_name      | idx_name | 31      | const |    4 | Using index condition |
+[16:11:20+------+-------------+---------+------+---------------+----------+---------+-------+------+-----------------------+
+[16:11:201 row in set (0.00 sec)
+
+删除索引
+MariaDB [hellodb]&gt; drop index idx_name on testlog;
+
+创建复合索引
+create index idx_name_age on testlog(name,age);
+查看
+show indexes from testlog\G
+
+查看索引的使用
+set global userstat=1;
+show index_statistics; 如果之前索引使用过，这里可以查看到，用不到的可以删掉
+show indexes studnets; 查看表的所有的索引
+</code></pre><h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><p>读锁:都不能改<br>写锁:自己能读，可以写。别人不能读<br>lock tables students read; 加读锁<br>unlock talbes； 解锁</p>
+<h2 id="事务Transactions："><a href="#事务Transactions：" class="headerlink" title="事务Transactions："></a>事务Transactions：</h2><p>一组原子性的SQL语句，或一个独立工作单元<br>事务日志：记录事务信息，实现undo,redo等故障恢复功能<br>ACID特性：<br>A：atomicity原子性；整个事务中的所有操作要么全部成功执行，要么全部失败后回滚<br>C：consistency一致性；数据库总是从一个一致性状态转换为另一个一致性状态<br>I：Isolation隔离性；一个事务所做出的操作在提交之前，是不能为其它事务所见；隔离有多种隔离级别，实现并发<br>D：durability持久性；一旦事务提交，其所做的修改会永久保存于数据库中</p>
+<p>启动事务：<br>BEGIN<br>BEGIN WORK<br>START TRANSACTION<br>结束事务：<br>COMMIT：提交<br>ROLLBACK: 回滚<br>这里也就是说，在数据库里面begin;以后所做的操作都不会被写入，但是当前可以查看到所做的操作。<br>当所做的操作没有问题以后，就可以commit提交写入。（适合增删改）</p>
+<p>自动提交：set autocommit={1|0},默认为1，为0时设为非自动.就是修改数据库文件以后，如果设置的是非自动，数据不会自动提交。但是可以查看到<br>撤销:rollback;  提交:commit;</p>
+<p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
 <p><script>hljs.initHighlightingOnLoad();</script></p>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
       
@@ -747,8 +2400,8 @@ UDP端口负责查询
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/25/自动化应用/" rel="next" title="Six">
-                <i class="fa fa-chevron-left"></i> Six
+              <a href="/2019/07/26/Linux后期理论/" rel="next" title="Four">
+                <i class="fa fa-chevron-left"></i> Four
               </a>
             
           </div>
@@ -756,6 +2409,10 @@ UDP端口负责查询
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/25/自动化应用/" rel="prev" title="Six">
+                Six <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -832,7 +2489,7 @@ UDP端口负责查询
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -864,7 +2521,7 @@ UDP端口负责查询
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/">sed</a><span class="tag-list-count">1</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -949,7 +2606,7 @@ UDP端口负责查询
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DNS"><span class="nav-number">1.</span> <span class="nav-text">DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#资源记录"><span class="nav-number">1.1.</span> <span class="nav-text">资源记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源记录定义的格式：vim-magedu-com-zone"><span class="nav-number">1.2.</span> <span class="nav-text">资源记录定义的格式：vim magedu.com.zone</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建一个DNS服务器-正向解析"><span class="nav-number">1.3.</span> <span class="nav-text">搭建一个DNS服务器-正向解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件分析"><span class="nav-number">1.4.</span> <span class="nav-text">文件分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反向解析"><span class="nav-number">1.5.</span> <span class="nav-text">反向解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-up-backup-the-dns-server"><span class="nav-number">1.6.</span> <span class="nav-text">Set up backup the dns server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS安全"><span class="nav-number">1.7.</span> <span class="nav-text">DNS安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子域"><span class="nav-number">1.8.</span> <span class="nav-text">子域</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DNS"><span class="nav-number">1.</span> <span class="nav-text">DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#资源记录"><span class="nav-number">1.1.</span> <span class="nav-text">资源记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源记录定义的格式：vim-magedu-com-zone"><span class="nav-number">1.2.</span> <span class="nav-text">资源记录定义的格式：vim magedu.com.zone</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建一个DNS服务器-正向解析"><span class="nav-number">1.3.</span> <span class="nav-text">搭建一个DNS服务器-正向解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件分析"><span class="nav-number">1.4.</span> <span class="nav-text">文件分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反向解析"><span class="nav-number">1.5.</span> <span class="nav-text">反向解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-up-backup-the-dns-server"><span class="nav-number">1.6.</span> <span class="nav-text">Set up backup the dns server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS安全"><span class="nav-number">1.7.</span> <span class="nav-text">DNS安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子域和父域委派"><span class="nav-number">1.8.</span> <span class="nav-text">子域和父域委派</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子域和父域委派-不同机器"><span class="nav-number">1.9.</span> <span class="nav-text">子域和父域委派(不同机器)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS转发"><span class="nav-number">1.10.</span> <span class="nav-text">DNS转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现智能DNS"><span class="nav-number">1.11.</span> <span class="nav-text">实现智能DNS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mysql"><span class="nav-number">2.</span> <span class="nav-text">Mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建逻辑卷，更换数据库的目录"><span class="nav-number">2.1.</span> <span class="nav-text">创建逻辑卷，更换数据库的目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通用二进制格式安装过程"><span class="nav-number">2.2.</span> <span class="nav-text">通用二进制格式安装过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码安装mariadb"><span class="nav-number">2.3.</span> <span class="nav-text">源码安装mariadb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL语言规范"><span class="nav-number">2.4.</span> <span class="nav-text">SQL语言规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql多实例的实现"><span class="nav-number">2.5.</span> <span class="nav-text">mysql多实例的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库和表管理"><span class="nav-number">2.6.</span> <span class="nav-text">数据库和表管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DML语句"><span class="nav-number">2.7.</span> <span class="nav-text">DML语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加数据"><span class="nav-number">2.8.</span> <span class="nav-text">添加数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加中文"><span class="nav-number">2.9.</span> <span class="nav-text">添加中文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除"><span class="nav-number">2.10.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将每个表的文件独立分开，强烈建议加上。"><span class="nav-number">2.11.</span> <span class="nav-text">将每个表的文件独立分开，强烈建议加上。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改表的数据字段"><span class="nav-number">2.12.</span> <span class="nav-text">修改表的数据字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DML语言"><span class="nav-number">2.13.</span> <span class="nav-text">DML语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模糊匹配"><span class="nav-number">2.14.</span> <span class="nav-text">模糊匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大值，最小值，分组"><span class="nav-number">2.15.</span> <span class="nav-text">最大值，最小值，分组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多表操作"><span class="nav-number">2.16.</span> <span class="nav-text">多表操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#横向合并"><span class="nav-number">2.17.</span> <span class="nav-text">横向合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内连接"><span class="nav-number">2.18.</span> <span class="nav-text">内连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自查询"><span class="nav-number">2.19.</span> <span class="nav-text">自查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql的资源管理"><span class="nav-number">2.20.</span> <span class="nav-text">mysql的资源管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-用户和权限管理"><span class="nav-number">2.21.</span> <span class="nav-text">mysql 用户和权限管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#忘记口令如何破解"><span class="nav-number">2.22.</span> <span class="nav-text">忘记口令如何破解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给用户加权限"><span class="nav-number">2.23.</span> <span class="nav-text">给用户加权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#授权和创建账号一起"><span class="nav-number">2.24.</span> <span class="nav-text">授权和创建账号一起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyISAM引擎特点"><span class="nav-number">2.25.</span> <span class="nav-text">MyISAM引擎特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyISAM引擎文件"><span class="nav-number">2.26.</span> <span class="nav-text">MyISAM引擎文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#InnoDB引擎特点"><span class="nav-number">2.27.</span> <span class="nav-text">InnoDB引擎特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#InnoDB数据库文件"><span class="nav-number">2.28.</span> <span class="nav-text">InnoDB数据库文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看mysql支持的存储引擎"><span class="nav-number">2.29.</span> <span class="nav-text">查看mysql支持的存储引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管理存储引擎"><span class="nav-number">2.30.</span> <span class="nav-text">管理存储引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL中的系统数据库"><span class="nav-number">2.31.</span> <span class="nav-text">MySQL中的系统数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器配置"><span class="nav-number">2.32.</span> <span class="nav-text">服务器配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器配置-1"><span class="nav-number">2.33.</span> <span class="nav-text">服务器配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器系统变量：分全局和会话两种"><span class="nav-number">2.34.</span> <span class="nav-text">服务器系统变量：分全局和会话两种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器状态变量："><span class="nav-number">2.35.</span> <span class="nav-text">服务器状态变量：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器变量SQL-MODE"><span class="nav-number">2.36.</span> <span class="nav-text">服务器变量SQL_MODE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引"><span class="nav-number">2.37.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁"><span class="nav-number">2.38.</span> <span class="nav-text">锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务Transactions："><span class="nav-number">2.39.</span> <span class="nav-text">事务Transactions：</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -998,7 +2655,7 @@ UDP端口负责查询
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共104.9k字</span>
+  <span class="post-count">博客全站共118.2k字</span>
 </div>
 
 <div id="days"></div>
