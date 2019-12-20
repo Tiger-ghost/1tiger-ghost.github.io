@@ -159,7 +159,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:site_name" content="Tiger-ghost">
 <meta property="og:description" content="Http+Nginx">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-02T12:27:25.343Z">
+<meta property="og:updated_time" content="2019-12-19T02:55:55.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Eight">
 <meta name="twitter:description" content="Http+Nginx">
@@ -445,7 +445,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-02 20:27:25" itemprop="dateModified" datetime="2019-12-02T20:27:25+08:00">2019-12-02</time>
+                <time title="Modified: 2019-12-19 10:55:55" itemprop="dateModified" datetime="2019-12-19T10:55:55+08:00">2019-12-19</time>
               
             
           </span>
@@ -517,9 +517,318 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
       
         <p><center><font face="FZShuTi">Http+Nginx</font></center><br><a id="more"></a></p>
-<h2 id="HTTP1-0协议介绍"><a href="#HTTP1-0协议介绍" class="headerlink" title="HTTP1.0协议介绍"></a>HTTP1.0协议介绍</h2><p>http/1.1：1997年1月<br>引入了持久连接（persistent connection），即TCP连接默认不关闭，可以被多个请求复用，不用声明Connection: keep-alive。对于同一个域名，大多数浏览器允许同时建立6个持久连接<br>引入了管道机制（pipelining），即在同一个TCP连接里，客户端可以同时发送多个请求，进一步改进了HTTP协议的效率<br>新增方法：PUT、PATCH、OPTIONS、DELETE<br>同一个TCP连接里，所有的数据通信是按次序进行的。服务器只能顺序处理回应，前面的回应慢，会有许多请求排队，造成”队头堵塞”（Head-of-line blocking）<br>为避免上述问题，两种方法：一是减少请求数，二是同时多开持久连接。网页优化技巧，如合并脚本和样式表、将图片嵌入CSS代码、域名分片（domain sharding）等<br>HTTP 协议不带有状态，每次请求都必须附上所有信息。请求的很多字段都是重复的，浪费带宽，影响速度</p>
-<h2 id="HTTP2-0协议介绍"><a href="#HTTP2-0协议介绍" class="headerlink" title="HTTP2.0协议介绍"></a>HTTP2.0协议介绍</h2><p>Spdy：2009年,谷歌研发,解决 HTTP/1.1 效率不高问题<br>http/2.0：2015年<br>头信息和数据体都是二进制，称为头信息帧和数据帧<br>复用TCP连接，在一个连接里，客户端和浏览器都可以同时发送多个请求或回应，且不用按顺序一一对应，避免了“队头堵塞“,此双向的实时通信称为多工（Multiplexing）<br>引入头信息压缩机制（header compression）,头信息使用gzip或compress<br>压缩后再发送；客户端和服务器同时维护一张头信息表，所有字段都会存入这个表，生成一个索引号，不发送同样字段，只发送索引号，提高速度<br>HTTP/2 允许服务器未经请求，主动向客户端发送资源，即服务器推送（server push）</p>
+<h1 id="HTTP1-0协议介绍"><a href="#HTTP1-0协议介绍" class="headerlink" title="HTTP1.0协议介绍"></a>HTTP1.0协议介绍</h1><p>http/1.1：1997年1月<br>引入了持久连接（persistent connection），即TCP连接默认不关闭，可以被多个请求复用，不用声明Connection: keep-alive。对于同一个域名，大多数浏览器允许同时建立6个持久连接<br>引入了管道机制（pipelining），即在同一个TCP连接里，客户端可以同时发送多个请求，进一步改进了HTTP协议的效率<br>新增方法：PUT、PATCH、OPTIONS、DELETE<br>同一个TCP连接里，所有的数据通信是按次序进行的。服务器只能顺序处理回应，前面的回应慢，会有许多请求排队，造成”队头堵塞”（Head-of-line blocking）<br>为避免上述问题，两种方法：一是减少请求数，二是同时多开持久连接。网页优化技巧，如合并脚本和样式表、将图片嵌入CSS代码、域名分片（domain sharding）等<br>HTTP 协议不带有状态，每次请求都必须附上所有信息。请求的很多字段都是重复的，浪费带宽，影响速度</p>
+<h1 id="HTTP2-0协议介绍"><a href="#HTTP2-0协议介绍" class="headerlink" title="HTTP2.0协议介绍"></a>HTTP2.0协议介绍</h1><p>Spdy：2009年,谷歌研发,解决 HTTP/1.1 效率不高问题<br>http/2.0：2015年<br>头信息和数据体都是二进制，称为头信息帧和数据帧<br>复用TCP连接，在一个连接里，客户端和浏览器都可以同时发送多个请求或回应，且不用按顺序一一对应，避免了“队头堵塞“,此双向的实时通信称为多工（Multiplexing）<br>引入头信息压缩机制（header compression）,头信息使用gzip或compress<br>压缩后再发送；客户端和服务器同时维护一张头信息表，所有字段都会存入这个表，生成一个索引号，不发送同样字段，只发送索引号，提高速度<br>HTTP/2 允许服务器未经请求，主动向客户端发送资源，即服务器推送（server push）</p>
+<h1 id="URI"><a href="#URI" class="headerlink" title="URI"></a>URI</h1><p>URI: Uniform Resource Identifier统一资源标识，分为URL和URN<br>URN: Uniform Resource Naming，统一资源命名<br>示例： P2P下载使用的磁力链接是URN的一种实现<br>magnet:?xt=urn:btih:660557A6890EF888666<br>URL: Uniform Resorce Locator，统一资源定位符，用于描述某服务器某特定资源位置<br>两者区别：URN如同一个人的名称，而URL代表一个人的住址。换言之，URN定义某事物的身份，而URL提供查找该事物的方法。URN仅用于命名，而不指定地址</p>
+<h1 id="URL组成"><a href="#URL组成" class="headerlink" title="URL组成"></a>URL组成</h1><p><code>&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;</code><br>scheme:方案，访问服务器以获取资源时要使用哪种协议<br>user:用户，某些方案访问资源时需要的用户名<br>password:密码，用户对应的密码，中间用：分隔<br>Host:主机，资源宿主服务器的主机名或IP地址<br>port:端口,资源宿主服务器正在监听的端口号，很多方案有默认端口号<br>path:路径,服务器资源的本地名，由一个/将其与前面的URL组件分隔<br>params:参数，指定输入的参数，参数为名/值对，多个参数，用;分隔<br>query:查询，传递参数给程序，如数据库，用？分隔,多个查询用&amp;分隔<br>frag:片段,一小片或一部分资源的名字，此组件在客户端使用，用#分隔</p>
+<h1 id="URL示例"><a href="#URL示例" class="headerlink" title="URL示例"></a>URL示例</h1><p><a href="http://www.magedu.com:8080/images/logo.jpg" target="_blank" rel="noopener">http://www.magedu.com:8080/images/logo.jpg</a><br><a href="ftp://mage:password@172.16.0.1/pub/linux.ppt" target="_blank" rel="noopener">ftp://mage:password@172.16.0.1/pub/linux.ppt</a><br>rtsp://videoserver/video_demo/ Real Time Streaming Protocol<br><a href="http://www.magedu.com/bbs/hello;gender=f/send;type=title" target="_blank" rel="noopener">http://www.magedu.com/bbs/hello;gender=f/send;type=title</a><br><a href="https://list.jd.com/list.html?cat=670,671,672&amp;ev=149_2992&amp;sort=sort_t" target="_blank" rel="noopener">https://list.jd.com/list.html?cat=670,671,672&amp;ev=149_2992&amp;sort=sort_t</a> otalsales15_desc&amp;trans=1<br><a href="http://apache.org/index.html#projects-list" target="_blank" rel="noopener">http://apache.org/index.html#projects-list</a></p>
+<h1 id="网站访问量"><a href="#网站访问量" class="headerlink" title="网站访问量"></a>网站访问量</h1><div class="alert alert-success">IP(独立IP)：即Internet Protocol,指独立IP数。一天内来自相同客户机IP地址只计算一次，记录远程客户机IP地址的计算机访问网站的次数，是衡量网站流量的重要指标<br>PV(访问量)： 即Page View, 页面浏览量或点击量，用户每次刷新即被计算一次，PV反映的是浏览某网站的页面数，PV与来访者的数量成正比，PV并不是页面的来访者数量，而是网站被访问的页面数量<br>UV(独立访客)：即Unique Visitor,访问网站的一台电脑为一个访客。一天内相同的客户端只被计算一次。可以理解成访问某网站的电脑的数量。网站判断来访电脑的身份是通过来访电脑的cookies实现的。如果更换了IP后但不清除cookies，再访问相同网站，该网站的统计中UV数是不变的<br>网站统计：<a href="http://www.alexa.cn/rank/" target="_blank" rel="noopener">http://www.alexa.cn/rank/</a></div>
 
+<h1 id="网站访问统计示例"><a href="#网站访问统计示例" class="headerlink" title="网站访问统计示例"></a>网站访问统计示例</h1><p>示例：<br>甲乙丙三人在同一台通过ADSL上网的电脑上（中间没有断网），分别访问<a href="http://www.magedu.com" target="_blank" rel="noopener">www.magedu.com</a> 网站，并且每人各浏览了2个页面，那么网站的流量统计是：<br>IP:    1    PV:6    UV：1<br>若三人都是ADSL重新拨号后,各浏览了2个页面，则<br>IP:    3    PV:6    UV：1</p>
+<h1 id="httpd-版本消失"><a href="#httpd-版本消失" class="headerlink" title="httpd 版本消失"></a>httpd 版本消失</h1><pre><code>过滤掉注释行和空行，查看httpd的配置文件
+[root@tiger html]# grep -Ev &#39;^ *#|^$&#39; /etc/httpd/conf/httpd.conf  
+</code></pre><p>httpd有一个目录，我们的配置文件可以建立在哪里面，不用修改主配置文件。目录位置配置文件最后一行有提及。<br>位置在/etc/httpd/conf.d目录中，可以建立一个以.conf结尾的文件。依然可以配置httpd.<br>在配置文件中写入可以隐藏apache的版本:<code>ServerTokens Prod</code>，这样就浏览器看不到Apache的版本了。也可以用curl -I ip地址来进行查看</p>
+<h1 id="httpd多端口和ip绑定"><a href="#httpd多端口和ip绑定" class="headerlink" title="httpd多端口和ip绑定"></a>httpd多端口和ip绑定</h1><p>可以多端口访问，就是在配置文件中添加<code>listen 8080</code>重新启动服务以后80和8080都可以访问<br>也可ip和端口进行绑定，那么此端口就只能用绑定的ip来进行通讯<code>listen 192.168.122.1:8080</code></p>
+<h1 id="持久连接"><a href="#持久连接" class="headerlink" title="持久连接"></a>持久连接</h1><p>持久连接默认是开启的<br>KeepAliveTimeout 20 这个表示持久连接的时间是20秒，在这个阶段不会断开</p>
+<h1 id="MPM工作模式"><a href="#MPM工作模式" class="headerlink" title="MPM工作模式"></a>MPM工作模式</h1><p>prefork：多进程I/O模型，每个进程响应一个请求，默认模型一个主进程：生成和回收n个子进程，创建套接字，不响应请求<br>多个子进程：工作work进程，每个子进程处理一个请求；系统初始时，预先生成多个空闲进程，等待请求，最大不超过1024个<br>worker：复用的多进程I/O模型,多进程多线程，IIS使用此模型<br>一个主进程：生成m个子进程，每个子进程负责生个n个线程，每个线程响应一个请求，并发响应请求：m*n<br>event：事件驱动模型（worker模型的变种）<br>一个主进程：生成m个子进程，每个进程直接响应n个请求，并发响应请求：m*n，有专门的线程来管理这些keep-alive类型的线程，当有真实请求时，将请求传递给服务线程，执行完毕后，又允许释放。这样增强了高并发场景下的请求处理能力<br>httpd-2.2：event 测试版，centos6默认<br>httpd-2.4：event 稳定版，centos7默认</p>
+<h1 id="MPM（-Multi-Processing-Module）"><a href="#MPM（-Multi-Processing-Module）" class="headerlink" title="MPM（ Multi-Processing Module）"></a>MPM（ Multi-Processing Module）</h1><p>多路处理模块 prefork, worker, event<br>切换使用的MPM<br>/etc/httpd/conf.modules.d/00-mpm.conf<br>启用要启用的MPM相关的LoadModule指令即可<br>查看静态编译的模块 httpd -l<br>查看静态编译及动态装载的模块 httpd –M<br>动态模块加载：不需重启即生效<br>动态模块路径/usr/lib64/httpd/modules/</p>
+<h2 id="prefork的配置："><a href="#prefork的配置：" class="headerlink" title="prefork的配置："></a>prefork的配置：</h2><p>StartServers    8<br>MinSpareServers    5<br>MaxSpareServers    20<br>ServerLimit    256 最多进程数,最大20000<br>MaxRequestsPerChild    4000 子进程最多能处理的请求数量。在处理<br>MaxRequestsPerChild 个请求之后,子进程将会被父进程终止，这时候子进程占用的内存就会释放(为0时永远不释放）</p>
+<h1 id="http文档根目录"><a href="#http文档根目录" class="headerlink" title="http文档根目录"></a>http文档根目录</h1><p>定义’Main’ server的文档页面路径 DocumentRoot “/path”<br>在配置文件中修改路径以后，还需要添加</p>
+<pre><code>DocumentRoot &quot;/data/www&quot; 只写这一行是没有权限访问的
+&lt;Directory &quot;/data/www&quot;&gt;
+    Require all granted
+&lt;/Directory&gt;
+</code></pre><h1 id="定义站点主页面"><a href="#定义站点主页面" class="headerlink" title="定义站点主页面"></a>定义站点主页面</h1><p><code>DirectoryIndex index.html</code><br>这一行在配置文件中，上面只定义了文件夹，这里定义文件夹下默认打开显示的文件index.html表示站点的默认页面<br>如果定义的文件被删除了，他就会显示httpd默认的欢迎页面。这是由一个配置文件定义的/etc/httpd/conf.d/welcome.conf</p>
+<h1 id="options-后跟1个或多个以空白字符分隔的选项列表-在选项前的-，-表示增加或删除指定选项"><a href="#options-后跟1个或多个以空白字符分隔的选项列表-在选项前的-，-表示增加或删除指定选项" class="headerlink" title="options 后跟1个或多个以空白字符分隔的选项列表 在选项前的+，- 表示增加或删除指定选项"></a>options 后跟1个或多个以空白字符分隔的选项列表 在选项前的+，- 表示增加或删除指定选项</h1><p>Indexes：指明的URL路径下不存在与定义的主页面资源相符的资源文件时，返回索引列表给用户<br>也就是当定义的页面配置文件访问不到时，就会显示定义的文件夹目录给用户(点来点去的那种)</p>
+<p>FollowSymLinks：允许访问符号链接文件所指向的源文件None：全部禁用All： 全部允许<br>这个选项就表示，当我在站点目录中使用软连接，链接到其他的文件到此目录中，也能够在网络上显示出来<br>直接在配置文件中加入<code>options indexes FollowSymLinks</code>可以这样写</p>
+<h1 id="AllowOverride"><a href="#AllowOverride" class="headerlink" title="AllowOverride"></a>AllowOverride</h1><p>与访问控制相关的哪些指令可以放在指定目录下的 .htaccess（由AccessFileName指定）文件中，覆盖之前的配置指令<br>只对<code>&lt;directory&gt;</code>语句有效<br>AllowOverride All:    .htaccess中所有指令都有效<br>AllowOverride None：    .htaccess 文件无效<br>AllowOverride AuthConfig Indexes 除了AuthConfig 和Indexes的其它指令都无法覆盖<br>注意：创建文件.htaccess以后，还需要在主配置文件中写入此类<code>AllowOverride All</code>而且这样命令要在括号里面</p>
+<pre><code>&lt;directory /data/www&gt;
+allowoverride all
+Require all granted
+&lt;/directory&gt;
+</code></pre><h1 id="基于IP的访问控制"><a href="#基于IP的访问控制" class="headerlink" title="基于IP的访问控制:"></a>基于IP的访问控制:</h1><p>无明确授权的目录，默认拒绝允许所有主机访问：Require all granted<br>拒绝所有主机访问：Require all denied<br><i class="fa fa-gavel" aria-hidden="true"></i>控制特定的IP访问：<br>Require ip IPADDR：授权指定来源的IP访问<br>Require not ip IPADDR：拒绝特定的IP访问<br><i class="fa fa-gavel" aria-hidden="true"></i>控制特定的主机访问：<br>Require host HOSTNAME：授权特定主机访问<br>Require not host HOSTNAME：拒绝<br>HOSTNAME：<br><i class="fa fa-gavel" aria-hidden="true"></i>FQDN：特定主机<br>domin.tld：指定域名下的所有主机</p>
+<pre><code>[root@tiger www]# cat  /etc/httpd/conf.d/test.conf    
+&lt;directory /data/www&gt;
+&lt;requireall&gt;             这个括号也要写
+Require all granted
+require not ip 192.168.67.135 拒绝的ip
+&lt;/requireall&gt;
+&lt;/directory&gt;
+</code></pre><pre><code>(word例子)
+不能有失败，至少有一个成功匹配才成功，即失败优先
+&lt;RequireAll&gt;
+Require all granted
+Require not ip 172.16.1.1 拒绝特定IP 
+&lt;/RequireAll&gt;
+多个语句有一个成功，则成功，即成功优先
+&lt;RequireAny&gt; 
+Require all denied
+require ip 172.16.1.1 允许特定IP 
+&lt;/RequireAny&gt;
+</code></pre><pre><code>允许主目录下的配置文件进行访问，拒绝主目录下的新建的目录下的文件进行访问
+[root@tiger news]# cat /etc/httpd/conf.d/test.conf        
+&lt;directory /data/www&gt; 允许
+Require all granted
+&lt;/directory&gt;
+&lt;directory /data/www/news&gt;  拒绝
+require all denied
+&lt;/directory&gt;
+</code></pre><h1 id="日志设定"><a href="#日志设定" class="headerlink" title="日志设定"></a>日志设定</h1><p><i class="fa fa-gavel" aria-hidden="true"></i> 日志类型：<br>访问日志<br>错误日志<br><i class="fa fa-gavel" aria-hidden="true"></i> 错误日志：<br>ErrorLog logs/error_log<br>LogLevel warn<br>LogLevel 可选值: debug, info, notice, warn,error, crit, alert, emerg<br>日志路径:/var/log/httpd</p>
+<h1 id="定义路径别名"><a href="#定义路径别名" class="headerlink" title="定义路径别名"></a>定义路径别名</h1><pre><code>alias /s /data2/sports  这里/s只网络访问的一个URL名称，实际访问的路径还是后面的地址
+&lt;directory  /data2/sports&gt;   给权限允许访问
+require all granted
+&lt;/directory&gt;
+http://192.168.67.128/s/ 访问看到的就是/data2/sports 里面的文件
+</code></pre><h1 id="基于用户的访问控制"><a href="#基于用户的访问控制" class="headerlink" title="基于用户的访问控制"></a>基于用户的访问控制</h1><p>认证质询：WWW-Authenticate：响应码为401，拒绝客户端请求，并说明要求客户端提供账号和密码<br>认证：Authorization：客户端用户填入账号和密码后再次发送请求报文；认证通过时，则服务器发送响应的资源<br>认证方式两种：<br>basic：明文<br>digest：消息摘要认证,兼容性差<br>安全域：需要用户认证后方能访问的路径；应该通过名称对其进行标识，以便于告知用户认证的原因<br>用户的账号和密码<br>虚拟账号：仅用于访问某服务时用到的认证标识存储：文本文件，SQL数据库，ldap目录存储，nis等</p>
+<p>使用专用命令完成此类文件的创建及用户管理<br>htpasswd [options] /PATH/HTTPD_PASSWD_FILE username -c 自动创建文件，仅应该在文件不存在时使用<br>-p    明文密码<br>-d CRYPT格式加密，默认<br>-m md5格式加密<br>-s sha格式加密<br>-D    删除指定用户</p>
+<pre><code>第一次建立账户时加-c选项
+htpasswd 建立，后面跟路径 用户名
+[root@tiger conf.d]# htpasswd -c /etc/httpd/conf.d/httpdpass tom
+以后都不加，不然会把之前建立的用户清空
+[root@tiger conf.d]# htpasswd  /etc/httpd/conf.d/httpdpass jerr
+[root@tiger conf.d]# cat httpdpass   查看建立的账户
+tom:$apr1$gVIqXX66$IkBt5w2KbS.SmVHJOPD5d.
+jerry:$apr1$44glLZKy$RC/1cG4dKiacdKaOrqabq0
+[root@tiger conf.d]# chmod 600 /etc/httpd/conf.d/httpdpass  改个权限
+    修改配置文件
+&lt;directory /data/www/admin&gt;   表示这个目录是需要账户访问的
+AuthType Basic
+AuthName &quot;welcome to login&quot;
+AuthUserFile &quot;/etc/httpd/conf.d/httpdpass&quot;  使用的账户文件路径
+Require user tom  这里只写了tom表示只有tom可以登录进去。如果写Require valid-user表示所有账号都可以登录
+&lt;/directory&gt;
+[root@tiger www]# setfacl -m u:apache:r /etc/httpd/conf.d/httpdpass 
+这里是因为之前给了文件600的权限，现在无法访问，就加一个acl可读权限
+</code></pre><h1 id="基于组账号进行认证"><a href="#基于组账号进行认证" class="headerlink" title="基于组账号进行认证"></a>基于组账号进行认证</h1><pre><code>&lt;directory /data/www/admin&gt;
+AuthType Basic
+AuthName &quot;welcome to login&quot;
+AuthUserFile &quot;/etc/httpd/conf.d/httpdpass&quot;     ##继续上面的配置文件
+AuthUserFile &quot;/etc/httpd/conf.d/httpgroup&quot;     ##添加一个组访问
+Require group testgroup     ##添加哪个组？添加的是testgroup这个组
+&lt;/directory&gt;
+
+[root@tiger conf.d]# cat /etc/httpd/conf.d/httpdgroup  组内成员
+testgroup:tom jerry  
+[root@tiger conf.d]# cat /etc/httpd/conf.d/httpdpass  成员文件
+tom:$apr1$gVIqXX66$IkBt5w2KbS.SmVHJOPD5d.
+jerry:$apr1$jm3xS1Ty$B0gUZ/keYSzC5XOsw7i5p.
+</code></pre><h1 id="实现用户家目录的http共享"><a href="#实现用户家目录的http共享" class="headerlink" title="实现用户家目录的http共享"></a>实现用户家目录的http共享</h1><pre><code>基于模块mod_userdir.so实现
+SELinux: http_enable_homedirs
+相关设置：
+vim /etc/httpd/conf/httpd.conf ;centos7在[root@tiger conf.d]# vim /etc/httpd/conf.d/userdir.conf 
+&lt;IfModule mod_userdir.c&gt;
+#UserDir disabled 默认是关闭的，加注释，就打开了
+UserDir public_html #public_html指定共享目录的名称(这个目录就在pan用户的家目录下)
+&lt;/IfModule&gt;
+&lt;directory /home/pan/public_html&gt;    ##这里是允许访问
+require all granted    
+&lt;/directory&gt;
+
+如果是要加入验证功能就只需要添加这些
+&lt;directory /home/pan/public_html&gt;
+authtype basic
+authname &quot;pan home&quot;
+authuserfile &quot;/etc/httpd/conf.d/httpdpass&quot;
+require user tom
+&lt;/directory&gt;
+访问: 192.168.67.128/~pan/ 
+</code></pre><h1 id="erverSignature-On-Off-EMail"><a href="#erverSignature-On-Off-EMail" class="headerlink" title="erverSignature On | Off | EMail"></a>erverSignature On | Off | EMail</h1><p>当客户请求的网页并不存在时，服务器将产生错误文档，缺省情况下由于打开了ServerSignature选项，<br>错误文档的最后一行将包含服务器的名字、Apache的版本等信息<br>如果不对外显示这些信息，就可以将这个参数设置为Off<br>设置为Email，将显示ServerAdmin 的Email提示</p>
+<h1 id="status页面"><a href="#status页面" class="headerlink" title="status页面"></a>status页面</h1><p>LoadModule status_module modules/mod_status.so <location "="" status"=""><br>SetHandler server-status </location><br>ExtendedStatus On 显示扩展信息</p>
+<pre><code>&lt;Location &quot;/status&quot;&gt;  这里是文件夹名称，随便取一个名字就行，不用去建立文件夹
+SetHandler server-status   
+&lt;/Location&gt;
+ExtendedStatus On  这里是显示扩展信息
+http://192.168.67.128/status 访问可以查看到很多关于Apache的信息
+</code></pre><h1 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a>虚拟主机</h1><p>也就是一个主机建立多个网站<br>站点标识： socket<br>IP相同，但端口不同<br>IP不同，但端口均为默认端口<br>FQDN不同： 请求报文中首部 Host: <a href="http://www.magedu.com" target="_blank" rel="noopener">www.magedu.com</a>  </p>
+<p><font color="red"><i class="fa fa-laptop" aria-hidden="true"></i></font> 有三种实现方案：<br>基于ip：为每个虚拟主机准备至少一个ip地址基于port：为每个虚拟主机使用至少一个独立的port<br>基于FQDN：为每个虚拟主机使用至少一个FQDN</p>
+<pre><code>实验:
+mkdir /data/{a,b,c}site
+[root@tiger conf.d]# echo www.a.com &gt; /data/asite/index.html
+[root@tiger conf.d]# echo www.b.com &gt; /data/bsite/index.html 
+[root@tiger conf.d]# echo www.c.com &gt; /data/csite/index.html 
+
+##根据IP区分
+ip a a 192.168.67.130 dev ens33 给ens33网卡增加一个IP
+192.168.67.128  规划就是 对应A网站
+192.168.122.1   对应B网站
+192.168.67.130  对应C网站
+
+ vim /etc/httpd/conf.d/test.conf
+&lt;virtualhost 192.168.67.128&gt;
+DocumentRoot &quot;/data/asite&quot;
+&lt;directory /data/asite&gt;
+Require all granted
+&lt;/directory&gt;
+customlog /var/log/httpd/access_a.log combined  ##这里表示日志的路径，后面combined表示日志的格式主配置文件有设置
+&lt;/virtualhost&gt;
+
+&lt;virtualhost 192.168.122.1&gt;
+DocumentRoot &quot;/data/bsite&quot;
+&lt;directory /data/bsite&gt;
+Require all granted
+&lt;/directory&gt;
+customlog /var/log/httpd/access_b.log combined
+&lt;/virtualhost&gt;
+
+&lt;virtualhost 192.168.67.130&gt;
+DocumentRoot &quot;/data/csite&quot;
+&lt;directory /data/csite&gt;
+Require all granted
+&lt;/directory&gt;
+customlog /var/log/httpd/access_c.log combined
+&lt;/virtualhost&gt;
+curl 192.168.67.128 
+</code></pre><p><font color="red">这里注意一点就是如果配置文件中已经定义过访问目录和文件，之后又添加了虚拟主机，那么之后如果访问127.0.0.1，他还是会访问原来的目录和文件。不会访问虚拟主机</font><br><div><div class="fold_hider"><div class="close hider_title">-----根据端口区分------</div></div><div class="fold">
+<p>端口号</p>
+<pre><code>vim /etc/httpd/conf.d/test.conf
+listen 81
+listen 82
+listen 83
+&lt;virtualhost *:81&gt;   ##&quot;*&quot;表示本机所有IP
+DocumentRoot &quot;/data/asite&quot;
+&lt;directory /data/asite&gt;
+Require all granted
+&lt;/directory&gt;
+customlog /var/log/httpd/access_a.log combined
+&lt;/virtualhost&gt;
+
+&lt;virtualhost *:82&gt;
+DocumentRoot &quot;/data/bsite&quot;
+&lt;directory /data/bsite&gt;
+Require all granted
+&lt;/directory&gt;
+customlog /var/log/httpd/access_b.log combined
+&lt;/virtualhost&gt;
+
+&lt;virtualhost *:83&gt;
+DocumentRoot &quot;/data/csite&quot;
+&lt;directory /data/csite&gt;
+Require all granted
+&lt;/directory&gt;
+customlog /var/log/httpd/access_c.log testlog
+&lt;/virtualhost&gt;
+</code></pre>
+</div></div></p>
+<div><div class="fold_hider"><div class="close hider_title">-----------通过FQDN访问------------</div></div><div class="fold">
+<pre><code>vim /etc/hosts
+192.168.67.128 www.a.com www.b.net www.c.cn
+
+&lt;virtualhost *:80&gt;
+servername www.a.com
+DocumentRoot &quot;/data/asite&quot;
+&lt;directory /data/asite&gt;
+Require all granted
+&lt;/directory&gt;
+customlog /var/log/httpd/access_a.log combined
+&lt;/virtualhost&gt;
+
+&lt;virtualhost *:80&gt;
+servername www.b.net
+DocumentRoot &quot;/data/bsite&quot;
+&lt;directory /data/bsite&gt;
+Require all granted
+&lt;/directory&gt;
+customlog /var/log/httpd/access_b.log combined
+&lt;/virtualhost&gt;
+
+&lt;virtualhost *:80&gt;
+servername www.c.cn
+DocumentRoot &quot;/data/csite&quot;
+&lt;directory /data/csite&gt;
+Require all granted
+&lt;/directory&gt;
+customlog /var/log/httpd/access_c.log testlog
+&lt;/virtualhost&gt;
+
+[root@tiger ~]# curl www.a.com     
+www.a.com
+[root@tiger ~]# curl www.b.net
+www.b.com
+这里如果是访问ip
+[root@tiger ~]# curl 192.168.67.128
+www.a.com  这是因为配置文件中，哪个第一个出现，那么这里就会显示哪个
+</code></pre>
+</div></div>
+<h1 id="mod-deflate模块"><a href="#mod-deflate模块" class="headerlink" title="mod_deflate模块"></a>mod_deflate模块</h1><p>使用mod_deflate模块压缩页面优化传输速度<br>适用场景：<br>(1)    节约带宽，额外消耗CPU；同时，可能有些较老浏览器不支持<br>(2)    压缩适于压缩的资源，例如文本文件<br>Level of compression (Highest 9 - Lowest 1)<br>DeflateCompressionLevel 9<br>排除特定旧版本的浏览器，不支持压缩<br>Netscape 4.x 只压缩text/html<br>BrowserMatch ^Mozilla/4 gzip-only-text/html Netscape 4.06-08三个版本 不压缩 BrowserMatch ^Mozilla/4.0[678] no-gzip</p>
+<pre><code>httpd -M 查看加载的模块
+cat /etc/httpd/conf.d/test.conf
+&lt;virtualhost *:80&gt;
+servername www.a.com
+DocumentRoot &quot;/data/asite&quot;
+&lt;directory /data/asite&gt;
+Require all granted
+&lt;/directory&gt;
+customlog /var/log/httpd/access_a.log combined
+
+AddOutputFilterByType DEFLATE text/plain  压缩类型
+AddOutputFilterByType DEFLATE text/html 
+DeflateCompressionLevel 9   压缩比
+&lt;/virtualhost&gt;
+浏览器访问文件F12,Headers可以看到大小，如果启用了压缩，就能看到gzip，不显示大小
+命令行查看curl -I --compressed www.a.com/m.txt
+</code></pre><h1 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h1><p>yum install -y mod_ssl ##安装加密模块以后就可以了，但是现在浏览器显示不安全，因为证书</p>
+<pre><code>cd /etc/pki/CA
+[root@tiger CA]# (umask 066;openssl genrsa -out private/cakey.pem 2048)  生成私钥
+[root@tiger CA]# tree
+.
+├── certs
+├── crl
+├── newcerts
+└── private
+    └── cakey.pem  私钥文件
+[root@tiger CA]# openssl req -new -x509 -key private/cakey.pem -out cacert.pem  自签名证书
+[root@tiger CA]# touch index.txt
+[root@tiger CA]# echo 01 &gt; serial
+[root@tiger CA]# tree
+.
+├── cacert.pem 自签名证书
+├── certs
+├── crl
+├── index.txt 颁发证书的数据库
+├── newcerts
+├── private
+│   └── cakey.pem   私钥文件
+└── serial  颁发证书的序列号
+
+4 directories, 4 files
+
+[root@tiger CA]# cd /etc/httpd/conf.d
+[root@tiger conf.d]# mkdir ssl
+[root@tiger conf.d]# cd ssl
+[root@tiger ssl]# pwd
+/etc/httpd/conf.d/ssl
+[root@tiger ssl]# (umask 077;openssl genrsa -out httpd.key 1024)
+[root@tiger ssl]# openssl req -new -key httpd.key -out httpd.csr  这里要填的和之前的一样
+[root@tiger ssl]# ls
+httpd.csr  httpd.key  生成的文件
+[root@tiger ssl]# cd /etc/pki/CA
+[root@tiger CA]# openssl ca -in /etc/httpd/conf.d/ssl/httpd.csr -out certs/httpd.crt -days 100
+
+[root@tiger CA]# cp certs/httpd.crt /etc/httpd/conf.d/ssl/
+[root@tiger CA]# cp cacert.pem /etc/httpd/conf.d/ssl
+[root@tiger CA]# ll !$
+ll /etc/httpd/conf.d/ssl
+total 16
+-rw-r--r--. 1 root root 1330 Dec 16 21:47 cacert.pem
+-rw-r--r--. 1 root root 3721 Dec 16 21:47 httpd.crt
+-rw-r--r--. 1 root root  655 Dec 16 21:33 httpd.csr
+-rw-------. 1 root root  887 Dec 16 21:31 httpd.key
+
+[root@tiger CA]# vim /etc/httpd/conf.d/ssl.conf 
+SSLCertificateFile /etc/httpd/conf.d/ssl/httpd.crt
+SSLCertificateKeyFile /etc/httpd/conf.d/ssl/httpd.key
+</code></pre><pre><code>##-A是伪造IE20访问的。-e是伪造通过www.baidu.com这个网站跳转的
+[root@tiger ~]# curl -A &#39;IE20&#39; -e &#39;www.baidu.com&#39; http://192.168.67.128 
+</code></pre><p>源码编译</p>
+<pre><code>apr-1.6.5 apr-util-1.6.1.tar.bz2  httpd-2.4.37.tar.bz2将这三个包传到linux中
+yum groupinstall &quot;development tools&quot;
+tar  apr-util-1.6.1.tar.bz2依次解压三个包
+[root@tiger src]# cp -r apr-1.6.5 httpd-2.4.37/srclib/apr
+[root@tiger src]# cp -r apr-util-1.6.1 httpd-2.4.37/srclib/apr-util
+</code></pre><p>cd /httpd.2.4.27<br>./configure<br>–prefix=/app/httpd24 \<br>–enable-so \<br>–enable-ssl \<br>–enable-cgi \<br>–enable-rewrite \<br>–with-zlib \<br>–with-pcre \<br>–with-apr=/app/apr/ \<br>–with-apr-util=/app/apr-util/ \<br>–enable-modules=most \<br>–enable-mpms-shared=all \<br>–with-mpm=prefork<br>make -j 4 &amp;&amp; make install</p>
+<p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
+<p><script>hljs.initHighlightingOnLoad();</script></p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
       
     </div>
 
@@ -694,7 +1003,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -726,7 +1035,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/">sed</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/">sed</a><span class="tag-list-count">1</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -811,7 +1120,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP1-0协议介绍"><span class="nav-number">1.</span> <span class="nav-text">HTTP1.0协议介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP2-0协议介绍"><span class="nav-number">2.</span> <span class="nav-text">HTTP2.0协议介绍</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP1-0协议介绍"><span class="nav-number">1.</span> <span class="nav-text">HTTP1.0协议介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP2-0协议介绍"><span class="nav-number">2.</span> <span class="nav-text">HTTP2.0协议介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URI"><span class="nav-number">3.</span> <span class="nav-text">URI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URL组成"><span class="nav-number">4.</span> <span class="nav-text">URL组成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URL示例"><span class="nav-number">5.</span> <span class="nav-text">URL示例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网站访问量"><span class="nav-number">6.</span> <span class="nav-text">网站访问量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网站访问统计示例"><span class="nav-number">7.</span> <span class="nav-text">网站访问统计示例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#httpd-版本消失"><span class="nav-number">8.</span> <span class="nav-text">httpd 版本消失</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#httpd多端口和ip绑定"><span class="nav-number">9.</span> <span class="nav-text">httpd多端口和ip绑定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#持久连接"><span class="nav-number">10.</span> <span class="nav-text">持久连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MPM工作模式"><span class="nav-number">11.</span> <span class="nav-text">MPM工作模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MPM（-Multi-Processing-Module）"><span class="nav-number">12.</span> <span class="nav-text">MPM（ Multi-Processing Module）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#prefork的配置："><span class="nav-number">12.1.</span> <span class="nav-text">prefork的配置：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http文档根目录"><span class="nav-number">13.</span> <span class="nav-text">http文档根目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义站点主页面"><span class="nav-number">14.</span> <span class="nav-text">定义站点主页面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#options-后跟1个或多个以空白字符分隔的选项列表-在选项前的-，-表示增加或删除指定选项"><span class="nav-number">15.</span> <span class="nav-text">options 后跟1个或多个以空白字符分隔的选项列表 在选项前的+，- 表示增加或删除指定选项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AllowOverride"><span class="nav-number">16.</span> <span class="nav-text">AllowOverride</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于IP的访问控制"><span class="nav-number">17.</span> <span class="nav-text">基于IP的访问控制:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#日志设定"><span class="nav-number">18.</span> <span class="nav-text">日志设定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义路径别名"><span class="nav-number">19.</span> <span class="nav-text">定义路径别名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于用户的访问控制"><span class="nav-number">20.</span> <span class="nav-text">基于用户的访问控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于组账号进行认证"><span class="nav-number">21.</span> <span class="nav-text">基于组账号进行认证</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现用户家目录的http共享"><span class="nav-number">22.</span> <span class="nav-text">实现用户家目录的http共享</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#erverSignature-On-Off-EMail"><span class="nav-number">23.</span> <span class="nav-text">erverSignature On | Off | EMail</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#status页面"><span class="nav-number">24.</span> <span class="nav-text">status页面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟主机"><span class="nav-number">25.</span> <span class="nav-text">虚拟主机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mod-deflate模块"><span class="nav-number">26.</span> <span class="nav-text">mod_deflate模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#证书"><span class="nav-number">27.</span> <span class="nav-text">证书</span></a></li></ol></div>
             
 
           </div>
@@ -860,7 +1169,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共118.2k字</span>
+  <span class="post-count">博客全站共124.1k字</span>
 </div>
 
 <div id="days"></div>
