@@ -151,20 +151,20 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
         }
     })();
 </script>
-  <meta name="description" content="日志管理+FTP">
+  <meta name="description" content="日志管理+FTP+NFS">
 <meta name="keywords" content="Document">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nine">
 <meta property="og:url" content="http://yoursite.com/2019/09/25/日志管理/index.html">
 <meta property="og:site_name" content="Tiger-ghost">
-<meta property="og:description" content="日志管理+FTP">
+<meta property="og:description" content="日志管理+FTP+NFS">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://s2.ax1x.com/2020/01/19/197hIP.png">
 <meta property="og:image" content="https://s2.ax1x.com/2020/02/01/1G4olV.png">
-<meta property="og:updated_time" content="2020-02-13T15:11:50.276Z">
+<meta property="og:updated_time" content="2020-03-03T01:50:35.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nine">
-<meta name="twitter:description" content="日志管理+FTP">
+<meta name="twitter:description" content="日志管理+FTP+NFS">
 <meta name="twitter:image" content="https://s2.ax1x.com/2020/01/19/197hIP.png">
 
 
@@ -448,7 +448,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-02-13 23:11:50" itemprop="dateModified" datetime="2020-02-13T23:11:50+08:00">2020-02-13</time>
+                <time title="Modified: 2020-03-03 09:50:35" itemprop="dateModified" datetime="2020-03-03T09:50:35+08:00">2020-03-03</time>
               
             
           </span>
@@ -519,7 +519,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
       
 
       
-        <p><center><font face="FZShuTi">日志管理+FTP</font></center><br><a id="more"></a></p>
+        <p><center><font face="FZShuTi">日志管理+FTP+NFS</font></center><br><a id="more"></a></p>
 <h1 id="日志："><a href="#日志：" class="headerlink" title="日志："></a>日志：</h1><pre><code>历史事件:时间，地点，人物，事件
 日志级别：事件的关键性程度，Loglevel
 系统日志服务：
@@ -934,57 +934,6 @@ mput *.log   ##将本地data文件夹所有的.log结尾的文件传到ftp的f1�
 mget *.txt   ##将f1目录上的所有.txt结尾的文件下载下来
 bye       ##可写可不写
 !         ##结束，与上面对应
-</code></pre><h1 id="NFS"><a href="#NFS" class="headerlink" title="NFS"></a>NFS</h1><pre><code>192.168.67.141:
-mkdir /data1/nfsdir1
-cat /etc/exports            ##配置文件，默认是空的
-    /data1/nfsdir1 *(sync)  ##这里只共享了两个目录，*表示所有人
-    /data1/nfsdir2 *      ##sync是默认的，可不写，表示写文件是直接写入磁盘的。不走缓存
-exportfs -r   ##不用重启服务,即可生效配置文件(但服务必须是起来的)
-
-192.168.67.142:
-然后在另外一台机器上查询哪个目录被共享出来了
-showmount -e 192.168.67.141
-    /data1/nfsdir1 *
-    /data1/nfsdir2 *
-mount 192.168.67.141:/data1/nfsdir1 /nfs1    ##挂在到本机的/nfs1目录下
-
-##配置权限，上面文件只是挂载，只能访问无法写入。这里先在NFS服务器上配置权限。另外在142机器上进行访问他是以nfsnobody用户进行访问的。所以要给被访问的文件夹加上权限
-vim /etc/exports 
-    /data1/nfsdir2 *(rw)
-setfacl -m u:nfsnobody:rwx nfsdir2  ##给文件夹加上允许被nfsnobody用户访问的权限
-exportfs -v ##查看服务器端设置的权限配置 这个允许的权限叫root_squash
-##现在在客客户端就可以创建文件了。
-
-##注意现在都是以root用户登录挂载进行创建文件的。只有root登录创建文件才会映射为nobody用户
-如果是以普通用户登录创建文件只会映射到服务器ID相同的人。
-192.168.67.142:        
-[pan@pan nfs2]$ ll b.txt   ##登录的pan用户，创建的b.txt文件
--rw-rw-r-- 1 pan pan 0 2月  13 17:20 b.txt
-[pan@pan nfs2]$ getent passwd pan   ##id是1000
-pan:x:1000:1000::/home/pan:/bin/bash
-192.168.67.141:    
-[root@new nfsdir2]# ll  ##可以看到b.txt的id是1000，141没有id为1000的用户
-总用量 0
--rw-r--r--. 1 nfsnobody nfsnobody 0 2月  13 16:52 a.txt
--rw-rw-r--. 1      1000      1000 0 2月  13 17:20 b.txt
-</code></pre><pre><code>[root@new nfsdir2]# vim /etc/exports
-    /data1/nfsdir1 *
-    /data1/nfsdir2 *(rw,no_root_squash)  ##这个就表示远程的服务器上root创建的文件，服务器上显示的也是root用户
-    ##root用户不映射为其他的用户
-[root@new nfsdir2]# exportfs -r ##重新读取配置文件    
-[root@new nfsdir2]# exportfs -v    ##查看权限
-/data1/nfsdir1  &lt;world&gt;(ro,sync,wdelay,hide,no_subtree_check,sec=sys,secure,root_squash,no_all_squash)
-/data1/nfsdir2  &lt;world&gt;(rw,sync,wdelay,hide,no_subtree_check,sec=sys,secure,no_root_squash,no_all_squash)
-</code></pre><h1 id="NFS配置文件"><a href="#NFS配置文件" class="headerlink" title="NFS配置文件"></a>NFS配置文件</h1><pre><code>每个条目指定目录导出到的哪些主机，及相关的权限和选项
-•默认选项：(ro,sync,root_squash,no_all_squash)
-•ro,rw 只读和读写
-•async 异步，数据变化后不立即写磁盘，性能高
-•sync（1.0.0后为默认）同步，数据在请求时立即写入共享
-•no_all_squash （默认）保留共享文件的UID和GID
-•all_squash 所有远程用户(包括root)都变成nfsnobody
-•root_squash （默认）远程root映射为nfsnobody,UID为65534，早期版本是4294967294 (nfsnobody)
-•no_root_squash 远程root映射成root用户
-•anonuid和anongid 指明匿名用户映射为特定用户UID和组GID，而非nfsnobody,可配合all_squash使用
 </code></pre><p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
 <p><script>hljs.initHighlightingOnLoad();</script></p>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
@@ -1073,8 +1022,8 @@ pan:x:1000:1000::/home/pan:/bin/bash
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/26/Linux后期理论/" rel="next" title="Four">
-                <i class="fa fa-chevron-left"></i> Four
+              <a href="/2019/07/26/Linux安全/" rel="next" title="Five">
+                <i class="fa fa-chevron-left"></i> Five
               </a>
             
           </div>
@@ -1162,7 +1111,7 @@ pan:x:1000:1000::/home/pan:/bin/bash
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1194,7 +1143,7 @@ pan:x:1000:1000::/home/pan:/bin/bash
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/">sed</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/">sed</a><span class="tag-list-count">1</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -1279,7 +1228,7 @@ pan:x:1000:1000::/home/pan:/bin/bash
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#日志："><span class="nav-number">1.</span> <span class="nav-text">日志：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rsyslog介绍"><span class="nav-number">2.</span> <span class="nav-text">rsyslog介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rsyslog"><span class="nav-number">3.</span> <span class="nav-text">rsyslog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将日志发送到远程主机"><span class="nav-number">4.</span> <span class="nav-text">将日志发送到远程主机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其它的日志文件"><span class="nav-number">5.</span> <span class="nav-text">其它的日志文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#日志管理journalctl"><span class="nav-number">6.</span> <span class="nav-text">日志管理journalctl</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rsyslog将日志记录于MySQL中"><span class="nav-number">7.</span> <span class="nav-text">rsyslog将日志记录于MySQL中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通过loganalyzer展示数据库中的日志"><span class="nav-number">8.</span> <span class="nav-text">通过loganalyzer展示数据库中的日志</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存储基础知识—存储网络"><span class="nav-number">9.</span> <span class="nav-text">存储基础知识—存储网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件传输协议FTP"><span class="nav-number">10.</span> <span class="nav-text">文件传输协议FTP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vsftpd服务"><span class="nav-number">11.</span> <span class="nav-text">vsftpd服务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vsftpd服务配置"><span class="nav-number">11.1.</span> <span class="nav-text">vsftpd服务配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名用户"><span class="nav-number">11.2.</span> <span class="nav-text">匿名用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux系统用户"><span class="nav-number">11.3.</span> <span class="nav-text">Linux系统用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vsftpd服务配置-1"><span class="nav-number">11.4.</span> <span class="nav-text">vsftpd服务配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用PAM认证"><span class="nav-number">11.5.</span> <span class="nav-text">使用PAM认证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vsftpd限速配置"><span class="nav-number">11.6.</span> <span class="nav-text">vsftpd限速配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置FTP服务以非独立服务方运行"><span class="nav-number">11.7.</span> <span class="nav-text">配置FTP服务以非独立服务方运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现基于SSL的FTPS"><span class="nav-number">11.8.</span> <span class="nav-text">实现基于SSL的FTPS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vsftpd虚拟用户"><span class="nav-number">11.9.</span> <span class="nav-text">vsftpd虚拟用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟用户建立独立的配置文件"><span class="nav-number">11.10.</span> <span class="nav-text">虚拟用户建立独立的配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现基于MYSQL验证的vsftpd虚拟用户"><span class="nav-number">11.11.</span> <span class="nav-text">实现基于MYSQL验证的vsftpd虚拟用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FTP自动上传下载——shell文件"><span class="nav-number">11.12.</span> <span class="nav-text">FTP自动上传下载——shell文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NFS"><span class="nav-number">12.</span> <span class="nav-text">NFS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NFS配置文件"><span class="nav-number">13.</span> <span class="nav-text">NFS配置文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#日志："><span class="nav-number">1.</span> <span class="nav-text">日志：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rsyslog介绍"><span class="nav-number">2.</span> <span class="nav-text">rsyslog介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rsyslog"><span class="nav-number">3.</span> <span class="nav-text">rsyslog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将日志发送到远程主机"><span class="nav-number">4.</span> <span class="nav-text">将日志发送到远程主机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其它的日志文件"><span class="nav-number">5.</span> <span class="nav-text">其它的日志文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#日志管理journalctl"><span class="nav-number">6.</span> <span class="nav-text">日志管理journalctl</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rsyslog将日志记录于MySQL中"><span class="nav-number">7.</span> <span class="nav-text">rsyslog将日志记录于MySQL中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通过loganalyzer展示数据库中的日志"><span class="nav-number">8.</span> <span class="nav-text">通过loganalyzer展示数据库中的日志</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存储基础知识—存储网络"><span class="nav-number">9.</span> <span class="nav-text">存储基础知识—存储网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件传输协议FTP"><span class="nav-number">10.</span> <span class="nav-text">文件传输协议FTP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vsftpd服务"><span class="nav-number">11.</span> <span class="nav-text">vsftpd服务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vsftpd服务配置"><span class="nav-number">11.1.</span> <span class="nav-text">vsftpd服务配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名用户"><span class="nav-number">11.2.</span> <span class="nav-text">匿名用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux系统用户"><span class="nav-number">11.3.</span> <span class="nav-text">Linux系统用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vsftpd服务配置-1"><span class="nav-number">11.4.</span> <span class="nav-text">vsftpd服务配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用PAM认证"><span class="nav-number">11.5.</span> <span class="nav-text">使用PAM认证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vsftpd限速配置"><span class="nav-number">11.6.</span> <span class="nav-text">vsftpd限速配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置FTP服务以非独立服务方运行"><span class="nav-number">11.7.</span> <span class="nav-text">配置FTP服务以非独立服务方运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现基于SSL的FTPS"><span class="nav-number">11.8.</span> <span class="nav-text">实现基于SSL的FTPS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vsftpd虚拟用户"><span class="nav-number">11.9.</span> <span class="nav-text">vsftpd虚拟用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟用户建立独立的配置文件"><span class="nav-number">11.10.</span> <span class="nav-text">虚拟用户建立独立的配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现基于MYSQL验证的vsftpd虚拟用户"><span class="nav-number">11.11.</span> <span class="nav-text">实现基于MYSQL验证的vsftpd虚拟用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FTP自动上传下载——shell文件"><span class="nav-number">11.12.</span> <span class="nav-text">FTP自动上传下载——shell文件</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1328,7 +1277,7 @@ pan:x:1000:1000::/home/pan:/bin/bash
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共131.0k字</span>
+  <span class="post-count">博客全站共134.1k字</span>
 </div>
 
 <div id="days"></div>
