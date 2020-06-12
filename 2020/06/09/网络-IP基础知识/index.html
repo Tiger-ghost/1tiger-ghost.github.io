@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom
+Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "ddf2b567"
+    });
+  daovoice('update');
+  </script>
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+  <meta name="description" content="IP基础知识点">
+<meta name="keywords" content="note">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Network">
+<meta property="og:url" content="http://yoursite.com/2020/06/09/网络-IP基础知识/index.html">
+<meta property="og:site_name" content="Tiger-ghost">
+<meta property="og:description" content="IP基础知识点">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://i.loli.net/2020/06/09/JyXBUaie6ZqRd2o.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/09/RYa6suANxFcCZWq.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/06/09/lIJV8Q9ZUt31mvN.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/09/UgtasRmdGVFwiBq.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/09/W7F8KQqrD9kIZUl.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/09/bIwpsTjLtQc6fxY.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/09/UgK5btWqpzH6h3w.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/09/9xRTiedt5I1sbUN.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/09/VgyKJBcpN48Fsjo.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/09/oO6uat2jnWbTAcM.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/09/jCAbeXi2OFqIMY9.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/09/2dWDlXikYzoL1bT.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/10/rw5OncoEKay61Nd.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/10/FnWtmqEUGHl4XzP.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/10/9NC3oGqBJlIi8Op.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/10/Vdoapc8FmuPkKJ7.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/jmheBvwNU6gJsua.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/XMmtsHPzgrLu4nc.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/DIzbFxgaCiN96cf.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/Hc2NngwAGBrLDvi.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/95GsFEAg2dZML1e.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/JdAb761jNne3XzM.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/jX61u8eKoNMraEW.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/Qi6auzw3IsL1HNn.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/SkZcrJ7lMCB9y2L.png">
+<meta property="og:updated_time" content="2020-06-12T08:54:07.387Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Network">
+<meta name="twitter:description" content="IP基础知识点">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/09/JyXBUaie6ZqRd2o.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Tiger-ghost" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/06/09/网络-IP基础知识/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Network | Tiger-ghost</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/Tiger-ghost" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tiger-ghost</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Technology blog</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/网络-IP基础知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tiger">
+      <meta itemprop="description" content="I love you">
+      <meta itemprop="image" content="/../images/head-portrait.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tiger-ghost">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Network
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-06-09 10:10:39" itemprop="dateCreated datePublished" datetime="2020-06-09T10:10:39+08:00">2020-06-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-06-12 16:54:07" itemprop="dateModified" datetime="2020-06-12T16:54:07+08:00">2020-06-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/write/" itemprop="url" rel="index"><span itemprop="name">write</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/09/网络-IP基础知识/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2020/06/09/网络-IP基础知识/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+  
+
+      
+      
+
+      
+        <p><center><font face="FZShuTi">IP基础知识点</font></center><br><a id="more"></a> </p>
+<h1 id="本章知识点"><a href="#本章知识点" class="headerlink" title="本章知识点"></a>本章知识点</h1><p><a href="http://naotu.baidu.com/file/f75aabd71e0b78580febb1c8fd571c66?token=30a9a5022208500a" target="_blank"><img src="https://i.loli.net/2020/06/09/JyXBUaie6ZqRd2o.png" alt="iwAR3T.jpg" title="请点击图片"></a></p>
+<h1 id="IP的基本认识"><a href="#IP的基本认识" class="headerlink" title="IP的基本认识"></a>IP的基本认识</h1><p>IP在TCP/IP 参考模型中处于第三层，也就是<strong>网络层</strong><br>网络层的主要作用是：<strong>实现主机与主机之间的通信，也叫点对点(end to end)通信。</strong><br><img src="https://i.loli.net/2020/06/09/RYa6suANxFcCZWq.jpg" alt=""></p>
+<h1 id="IP和MAC的关系"><a href="#IP和MAC的关系" class="headerlink" title="IP和MAC的关系"></a>IP和MAC的关系</h1><h2 id="IP-网络层-和MAC-数据链路层-之间的区别和关系。"><a href="#IP-网络层-和MAC-数据链路层-之间的区别和关系。" class="headerlink" title="IP(网络层)和MAC(数据链路层)之间的区别和关系。"></a>IP(网络层)和MAC(数据链路层)之间的区别和关系。</h2><p>在上面我们知道IP的作用是主机之间通信中的，而MAC的作用则是实现<strong>「直连」的两个设备之间通信，而 IP 则负责在「没有直连」的两个网络之间进行通信传输</strong>。<br><blockquote><p>举一个生活中的例子，小林要去一个很远的地方旅行，指定了一个行程表，其间需先后乘坐飞机、地铁、公交车才能抵达目的带，为此小林需要购买飞机票，地铁票等。</p>
+<p>飞机票和地铁票都是去往特定的地点的，每张票只能够在某一段定区间内移动，此处的「区间内」就如同通信网络中的数据链路。</p>
+<p>在区间内移动相当于数据链路层，充当区间内两个节点传输功能，区间内的出发点好比源MAC地址，目标地点好比目的MAC地址。</p>
+<p>整个旅游行程表就相当于网络层，充当远程定位的功能，行程的开始好比源IP,行程的终点好比目的IP地址。</p>
+</blockquote><br><img src="https://i.loli.net/2020/06/09/lIJV8Q9ZUt31mvN.png" alt=""><br><blockquote><p>如果小林只有行程表而没有车票，就无法搭乘交通工具到达目的地。相反，如果除了车票而没有行程表，恐怕也很难到达目的地。因为小林不知道该坐什么车，也不是道该在哪里换乘。<br>  因此只有两者兼备，既有某个区间的车票又有整个旅行的行程表，才能保证到达目的地。与此类似，<strong>计算机网络中也需要「数据链路层」和「网络层」这个分层才能实现向最终目标地址的通信</strong><br>  还有重要一点，旅行途中我们虽然不断变化了交通工具，但是旅行行程的起始地址和目的地址始终都没变。其实，在网络中数据包传输中也是如此，<strong>源IP地址和目标IP地址在传输过程中是不会变化的，只有源MAC地址和目标MAC一直在变化</strong></p>
+</blockquote></p>
+<h1 id="IP地址的基础认识"><a href="#IP地址的基础认识" class="headerlink" title="IP地址的基础认识"></a>IP地址的基础认识</h1><p><i class="fa fa-info" aria-hidden="true"></i> 在TCP/IP网络通信时，为了保证能正常通信，每个设备都需要配置正确的IP地址，否则无法实现正常的通信。<br><i class="fa fa-info" aria-hidden="true"></i> IP地址（IPv4 地址）由<code>32</code>位正整数来表示，IP地址在计算机是以二进制的方式处理的。<br><i class="fa fa-info" aria-hidden="true"></i> 而人类为了方便记忆采用了点分十进制的标记方式，也就是将32位IP地址以每8位为组，共分为4组，每组以<code>.</code>隔开，再将每组装换成十进制。</p>
+<pre><code>看0的个数： 128 192 224 240 248 252 254(一个0)
+128 64 32 16 8 4 2 1 =255
+IPv4 二进制 11000000 10100000 00000001 00000001
+IPv4 十进制 192      168      1        1
+点分十进制   192     .168     .1       .1
+
+IP地址的最大值：2^32 = 4294967296
+</code></pre><p>也就是说，最大允许43亿台计算机连接到网络。但是实际上，IP地址并不是根据主机台数来配置的，而是以网卡。像服务器、路由器等设备都是有2个以上的网卡，也就是他们会有2个以上的IP地址。<br><img src="https://i.loli.net/2020/06/09/UgtasRmdGVFwiBq.png" alt="image.png"><br><blockquote class="blockquote-center"><p>因为会根据一种可以更换IP地址的技术，NAT，使得可连接计算机数超过43亿台。</p>
+</blockquote></p>
+<h2 id="IP地址的分类"><a href="#IP地址的分类" class="headerlink" title="IP地址的分类"></a>IP地址的分类</h2><p>互联网诞生之初，IP地址显得很充裕，于是计算机科学家们设计了分类地址。<br>IP地址分类成了5种类型，分别是A类，B类，C类，D类，E类。<br><img src="https://i.loli.net/2020/06/09/W7F8KQqrD9kIZUl.png" alt="image.png"><br>上图中黄色部分为分类号，用以区分 IP 地址类别。</p>
+<h2 id="什么是A、B、C-类地址？"><a href="#什么是A、B、C-类地址？" class="headerlink" title="什么是A、B、C 类地址？"></a>什么是A、B、C 类地址？</h2><div class="alert alert-success"><i class="fa fa-lightbulb-o"></i> 什么是A、B、C 类地址？<br>其中对于A、B、C 类主要分为两个部分，分别是网络号和主机号。这很好理解，好比小林是A小区1栋101号，你是B小区1栋101号。<br><br>我们可以用下面这个表格，就能很清楚的知道A、B、C 分类对应的地址范围、最大主机个数。<br><img src="https://i.loli.net/2020/06/09/bIwpsTjLtQc6fxY.png" alt=""><br></div>
+
+<h2 id="A、B、C-分类地址最大主机个数是如何计算的呢？"><a href="#A、B、C-分类地址最大主机个数是如何计算的呢？" class="headerlink" title="A、B、C 分类地址最大主机个数是如何计算的呢？"></a>A、B、C 分类地址最大主机个数是如何计算的呢？</h2><p>最大主机个数，就是看主机号的位数，如C类地址的主机号占8位，那么C类地址的最大主机个数: <code>2^8 - 2 = 254</code><br>为什么还要减2，因为在IP地址中，有两个ip是特殊的，分别是主机号全为1和全为0地址。<br><img src="https://i.loli.net/2020/06/09/UgK5btWqpzH6h3w.png" alt="image.png"><br><blockquote class="blockquote-center"><p>主机号全为1 指定某个网络下的所有主机，用于广播<br>主机号全为0 不论哪一类网络，主机号全为“0”表示指向本网，常用在路由表中；</p>
+</blockquote><br>因此，在分配过程中，应该去掉这两种情况。</p>
+<h1 id="广播地址用于什么？"><a href="#广播地址用于什么？" class="headerlink" title="广播地址用于什么？"></a>广播地址用于什么？</h1><p>广播地址用于在同一个链路中相互连接的主机之间发送数据包<br><blockquote><p>学校班级中就有广播的例子，在准备上课的时候，通常班长会喊：“上课，全体起立！”，班里的同学听到这句话是不是全部都站立起来了？这句话就有广播的含义。</p>
+<p>当主机号全为1时，就表示网络的广播地址。例如把<code>172.20.0.0/16</code> 用二进制表示如下:<code>10101100.00010100.00000000.0000000</code><br>由mac地址得知有16个1，mac地址就是<code>11111111 11111111 00000000 0000000</code> 0代表主机位，1代表网络位。<br>将这个地址的主机位部分改为1，则形成广播地址:<code>10101100.00010100.11111111.11111111</code> 十进制表示:    <code>172.20.255.255</code><br>广播地址可以分为本地广播和直接广播两种</p>
+</blockquote></p>
+<h2 id="本地广播和直接广播"><a href="#本地广播和直接广播" class="headerlink" title="本地广播和直接广播"></a>本地广播和直接广播</h2><p><strong>在网络内广播的叫本地广播</strong>。例如网络地址为192.168.0.0/24<br>的情况下，广播地址是192.168.0.255。因为这个广播地址的IP包会被路由器屏蔽，所以不会到达192.168.0.0/24外的其他链路上。</p>
+<p><strong>在不通网络之间的广播叫直接广播</strong>。例如网络地址为192.168.0.0/24的主机向192.168.1.255/24的目标地址发送IP包。收到这个包的路由器，将数据包转发给192.168.1.0/24,从而使得所有 192.168.1.1~192.168.1.254的主机都能收到这个包(由于直接接受广播有一定的安全问题，多数情况下会在路由器上设置不转发。)。<br><img src="https://i.loli.net/2020/06/09/9xRTiedt5I1sbUN.png" alt="image.png"></p>
+<h2 id="什么是D、E-类地址？"><a href="#什么是D、E-类地址？" class="headerlink" title="什么是D、E 类地址？"></a>什么是D、E 类地址？</h2><p>D类和E类地址是没有主机号的，所以不可用于主机IP.D类常被用于多播，E类是预留的分类，暂未使用。<br><img src="https://i.loli.net/2020/06/09/VgyKJBcpN48Fsjo.png" alt="image.png"></p>
+<h2 id="多播地址"><a href="#多播地址" class="headerlink" title="多播地址"></a>多播地址</h2><p>多播地址用于<strong>用于将数据包发送给特定组内的所有主机</strong><br><blockquote><p>还是举班级的例子，老师说:”最后一排的同学，上来做这道数学题”，老师指定的是最后一排的同学，也就是多播的含义了。<br>由于广播无法穿透路由，若想给其他网段发送同样的包，就可以使用可以穿透路由的多播。</p>
+</blockquote><br><img src="https://i.loli.net/2020/06/09/oO6uat2jnWbTAcM.png" alt="image.png"><br>多播使用的D类地址，其前四位是<code>1110</code>就表示多播地址，而剩下的28位是多播的组编号。</p>
+<div class="alert alert-info">从224.0.0.0 ~ 239.255.255.255 都是多播的可用范围，其划分为以下三类：<br>224.0.0.0 ~ 224.0.0.255 为预留的组播地址，只能局域网中，路由器是不会进行转发的。<br>224.0.1.0 ~ 238.255.255.255 为用户可用的组播地址，可以用于Internet上。<br>239.0.0.1 ~ 239.255.255.255  为本地管理组播地址，可供内部网在内部使用，仅在特定的本地范围内有效。<br></div>
+
+<h2 id="IP分类的优点"><a href="#IP分类的优点" class="headerlink" title="IP分类的优点"></a>IP分类的优点</h2><p>不管是路由器还是主机解析到一个IP地址的时候，我们判断其IP地址的首位是否为0，为0则为A类地址，那么就能很快的找出网络地址和主机地址。<br><img src="https://i.loli.net/2020/06/09/jCAbeXi2OFqIMY9.png" alt="image.png"><br>所以，这种分类地址的优点就是简单明了、选路（基于网络地址）简单。<br><img src="https://i.loli.net/2020/06/09/2dWDlXikYzoL1bT.png" alt="image.png"></p>
+<pre><code>00000000 01111111 0-127 
+10000000 10111111 128-191
+11000000 11011111 192-223
+11100000 11101111 224-239
+
+A类,该类IP地址的最前面为0表示：A类IP地址用二进制换算第一位为0，也就是最大为二进制数01111111，也就是十进制的127
+其他的以此类推
+</code></pre><h2 id="IP-地址的缺点"><a href="#IP-地址的缺点" class="headerlink" title="IP 地址的缺点"></a>IP 地址的缺点</h2><blockquote><p>缺点一：同一网络下没有地址层次，比如一个公司用了B类地址，但是可能需要根据生产环境、测试环境、开发环境来划分层次，而这种IP分类是没有地址层次划分的功能，所以这就缺少地址的灵活性。</p>
+<p>缺点二：A、B、C类有个尴尬处境，就是不能很好的与现实网络匹配<br>1.C类地址能包含的最大主机数量实在太少了，只有254个，估计一个网吧都不够用。<br>2.而b类地址能包含的最大主机数量又太多了，6万台机器放在一个网络下面，一般的企业基本达不到这个规模，闲着的地址就是浪费。<br>这两个缺点，都可以在<code>CIDR</code> 无分类地址解决。</p>
+</blockquote>
+<h2 id="无分类地址-CIDR"><a href="#无分类地址-CIDR" class="headerlink" title="无分类地址 CIDR"></a>无分类地址 CIDR</h2><p>正因为IP分类存在许多缺点，所以后面提出了无分类地址的方案，即<code>CIDR</code>.这种方式不再有分类地址的概念，32比特的IP地址被划分为两部分，前面是网络号，后面是主机号。</p>
+<h1 id="①怎么划分网络号和主机号"><a href="#①怎么划分网络号和主机号" class="headerlink" title="①怎么划分网络号和主机号"></a>①怎么划分网络号和主机号</h1><p>表现形式<code>a.b.c.d/x</code>,其中<code>/x</code>表示前x位属于网络号，x的范围是<code>0 ~ 32</code>,这就是使得IP地址更加具有灵活性。<br>比如10.100.122.0/24,这种地址表现形式就是CIDR,/24表示24位网络号，剩余的8位是主机号。</p>
+<pre><code>10.100.122.2/24
+00001010 01100100 01111010 00000010
+----------网络号--------- -主机号-
+可用地址个数：254
+子网掩码：255.255.255.0
+网络号：10.100.122.0
+第一个可用地址：10.100.122.1
+最后可用地址：10.100.122.254
+广播地址：10.100.122.255
+</code></pre><h1 id="②怎么划分网络号和主机号"><a href="#②怎么划分网络号和主机号" class="headerlink" title="②怎么划分网络号和主机号"></a>②怎么划分网络号和主机号</h1><p>还有另外一种划分网络号与主机号的形式，那就是子网掩码，掩码的意思就是掩盖掉主机号，剩余的就是网络号。<br><strong>将子网掩码和IP地址按位计算 AND,就可以得到网络号。</strong></p>
+<pre><code>IP地址: 10.100.122.2
+二进制： 00001010 01100100 01111010 00000010
+子网掩码 255.255.255.0
+二进制： 11111111 11111111 11111111 00000000
+IP地址和子网掩码做AND运算：00001010 01100100 01111010 00000000
+                         ------网络号--------------- -主机号-
+也就是：10.100.122.0
+</code></pre><h1 id="为什么要分离网络号和主机号"><a href="#为什么要分离网络号和主机号" class="headerlink" title="为什么要分离网络号和主机号"></a>为什么要分离网络号和主机号</h1><p>因为两台计算机要通讯，首先要判断是否处于同一个广播域内，即网络地址是否相同。如果网络地址相同，表明接收方在本网络上，那么可以把数据包直接发送到目标主机。</p>
+<p>路由器寻址工作中，也就是通过这样的方式来找到对应的网络号的，进而把数据包转发给对应的网络内。<br><img src="https://i.loli.net/2020/06/10/rw5OncoEKay61Nd.png" alt="image.png"></p>
+<h1 id="子网划分"><a href="#子网划分" class="headerlink" title="子网划分"></a>子网划分</h1><p>在上面我们知道可以通过子网掩码划分出网络号和主机号，那实际上子网掩码还有一个作用，那就是<strong>划分子网</strong></p>
+<p><strong>子网划分实际上是将主机地址划分为两个部分：子网网络地址和子网主机地址：</strong><br><img src="https://i.loli.net/2020/06/10/FnWtmqEUGHl4XzP.png" alt="image.png"></p>
+<font color="red">未做子网划分的IP地址:网络地址+主机地址 </font> <font color="red"><br>做子网划分后的IP地址：网络地址+（子网网络地址+子网主机地址）<br><br>假设对C类地址进行子网划分，网络地址192.168.1.0，使用子网掩码255.255.255.192 对其进行子网划分。<br><br>C类地址中前24位是网络号，最后8位是主机号，根据子网掩码可知从8位主机号中借用2位作为子网号。</font><br><img src="https://i.loli.net/2020/06/10/9NC3oGqBJlIi8Op.png" alt="image.png"><br><font color="blue">由于子网网络地址被划分为2位，那么子网地址就有4个，分别是00、01、10、11，具体划分如下图：</font>
+
+<pre><code>子网0
+          192.168.1  00  000000  子网0网络地址   192.168.1.0
+          192.168.1  00  000001  可分配的最小地址 192.168.1.1
+          192.168.1  00  111110  可分配的最大地址 192.168.1.62
+          192.168.1  00  111111  子网0广播地址    192.168.1.63
+子网1
+        192.168.1  01  000000  子网1网络地址    192.168.1.64
+        192.168.1  01  000001  可分配的最小地址 192.168.1.65
+        192.168.1  01  111110  可分配的最大地址 192.168.1.126
+        192.168.1  01  111111  子网1的广播地址  192.168.1.127
+
+子网2    
+        192.168.1  10  000000  子网2网段地址    192.168.1.128
+        192.168.1  10  000001  可分配的最小地址 192.168.1.129
+        192.168.1  10  111110  可分配的最大地址 192.168.1.190
+        192.168.1  10  111111  子网2广播地址    192.168.1.191
+
+子网3
+        192.168.1  11  000000  子网3网络地址    192.168.1.192
+        192.168.1  11  000001  可分配的最小地址 192.168.1.193
+        192.168.1  11  111110  可分配的最大地址 192.168.1.254
+        192.168.1  11  111111  子网3广播地址    192.168.1.255
+
+划分后的4个子网表格：
+子网号    网络地址            主机地址范围                      广播地址
+  0     192.168.1.0    192.168.1.1 ~ 192.168.1.62       192.168.1.63
+  1     192.168.1.64   192.168.1.65 ~ 192.168.1.126     192.168.1.127
+  2     192.168.1.128  192.168.1.129 ~ 192.168.1.190    192.168.1.191 
+  3     192.168.1.192  192.168.1.193 ~ 192.168.1.254    192.168.1.255
+</code></pre><h1 id="公有IP地址与私有IP地址"><a href="#公有IP地址与私有IP地址" class="headerlink" title="公有IP地址与私有IP地址"></a>公有IP地址与私有IP地址</h1><p>在A、B、C 分类地址，实际上有分公有IP地址和私有IP地址<br><img src="https://i.loli.net/2020/06/10/Vdoapc8FmuPkKJ7.png" alt="image.png"></p>
+<p><font size="3">&emsp;平时我们办公室、家里、学校用的IP地址，一般都是私有IP地址。因为这些地址允许组织内部的IT人员自己管理、自己分配，而且可以重复。因此你学校的某个私有IP地址和我学校的可以是一样的。<br>&emsp;就像每个小区都有自己的楼编号和门牌号，你小区家可以叫1栋101号，我小区家也可以叫1栋101，没有任何问题。但一旦出了小区，就需要带上中山路666号(公网IP地址)，是国家统一分配的，不能两个小区都叫中山路666。<br>&emsp;所有，公网IP地址是有个组织统一分配的，假设你要开一个博客网站，那么你就需要去申请购买一个公有IP，这样全世界的人才能访问。并且公有IP地址基本上要在整个互联网内保持唯一。</font><br><img src="https://i.loli.net/2020/06/12/jmheBvwNU6gJsua.png" alt="image.png"></p>
+<h1 id="公有IP地址由谁管理-？"><a href="#公有IP地址由谁管理-？" class="headerlink" title="公有IP地址由谁管理 ？"></a>公有IP地址由谁管理 ？</h1><p>私有IP地址通常是内部的IT人员值管理，公有IP地址是由<code>ICANN</code>组织管理，中文叫「互联网名称与数字地址分配机构」。</p>
+<p>IANA 是ICANN的其中一个机构，它负责互联网IP地址，是按州的方式层层分配的。<br><img src="https://i.loli.net/2020/06/12/XMmtsHPzgrLu4nc.png" alt="image.png"><br>其中，在中国是由CNNIC的机构进行管理，它是中国国内唯一指定的全局IP地址管理的组织。</p>
+<h1 id="IP地址与路由控制"><a href="#IP地址与路由控制" class="headerlink" title="IP地址与路由控制"></a>IP地址与路由控制</h1><p>IP地址的<strong>网络地址</strong>这一部分是用于进行路由控制。</p>
+<p>路由控制表中记录着网络地址与下一步应该发送至路由器的地址。在主机和路由器上都会有各自的路由器控制表。</p>
+<p>在发送IP包时，首先要确定IP包中首部中的目标地址，再从路由控制表中找到与该地址具有<strong>相同网络地址</strong>的记录，根据该记录将IP包转发给相应的下一个路由器。如果路由器表中存在多条相同网络地址的记录，就选择相同位数最多的网络地址，也就是最长匹配。</p>
+<p>例：<br><img src="https://i.loli.net/2020/06/12/DIzbFxgaCiN96cf.png" alt="image.png">)</p>
+<ol>
+<li>主机A要发送一个IP包，其源地址是<code>10.1.1.30</code> 和目标地址是<code>10.1.2.10</code>，由于没有在主机A的路由表找到与目标地址<code>10.1.2.1</code> 的网络地址，于是把包转发到默认路由(路由器1)</li>
+<li>路由器<code>1</code>收到IP包后，也在路由器<code>1</code>的路由表匹配与目标地址相同的网络地址记录，发现匹配到了，于是就把IP数据包转发到了<code>10.1.0.2</code> 这台路由器2</li>
+<li>路由器<code>2</code> 收到后，同样对比自身的路由表，发现匹配到了，于是把IP包从路由器<code>2</code>的<code>10.1.2.1</code> 这个接口出去，最终经过交换机把IP数据包转发到了目标主机。</li>
+</ol>
+<h1 id="环回地址是不会流向网络"><a href="#环回地址是不会流向网络" class="headerlink" title="环回地址是不会流向网络"></a>环回地址是不会流向网络</h1><p>环回地址是在同一台计算机上的程序之间进行网络通信时所使用的一个默认地址。<br>计算机使用一个特殊的IP地址<strong>127.0.0.1作为环回地址</strong>。与该地址具有相同意义的是一个叫做<strong>localhost</strong>的主机名。使用这个IP或主机名时，数据包不会流向网络。</p>
+<h1 id="IP分片与重组"><a href="#IP分片与重组" class="headerlink" title="IP分片与重组"></a>IP分片与重组</h1><p>每种数据链路的最大传输单元<code>MTU</code>都是不相同的，如 FDDI 数据链路 <code>MTU 4352</code>、以太网MTU 是 1500字节等。</p>
+<p>每种数据链路的 MTU 之所以不同，是因为每个不同类型的数据链路的使用目的不同。使用目的不同，可承载的 MTU 也就不同。</p>
+<p>其中，我们常见的数据链路就是以太网，他的 MTU 是<code>1500</code> 字节。</p>
+<p>那么当 IP 数据包大小大于 MTU 时，IP 数据包就会被分片。<br>经过分片之后的IP数据报在被重组的时候，只能由目标主机进行，路由器是不会进行重组的。<br>假设发送方发送一个4000字节的大数据报，若要传输在以太网链路则需要把数据报分片成3个小数据报进行传输，再交由接收方重组成大数据报。<br><img src="https://i.loli.net/2020/06/12/Hc2NngwAGBrLDvi.png" alt="image.png"><br>在分片传输中，一旦某个分片丢失，则会造成整个IP 数据报作废，所以 TCP 引入了 <code>MSS</code> 也就是在TCP层进行分片不由 IP 层分片，那么对于UDP 我们尽量不要发送一个大于 <code>MTU</code> 的数据报文。</p>
+<h1 id="IPV6-基本认识"><a href="#IPV6-基本认识" class="headerlink" title="IPV6 基本认识"></a>IPV6 基本认识</h1><p>IPv4 的地址是32位，大约可以提供 42 亿个地址，但是早在2011年IPv4地址就已经被分配完了。</p>
+<p>但是IPv6地址是128位的，这可分配的地址数量是大的惊人，说个段子<strong>IPv6 可以保证地球上每一粒沙子都能被分配到一个IP地址</strong></p>
+<p>但 IPv6除了有更多的地址之外，还有更好的安全性和扩展性，说简单点就是 IPv6 相比 IPv4 能带来更好的网络体验。</p>
+<p>但是因为IPv4和 IPv6 不能互相兼容，所以不但要我们的电脑、手机之类的设备支持，还需要网络运营商对现有的设备进行升级，所以这可能是IPv6 普及率比较慢的一个原因。</p>
+<h2 id="IPv6-的亮点"><a href="#IPv6-的亮点" class="headerlink" title="IPv6 的亮点"></a>IPv6 的亮点</h2><p>IPv6不仅仅只是可分配的地址变多了，他还有非常多的亮点。<br><i class="fa fa-bookmark" aria-hidden="true"></i>  IPv6 可自动配置，即使没有DHCP服务器也可实现自动分配IP地址，真是便携到即插即用。<br><i class="fa fa-bookmark" aria-hidden="true"></i> IPv6 包头包首部长度采用固定的值<code>40</code>字节，去掉包头校验和，简化了首部结构，减轻了路由器负荷，大大提高了传输的性能。<br><i class="fa fa-bookmark" aria-hidden="true"></i>  IPv6 有应对伪造IP地址的网络安全功能以及防止线路窃听的功能，大大提升了安全性……</p>
+<h2 id="IPv6-地址的标识方法"><a href="#IPv6-地址的标识方法" class="headerlink" title="IPv6 地址的标识方法"></a>IPv6 地址的标识方法</h2><p>IPv4 地址长度共 32 位，是以每 8 位作为一组，并用点分十进制的表示方式。</p>
+<p>IPv6 地址长度是 128 位，是以每 16 位作为一组，每组用冒号 「:」 隔开<br><img src="https://i.loli.net/2020/06/12/95GsFEAg2dZML1e.png" alt="image.png"><br>如果出现连续的 0 时还可以将这些 0 省略，并用两个冒号 「::」隔开。但是，一个 IP 地址中只允许出现一次两个连续的冒号。<br><img src="https://i.loli.net/2020/06/12/JdAb761jNne3XzM.png" alt="image.png"></p>
+<h2 id="IPV6-地址的结构"><a href="#IPV6-地址的结构" class="headerlink" title="IPV6 地址的结构"></a>IPV6 地址的结构</h2><p>IPv6 类似 IPv4,也是通过IP 地址前几位标识IP地址的种类。<br>IPv6 的地址主要有以下类型地址：<br>单播地址，用于一对一的通信<br>组播地址，用于一对多的通信<br>任播地址，用于通信最近的节点，最近的节点是由路由协议决定<br>没有广播地址<br><img src="https://i.loli.net/2020/06/12/jX61u8eKoNMraEW.png" alt="image.png"></p>
+<h2 id="IPv6-单播地址类型"><a href="#IPv6-单播地址类型" class="headerlink" title="IPv6 单播地址类型"></a>IPv6 单播地址类型</h2><p>对于一对一通信的IPv6地址，主要划分了三类单播地址，每类地址的有效范围都不同。<br>在同一链路单播通信，不经过路由器，可以使用链路本地单播地址，IPv4没有此类型<br>在内网里单播通信，可以使用唯一本地地址，相当于IPv4的私有IP<br>在互联网通信，可以使用全局单播地址，相当于IPv4 的公有IP<br><img src="https://i.loli.net/2020/06/12/Qi6auzw3IsL1HNn.png" alt="image.png"></p>
+<h2 id="IPv4-首部与-IPv6-首部"><a href="#IPv4-首部与-IPv6-首部" class="headerlink" title="IPv4 首部与 IPv6 首部"></a>IPv4 首部与 IPv6 首部</h2><p>IPv4 首部与 IPv6 首部的差异如下图:<br><img src="https://i.loli.net/2020/06/12/SkZcrJ7lMCB9y2L.png" alt="image.png"></p>
+<p>IPv6 相比 IPv4 的首部改进：<br><strong>取消了首部校验和字段。</strong>因为在数据链路层和传输层都会校验，因此IPv6 直接取消了IP的校验。<br><strong>取消了分片/重新组装相关字段。</strong> 分片与重组是耗时的过程，IPv6 不允许在中间路由器进行分片与重组，这种操作只能在源与目标主机，这将大大提高了路由器转发的速度。<br><strong>取消选项字段</strong> 选项字段不再是标准IP 首部的一部分了，但它并没有消失，而是可能出现在IPv6 首部中的「下一个首部」指出的位置上。删除该选项字段是IPv6的首部成为固定长度的<code>40</code>字节。</p>
+<h2 id="点心-——-IP协议相关技术"><a href="#点心-——-IP协议相关技术" class="headerlink" title="点心 —— IP协议相关技术"></a>点心 —— IP协议相关技术</h2><p>跟IP协议相关的技术也不少，接下来说说与IP协议相关的重要且常见的技术。</p>
+<pre><code>DNS 域名解析
+ARP 与 RARP 协议
+DHCP 动态获取 IP 地址
+NAT 地址转换
+ICMP 互联网控制报文协议
+IGMP 因特网组管理协
+</code></pre><h1 id="本章原文地址：https-zhuanlan-zhihu-com-p-138235610"><a href="#本章原文地址：https-zhuanlan-zhihu-com-p-138235610" class="headerlink" title="本章原文地址：https://zhuanlan.zhihu.com/p/138235610"></a>本章原文地址：<a href="https://zhuanlan.zhihu.com/p/138235610" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/138235610</a></h1><p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
+<p><script>hljs.initHighlightingOnLoad();</script></p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>打赏</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://s2.ax1x.com/2019/04/29/E1FABt.jpg" alt="Tiger WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://s2.ax1x.com/2019/04/29/E1FZAf.jpg" alt="Tiger Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Tiger</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="http://yoursite.com/2020/06/09/网络-IP基础知识/" title="Network">http://yoursite.com/2020/06/09/网络-IP基础知识/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/note/" rel="tag"><i class="fa fa-tag"></i> note</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/07/name/" rel="next" title="1">
+                <i class="fa fa-chevron-left"></i> 1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/06/11/网络-DNS/" rel="prev" title="Network">
+                Network <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/../images/head-portrait.jpg"
+                alt="Tiger" />
+            
+              <p class="site-author-name" itemprop="name">Tiger</p>
+              <p class="site-description motion-element" itemprop="description">I love you</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+<div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div id="myCanvasContainer" class="widget tagcloud">
+        <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/">sed</a><span class="tag-list-count">1</span></li></ul>
+        </canvas>
+    </div>
+</div>
+
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:panxiaotiger@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://youtube.com/" target="_blank" title="YouTube"><i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.jianshu.com/u/a68525cdd2e5" target="_blank" title="简书"><i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="tencent://message/?uin=1915333545&Site=Senlon.Net&Menu=yes" target="_blank" title="qq"><i class="fa fa-fw fa-qq"></i>qq</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://music.163.com/#/user/home?id=113656157" title="music" target="_blank">music</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://qianling.pw/style/#TOC%E6%95%B0%E5%AD%97%E5%9D%97" title="blog" target="_blank">blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#本章知识点"><span class="nav-number">1.</span> <span class="nav-text">本章知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IP的基本认识"><span class="nav-number">2.</span> <span class="nav-text">IP的基本认识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IP和MAC的关系"><span class="nav-number">3.</span> <span class="nav-text">IP和MAC的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP-网络层-和MAC-数据链路层-之间的区别和关系。"><span class="nav-number">3.1.</span> <span class="nav-text">IP(网络层)和MAC(数据链路层)之间的区别和关系。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IP地址的基础认识"><span class="nav-number">4.</span> <span class="nav-text">IP地址的基础认识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP地址的分类"><span class="nav-number">4.1.</span> <span class="nav-text">IP地址的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是A、B、C-类地址？"><span class="nav-number">4.2.</span> <span class="nav-text">什么是A、B、C 类地址？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A、B、C-分类地址最大主机个数是如何计算的呢？"><span class="nav-number">4.3.</span> <span class="nav-text">A、B、C 分类地址最大主机个数是如何计算的呢？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#广播地址用于什么？"><span class="nav-number">5.</span> <span class="nav-text">广播地址用于什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#本地广播和直接广播"><span class="nav-number">5.1.</span> <span class="nav-text">本地广播和直接广播</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是D、E-类地址？"><span class="nav-number">5.2.</span> <span class="nav-text">什么是D、E 类地址？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多播地址"><span class="nav-number">5.3.</span> <span class="nav-text">多播地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP分类的优点"><span class="nav-number">5.4.</span> <span class="nav-text">IP分类的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP-地址的缺点"><span class="nav-number">5.5.</span> <span class="nav-text">IP 地址的缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无分类地址-CIDR"><span class="nav-number">5.6.</span> <span class="nav-text">无分类地址 CIDR</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#①怎么划分网络号和主机号"><span class="nav-number">6.</span> <span class="nav-text">①怎么划分网络号和主机号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#②怎么划分网络号和主机号"><span class="nav-number">7.</span> <span class="nav-text">②怎么划分网络号和主机号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么要分离网络号和主机号"><span class="nav-number">8.</span> <span class="nav-text">为什么要分离网络号和主机号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#子网划分"><span class="nav-number">9.</span> <span class="nav-text">子网划分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#公有IP地址与私有IP地址"><span class="nav-number">10.</span> <span class="nav-text">公有IP地址与私有IP地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#公有IP地址由谁管理-？"><span class="nav-number">11.</span> <span class="nav-text">公有IP地址由谁管理 ？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IP地址与路由控制"><span class="nav-number">12.</span> <span class="nav-text">IP地址与路由控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环回地址是不会流向网络"><span class="nav-number">13.</span> <span class="nav-text">环回地址是不会流向网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IP分片与重组"><span class="nav-number">14.</span> <span class="nav-text">IP分片与重组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IPV6-基本认识"><span class="nav-number">15.</span> <span class="nav-text">IPV6 基本认识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IPv6-的亮点"><span class="nav-number">15.1.</span> <span class="nav-text">IPv6 的亮点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IPv6-地址的标识方法"><span class="nav-number">15.2.</span> <span class="nav-text">IPv6 地址的标识方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IPV6-地址的结构"><span class="nav-number">15.3.</span> <span class="nav-text">IPV6 地址的结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IPv6-单播地址类型"><span class="nav-number">15.4.</span> <span class="nav-text">IPv6 单播地址类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IPv4-首部与-IPv6-首部"><span class="nav-number">15.5.</span> <span class="nav-text">IPv4 首部与 IPv6 首部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点心-——-IP协议相关技术"><span class="nav-number">15.6.</span> <span class="nav-text">点心 —— IP协议相关技术</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本章原文地址：https-zhuanlan-zhihu-com-p-138235610"><span class="nav-number">16.</span> <span class="nav-text">本章原文地址：https://zhuanlan.zhihu.com/p/138235610</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tiger</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.4.0</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共141.5k字</span>
+</div>
+
+<div id="days"></div>
+</script>
+<script language="javascript">
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("09/02/2018 02:11:00");//月，日，年，小时，分钟，秒
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+// span_dt_dt.innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="Total Visitors">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="Total Views">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'OSdVe8DIEP8hGQHk01ktuvca-gzGzoHsz',
+        appKey: 'KqV97J1jQqvbF0Y6rh8SU3uo',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('manual', "#more");
+  
+  </script>
+
+
+  
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+<script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

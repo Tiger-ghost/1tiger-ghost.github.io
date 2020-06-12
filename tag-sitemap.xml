@@ -2,22 +2,8 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>http://yoursite.com/tags/command/</loc>
-        <lastmod>2019-09-15T17:49:02.580Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/sed/</loc>
         <lastmod>2019-12-02T12:22:57.552Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/note/</loc>
-        <lastmod>2019-12-20T17:00:57.986Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -30,8 +16,22 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/tags/command/</loc>
+        <lastmod>2020-04-21T02:53:51.749Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://yoursite.com/tags/Document/</loc>
-        <lastmod>2020-03-07T13:03:56.161Z</lastmod>
+        <lastmod>2020-05-29T06:31:42.557Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/note/</loc>
+        <lastmod>2020-06-12T10:14:25.409Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

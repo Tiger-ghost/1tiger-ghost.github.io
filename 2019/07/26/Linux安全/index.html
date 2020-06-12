@@ -159,7 +159,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 <meta property="og:site_name" content="Tiger-ghost">
 <meta property="og:description" content="linux 安全">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-24T15:00:23.068Z">
+<meta property="og:updated_time" content="2020-03-31T08:09:39.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Five">
 <meta name="twitter:description" content="linux 安全">
@@ -445,7 +445,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-24 23:00:23" itemprop="dateModified" datetime="2019-09-24T23:00:23+08:00">2019-09-24</time>
+                <time title="Modified: 2020-03-31 16:09:39" itemprop="dateModified" datetime="2020-03-31T16:09:39+08:00">2020-03-31</time>
               
             
           </span>
@@ -1006,8 +1006,8 @@ Identity added: /root/.ssh/id_rsa (/root/.ssh/id_rsa)
 </code></pre><p><div class="alert alert-danger"><font color="#4de680"><i class="fa fa-key fa-2x"></i></font>使用crt生成公钥私钥连接主机<br>crt-tool-Key Generation Wizard 依次默认点击生成公钥和私钥文件(如果最后选择OpenSSH Key format就不需要下面的转换格式)<br>将公钥传到需要连接的主机上,将文件放置~/.ssh目录下<code>ssh-keygen -i -f Identity.pub &gt;&gt; authorized_keys</code> 转换Identity.pub文件的格式，然后追加到文件<br>在crt上连接主机在验证方式这里——Authentication——PublicKey——Propreies选择对应的私钥文件，就可以连上了</div>.</p>
 <pre><code>三个机器共用一套公钥私钥——实现互相连接不需要输入密码
 ssh-keygen -t rsa -P &quot;&quot; -f ./id_rsa
-ssh-copy-id 192.168.152.136
-scp -rp /root/.ssh/ 192.168.152.131:/root/
+ssh-copy-id 192.168.152.136 连接到自己
+scp -rp /root/.ssh/ 192.168.152.131:/root/ 然后把自己的这个目录拷贝到其他的机器上去
 scp -rp /root/.ssh/ 192.168.152.140:/root/
 </code></pre><h1 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h1><p>scp命令：<br>scp [options] SRC… DEST/<br>两种方式：</p>
 <pre><code>[root@centos7 ~]# scp /etc/fstab/ 192.168.152.131:/data
@@ -1646,8 +1646,8 @@ echo &quot;此文件的作用不允许普通用户登录&quot; &gt;&gt; /etc/nol
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/26/Linux后期理论/" rel="next" title="Four">
-                <i class="fa fa-chevron-left"></i> Four
+              <a href="/2019/06/20/脚本/" rel="next" title="Three">
+                <i class="fa fa-chevron-left"></i> Three
               </a>
             
           </div>
@@ -1656,8 +1656,8 @@ echo &quot;此文件的作用不允许普通用户登录&quot; &gt;&gt; /etc/nol
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/25/日志管理/" rel="prev" title="Nine">
-                Nine <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/26/Linux后期理论/" rel="prev" title="Four">
+                Four <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1735,7 +1735,7 @@ echo &quot;此文件的作用不允许普通用户登录&quot; &gt;&gt; /etc/nol
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1767,7 +1767,7 @@ echo &quot;此文件的作用不允许普通用户登录&quot; &gt;&gt; /etc/nol
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/">sed</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Document/">Document</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/note/">note</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/">sed</a><span class="tag-list-count">1</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -1901,7 +1901,7 @@ echo &quot;此文件的作用不允许普通用户登录&quot; &gt;&gt; /etc/nol
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共134.1k字</span>
+  <span class="post-count">博客全站共141.5k字</span>
 </div>
 
 <div id="days"></div>
@@ -2449,6 +2449,15 @@ show_date_time();
   
 
   
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('manual', "#more");
+  
+  </script>
+
 
   
 

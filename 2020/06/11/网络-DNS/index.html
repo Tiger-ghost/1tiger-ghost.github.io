@@ -151,18 +151,22 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
         }
     })();
 </script>
-  <meta name="description" content="DHCP+PXE">
-<meta name="keywords" content="Document">
+  <meta name="description" content="DNS 基础知识">
+<meta name="keywords" content="note">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1">
-<meta property="og:url" content="http://yoursite.com/2020/03/07/name/index.html">
+<meta property="og:title" content="Network">
+<meta property="og:url" content="http://yoursite.com/2020/06/11/网络-DNS/index.html">
 <meta property="og:site_name" content="Tiger-ghost">
-<meta property="og:description" content="DHCP+PXE">
+<meta property="og:description" content="DNS 基础知识">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-16T06:51:05.193Z">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/kQRzhMXlK5DrZcI.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/b9kdYy5c2nptJRS.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/12/OeyP4TsRjYulz5Q.png">
+<meta property="og:updated_time" content="2020-06-12T10:14:25.409Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1">
-<meta name="twitter:description" content="DHCP+PXE">
+<meta name="twitter:title" content="Network">
+<meta name="twitter:description" content="DNS 基础知识">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/12/kQRzhMXlK5DrZcI.png">
 
 
 
@@ -171,7 +175,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/07/name/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/06/11/网络-DNS/"/>
 
 
 
@@ -181,7 +185,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
   };
 </script>
 
-  <title>1 | Tiger-ghost</title>
+  <title>Network | Tiger-ghost</title>
   
 
 
@@ -386,7 +390,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/07/name/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/11/网络-DNS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tiger">
@@ -403,7 +407,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
 
         
         
-          <h1 class="post-title" itemprop="name headline">1
+          <h1 class="post-title" itemprop="name headline">Network
               
             
           </h1>
@@ -428,7 +432,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
               
 
-              <time title="Created: 2020-03-07 21:01:00" itemprop="dateCreated datePublished" datetime="2020-03-07T21:01:00+08:00">2020-03-07</time>
+              <time title="Created: 2020-06-11 16:28:03" itemprop="dateCreated datePublished" datetime="2020-06-11T16:28:03+08:00">2020-06-11</time>
             
 
             
@@ -445,7 +449,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-03-16 14:51:05" itemprop="dateModified" datetime="2020-03-16T14:51:05+08:00">2020-03-16</time>
+                <time title="Modified: 2020-06-12 18:14:25" itemprop="dateModified" datetime="2020-06-12T18:14:25+08:00">2020-06-12</time>
               
             
           </span>
@@ -462,7 +466,7 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/write/" itemprop="url" rel="index"><span itemprop="name">write</span></a></span>
 
                 
                 
@@ -477,8 +481,8 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/03/07/name/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2020/03/07/name/" itemprop="commentCount"></span>
+                <a href="/2020/06/11/网络-DNS/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2020/06/11/网络-DNS/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -516,118 +520,41 @@ Canvas-nest.min.css?v=1.0.2" rel="stylesheet">
       
 
       
-        <p><center><font face="FZShuTi">DHCP+PXE</font></center><br><a id="more"></a></p>
-<h1 id="DHCP-马哥-26"><a href="#DHCP-马哥-26" class="headerlink" title="DHCP 马哥-26"></a>DHCP 马哥-26</h1><pre><code>监听的端口:
-server:67/UDP
-Client:68/UDP
+        <p><center><font face="FZShuTi">DNS 基础知识</font></center><br><a id="more"></a> </p>
+<h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><p>我们在上网的时候，通常使用的方式是域名，而不是IP地址，因为域名方便人类记忆。<br>那么实现这一技术的就是<strong>DNS域名解析</strong>，DNS可以将域名网址自动转换为具体的IP地址。</p>
+<h2 id="域名的层级关系"><a href="#域名的层级关系" class="headerlink" title="域名的层级关系"></a>域名的层级关系</h2><p>DNS 中的域名都是用<code>句点</code>来分隔的，比如<code>www.server.com</code>，这里的句点代表了不通层次之间的<strong>界限</strong>。</p>
+<p>在域名中，越靠右的位置表示其层级越高。<br><blockquote><p>毕竟域名是外国人发明，所以思维和中国人相反，比如说一个城市地点的时候，外国人喜欢从小到大的方式顺序说起(如XX街道XX区XX市XX省)，而中国则喜欢从大到小的顺序，(如XX省XX市XX区XX街道)。</p>
+<p>根域在最顶层，他的下一层就是com顶级域，再下面就是server.com<br>所以域名的层级关系类似一个树状结构：</p>
+<pre><code>. 根DNS服务器
+. 顶级域 DNS服务器 （com）
+. 权威 DNS 服务器 （server.com）
+</code></pre></blockquote><br><img src="https://i.loli.net/2020/06/12/kQRzhMXlK5DrZcI.png" alt="image.png"><br>根域的DNS服务器信息保存在互联网中所有的DNS服务器中，这样一来，任何DNS服务器就都可以找到并访问根域DNS服务器了。</p>
+<p>因此，客户端只要能够找到任意一台DNS服务器，就可以通过它找到根域DNS服务器，然后再一路顺藤摸瓜找到位于下层的某台目标DNS服务器。</p>
+<h2 id="域名解析的工作流程"><a href="#域名解析的工作流程" class="headerlink" title="域名解析的工作流程"></a>域名解析的工作流程</h2><p>浏览器首先看一下自己的缓存里有没有，如果没有就向操作系统的缓存要，还没有就检查本机域名解析文件<code>hosts</code>,如果还没有，就会向DNS服务器进行查询，查询的过程如下：</p>
+<pre><code>1. 客户端首先会发出一个 DNS 请求，问 server.com 的 IP 是啥，并发给本地 DNS 服务器(也就是客户端 TCP/IP 设置中填写的 DNS 服务器地址)。
 
-arp: address resolving protocol 地址解析协议
-知道IP --&gt;去解析 MAC
+2. 本地域名服务器收到客户端的请求后，如果缓存里的表格能找到 server.com,则它直接返回IP地址。如果没有，本地DNS 会去问它的根域名服务器: &quot;老大，能告诉我 server.com 的IP地址吗？&quot; 根域名服务器是最高层次的，它不直接用于域名解析，但能指明一条路。
 
-rarp: reverse arp 反地址解析协议
-知道MAC --&gt;去解析 IP
+3. 根DNS 收到来自本地DNS 的请求后，发现后置是.com，说&quot;server.com 这个域名归 .com 区域管理&quot;，我给你 .com 顶级域名服务器地址给你，你去问问他吧。&quot;
 
-工作流程:
-(1) client:dhcp server
-(2) server:dhcp offer(IP/mask/gw,....)
-    lease time:租约期限
-(3) Client:dhcp request
-(4) Server:dhcp ack
+4. 本地 DNS 收到顶级域名服务器的地址后，发起请求问&quot;老二 ，你能告诉我 server.com 的 IP地址吗？&quot;
 
-Centos实现方式:
-dhcp 包(ISC提供,named提供)
-    dhcpd:dhcp服务 
-    dhcrelay:中继服务
-dnsmasq: dhcp &amp; dns
-</code></pre><h2 id="实验"><a href="#实验" class="headerlink" title="实验:"></a>实验:</h2><pre><code>yum install -y dhcp
-cp /usr/share/doc/dhcp-4.2.5/dhcpd.conf.example ./dhcpd.conf 
-vim dhcpd.conf
-option domain-name &quot;holyghost.me&quot;; #DHCP域名
-option routers 192.168.67.120; ##自动获取的网关地址
-option domain-name-servers 192.168.67.1; #设置DNS服务器地址
+5. 顶级域名服务器说: &quot;我给你负责 server.com 区域 DNS 服务器的地址，你去问他应该能问到&quot;。
 
-default-lease-time 43200; #默认租约期限。单位秒
-max-lease-time 86400; #最大租约期限
-#配置服务器需要分配的地址池:
-subnet 192.168.67.0 netmask 255.255.255.0 {
-        range 192.168.67.100 192.168.67.200;
-        ##这里配置的权限更高
-        option routers 192.168.67.120; ##自动获取的网关地址这里会覆盖掉上面
-}
+6. 本地 DNS 于是转向问权威 DNS 服务器: &quot;老三，server.com 对应的IP 是啥呀？&quot; server.com 的权威 DNS 服务器，他是域名解析结果的原出处。为啥叫权威呢？ 就是我的域名我做主。
 
-host passacaglia {   ##给某个主机绑定ip和网关，这里单独设置的优先级更高
-        hardware ethernet 00:0c:29:56:91:46;
-        option routers 192.168.67.100;
-        fixed-address 192.168.67.105; ##单独分配的地址，不能是rang范围内分配的地址
-}
+7. 权威 DNS 服务器查询后将对应的 IP 地址 X.X.X.X 告诉本地 DNS.
 
-##将多余的配置加以注释 vim:
-:.,$s/^[^#]/#/g
-从当前行到最后一行,搜索除非#号开头的行首,在行首都加上#号
+8. 本地 DNS 再将 IP 地址返回客户端，客户端和目标端建立连接。
 
-systemctl start dhcpd.service 启动服务
-ss -unl  ##查看
--u: udp协议相关；
--n: 以数字显示IP和端口，禁止DNS反向查询；
--l: 处于监听状态；
-
-less /var/lib/dhcpd/dhcpd.leases  ##DHCP服务器分配信息库记录
-
-客户端命令:dhclient 
--d: 运行在前台；
-</code></pre><p><font color="red">在网络配置文件中，这个表示禁止本机获取到dhcp服务中配置的DNS.那么DNS只能自己手动配置,不会失效</font></p>
-<pre><code>    PEERDNS=NO
-</code></pre><h2 id="其他配置选项"><a href="#其他配置选项" class="headerlink" title="其他配置选项"></a>其他配置选项</h2><p>filename:指明引导文件名称;<br>next-server:指明引导所在的服务主机的IP地址;</p>
-<h1 id="PXE"><a href="#PXE" class="headerlink" title="PXE"></a>PXE</h1><pre><code>PXE:preboot excution environment,Intel
-centos pxe工作模式:
-        dhcp(ip/netmask,gw,dns,filename,next-server;)
-        tftp server(bootloader,kernel,initrd)
-        yum repository(ftp,http,nfs)
-</code></pre><h1 id="tftp"><a href="#tftp" class="headerlink" title="tftp"></a>tftp</h1><pre><code>yum install -y tftp tftp-server
-tftp-server:
-        监听在UDP/69 号端口
-        centos6:
-                chkconfig tftp on
-                service xinetd restart
-        centos7:
-                systemctl start tftp.socket
-                systemctl enable tftp.socket ##开机自动启动
-默认的文件存储根目录:/var/lib/tftpboot/
-</code></pre><h1 id="PXE-dhcp配置"><a href="#PXE-dhcp配置" class="headerlink" title="PXE-dhcp配置"></a>PXE-dhcp配置</h1><pre><code>option domain-name &quot;holyghost.me&quot;; #DHCP域名
-option routers 192.168.67.120; ##自动获取的网关地址
-option domain-name-servers 192.168.67.1; #服务器提供的地址
-default-lease-time 43200; #默认租约期限。单位秒
-max-lease-time 86400; #最大租约期限
-log-facility local7;
-subnet 192.168.67.0 netmask 255.255.255.0 {
-        range 192.168.67.101 192.168.67.140; 
-        option routers 192.168.67.125;
-        filename &quot;pxelinux.0&quot;;
-        next-server 192.168.67.103;
-}       
-</code></pre><pre><code>yum install -y httpd
-mkdir /var/www/html/centos/7/x86_64 -pv
-mount /dev/cdrom /var/www/html/centos/7/x86_64/
-浏览器可以成功访问  http://192.168.67.103/centos/7/x86_64/
-之后/var/www/html/kickstarts/centos7.cfg 文件只修改了url路径
-yum install -y syslinux 他有一个pxelinux.0的文件
-cp /usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/ 拷贝到tftp的工作目录
-cp /var/www/html/centos/7/x86_64/images/pxeboot/{initrd.img,vmlinuz} /var/lib/tftpboot/ 拷贝启动内核文件和initrd.img
-cp /usr/share/syslinux/{chain.c32,menu.c32,memdisk,mboot.c32} /var/lib/tftpboot/
-cd /var/lib/tftpboot/ 
-        vim default
-mkdir  pxelinux.cfg
-default menu.c32
-        prompt 5 
-        timeout 30
-        MENU TITLE Centos7 PXE Menu
-
-        LABEL linux 
-        MENU LABEL Install Centos7 x86_64
-        Kernel vmlinuz
-        append intrd=initrd.img 
-</code></pre><p>yum install -y  dhcpd tftp-server tftp syslinux vsftpd </p>
-<p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
+至此，我们完成了 DNS 的解析过程。现在总结一下，整个过程如下图：
+</code></pre><p><img src="https://i.loli.net/2020/06/12/b9kdYy5c2nptJRS.png" alt="image.png"><br>DNS 域名解析的过程蛮有意思的，整个过程就和我们日常生活中找人问路的过程类似，<strong>只指路不带路</strong></p>
+<h1 id="ARP"><a href="#ARP" class="headerlink" title="ARP"></a>ARP</h1><p>在传输一个IP数据报的时候，确定了源IP地址和目标IP地址后，就会通过主机「路由表」</p>
+<p>由于主机的路由表中可以找到下一跳的IP地址。所以可以通过<strong>ARP协议</strong>，求得下一跳的MAC地址。</p>
+<h2 id="那么ARP-又是如何知道对方MAC地址的？"><a href="#那么ARP-又是如何知道对方MAC地址的？" class="headerlink" title="那么ARP 又是如何知道对方MAC地址的？"></a>那么ARP 又是如何知道对方MAC地址的？</h2><p>简单的说，ARP是借助<strong>ARP请求与ARP响应两种类型的包确定MAC地址的</strong><br><img src="https://i.loli.net/2020/06/12/OeyP4TsRjYulz5Q.png" alt="image.png"><br>主机会通过<strong>广播发送 ARP请求</strong>，这个包中包含了想要知道的MAC地址主机地址。<br>当同个链路中的所有设备收到ARP请求时，会去拆开ARP请求包里的内容，如果ARP请求包中的目标IP地址与自己的IP地址一致，那么这个设备就将自己的MAC地址塞入<strong>ARP响应包</strong>返回给主机。</p>
+<p>操作系统通常会把第一次通过ARP获取的MAC地址缓存起来，以便下次直接从缓存中找到对应IP地址的MAC地址。</p>
+<p>不过，MAC 地址的缓存是有一定的期限的，超过这个期限，缓存的内容将被清除。</p>
+<h1 id="本章原文地址：https-zhuanlan-zhihu-com-p-138235610"><a href="#本章原文地址：https-zhuanlan-zhihu-com-p-138235610" class="headerlink" title="本章原文地址：https://zhuanlan.zhihu.com/p/138235610"></a>本章原文地址：<a href="https://zhuanlan.zhihu.com/p/138235610" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/138235610</a></h1><p><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script></p>
 <p><script>hljs.initHighlightingOnLoad();</script></p>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/an-old-hope.min.css">
       
@@ -689,7 +616,7 @@ default menu.c32
     <strong>Post author:  </strong>Tiger</li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="http://yoursite.com/2020/03/07/name/" title="1">http://yoursite.com/2020/03/07/name/</a>
+    <a href="http://yoursite.com/2020/06/11/网络-DNS/" title="Network">http://yoursite.com/2020/06/11/网络-DNS/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
@@ -702,7 +629,7 @@ default menu.c32
       
         <div class="post-tags">
           
-            <a href="/tags/Document/" rel="tag"><i class="fa fa-tag"></i> Document</a>
+            <a href="/tags/note/" rel="tag"><i class="fa fa-tag"></i> note</a>
           
         </div>
       
@@ -715,8 +642,8 @@ default menu.c32
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/17/samba/" rel="next" title="Ten">
-                <i class="fa fa-chevron-left"></i> Ten
+              <a href="/2020/06/09/网络-IP基础知识/" rel="next" title="Network">
+                <i class="fa fa-chevron-left"></i> Network
               </a>
             
           </div>
@@ -724,10 +651,6 @@ default menu.c32
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/06/09/网络-IP基础知识/" rel="prev" title="Network">
-                Network <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -921,7 +844,7 @@ default menu.c32
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DHCP-马哥-26"><span class="nav-number">1.</span> <span class="nav-text">DHCP 马哥-26</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验"><span class="nav-number">1.1.</span> <span class="nav-text">实验:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他配置选项"><span class="nav-number">1.2.</span> <span class="nav-text">其他配置选项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PXE"><span class="nav-number">2.</span> <span class="nav-text">PXE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tftp"><span class="nav-number">3.</span> <span class="nav-text">tftp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PXE-dhcp配置"><span class="nav-number">4.</span> <span class="nav-text">PXE-dhcp配置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DNS"><span class="nav-number">1.</span> <span class="nav-text">DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#域名的层级关系"><span class="nav-number">1.1.</span> <span class="nav-text">域名的层级关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域名解析的工作流程"><span class="nav-number">1.2.</span> <span class="nav-text">域名解析的工作流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARP"><span class="nav-number">2.</span> <span class="nav-text">ARP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#那么ARP-又是如何知道对方MAC地址的？"><span class="nav-number">2.1.</span> <span class="nav-text">那么ARP 又是如何知道对方MAC地址的？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本章原文地址：https-zhuanlan-zhihu-com-p-138235610"><span class="nav-number">3.</span> <span class="nav-text">本章原文地址：https://zhuanlan.zhihu.com/p/138235610</span></a></li></ol></div>
             
 
           </div>

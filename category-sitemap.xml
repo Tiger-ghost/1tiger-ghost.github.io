@@ -7,13 +7,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/write/</loc>
-        <lastmod>2019-12-20T17:00:57.986Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/life/</loc>
         <lastmod>2020-03-04T01:30:48.478Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -22,7 +15,14 @@
 
     <url>
         <loc>http://yoursite.com/categories/linux/</loc>
-        <lastmod>2020-03-07T13:03:56.161Z</lastmod>
+        <lastmod>2020-05-29T06:31:42.557Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/write/</loc>
+        <lastmod>2020-06-12T10:14:25.409Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
